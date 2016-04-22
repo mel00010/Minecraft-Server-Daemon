@@ -1,69 +1,73 @@
-#include <iostream>
 #include "server.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include <signal.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <unistd.h>
+#include <syslog.h>
+#include <string.h>
+#define PIPE_READ 0
+#define PIPE_WRITE 1
 
-constexpr unsigned int str2int(const char* str, int h = 0)
-{
-    return !str[h] ? 5381 : (str2int(str, h+1) * 33) ^ str[h];
-}
 
-int main(int argc, char **argv)
-{
-	if(argc != 1)
-	{
-		switch (str2int(argv[1]))
-		{
-			case str2int("start"):
-			{
-				Server server1(std::string("minecraft"),std::string("/home/minecraft"));
-				break;
-			}
-			case str2int("stop"):
-			{
-				Server server2(std::string("minecraft"));
-				server2.stopServer();
-				break;
-			}
-			case str2int("restart"):
-			{
-				Server server3(std::string("minecraft"));
-				server3.stopServer();
-				server3.startServer();
-				break;
-			}
-			case str2int("update"):
-			{
-				std::cout << "Update functionality coming soon." << std::endl;
-				break;
-			}
-			case str2int("backup"):
-			{
-				Server server4(std::string("minecraft"));
-				server4.backupServer();
-				break;
-			}
-			case str2int("status"):
-			{
-				std::cout << "Status functionality coming soon." << std::endl;
-				break;
-			}
-			case str2int("command"):
-			{
-				std::cout << "Command functionality coming soon." << std::endl;
-				break;
-			}
-			case str2int("listplayers"):
-			{
-				Server server6(std::string("minecraft"));
-				server6.connection.listOnlinePlayers(std::string("Mel00010"));
-				break;
-			}
-		}
-		return 0;
+int main(void) {
+	/* Our process ID and Session ID */
+	pid_t pid, sid;
+
+	/* Fork off the parent process */
+	pid = fork();
+	if (pid < 0) {
+		exit(EXIT_FAILURE);
 	}
-	else
-	{
-		std::cout << "Usage: "<< argv[0] << "{start|stop|backup|status|restart|listplayers|command \"server command\"}" << std::endl;
-		return 0;	
+	/* If we got a good PID, then
+	   we can exit the parent process. */
+	if (pid > 0) {
+		exit(EXIT_SUCCESS);
 	}
-}
+	/* Change the file mode mask */
+	umask(0);
+			
+	/* Open any logs here */        
+		
+	/* Create a new SID for the child process */
+	sid = setsid();
+	if (sid < 0) {
+		/* Log the failure */
+		exit(EXIT_FAILURE);
+	}
+	
 
+	
+	/* Change the current working directory */
+	if ((chdir("/")) < 0) {
+		/* Log the failure */
+		exit(EXIT_FAILURE);
+	}
+	
+	/* Close out the standard file descriptors */
+	//~ close(STDIN_FILENO);
+	//~ close(STDOUT_FILENO);
+	//~ close(STDERR_FILENO);
+	
+	/* Daemon-specific initialization goes here */
+	Server server;
+	server.connection.startServer();
+	//~ sleep();
+	char buf;
+	server.connection.sendCommand("help");
+	/* The Big Loop */
+	while (1) {
+	   /* Do some task here ... */
+	   read(server.connection.serverstdout[PIPE_READ], &buf, 1);
+	   std::cout << buf;
+	   //~ sleep(30); /* wait 30 seconds */
+	}
+   exit(EXIT_SUCCESS);
+}

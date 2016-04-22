@@ -200,7 +200,11 @@ minecraft-connection.o: connection.cpp /usr/include/stdc-predef.h \
  /usr/lib/gcc/x86_64-linux-gnu/5/include/mwaitxintrin.h \
  /usr/include/c++/5/bits/random.tcc /usr/include/c++/5/numeric \
  /usr/include/c++/5/bits/stl_numeric.h /usr/include/c++/5/iterator \
- /usr/include/c++/5/bits/stream_iterator.h
+ /usr/include/c++/5/bits/stream_iterator.h /usr/include/unistd.h \
+ /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+ /usr/include/x86_64-linux-gnu/bits/environments.h \
+ /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/getopt.h \
+ /usr/include/string.h
 
 /usr/include/stdc-predef.h:
 
@@ -703,3 +707,15 @@ connection.h:
 /usr/include/c++/5/iterator:
 
 /usr/include/c++/5/bits/stream_iterator.h:
+
+/usr/include/unistd.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
+
+/usr/include/x86_64-linux-gnu/bits/environments.h:
+
+/usr/include/x86_64-linux-gnu/bits/confname.h:
+
+/usr/include/getopt.h:
+
+/usr/include/string.h:

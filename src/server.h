@@ -7,7 +7,6 @@
 class Server
 {
 	public:
-		//~ Server(std::string screenSessionName);
 		Server(
 			std::string serverPath = "/home/minecraft", std::string serverJarName = "minecraft_server.jar", std::string serverAccount = "minecraft",
 			int maxHeapAlloc = 2048, int minHeapAlloc = 1024, int gcThreadCount = 1, int historyLength = 1024, 

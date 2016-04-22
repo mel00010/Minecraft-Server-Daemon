@@ -7,15 +7,11 @@
 #include <time.h>
 #include <ctime>
 
-Server::Server(std::string screenSessionName) : connection(screenSessionName)
-{
-	
-}
-Server::Server(	std::string screenSessionName, std::string serverPath, std::string serverJarName, std::string serverAccount,
+Server::Server(	std::string serverPath, std::string serverJarName, std::string serverAccount,
 				int maxHeapAlloc, int minHeapAlloc, int gcThreadCount, int historyLength, 
 				std::string backupPath, std::vector<std::string> worldsToBackup, std::vector<std::string> javaArgs, 
 				std::vector<std::string> serverOptions ) 
-:	connection(	screenSessionName, serverPath, serverJarName, serverAccount, 
+:	connection(	serverPath, serverJarName, serverAccount, 
 				maxHeapAlloc, minHeapAlloc, gcThreadCount, historyLength, backupPath, worldsToBackup, 
 				javaArgs, serverOptions )
 {
