@@ -1,37 +1,28 @@
 #ifndef CONNECTION_H
 #define CONNECTION_H
+#include "log.h"
 #include <string>
 #include <vector>
+#include <atomic>
+extern Logger logger;
+
 class Connection
 {
 	public:
 		//~ Connection(std::string _screenSessionName);
-		Connection(
-			std::string _serverPath, std::string _serverJarName, std::string _serverAccount,
-			int _maxHeapAlloc, int _minHeapAlloc, int _gcThreadCount, int _historyLength, 
-			std::string _backupPath, std::vector<std::string> _worldsToBackup,std::vector<std::string> _javaArgs, std::vector<std::string> _serverOptions
-		);
+		Connection();
 		virtual ~Connection();
-		std::stringstream sendCommand(std::string command);
-		void listOnlinePlayers();
-		void listOnlinePlayers(std::string playerName);
-		int startServer();
+		void sendCommand(std::string command);
+		int startServer(std::string serverPath, std::string serverJarName, std::string serverAccount,
+			int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
+			std::vector<std::string> javaArgs, std::vector<std::string> serverOptions);
 		void stopServer();
-		std::vector<std::string> worldsToBackup;
-		std::string backupPath;
-		std::string screenSessionName;
-		std::string serverPath;
-		std::string serverJarName;
-		std::string serverAccount;
+		void listenForOutput();
 		int serverstdin[2];
 		int serverstdout[2];
 	protected:
-		std::vector<std::string> javaArgs;
-		std::vector<std::string> serverOptions;
-		int maxHeapAlloc;
-		int minHeapAlloc;
-		int gcThreadCount;
-		int historyLength;
 		int server;
+		//~ Log log;
+		//~ std::atomic<bool> stopped;
 };
 #endif /* CONNECTION_H */

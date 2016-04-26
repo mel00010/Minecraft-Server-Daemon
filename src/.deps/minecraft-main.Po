@@ -1,5 +1,5 @@
 minecraft-main.o: main.cpp /usr/include/stdc-predef.h server.h \
- connection.h /usr/include/c++/5/string \
+ connection.h log.h /usr/include/c++/5/string \
  /usr/include/x86_64-linux-gnu/c++/5/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/5/bits/os_defines.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
@@ -84,13 +84,9 @@ minecraft-main.o: main.cpp /usr/include/stdc-predef.h server.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  /usr/include/c++/5/bits/functional_hash.h \
  /usr/include/c++/5/bits/hash_bytes.h \
- /usr/include/c++/5/bits/basic_string.tcc /usr/include/c++/5/vector \
- /usr/include/c++/5/bits/stl_construct.h \
- /usr/include/c++/5/bits/stl_uninitialized.h \
- /usr/include/c++/5/bits/stl_vector.h \
- /usr/include/c++/5/bits/stl_bvector.h /usr/include/c++/5/bits/vector.tcc \
- /usr/include/c++/5/iostream /usr/include/c++/5/ostream \
- /usr/include/c++/5/ios /usr/include/c++/5/bits/ios_base.h \
+ /usr/include/c++/5/bits/basic_string.tcc /usr/include/c++/5/fstream \
+ /usr/include/c++/5/istream /usr/include/c++/5/ios \
+ /usr/include/c++/5/bits/ios_base.h \
  /usr/include/c++/5/bits/locale_classes.h \
  /usr/include/c++/5/bits/locale_classes.tcc \
  /usr/include/c++/5/system_error \
@@ -104,14 +100,27 @@ minecraft-main.o: main.cpp /usr/include/stdc-predef.h server.h \
  /usr/include/c++/5/bits/streambuf_iterator.h \
  /usr/include/x86_64-linux-gnu/c++/5/bits/ctype_inline.h \
  /usr/include/c++/5/bits/locale_facets.tcc \
- /usr/include/c++/5/bits/basic_ios.tcc \
- /usr/include/c++/5/bits/ostream.tcc /usr/include/c++/5/istream \
- /usr/include/c++/5/bits/istream.tcc /usr/include/c++/5/fstream \
+ /usr/include/c++/5/bits/basic_ios.tcc /usr/include/c++/5/ostream \
+ /usr/include/c++/5/bits/ostream.tcc /usr/include/c++/5/bits/istream.tcc \
  /usr/include/c++/5/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/5/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/5/bits/c++io.h \
- /usr/include/c++/5/bits/fstream.tcc /usr/include/c++/5/sstream \
- /usr/include/c++/5/bits/sstream.tcc /usr/include/signal.h \
+ /usr/include/c++/5/bits/fstream.tcc /usr/include/c++/5/vector \
+ /usr/include/c++/5/bits/stl_construct.h \
+ /usr/include/c++/5/bits/stl_uninitialized.h \
+ /usr/include/c++/5/bits/stl_vector.h \
+ /usr/include/c++/5/bits/stl_bvector.h /usr/include/c++/5/bits/vector.tcc \
+ /usr/include/c++/5/atomic /usr/include/c++/5/bits/atomic_base.h parser.h \
+ json/json.h /usr/include/c++/5/map /usr/include/c++/5/bits/stl_tree.h \
+ /usr/include/c++/5/ext/aligned_buffer.h \
+ /usr/include/c++/5/bits/stl_map.h /usr/include/c++/5/tuple \
+ /usr/include/c++/5/utility /usr/include/c++/5/bits/stl_relops.h \
+ /usr/include/c++/5/array /usr/include/c++/5/bits/uses_allocator.h \
+ /usr/include/c++/5/bits/stl_multimap.h /usr/include/c++/5/deque \
+ /usr/include/c++/5/bits/stl_deque.h /usr/include/c++/5/bits/deque.tcc \
+ /usr/include/c++/5/stack /usr/include/c++/5/bits/stl_stack.h \
+ /usr/include/c++/5/sstream /usr/include/c++/5/bits/sstream.tcc \
+ /usr/include/c++/5/iostream /usr/include/signal.h \
  /usr/include/x86_64-linux-gnu/bits/signum.h \
  /usr/include/x86_64-linux-gnu/bits/siginfo.h \
  /usr/include/x86_64-linux-gnu/bits/sigaction.h \
@@ -135,6 +144,8 @@ minecraft-main.o: main.cpp /usr/include/stdc-predef.h server.h \
 server.h:
 
 connection.h:
+
+log.h:
 
 /usr/include/c++/5/string:
 
@@ -358,21 +369,9 @@ connection.h:
 
 /usr/include/c++/5/bits/basic_string.tcc:
 
-/usr/include/c++/5/vector:
+/usr/include/c++/5/fstream:
 
-/usr/include/c++/5/bits/stl_construct.h:
-
-/usr/include/c++/5/bits/stl_uninitialized.h:
-
-/usr/include/c++/5/bits/stl_vector.h:
-
-/usr/include/c++/5/bits/stl_bvector.h:
-
-/usr/include/c++/5/bits/vector.tcc:
-
-/usr/include/c++/5/iostream:
-
-/usr/include/c++/5/ostream:
+/usr/include/c++/5/istream:
 
 /usr/include/c++/5/ios:
 
@@ -410,13 +409,11 @@ connection.h:
 
 /usr/include/c++/5/bits/basic_ios.tcc:
 
+/usr/include/c++/5/ostream:
+
 /usr/include/c++/5/bits/ostream.tcc:
 
-/usr/include/c++/5/istream:
-
 /usr/include/c++/5/bits/istream.tcc:
-
-/usr/include/c++/5/fstream:
 
 /usr/include/c++/5/bits/codecvt.h:
 
@@ -426,9 +423,61 @@ connection.h:
 
 /usr/include/c++/5/bits/fstream.tcc:
 
+/usr/include/c++/5/vector:
+
+/usr/include/c++/5/bits/stl_construct.h:
+
+/usr/include/c++/5/bits/stl_uninitialized.h:
+
+/usr/include/c++/5/bits/stl_vector.h:
+
+/usr/include/c++/5/bits/stl_bvector.h:
+
+/usr/include/c++/5/bits/vector.tcc:
+
+/usr/include/c++/5/atomic:
+
+/usr/include/c++/5/bits/atomic_base.h:
+
+parser.h:
+
+json/json.h:
+
+/usr/include/c++/5/map:
+
+/usr/include/c++/5/bits/stl_tree.h:
+
+/usr/include/c++/5/ext/aligned_buffer.h:
+
+/usr/include/c++/5/bits/stl_map.h:
+
+/usr/include/c++/5/tuple:
+
+/usr/include/c++/5/utility:
+
+/usr/include/c++/5/bits/stl_relops.h:
+
+/usr/include/c++/5/array:
+
+/usr/include/c++/5/bits/uses_allocator.h:
+
+/usr/include/c++/5/bits/stl_multimap.h:
+
+/usr/include/c++/5/deque:
+
+/usr/include/c++/5/bits/stl_deque.h:
+
+/usr/include/c++/5/bits/deque.tcc:
+
+/usr/include/c++/5/stack:
+
+/usr/include/c++/5/bits/stl_stack.h:
+
 /usr/include/c++/5/sstream:
 
 /usr/include/c++/5/bits/sstream.tcc:
+
+/usr/include/c++/5/iostream:
 
 /usr/include/signal.h:
 
