@@ -1,4 +1,4 @@
-minecraft-server.o: server.cpp /usr/include/stdc-predef.h server.h \
+minecraftd-main.o: main.cpp /usr/include/stdc-predef.h server.h \
  connection.h /usr/local/include/log4cpp/Category.hh \
  /usr/local/include/log4cpp/Portability.hh \
  /usr/local/include/log4cpp/config.h /usr/local/include/log4cpp/Export.hh \
@@ -233,12 +233,31 @@ minecraft-server.o: server.cpp /usr/include/stdc-predef.h server.h \
  /usr/include/c++/5/backward/auto_ptr.h /usr/include/c++/5/thread \
  /usr/include/c++/5/chrono /usr/include/c++/5/ratio \
  /usr/include/c++/5/ctime /usr/include/c++/5/bits/parse_numbers.h \
- /usr/include/c++/5/fstream /usr/include/c++/5/bits/codecvt.h \
+ parser.h json/json.h /usr/include/c++/5/deque \
+ /usr/include/c++/5/bits/stl_deque.h /usr/include/c++/5/bits/deque.tcc \
+ /usr/include/c++/5/stack /usr/include/c++/5/bits/stl_stack.h \
+ /usr/local/include/log4cpp/FileAppender.hh \
+ /usr/local/include/log4cpp/LayoutAppender.hh \
+ /usr/local/include/log4cpp/AppenderSkeleton.hh \
+ /usr/local/include/log4cpp/Filter.hh \
+ /usr/local/include/log4cpp/BasicLayout.hh \
+ /usr/local/include/log4cpp/OstreamAppender.hh /usr/include/c++/5/fstream \
+ /usr/include/c++/5/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/5/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/5/bits/c++io.h \
- /usr/include/c++/5/bits/fstream.tcc /usr/include/c++/5/future \
- /usr/include/c++/5/mutex /usr/include/c++/5/condition_variable \
- /usr/include/c++/5/bits/atomic_futex.h
+ /usr/include/c++/5/bits/fstream.tcc \
+ /usr/include/x86_64-linux-gnu/sys/socket.h \
+ /usr/include/x86_64-linux-gnu/sys/uio.h \
+ /usr/include/x86_64-linux-gnu/bits/socket.h \
+ /usr/include/x86_64-linux-gnu/bits/socket_type.h \
+ /usr/include/x86_64-linux-gnu/bits/sockaddr.h \
+ /usr/include/x86_64-linux-gnu/asm/socket.h \
+ /usr/include/asm-generic/socket.h \
+ /usr/include/x86_64-linux-gnu/asm/sockios.h \
+ /usr/include/asm-generic/sockios.h \
+ /usr/include/x86_64-linux-gnu/sys/un.h /usr/include/string.h \
+ /usr/include/syslog.h /usr/include/x86_64-linux-gnu/sys/syslog.h \
+ /usr/include/x86_64-linux-gnu/bits/syslog-path.h
 
 /usr/include/stdc-predef.h:
 
@@ -840,6 +859,32 @@ connection.h:
 
 /usr/include/c++/5/bits/parse_numbers.h:
 
+parser.h:
+
+json/json.h:
+
+/usr/include/c++/5/deque:
+
+/usr/include/c++/5/bits/stl_deque.h:
+
+/usr/include/c++/5/bits/deque.tcc:
+
+/usr/include/c++/5/stack:
+
+/usr/include/c++/5/bits/stl_stack.h:
+
+/usr/local/include/log4cpp/FileAppender.hh:
+
+/usr/local/include/log4cpp/LayoutAppender.hh:
+
+/usr/local/include/log4cpp/AppenderSkeleton.hh:
+
+/usr/local/include/log4cpp/Filter.hh:
+
+/usr/local/include/log4cpp/BasicLayout.hh:
+
+/usr/local/include/log4cpp/OstreamAppender.hh:
+
 /usr/include/c++/5/fstream:
 
 /usr/include/c++/5/bits/codecvt.h:
@@ -850,10 +895,30 @@ connection.h:
 
 /usr/include/c++/5/bits/fstream.tcc:
 
-/usr/include/c++/5/future:
+/usr/include/x86_64-linux-gnu/sys/socket.h:
 
-/usr/include/c++/5/mutex:
+/usr/include/x86_64-linux-gnu/sys/uio.h:
 
-/usr/include/c++/5/condition_variable:
+/usr/include/x86_64-linux-gnu/bits/socket.h:
 
-/usr/include/c++/5/bits/atomic_futex.h:
+/usr/include/x86_64-linux-gnu/bits/socket_type.h:
+
+/usr/include/x86_64-linux-gnu/bits/sockaddr.h:
+
+/usr/include/x86_64-linux-gnu/asm/socket.h:
+
+/usr/include/asm-generic/socket.h:
+
+/usr/include/x86_64-linux-gnu/asm/sockios.h:
+
+/usr/include/asm-generic/sockios.h:
+
+/usr/include/x86_64-linux-gnu/sys/un.h:
+
+/usr/include/string.h:
+
+/usr/include/syslog.h:
+
+/usr/include/x86_64-linux-gnu/sys/syslog.h:
+
+/usr/include/x86_64-linux-gnu/bits/syslog-path.h:

@@ -1,8 +1,6 @@
-minecraft-server.o: server.cpp /usr/include/stdc-predef.h server.h \
- connection.h /usr/local/include/log4cpp/Category.hh \
- /usr/local/include/log4cpp/Portability.hh \
- /usr/local/include/log4cpp/config.h /usr/local/include/log4cpp/Export.hh \
- /usr/local/include/log4cpp/Appender.hh /usr/include/c++/5/string \
+minecraftd-jsoncpp.o: jsoncpp.cpp /usr/include/stdc-predef.h json/json.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h \
+ /usr/include/c++/5/string \
  /usr/include/x86_64-linux-gnu/c++/5/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/5/bits/os_defines.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
@@ -28,8 +26,7 @@ minecraft-server.o: server.cpp /usr/include/stdc-predef.h server.h \
  /usr/include/c++/5/bits/postypes.h /usr/include/c++/5/cwchar \
  /usr/include/wchar.h /usr/include/stdio.h \
  /usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h \
- /usr/include/x86_64-linux-gnu/bits/wchar.h \
- /usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h /usr/include/xlocale.h \
+ /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/xlocale.h \
  /usr/include/c++/5/cstdint \
  /usr/lib/gcc/x86_64-linux-gnu/5/include/stdint.h /usr/include/stdint.h \
  /usr/include/c++/5/bits/allocator.h \
@@ -87,27 +84,21 @@ minecraft-server.o: server.cpp /usr/include/stdc-predef.h server.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  /usr/include/c++/5/bits/functional_hash.h \
  /usr/include/c++/5/bits/hash_bytes.h \
- /usr/include/c++/5/bits/basic_string.tcc /usr/include/c++/5/map \
- /usr/include/c++/5/bits/stl_tree.h \
+ /usr/include/c++/5/bits/basic_string.tcc /usr/include/c++/5/vector \
+ /usr/include/c++/5/bits/stl_construct.h \
+ /usr/include/c++/5/bits/stl_uninitialized.h \
+ /usr/include/c++/5/bits/stl_vector.h \
+ /usr/include/c++/5/bits/stl_bvector.h /usr/include/c++/5/bits/vector.tcc \
+ /usr/include/c++/5/map /usr/include/c++/5/bits/stl_tree.h \
  /usr/include/c++/5/ext/aligned_buffer.h \
  /usr/include/c++/5/bits/stl_map.h /usr/include/c++/5/tuple \
  /usr/include/c++/5/utility /usr/include/c++/5/bits/stl_relops.h \
  /usr/include/c++/5/array /usr/include/c++/5/stdexcept \
  /usr/include/c++/5/bits/uses_allocator.h \
- /usr/include/c++/5/bits/stl_multimap.h /usr/include/c++/5/set \
- /usr/include/c++/5/bits/stl_set.h /usr/include/c++/5/bits/stl_multiset.h \
- /usr/include/x86_64-linux-gnu/sys/stat.h \
- /usr/include/x86_64-linux-gnu/bits/stat.h /usr/include/fcntl.h \
- /usr/include/x86_64-linux-gnu/bits/fcntl.h \
- /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
- /usr/include/x86_64-linux-gnu/bits/uio.h \
- /usr/local/include/log4cpp/Priority.hh \
- /usr/local/include/log4cpp/Layout.hh \
- /usr/local/include/log4cpp/LoggingEvent.hh \
- /usr/local/include/log4cpp/TimeStamp.hh \
- /usr/local/include/log4cpp/threading/Threading.hh \
- /usr/local/include/log4cpp/threading/PThreads.hh /usr/include/assert.h \
- /usr/local/include/log4cpp/CategoryStream.hh /usr/include/c++/5/ios \
+ /usr/include/c++/5/bits/stl_multimap.h /usr/include/c++/5/deque \
+ /usr/include/c++/5/bits/stl_deque.h /usr/include/c++/5/bits/deque.tcc \
+ /usr/include/c++/5/stack /usr/include/c++/5/bits/stl_stack.h \
+ /usr/include/c++/5/istream /usr/include/c++/5/ios \
  /usr/include/c++/5/bits/ios_base.h \
  /usr/include/c++/5/bits/locale_classes.h \
  /usr/include/c++/5/bits/locale_classes.tcc \
@@ -121,22 +112,23 @@ minecraft-server.o: server.cpp /usr/include/stdc-predef.h server.h \
  /usr/include/c++/5/bits/streambuf_iterator.h \
  /usr/include/x86_64-linux-gnu/c++/5/bits/ctype_inline.h \
  /usr/include/c++/5/bits/locale_facets.tcc \
- /usr/include/c++/5/bits/basic_ios.tcc /usr/include/c++/5/sstream \
- /usr/include/c++/5/istream /usr/include/c++/5/ostream \
+ /usr/include/c++/5/bits/basic_ios.tcc /usr/include/c++/5/ostream \
  /usr/include/c++/5/bits/ostream.tcc /usr/include/c++/5/bits/istream.tcc \
- /usr/include/c++/5/bits/sstream.tcc \
- /usr/local/include/log4cpp/Manipulator.hh /usr/include/c++/5/iostream \
- /usr/local/include/log4cpp/convenience.h /usr/include/c++/5/vector \
- /usr/include/c++/5/bits/stl_construct.h \
- /usr/include/c++/5/bits/stl_uninitialized.h \
- /usr/include/c++/5/bits/stl_vector.h \
- /usr/include/c++/5/bits/stl_bvector.h /usr/include/c++/5/bits/vector.tcc \
- /usr/include/c++/5/cstdarg /usr/include/c++/5/atomic \
- /usr/include/c++/5/bits/atomic_base.h /usr/include/pstreams/pstream.h \
- /usr/include/c++/5/algorithm /usr/include/c++/5/bits/stl_algo.h \
- /usr/include/c++/5/bits/algorithmfwd.h \
- /usr/include/c++/5/bits/stl_heap.h /usr/include/c++/5/bits/stl_tempbuf.h \
- /usr/include/c++/5/random /usr/include/c++/5/cmath /usr/include/math.h \
+ /usr/include/c++/5/sstream /usr/include/c++/5/bits/sstream.tcc \
+ /usr/include/c++/5/cassert /usr/include/assert.h \
+ /usr/include/c++/5/cstring /usr/include/string.h \
+ /usr/include/c++/5/memory /usr/include/c++/5/bits/stl_tempbuf.h \
+ /usr/include/c++/5/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/5/typeinfo /usr/include/c++/5/ext/concurrence.h \
+ /usr/include/c++/5/functional /usr/include/c++/5/bits/unique_ptr.h \
+ /usr/include/c++/5/bits/shared_ptr.h \
+ /usr/include/c++/5/bits/shared_ptr_base.h \
+ /usr/include/c++/5/bits/allocated_ptr.h \
+ /usr/include/c++/5/bits/shared_ptr_atomic.h \
+ /usr/include/c++/5/bits/atomic_base.h \
+ /usr/include/c++/5/backward/auto_ptr.h /usr/include/c++/5/set \
+ /usr/include/c++/5/bits/stl_set.h /usr/include/c++/5/bits/stl_multiset.h \
+ /usr/include/c++/5/limits /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
  /usr/include/x86_64-linux-gnu/bits/huge_val.h \
@@ -147,7 +139,11 @@ minecraft-server.o: server.cpp /usr/include/stdc-predef.h server.h \
  /usr/include/x86_64-linux-gnu/bits/mathdef.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/mathinline.h \
- /usr/include/c++/5/limits /usr/include/c++/5/bits/random.h \
+ /usr/include/c++/5/cstddef /usr/include/c++/5/algorithm \
+ /usr/include/c++/5/bits/stl_algo.h \
+ /usr/include/c++/5/bits/algorithmfwd.h \
+ /usr/include/c++/5/bits/stl_heap.h /usr/include/c++/5/random \
+ /usr/include/c++/5/cmath /usr/include/c++/5/bits/random.h \
  /usr/include/x86_64-linux-gnu/c++/5/bits/opt_random.h \
  /usr/lib/gcc/x86_64-linux-gnu/5/include/x86intrin.h \
  /usr/lib/gcc/x86_64-linux-gnu/5/include/ia32intrin.h \
@@ -203,58 +199,22 @@ minecraft-server.o: server.cpp /usr/include/stdc-predef.h server.h \
  /usr/lib/gcc/x86_64-linux-gnu/5/include/xsavecintrin.h \
  /usr/lib/gcc/x86_64-linux-gnu/5/include/mwaitxintrin.h \
  /usr/include/c++/5/bits/random.tcc /usr/include/c++/5/numeric \
- /usr/include/c++/5/bits/stl_numeric.h /usr/include/c++/5/cstddef \
- /usr/include/x86_64-linux-gnu/sys/wait.h /usr/include/signal.h \
- /usr/include/x86_64-linux-gnu/bits/signum.h \
- /usr/include/x86_64-linux-gnu/bits/siginfo.h \
- /usr/include/x86_64-linux-gnu/bits/sigaction.h \
- /usr/include/x86_64-linux-gnu/bits/sigcontext.h \
- /usr/include/x86_64-linux-gnu/bits/sigstack.h \
- /usr/include/x86_64-linux-gnu/sys/ucontext.h \
- /usr/include/x86_64-linux-gnu/bits/sigthread.h \
- /usr/include/x86_64-linux-gnu/sys/ioctl.h \
- /usr/include/x86_64-linux-gnu/bits/ioctls.h \
- /usr/include/x86_64-linux-gnu/asm/ioctls.h \
- /usr/include/asm-generic/ioctls.h /usr/include/linux/ioctl.h \
- /usr/include/x86_64-linux-gnu/asm/ioctl.h \
- /usr/include/asm-generic/ioctl.h \
- /usr/include/x86_64-linux-gnu/bits/ioctl-types.h \
- /usr/include/x86_64-linux-gnu/sys/ttydefaults.h /usr/include/unistd.h \
- /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
- /usr/include/x86_64-linux-gnu/bits/environments.h \
- /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/getopt.h \
- /usr/include/c++/5/memory /usr/include/c++/5/bits/stl_raw_storage_iter.h \
- /usr/include/c++/5/typeinfo /usr/include/c++/5/ext/concurrence.h \
- /usr/include/c++/5/functional /usr/include/c++/5/bits/unique_ptr.h \
- /usr/include/c++/5/bits/shared_ptr.h \
- /usr/include/c++/5/bits/shared_ptr_base.h \
- /usr/include/c++/5/bits/allocated_ptr.h \
- /usr/include/c++/5/bits/shared_ptr_atomic.h \
- /usr/include/c++/5/backward/auto_ptr.h /usr/include/c++/5/thread \
- /usr/include/c++/5/chrono /usr/include/c++/5/ratio \
- /usr/include/c++/5/ctime /usr/include/c++/5/bits/parse_numbers.h \
- /usr/include/c++/5/fstream /usr/include/c++/5/bits/codecvt.h \
- /usr/include/x86_64-linux-gnu/c++/5/bits/basic_file.h \
- /usr/include/x86_64-linux-gnu/c++/5/bits/c++io.h \
- /usr/include/c++/5/bits/fstream.tcc /usr/include/c++/5/future \
- /usr/include/c++/5/mutex /usr/include/c++/5/condition_variable \
- /usr/include/c++/5/bits/atomic_futex.h
+ /usr/include/c++/5/bits/stl_numeric.h /usr/include/c++/5/iomanip \
+ /usr/include/c++/5/locale /usr/include/c++/5/bits/locale_facets_nonio.h \
+ /usr/include/c++/5/ctime \
+ /usr/include/x86_64-linux-gnu/c++/5/bits/time_members.h \
+ /usr/include/x86_64-linux-gnu/c++/5/bits/messages_members.h \
+ /usr/include/libintl.h /usr/include/c++/5/bits/codecvt.h \
+ /usr/include/c++/5/bits/locale_facets_nonio.tcc \
+ /usr/include/c++/5/bits/locale_conv.h \
+ /usr/include/c++/5/bits/stringfwd.h /usr/include/c++/5/bits/allocator.h \
+ /usr/include/c++/5/bits/codecvt.h /usr/include/c++/5/bits/unique_ptr.h
 
 /usr/include/stdc-predef.h:
 
-server.h:
+json/json.h:
 
-connection.h:
-
-/usr/local/include/log4cpp/Category.hh:
-
-/usr/local/include/log4cpp/Portability.hh:
-
-/usr/local/include/log4cpp/config.h:
-
-/usr/local/include/log4cpp/Export.hh:
-
-/usr/local/include/log4cpp/Appender.hh:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h:
 
 /usr/include/c++/5/string:
 
@@ -323,8 +283,6 @@ connection.h:
 /usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h:
 
 /usr/include/x86_64-linux-gnu/bits/wchar.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h:
 
 /usr/include/xlocale.h:
 
@@ -478,6 +436,18 @@ connection.h:
 
 /usr/include/c++/5/bits/basic_string.tcc:
 
+/usr/include/c++/5/vector:
+
+/usr/include/c++/5/bits/stl_construct.h:
+
+/usr/include/c++/5/bits/stl_uninitialized.h:
+
+/usr/include/c++/5/bits/stl_vector.h:
+
+/usr/include/c++/5/bits/stl_bvector.h:
+
+/usr/include/c++/5/bits/vector.tcc:
+
 /usr/include/c++/5/map:
 
 /usr/include/c++/5/bits/stl_tree.h:
@@ -500,39 +470,17 @@ connection.h:
 
 /usr/include/c++/5/bits/stl_multimap.h:
 
-/usr/include/c++/5/set:
+/usr/include/c++/5/deque:
 
-/usr/include/c++/5/bits/stl_set.h:
+/usr/include/c++/5/bits/stl_deque.h:
 
-/usr/include/c++/5/bits/stl_multiset.h:
+/usr/include/c++/5/bits/deque.tcc:
 
-/usr/include/x86_64-linux-gnu/sys/stat.h:
+/usr/include/c++/5/stack:
 
-/usr/include/x86_64-linux-gnu/bits/stat.h:
+/usr/include/c++/5/bits/stl_stack.h:
 
-/usr/include/fcntl.h:
-
-/usr/include/x86_64-linux-gnu/bits/fcntl.h:
-
-/usr/include/x86_64-linux-gnu/bits/fcntl-linux.h:
-
-/usr/include/x86_64-linux-gnu/bits/uio.h:
-
-/usr/local/include/log4cpp/Priority.hh:
-
-/usr/local/include/log4cpp/Layout.hh:
-
-/usr/local/include/log4cpp/LoggingEvent.hh:
-
-/usr/local/include/log4cpp/TimeStamp.hh:
-
-/usr/local/include/log4cpp/threading/Threading.hh:
-
-/usr/local/include/log4cpp/threading/PThreads.hh:
-
-/usr/include/assert.h:
-
-/usr/local/include/log4cpp/CategoryStream.hh:
+/usr/include/c++/5/istream:
 
 /usr/include/c++/5/ios:
 
@@ -568,57 +516,57 @@ connection.h:
 
 /usr/include/c++/5/bits/basic_ios.tcc:
 
-/usr/include/c++/5/sstream:
-
-/usr/include/c++/5/istream:
-
 /usr/include/c++/5/ostream:
 
 /usr/include/c++/5/bits/ostream.tcc:
 
 /usr/include/c++/5/bits/istream.tcc:
 
+/usr/include/c++/5/sstream:
+
 /usr/include/c++/5/bits/sstream.tcc:
 
-/usr/local/include/log4cpp/Manipulator.hh:
+/usr/include/c++/5/cassert:
 
-/usr/include/c++/5/iostream:
+/usr/include/assert.h:
 
-/usr/local/include/log4cpp/convenience.h:
+/usr/include/c++/5/cstring:
 
-/usr/include/c++/5/vector:
+/usr/include/string.h:
 
-/usr/include/c++/5/bits/stl_construct.h:
-
-/usr/include/c++/5/bits/stl_uninitialized.h:
-
-/usr/include/c++/5/bits/stl_vector.h:
-
-/usr/include/c++/5/bits/stl_bvector.h:
-
-/usr/include/c++/5/bits/vector.tcc:
-
-/usr/include/c++/5/cstdarg:
-
-/usr/include/c++/5/atomic:
-
-/usr/include/c++/5/bits/atomic_base.h:
-
-/usr/include/pstreams/pstream.h:
-
-/usr/include/c++/5/algorithm:
-
-/usr/include/c++/5/bits/stl_algo.h:
-
-/usr/include/c++/5/bits/algorithmfwd.h:
-
-/usr/include/c++/5/bits/stl_heap.h:
+/usr/include/c++/5/memory:
 
 /usr/include/c++/5/bits/stl_tempbuf.h:
 
-/usr/include/c++/5/random:
+/usr/include/c++/5/bits/stl_raw_storage_iter.h:
 
-/usr/include/c++/5/cmath:
+/usr/include/c++/5/typeinfo:
+
+/usr/include/c++/5/ext/concurrence.h:
+
+/usr/include/c++/5/functional:
+
+/usr/include/c++/5/bits/unique_ptr.h:
+
+/usr/include/c++/5/bits/shared_ptr.h:
+
+/usr/include/c++/5/bits/shared_ptr_base.h:
+
+/usr/include/c++/5/bits/allocated_ptr.h:
+
+/usr/include/c++/5/bits/shared_ptr_atomic.h:
+
+/usr/include/c++/5/bits/atomic_base.h:
+
+/usr/include/c++/5/backward/auto_ptr.h:
+
+/usr/include/c++/5/set:
+
+/usr/include/c++/5/bits/stl_set.h:
+
+/usr/include/c++/5/bits/stl_multiset.h:
+
+/usr/include/c++/5/limits:
 
 /usr/include/math.h:
 
@@ -642,7 +590,19 @@ connection.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathinline.h:
 
-/usr/include/c++/5/limits:
+/usr/include/c++/5/cstddef:
+
+/usr/include/c++/5/algorithm:
+
+/usr/include/c++/5/bits/stl_algo.h:
+
+/usr/include/c++/5/bits/algorithmfwd.h:
+
+/usr/include/c++/5/bits/stl_heap.h:
+
+/usr/include/c++/5/random:
+
+/usr/include/c++/5/cmath:
 
 /usr/include/c++/5/bits/random.h:
 
@@ -760,100 +720,30 @@ connection.h:
 
 /usr/include/c++/5/bits/stl_numeric.h:
 
-/usr/include/c++/5/cstddef:
+/usr/include/c++/5/iomanip:
 
-/usr/include/x86_64-linux-gnu/sys/wait.h:
+/usr/include/c++/5/locale:
 
-/usr/include/signal.h:
-
-/usr/include/x86_64-linux-gnu/bits/signum.h:
-
-/usr/include/x86_64-linux-gnu/bits/siginfo.h:
-
-/usr/include/x86_64-linux-gnu/bits/sigaction.h:
-
-/usr/include/x86_64-linux-gnu/bits/sigcontext.h:
-
-/usr/include/x86_64-linux-gnu/bits/sigstack.h:
-
-/usr/include/x86_64-linux-gnu/sys/ucontext.h:
-
-/usr/include/x86_64-linux-gnu/bits/sigthread.h:
-
-/usr/include/x86_64-linux-gnu/sys/ioctl.h:
-
-/usr/include/x86_64-linux-gnu/bits/ioctls.h:
-
-/usr/include/x86_64-linux-gnu/asm/ioctls.h:
-
-/usr/include/asm-generic/ioctls.h:
-
-/usr/include/linux/ioctl.h:
-
-/usr/include/x86_64-linux-gnu/asm/ioctl.h:
-
-/usr/include/asm-generic/ioctl.h:
-
-/usr/include/x86_64-linux-gnu/bits/ioctl-types.h:
-
-/usr/include/x86_64-linux-gnu/sys/ttydefaults.h:
-
-/usr/include/unistd.h:
-
-/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
-
-/usr/include/x86_64-linux-gnu/bits/environments.h:
-
-/usr/include/x86_64-linux-gnu/bits/confname.h:
-
-/usr/include/getopt.h:
-
-/usr/include/c++/5/memory:
-
-/usr/include/c++/5/bits/stl_raw_storage_iter.h:
-
-/usr/include/c++/5/typeinfo:
-
-/usr/include/c++/5/ext/concurrence.h:
-
-/usr/include/c++/5/functional:
-
-/usr/include/c++/5/bits/unique_ptr.h:
-
-/usr/include/c++/5/bits/shared_ptr.h:
-
-/usr/include/c++/5/bits/shared_ptr_base.h:
-
-/usr/include/c++/5/bits/allocated_ptr.h:
-
-/usr/include/c++/5/bits/shared_ptr_atomic.h:
-
-/usr/include/c++/5/backward/auto_ptr.h:
-
-/usr/include/c++/5/thread:
-
-/usr/include/c++/5/chrono:
-
-/usr/include/c++/5/ratio:
+/usr/include/c++/5/bits/locale_facets_nonio.h:
 
 /usr/include/c++/5/ctime:
 
-/usr/include/c++/5/bits/parse_numbers.h:
+/usr/include/x86_64-linux-gnu/c++/5/bits/time_members.h:
 
-/usr/include/c++/5/fstream:
+/usr/include/x86_64-linux-gnu/c++/5/bits/messages_members.h:
+
+/usr/include/libintl.h:
 
 /usr/include/c++/5/bits/codecvt.h:
 
-/usr/include/x86_64-linux-gnu/c++/5/bits/basic_file.h:
+/usr/include/c++/5/bits/locale_facets_nonio.tcc:
 
-/usr/include/x86_64-linux-gnu/c++/5/bits/c++io.h:
+/usr/include/c++/5/bits/locale_conv.h:
 
-/usr/include/c++/5/bits/fstream.tcc:
+/usr/include/c++/5/bits/stringfwd.h:
 
-/usr/include/c++/5/future:
+/usr/include/c++/5/bits/allocator.h:
 
-/usr/include/c++/5/mutex:
+/usr/include/c++/5/bits/codecvt.h:
 
-/usr/include/c++/5/condition_variable:
-
-/usr/include/c++/5/bits/atomic_futex.h:
+/usr/include/c++/5/bits/unique_ptr.h:

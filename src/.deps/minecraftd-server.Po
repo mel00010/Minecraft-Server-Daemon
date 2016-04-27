@@ -1,4 +1,4 @@
-minecraft-server.o: server.cpp /usr/include/stdc-predef.h server.h \
+minecraftd-server.o: server.cpp /usr/include/stdc-predef.h server.h \
  connection.h /usr/local/include/log4cpp/Category.hh \
  /usr/local/include/log4cpp/Portability.hh \
  /usr/local/include/log4cpp/config.h /usr/local/include/log4cpp/Export.hh \

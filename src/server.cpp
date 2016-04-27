@@ -1,20 +1,26 @@
 #include "server.h"
-#include "log.h"
+#include "log4cpp/Category.hh"
 #include "connection.h"
+#include <pstreams/pstream.h>
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
 #include <vector>
-//~ #include <thread>
+#include <thread>
+#include <memory>
+#include <future>
+#include <chrono>
 #include <time.h>
 #include <ctime>
+
 
 Server::Server( std::string _serverName, std::string _serverPath, std::string _serverJarName, std::string _serverAccount,
 				int _maxHeapAlloc, int _minHeapAlloc, int _gcThreadCount,
 				std::string _backupPath, std::vector<std::string> _worldsToBackup, std::vector<std::string> _javaArgs, 
-				std::vector<std::string> _serverOptions)
+				std::vector<std::string> _serverOptions, log4cpp::Category& log) : log{log}, connection(log)
 {
+	serverName = _serverName;
 	serverPath = _serverPath;
 	serverJarName = _serverJarName;
 	serverAccount = _serverAccount;
@@ -25,8 +31,8 @@ Server::Server( std::string _serverName, std::string _serverPath, std::string _s
 	worldsToBackup = _worldsToBackup;
 	javaArgs = _javaArgs;
 	serverOptions = _serverOptions;
-	logger.logToFile(serverJarName,"INFO");
-	logger.logToFile("End of server constructor", "INFO");
+	//~ log = _log;
+	log.info(serverJarName);
 }
 Server::~Server()
 {
@@ -41,10 +47,10 @@ void Server::updateServer(std::string serverPath, std::string serverJarName, std
 }
 void Server::backupServer()
 {
-	logger.logToFile("Starting backup", "NOTICE");
-	connection.sendCommand("say SERVER BACKUP STARTING. Server going readonly...");
-	connection.sendCommand("save-off");
-	connection.sendCommand("save-all");
+	log.info("Starting backup");
+	sendCommand("say SERVER BACKUP STARTING. Server going readonly...");
+	sendCommand("save-off");
+	sendCommand("save-all");
 	time_t now = time(0);
 	struct tm tstruct;
 	char buf[80];
@@ -53,28 +59,28 @@ void Server::backupServer()
 	std::string time(buf);
 	for (std::string world : worldsToBackup)
 	{
-		logger.logToFile("Backing up "+ world, "NOTICE");
+		log.info("Backing up "+ world);
 		std::string tarCommand = "tar -C \""+serverPath+"\" -cf "+serverPath+"/"+backupPath+"/"+world+"_"+time+".tar\" "+world;
 		std::string gzipCommand = "gzip -f \""+serverPath+"/"+backupPath+"/"+world+"_"+time+".tar\"";
-		logger.logToFile(tarCommand, "NOTICE");
+		log.info(tarCommand);
 		system(tarCommand.c_str());
-		logger.logToFile(gzipCommand, "NOTICE");
+		log.info(gzipCommand);
 		system(gzipCommand.c_str());
 	}
-	logger.logToFile("Backing up "+serverJarName, "NOTICE");
+	log.info("Backing up "+serverJarName);
 	std::string copyJarCommand = "cp \""+serverPath+"/"+serverJarName+"\" \""+backupPath+"/"+serverJarName.substr(0, serverJarName.size()-4)+"_"+time+".jar\"";
-	logger.logToFile(copyJarCommand, "NOTICE");
+	log.info(copyJarCommand);
 	system(copyJarCommand.c_str());
-	connection.sendCommand("save-on");
-	connection.sendCommand("say SERVER BACKUP ENDED. Server going read-write...");
-	logger.logToFile("Backup finished", "NOTICE");
+	sendCommand("save-on");
+	sendCommand("say SERVER BACKUP ENDED. Server going read-write...");
+	log.info("Backup finished");
 }
 void Server::backupServer(std::string _backupPath)
 {
-	logger.logToFile("Starting backup", "NOTICE");
-	connection.sendCommand("say SERVER BACKUP STARTING. Server going readonly...");
-	connection.sendCommand("save-off");
-	connection.sendCommand("save-all");
+	log.info("Starting backup");
+	sendCommand("say SERVER BACKUP STARTING. Server going readonly...");
+	sendCommand("save-off");
+	sendCommand("save-all");
 	time_t now = time(0);
 
 	struct tm tstruct;
@@ -84,21 +90,21 @@ void Server::backupServer(std::string _backupPath)
 	std::string time(buf);
 	for (std::string world : worldsToBackup)
 	{
-		logger.logToFile("Backing up "+world, "NOTICE");
+		log.info("Backing up "+world);
 		std::string tarCommand = "tar -C \""+serverPath+"\" -cf "+_backupPath+"/"+world+"_"+time+".tar\" "+world;
 		std::string gzipCommand = "gzip -f \""+backupPath+"/"+world+"_"+time+".tar\"";
-		logger.logToFile(tarCommand, "NOTICE");
+		log.info(tarCommand);
 		system(tarCommand.c_str());
-		logger.logToFile(gzipCommand, "NOTICE");
+		log.info(gzipCommand);
 		system(gzipCommand.c_str());
 	}
-	logger.logToFile("Backing up "+serverJarName, "NOTICE");
+	log.info("Backing up "+serverJarName);
 	std::string copyJarCommand = "cp \""+serverPath+"/"+serverJarName+"\" \""+_backupPath+"/"+serverJarName.substr(0, serverJarName.size()-4)+"_"+time+".jar\"";
-	logger.logToFile(copyJarCommand, "NOTICE");
+	log.info(copyJarCommand);
 	system(copyJarCommand.c_str());
-	connection.sendCommand("save-on");
-	connection.sendCommand("say SERVER BACKUP ENDED. Server going read-write...");
-	logger.logToFile("Backup finished", "NOTICE");
+	sendCommand("save-on");
+	sendCommand("say SERVER BACKUP ENDED. Server going read-write...");
+	log.info("Backup finished");
 }
 void Server::backupServer(std::string _serverPath, std::string _serverAccount, std::string _backupPath, std::vector<std::string> _worldsToBackup)
 {
@@ -106,9 +112,9 @@ void Server::backupServer(std::string _serverPath, std::string _serverAccount, s
 }
 void Server::startServer()
 {
-	connection.startServer(serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, javaArgs, serverOptions);
-	//~ std::thread listenForOutput(&Connection::listenForOutput, connection);
-	//~ connection.listenForOutput();
+	std::shared_ptr<redi::pstream> server = connection.startServer(serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, javaArgs, serverOptions);
+	std::thread outputListener(&Server::outputListener, this, server);
+	outputListener.detach();
 }
 void Server::stopServer()
 {
@@ -121,14 +127,24 @@ void Server::serverStatus()
 void Server::restartServer()
 {
 	connection.stopServer();
-	connection.startServer(serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, javaArgs, serverOptions);
+	std::shared_ptr<redi::pstream> server = connection.startServer(serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, javaArgs, serverOptions);
+	std::thread outputListener(&Server::outputListener, this, server);
+	outputListener.detach();
 }
 void Server::sendCommand(std::string command)
 {
 	connection.sendCommand(command);
 }
-//~ void Server::listOnlinePlayers()
-//~ {
+void Server::outputListener(std::shared_ptr<redi::pstream> _server)
+{
+	//~ log4cpp::Category& __log = _log
+	std::string output;
+	while (std::getline(*_server, output) && !(_server->rdbuf()->exited())) {
+		log.info(output);
+	}
+}
+void Server::listOnlinePlayers()
+{
 	
 	//~ std::stringstream output;
 	//~ std::string line;
@@ -146,13 +162,13 @@ void Server::sendCommand(std::string command)
 	//~ }
 	//~ if (numPlayers != 0) {
 		//~ std::string outputBuf = output.str();
-		//~ logger.logToFile(outputBuf, "NOTICE");
+		//~ log.info(outputBuf);
 	//~ } else {
-		//~ logger.logToFile("No one is on the server", "NOTICE");
+		//~ log.info("No one is on the server");
 	//~ }
-//~ }
-//~ void Server::listOnlinePlayers(std::string playerName)
-//~ {
+}
+void Server::listOnlinePlayers(std::string playerName)
+{
 	//~ std::stringstream output;
 	//~ std::string line;
 	//~ int numPlayers = 0;
@@ -171,8 +187,8 @@ void Server::sendCommand(std::string command)
 	//~ }
 	//~ if (numPlayers != 0) {
 		//~ std::string outputBuf = output.str();
-		//~ logger.logToFile(outputBuf, "NOTICE");
+		//~ log.info(outputBuf);
 	//~ } else {
-		//~ logger.logToFile("No one is on the server", "NOTICE");
+		//~ log.info("No one is on the server");
 	//~ }
-//~ }
+}

@@ -87,7 +87,7 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-bin_PROGRAMS = minecraft$(EXEEXT)
+bin_PROGRAMS = minecraftd$(EXEEXT) minecraft$(EXEEXT)
 subdir = src
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
@@ -101,14 +101,18 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(includedir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_minecraft_OBJECTS = minecraft-main.$(OBJEXT) \
-	minecraft-connection.$(OBJEXT) minecraft-server.$(OBJEXT) \
-	minecraft-parser.$(OBJEXT) minecraft-log.$(OBJEXT) \
-	minecraft-jsoncpp.$(OBJEXT)
+am_minecraft_OBJECTS = minecraft-client.$(OBJEXT)
 minecraft_OBJECTS = $(am_minecraft_OBJECTS)
 minecraft_LDADD = $(LDADD)
 minecraft_LINK = $(CXXLD) $(minecraft_CXXFLAGS) $(CXXFLAGS) \
 	$(minecraft_LDFLAGS) $(LDFLAGS) -o $@
+am_minecraftd_OBJECTS = minecraftd-main.$(OBJEXT) \
+	minecraftd-connection.$(OBJEXT) minecraftd-server.$(OBJEXT) \
+	minecraftd-parser.$(OBJEXT) minecraftd-jsoncpp.$(OBJEXT)
+minecraftd_OBJECTS = $(am_minecraftd_OBJECTS)
+minecraftd_LDADD = $(LDADD)
+minecraftd_LINK = $(CXXLD) $(minecraftd_CXXFLAGS) $(CXXFLAGS) \
+	$(minecraftd_LDFLAGS) $(LDFLAGS) -o $@
 AM_V_P = $(am__v_P_$(V))
 am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
 am__v_P_0 = false
@@ -142,8 +146,8 @@ AM_V_CXXLD = $(am__v_CXXLD_$(V))
 am__v_CXXLD_ = $(am__v_CXXLD_$(AM_DEFAULT_VERBOSITY))
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(minecraft_SOURCES)
-DIST_SOURCES = $(minecraft_SOURCES)
+SOURCES = $(minecraft_SOURCES) $(minecraftd_SOURCES)
+DIST_SOURCES = $(minecraft_SOURCES) $(minecraftd_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -283,9 +287,12 @@ target_alias =
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
-minecraft_SOURCES = main.cpp connection.cpp server.cpp parser.cpp log.cpp jsoncpp.cpp
-include_HEADERS = connection.h server.h parser.h log.h
-minecraft_LDFLAGS = -pthread
+minecraftd_SOURCES = main.cpp connection.cpp server.cpp parser.cpp jsoncpp.cpp
+include_HEADERS = connection.h server.h parser.h
+minecraftd_LDFLAGS = -pthread -Lusr/log4cpp/lib -llog4cpp
+minecraftd_CXXFLAGS = -Wall -g -std=gnu++11 -I /usr/local/include
+minecraft_SOURCES = client.cpp
+minecraft_LDFLAGS = 
 minecraft_CXXFLAGS = -Wall -g -std=gnu++11 -I /usr/local/include
 all: all-am
 
@@ -367,18 +374,22 @@ minecraft$(EXEEXT): $(minecraft_OBJECTS) $(minecraft_DEPENDENCIES) $(EXTRA_minec
 	@rm -f minecraft$(EXEEXT)
 	$(AM_V_CXXLD)$(minecraft_LINK) $(minecraft_OBJECTS) $(minecraft_LDADD) $(LIBS)
 
+minecraftd$(EXEEXT): $(minecraftd_OBJECTS) $(minecraftd_DEPENDENCIES) $(EXTRA_minecraftd_DEPENDENCIES) 
+	@rm -f minecraftd$(EXEEXT)
+	$(AM_V_CXXLD)$(minecraftd_LINK) $(minecraftd_OBJECTS) $(minecraftd_LDADD) $(LIBS)
+
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
 
-include ./$(DEPDIR)/minecraft-connection.Po
-include ./$(DEPDIR)/minecraft-jsoncpp.Po
-include ./$(DEPDIR)/minecraft-log.Po
-include ./$(DEPDIR)/minecraft-main.Po
-include ./$(DEPDIR)/minecraft-parser.Po
-include ./$(DEPDIR)/minecraft-server.Po
+include ./$(DEPDIR)/minecraft-client.Po
+include ./$(DEPDIR)/minecraftd-connection.Po
+include ./$(DEPDIR)/minecraftd-jsoncpp.Po
+include ./$(DEPDIR)/minecraftd-main.Po
+include ./$(DEPDIR)/minecraftd-parser.Po
+include ./$(DEPDIR)/minecraftd-server.Po
 
 .cpp.o:
 	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -394,89 +405,89 @@ include ./$(DEPDIR)/minecraft-server.Po
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(AM_V_CXX_no)$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
-minecraft-main.o: main.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -MT minecraft-main.o -MD -MP -MF $(DEPDIR)/minecraft-main.Tpo -c -o minecraft-main.o `test -f 'main.cpp' || echo '$(srcdir)/'`main.cpp
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraft-main.Tpo $(DEPDIR)/minecraft-main.Po
-#	$(AM_V_CXX)source='main.cpp' object='minecraft-main.o' libtool=no \
+minecraft-client.o: client.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -MT minecraft-client.o -MD -MP -MF $(DEPDIR)/minecraft-client.Tpo -c -o minecraft-client.o `test -f 'client.cpp' || echo '$(srcdir)/'`client.cpp
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraft-client.Tpo $(DEPDIR)/minecraft-client.Po
+#	$(AM_V_CXX)source='client.cpp' object='minecraft-client.o' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -c -o minecraft-main.o `test -f 'main.cpp' || echo '$(srcdir)/'`main.cpp
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -c -o minecraft-client.o `test -f 'client.cpp' || echo '$(srcdir)/'`client.cpp
 
-minecraft-main.obj: main.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -MT minecraft-main.obj -MD -MP -MF $(DEPDIR)/minecraft-main.Tpo -c -o minecraft-main.obj `if test -f 'main.cpp'; then $(CYGPATH_W) 'main.cpp'; else $(CYGPATH_W) '$(srcdir)/main.cpp'; fi`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraft-main.Tpo $(DEPDIR)/minecraft-main.Po
-#	$(AM_V_CXX)source='main.cpp' object='minecraft-main.obj' libtool=no \
+minecraft-client.obj: client.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -MT minecraft-client.obj -MD -MP -MF $(DEPDIR)/minecraft-client.Tpo -c -o minecraft-client.obj `if test -f 'client.cpp'; then $(CYGPATH_W) 'client.cpp'; else $(CYGPATH_W) '$(srcdir)/client.cpp'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraft-client.Tpo $(DEPDIR)/minecraft-client.Po
+#	$(AM_V_CXX)source='client.cpp' object='minecraft-client.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -c -o minecraft-main.obj `if test -f 'main.cpp'; then $(CYGPATH_W) 'main.cpp'; else $(CYGPATH_W) '$(srcdir)/main.cpp'; fi`
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -c -o minecraft-client.obj `if test -f 'client.cpp'; then $(CYGPATH_W) 'client.cpp'; else $(CYGPATH_W) '$(srcdir)/client.cpp'; fi`
 
-minecraft-connection.o: connection.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -MT minecraft-connection.o -MD -MP -MF $(DEPDIR)/minecraft-connection.Tpo -c -o minecraft-connection.o `test -f 'connection.cpp' || echo '$(srcdir)/'`connection.cpp
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraft-connection.Tpo $(DEPDIR)/minecraft-connection.Po
-#	$(AM_V_CXX)source='connection.cpp' object='minecraft-connection.o' libtool=no \
+minecraftd-main.o: main.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-main.o -MD -MP -MF $(DEPDIR)/minecraftd-main.Tpo -c -o minecraftd-main.o `test -f 'main.cpp' || echo '$(srcdir)/'`main.cpp
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-main.Tpo $(DEPDIR)/minecraftd-main.Po
+#	$(AM_V_CXX)source='main.cpp' object='minecraftd-main.o' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -c -o minecraft-connection.o `test -f 'connection.cpp' || echo '$(srcdir)/'`connection.cpp
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-main.o `test -f 'main.cpp' || echo '$(srcdir)/'`main.cpp
 
-minecraft-connection.obj: connection.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -MT minecraft-connection.obj -MD -MP -MF $(DEPDIR)/minecraft-connection.Tpo -c -o minecraft-connection.obj `if test -f 'connection.cpp'; then $(CYGPATH_W) 'connection.cpp'; else $(CYGPATH_W) '$(srcdir)/connection.cpp'; fi`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraft-connection.Tpo $(DEPDIR)/minecraft-connection.Po
-#	$(AM_V_CXX)source='connection.cpp' object='minecraft-connection.obj' libtool=no \
+minecraftd-main.obj: main.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-main.obj -MD -MP -MF $(DEPDIR)/minecraftd-main.Tpo -c -o minecraftd-main.obj `if test -f 'main.cpp'; then $(CYGPATH_W) 'main.cpp'; else $(CYGPATH_W) '$(srcdir)/main.cpp'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-main.Tpo $(DEPDIR)/minecraftd-main.Po
+#	$(AM_V_CXX)source='main.cpp' object='minecraftd-main.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -c -o minecraft-connection.obj `if test -f 'connection.cpp'; then $(CYGPATH_W) 'connection.cpp'; else $(CYGPATH_W) '$(srcdir)/connection.cpp'; fi`
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-main.obj `if test -f 'main.cpp'; then $(CYGPATH_W) 'main.cpp'; else $(CYGPATH_W) '$(srcdir)/main.cpp'; fi`
 
-minecraft-server.o: server.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -MT minecraft-server.o -MD -MP -MF $(DEPDIR)/minecraft-server.Tpo -c -o minecraft-server.o `test -f 'server.cpp' || echo '$(srcdir)/'`server.cpp
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraft-server.Tpo $(DEPDIR)/minecraft-server.Po
-#	$(AM_V_CXX)source='server.cpp' object='minecraft-server.o' libtool=no \
+minecraftd-connection.o: connection.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-connection.o -MD -MP -MF $(DEPDIR)/minecraftd-connection.Tpo -c -o minecraftd-connection.o `test -f 'connection.cpp' || echo '$(srcdir)/'`connection.cpp
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-connection.Tpo $(DEPDIR)/minecraftd-connection.Po
+#	$(AM_V_CXX)source='connection.cpp' object='minecraftd-connection.o' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -c -o minecraft-server.o `test -f 'server.cpp' || echo '$(srcdir)/'`server.cpp
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-connection.o `test -f 'connection.cpp' || echo '$(srcdir)/'`connection.cpp
 
-minecraft-server.obj: server.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -MT minecraft-server.obj -MD -MP -MF $(DEPDIR)/minecraft-server.Tpo -c -o minecraft-server.obj `if test -f 'server.cpp'; then $(CYGPATH_W) 'server.cpp'; else $(CYGPATH_W) '$(srcdir)/server.cpp'; fi`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraft-server.Tpo $(DEPDIR)/minecraft-server.Po
-#	$(AM_V_CXX)source='server.cpp' object='minecraft-server.obj' libtool=no \
+minecraftd-connection.obj: connection.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-connection.obj -MD -MP -MF $(DEPDIR)/minecraftd-connection.Tpo -c -o minecraftd-connection.obj `if test -f 'connection.cpp'; then $(CYGPATH_W) 'connection.cpp'; else $(CYGPATH_W) '$(srcdir)/connection.cpp'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-connection.Tpo $(DEPDIR)/minecraftd-connection.Po
+#	$(AM_V_CXX)source='connection.cpp' object='minecraftd-connection.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -c -o minecraft-server.obj `if test -f 'server.cpp'; then $(CYGPATH_W) 'server.cpp'; else $(CYGPATH_W) '$(srcdir)/server.cpp'; fi`
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-connection.obj `if test -f 'connection.cpp'; then $(CYGPATH_W) 'connection.cpp'; else $(CYGPATH_W) '$(srcdir)/connection.cpp'; fi`
 
-minecraft-parser.o: parser.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -MT minecraft-parser.o -MD -MP -MF $(DEPDIR)/minecraft-parser.Tpo -c -o minecraft-parser.o `test -f 'parser.cpp' || echo '$(srcdir)/'`parser.cpp
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraft-parser.Tpo $(DEPDIR)/minecraft-parser.Po
-#	$(AM_V_CXX)source='parser.cpp' object='minecraft-parser.o' libtool=no \
+minecraftd-server.o: server.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-server.o -MD -MP -MF $(DEPDIR)/minecraftd-server.Tpo -c -o minecraftd-server.o `test -f 'server.cpp' || echo '$(srcdir)/'`server.cpp
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-server.Tpo $(DEPDIR)/minecraftd-server.Po
+#	$(AM_V_CXX)source='server.cpp' object='minecraftd-server.o' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -c -o minecraft-parser.o `test -f 'parser.cpp' || echo '$(srcdir)/'`parser.cpp
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-server.o `test -f 'server.cpp' || echo '$(srcdir)/'`server.cpp
 
-minecraft-parser.obj: parser.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -MT minecraft-parser.obj -MD -MP -MF $(DEPDIR)/minecraft-parser.Tpo -c -o minecraft-parser.obj `if test -f 'parser.cpp'; then $(CYGPATH_W) 'parser.cpp'; else $(CYGPATH_W) '$(srcdir)/parser.cpp'; fi`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraft-parser.Tpo $(DEPDIR)/minecraft-parser.Po
-#	$(AM_V_CXX)source='parser.cpp' object='minecraft-parser.obj' libtool=no \
+minecraftd-server.obj: server.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-server.obj -MD -MP -MF $(DEPDIR)/minecraftd-server.Tpo -c -o minecraftd-server.obj `if test -f 'server.cpp'; then $(CYGPATH_W) 'server.cpp'; else $(CYGPATH_W) '$(srcdir)/server.cpp'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-server.Tpo $(DEPDIR)/minecraftd-server.Po
+#	$(AM_V_CXX)source='server.cpp' object='minecraftd-server.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -c -o minecraft-parser.obj `if test -f 'parser.cpp'; then $(CYGPATH_W) 'parser.cpp'; else $(CYGPATH_W) '$(srcdir)/parser.cpp'; fi`
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-server.obj `if test -f 'server.cpp'; then $(CYGPATH_W) 'server.cpp'; else $(CYGPATH_W) '$(srcdir)/server.cpp'; fi`
 
-minecraft-log.o: log.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -MT minecraft-log.o -MD -MP -MF $(DEPDIR)/minecraft-log.Tpo -c -o minecraft-log.o `test -f 'log.cpp' || echo '$(srcdir)/'`log.cpp
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraft-log.Tpo $(DEPDIR)/minecraft-log.Po
-#	$(AM_V_CXX)source='log.cpp' object='minecraft-log.o' libtool=no \
+minecraftd-parser.o: parser.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-parser.o -MD -MP -MF $(DEPDIR)/minecraftd-parser.Tpo -c -o minecraftd-parser.o `test -f 'parser.cpp' || echo '$(srcdir)/'`parser.cpp
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-parser.Tpo $(DEPDIR)/minecraftd-parser.Po
+#	$(AM_V_CXX)source='parser.cpp' object='minecraftd-parser.o' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -c -o minecraft-log.o `test -f 'log.cpp' || echo '$(srcdir)/'`log.cpp
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-parser.o `test -f 'parser.cpp' || echo '$(srcdir)/'`parser.cpp
 
-minecraft-log.obj: log.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -MT minecraft-log.obj -MD -MP -MF $(DEPDIR)/minecraft-log.Tpo -c -o minecraft-log.obj `if test -f 'log.cpp'; then $(CYGPATH_W) 'log.cpp'; else $(CYGPATH_W) '$(srcdir)/log.cpp'; fi`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraft-log.Tpo $(DEPDIR)/minecraft-log.Po
-#	$(AM_V_CXX)source='log.cpp' object='minecraft-log.obj' libtool=no \
+minecraftd-parser.obj: parser.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-parser.obj -MD -MP -MF $(DEPDIR)/minecraftd-parser.Tpo -c -o minecraftd-parser.obj `if test -f 'parser.cpp'; then $(CYGPATH_W) 'parser.cpp'; else $(CYGPATH_W) '$(srcdir)/parser.cpp'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-parser.Tpo $(DEPDIR)/minecraftd-parser.Po
+#	$(AM_V_CXX)source='parser.cpp' object='minecraftd-parser.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -c -o minecraft-log.obj `if test -f 'log.cpp'; then $(CYGPATH_W) 'log.cpp'; else $(CYGPATH_W) '$(srcdir)/log.cpp'; fi`
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-parser.obj `if test -f 'parser.cpp'; then $(CYGPATH_W) 'parser.cpp'; else $(CYGPATH_W) '$(srcdir)/parser.cpp'; fi`
 
-minecraft-jsoncpp.o: jsoncpp.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -MT minecraft-jsoncpp.o -MD -MP -MF $(DEPDIR)/minecraft-jsoncpp.Tpo -c -o minecraft-jsoncpp.o `test -f 'jsoncpp.cpp' || echo '$(srcdir)/'`jsoncpp.cpp
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraft-jsoncpp.Tpo $(DEPDIR)/minecraft-jsoncpp.Po
-#	$(AM_V_CXX)source='jsoncpp.cpp' object='minecraft-jsoncpp.o' libtool=no \
+minecraftd-jsoncpp.o: jsoncpp.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-jsoncpp.o -MD -MP -MF $(DEPDIR)/minecraftd-jsoncpp.Tpo -c -o minecraftd-jsoncpp.o `test -f 'jsoncpp.cpp' || echo '$(srcdir)/'`jsoncpp.cpp
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-jsoncpp.Tpo $(DEPDIR)/minecraftd-jsoncpp.Po
+#	$(AM_V_CXX)source='jsoncpp.cpp' object='minecraftd-jsoncpp.o' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -c -o minecraft-jsoncpp.o `test -f 'jsoncpp.cpp' || echo '$(srcdir)/'`jsoncpp.cpp
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-jsoncpp.o `test -f 'jsoncpp.cpp' || echo '$(srcdir)/'`jsoncpp.cpp
 
-minecraft-jsoncpp.obj: jsoncpp.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -MT minecraft-jsoncpp.obj -MD -MP -MF $(DEPDIR)/minecraft-jsoncpp.Tpo -c -o minecraft-jsoncpp.obj `if test -f 'jsoncpp.cpp'; then $(CYGPATH_W) 'jsoncpp.cpp'; else $(CYGPATH_W) '$(srcdir)/jsoncpp.cpp'; fi`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraft-jsoncpp.Tpo $(DEPDIR)/minecraft-jsoncpp.Po
-#	$(AM_V_CXX)source='jsoncpp.cpp' object='minecraft-jsoncpp.obj' libtool=no \
+minecraftd-jsoncpp.obj: jsoncpp.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-jsoncpp.obj -MD -MP -MF $(DEPDIR)/minecraftd-jsoncpp.Tpo -c -o minecraftd-jsoncpp.obj `if test -f 'jsoncpp.cpp'; then $(CYGPATH_W) 'jsoncpp.cpp'; else $(CYGPATH_W) '$(srcdir)/jsoncpp.cpp'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-jsoncpp.Tpo $(DEPDIR)/minecraftd-jsoncpp.Po
+#	$(AM_V_CXX)source='jsoncpp.cpp' object='minecraftd-jsoncpp.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraft_CXXFLAGS) $(CXXFLAGS) -c -o minecraft-jsoncpp.obj `if test -f 'jsoncpp.cpp'; then $(CYGPATH_W) 'jsoncpp.cpp'; else $(CYGPATH_W) '$(srcdir)/jsoncpp.cpp'; fi`
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-jsoncpp.obj `if test -f 'jsoncpp.cpp'; then $(CYGPATH_W) 'jsoncpp.cpp'; else $(CYGPATH_W) '$(srcdir)/jsoncpp.cpp'; fi`
 install-includeHEADERS: $(include_HEADERS)
 	@$(NORMAL_INSTALL)
 	@list='$(include_HEADERS)'; test -n "$(includedir)" || list=; \
