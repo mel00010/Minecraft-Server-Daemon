@@ -18,28 +18,26 @@
 #include <unistd.h>
 #include <syslog.h>
 #include <string.h>
-int fd[2];
-int rc;
-std::string readFromPipe()
-{
-	char buf[4];
-	rc=read(fd[0],buf,4);
-	int size = atoi(buf);
+//~ std::string readFromPipe()
+//~ {
+	//~ char buf[4];
+	//~ rc=read(fd[0],buf,4);
+	//~ int size = atoi(buf);
 	//~ root.debug(std::to_string(size));
-	char line[size];
-	rc = read(fd[0],line,size);
-	line[rc] = '\0';
-	std::string buff(line);
-	return line;
-}
-void writeToPipe(std::string message)
-{
-	std::ostringstream ss;
-	ss << std::setw(4) << std::setfill('0') << message.size();
+	//~ char line[size];
+	//~ rc = read(fd[0],line,size);
+	//~ line[rc] = '\0';
+	//~ std::string buff(line);
+	//~ return line;
+//~ }
+//~ void writeToPipe(std::string message)
+//~ {
+	//~ std::ostringstream ss;
+	//~ ss << std::setw(4) << std::setfill('0') << message.size();
 	//~ std::string result = ss.str();
-	std::string buf = ss.str() + message;
-	write(fd[1], buf.c_str(), buf.size());
-}
+	//~ std::string buf = ss.str() + message;
+	//~ write(fd[1], buf.c_str(), buf.size());
+//~ }
 int main(void) {
 	/* Our process ID and Session ID */
 	pid_t pid, sid;
@@ -89,16 +87,16 @@ int main(void) {
 	
 	/* Close out the standard file descriptors */
 	close(STDIN_FILENO);
-	//~ close(STDOUT_FILENO);
+	close(STDOUT_FILENO);
 	close(STDERR_FILENO);
 	
 	/* Daemon-specific initialization goes here */
 	
 	//Create listen socket to recieve commands from control program
 	char *controlPipePath = "/etc/minecraft/control.pipe";
-	char *outputPipePath = "/etc/minecraft/output.pipe";
+	//~ char *outputPipePath = "/etc/minecraft/output.pipe";
 	mkfifo(controlPipePath, 0666);
-	mkfifo(outputPipePath, 0666);
+	//~ mkfifo(outputPipePath, 0666);
 	
 	// Read from config file and set up servers
 	std::vector<Server> servers;
@@ -136,18 +134,32 @@ int main(void) {
 		servers.back().startServer();
 	}
 	root.info("Opening pipes");
-	fd[0] = open(controlPipePath, O_RDONLY);
-	fd[1] = open(outputPipePath, O_WRONLY);
+	char buf[4];
+	int fd,rc;
+	fd = open(controlPipePath, O_RDONLY);
+	//~ fd[1] = open(outputPipePath, O_WRONLY);
 	root.info("Opened pipes");
 	/* The Big Loop */
 	while (true) {
-		while (true) {
-			std::string command = readFromPipe();;
+		while ( (rc=read(fd,buf,4)) > 0) {
+			buf[rc] = '\0';
+			int size = atoi(buf);
+			root.debug(std::to_string(size));
+			char line[size];
+			rc = read(fd,line,size);
+			line[rc] = '\0';
 			root.info("Client connected to control pipe");
+			std::string command(line);
 			root.debug(command);
 			if (command == "startServer") {
 				root.debug("Command recieved:  startServer");
-				std::string serverRequested = readFromPipe();
+				rc=read(fd,buf,4);
+				size = atoi(buf);
+				root.debug(std::to_string(size));
+				char line[size];
+				rc = read(fd,line,size);
+				line[rc] = '\0';
+				std::string serverRequested(line);
 				root.debug("Server name recieved");
 				for( Server i : servers) {
 					root.info(i.serverName);
@@ -158,14 +170,19 @@ int main(void) {
 				}
 			} else if (command == "stopServer") {
 				root.debug("Command recieved:  stopServer");
-				std::string serverRequested = readFromPipe();
+				rc=read(fd,buf,4);
+				size = atoi(buf);
+				root.debug(std::to_string(size));
+				char line[size];
+				rc = read(fd,line,size);
+				line[rc] = '\0';
+				std::string serverRequested(line);
 				root.debug("Server name recieved");
 				for( Server i : servers) {
 					root.info(i.serverName);
 					if (i.serverName == serverRequested) {
 						root.debug("Found server");
 						i.stopServer();
-						//~ writeToPipe("");
 						break;	
 					}
 				}
@@ -176,7 +193,13 @@ int main(void) {
 				}
 			} else if (command == "restartServer") {
 				root.debug("Command recieved:  restartServer");
-				std::string serverRequested = readFromPipe();
+				rc=read(fd,buf,4);
+				size = atoi(buf);
+				root.debug(std::to_string(size));
+				char line[size];
+				rc = read(fd,line,size);
+				line[rc] = '\0';
+				std::string serverRequested(line);
 				root.debug("Server name recieved");
 				for( Server i : servers) {
 					root.info(i.serverName);
@@ -192,7 +215,12 @@ int main(void) {
 				}
 			} else if (command == "serverStatus") {
 				root.debug("Command recieved:  serverStatus");
-				std::string serverRequested = readFromPipe();
+				size = atoi(buf);
+				root.debug(std::to_string(size));
+				char line[size];
+				rc = read(fd,line,size);
+				line[rc] = '\0';
+				std::string serverRequested(line);
 				root.debug("Server name recieved");
 				for( Server i : servers) {
 					root.info(i.serverName);
@@ -208,14 +236,26 @@ int main(void) {
 				}
 			} else if (command == "sendCommand") {
 				root.debug("Command recieved:  sendCommand");
-				std::string serverRequested = readFromPipe();
+				rc=read(fd,buf,4);
+				size = atoi(buf);
+				root.debug(std::to_string(size));
+				char line[size];
+				rc = read(fd,line,size);
+				line[rc] = '\0';
+				std::string serverRequested(line);
 				root.debug(serverRequested);
 				root.debug("Server name recieved");
 				for( Server i : servers) {
 					root.info(i.serverName);
 					if (i.serverName == serverRequested) {
 						root.debug("Found server");
-						std::string serverCommand = readFromPipe();
+						rc=read(fd,buf,4);
+						size = atoi(buf);
+						root.debug(std::to_string(size));
+						char buff[size];
+						rc = read(fd,buff,size);
+						buff[rc] = '\0';
+						std::string serverCommand(buff);
 						root.debug("Server command recieved");
 						root.debug(serverCommand);
 						i.sendCommand(serverCommand);
@@ -224,7 +264,13 @@ int main(void) {
 				}
 			} else if (command == "listOnlinePlayers") {
 				root.debug("Command recieved:  listOnlinePlayers");
-				std::string serverRequested = readFromPipe();
+				rc=read(fd,buf,4);
+				size = atoi(buf);
+				root.debug(std::to_string(size));
+				char line[size];
+				rc = read(fd,line,size);
+				line[rc] = '\0';
+				std::string serverRequested(line);
 				root.debug("Server name recieved");
 				for( Server i : servers) {
 					root.info(i.serverName);
@@ -235,12 +281,24 @@ int main(void) {
 				}
 			} else if (command == "listOnlinePlayersFiltered") {
 				root.info("Command recieved:  listOnlinePlayersFiltered");
-				std::string serverRequested = readFromPipe();
+				rc=read(fd,buf,4);
+				size = atoi(buf);
+				root.debug(std::to_string(size));
+				char line[size];
+				rc = read(fd,line,size);
+				line[rc] = '\0';
+				std::string serverRequested(line);
 				root.info("Server name recieved");
 				for( Server i : servers) {
 					root.info(i.serverName);
 					if (i.serverName == serverRequested) {
-						std::string playerName = readFromPipe();
+						rc=read(fd,buf,4);
+						size = atoi(buf);
+						root.debug(std::to_string(size));
+						char buff[size];
+						rc = read(fd,buff,size);
+						buff[rc] = '\0';
+						std::string playerName(buff);
 						root.debug("playerName recieved");
 						root.debug(playerName);
 						i.listOnlinePlayers(playerName);
@@ -249,7 +307,13 @@ int main(void) {
 				}
 			} else if (command == "updateServer") {
 				root.debug("Command recieved:  updateServer");
-				std::string serverRequested = readFromPipe();
+				rc=read(fd,buf,4);
+				size = atoi(buf);
+				root.debug(std::to_string(size));
+				char line[size];
+				rc = read(fd,line,size);
+				line[rc] = '\0';
+				std::string serverRequested(line);
 				root.debug("Server name recieved");
 				for( Server i : servers) {
 					root.info(i.serverName);
@@ -265,7 +329,13 @@ int main(void) {
 				}
 			} else if (command == "backupServer") {
 				root.debug("Command recieved:  backupServer");
-				std::string serverRequested = readFromPipe();
+				rc=read(fd,buf,4);
+				size = atoi(buf);
+				root.debug(std::to_string(size));
+				char line[size];
+				rc = read(fd,line,size);
+				line[rc] = '\0';
+				std::string serverRequested(line);
 				root.debug("Server name recieved");
 				for( Server i : servers) {
 					if (i.serverName == serverRequested) {
@@ -280,8 +350,8 @@ int main(void) {
 				}
 			}
 		}
-		fd[0] = open(controlPipePath, O_RDONLY);
-		fd[1] = open(outputPipePath, O_WRONLY);
+		fd = open(controlPipePath, O_RDONLY);
+		//~ fd[1] = open(outputPipePath, O_WRONLY);
 		if (rc == -1) {
 		  root.error("Read from control pipe failed");
 		}
