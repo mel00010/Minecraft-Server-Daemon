@@ -43,14 +43,22 @@ int main(void) {
 	pid_t pid, sid;
 
 	/* Fork off the parent process */
-	//~ pid = fork();
-	//~ if (pid < 0) {
-		//~ root.fatal("Failure forking from parent process");
-		//~ exit(EXIT_FAILURE);
-	//~ }
-	//~ if (pid > 0) {
-		//~ exit(EXIT_SUCCESS);
-	//~ }
+	pid = fork();
+	if (pid < 0) {
+		root.fatal("Failure forking from parent process");
+		exit(EXIT_FAILURE);
+	}
+	if (pid > 0) {
+		exit(EXIT_SUCCESS);
+	}
+	pid = fork();
+	if (pid < 0) {
+		root.fatal("Failure forking from parent process");
+		exit(EXIT_FAILURE);
+	}
+	if (pid > 0) {
+		exit(EXIT_SUCCESS);
+	}
 	/* If we got a good PID, then
 	   we can exit the parent process. */
 	/* Change the file mode mask */
