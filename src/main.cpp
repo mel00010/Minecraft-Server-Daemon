@@ -45,14 +45,14 @@ int main(void) {
 	pid_t pid, sid;
 
 	/* Fork off the parent process */
-	pid = fork();
-	if (pid < 0) {
+	//~ pid = fork();
+	//~ if (pid < 0) {
 		//~ root.fatal("Failure forking from parent process");
-		exit(EXIT_FAILURE);
-	}
-	if (pid > 0) {
-		exit(EXIT_SUCCESS);
-	}
+		//~ exit(EXIT_FAILURE);
+	//~ }
+	//~ if (pid > 0) {
+		//~ exit(EXIT_SUCCESS);
+	//~ }
 	/* If we got a good PID, then
 	   we can exit the parent process. */
 	/* Change the file mode mask */
@@ -89,7 +89,7 @@ int main(void) {
 	
 	/* Close out the standard file descriptors */
 	close(STDIN_FILENO);
-	close(STDOUT_FILENO);
+	//~ close(STDOUT_FILENO);
 	close(STDERR_FILENO);
 	
 	/* Daemon-specific initialization goes here */
