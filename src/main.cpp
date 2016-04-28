@@ -1,18 +1,12 @@
 #include "server.h"
 #include "parser.h"
 #include <json/json.h>
-
 #include "log4cpp/Category.hh"
-#include "log4cpp/Appender.hh"
-#include "log4cpp/FileAppender.hh"
-#include "log4cpp/OstreamAppender.hh"
-#include "log4cpp/Layout.hh"
-#include "log4cpp/BasicLayout.hh"
-#include "log4cpp/Priority.hh"
-
+#include <log4cpp/PropertyConfigurator.hh>
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <iomanip>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/socket.h>
@@ -24,50 +18,65 @@
 #include <unistd.h>
 #include <syslog.h>
 #include <string.h>
-
-#define PIPE_READ 0
-#define PIPE_WRITE 1
+int fd[2];
+int rc;
+std::string readFromPipe()
+{
+	char buf[4];
+	rc=read(fd[0],buf,4);
+	int size = atoi(buf);
+	//~ root.debug(std::to_string(size));
+	char line[size];
+	rc = read(fd[0],line,size);
+	line[rc] = '\0';
+	std::string buff(line);
+	return line;
+}
+void writeToPipe(std::string message)
+{
+	std::ostringstream ss;
+	ss << std::setw(4) << std::setfill('0') << message.size();
+	//~ std::string result = ss.str();
+	std::string buf = ss.str() + message;
+	write(fd[1], buf.c_str(), buf.size());
+}
 int main(void) {
 	/* Our process ID and Session ID */
-	//~ pid_t pid, sid;
+	pid_t pid, sid;
 
 	/* Fork off the parent process */
-	//~ pid = fork();
-	//~ if (pid < 0) {
+	pid = fork();
+	if (pid < 0) {
 		//~ root.fatal("Failure forking from parent process");
-		//~ exit(EXIT_FAILURE);
-	//~ }
+		exit(EXIT_FAILURE);
+	}
+	if (pid > 0) {
+		exit(EXIT_SUCCESS);
+	}
 	/* If we got a good PID, then
 	   we can exit the parent process. */
-	//~ if (pid > 0) {
-		//~ exit(EXIT_SUCCESS);
-	//~ }
 	/* Change the file mode mask */
-	//~ umask(0);
+	umask(0);
 			
 	/* Open any logs here */        
 	//Logging
 	Parser parser;
 	Json::Value config = parser.parse("/etc/minecraft/config.json");
-	
-	log4cpp::Appender *appender1 = new log4cpp::OstreamAppender("console", &std::cout);
-	appender1->setLayout(new log4cpp::BasicLayout());
-
-	log4cpp::Appender *appender2 = new log4cpp::FileAppender("default", config["options"]["logDir"].asString()+"/daemon.log");
-	appender2->setLayout(new log4cpp::BasicLayout());
+    std::string initFileName = "/etc/minecraft/log4cpp.properties";
+	log4cpp::PropertyConfigurator::configure(initFileName);
 
 	log4cpp::Category& root = log4cpp::Category::getRoot();
-	root.setPriority(log4cpp::Priority::DEBUG);
-	root.addAppender(appender1);
-	
+
+	log4cpp::Category& serverLog = 
+		log4cpp::Category::getInstance(std::string("server"));
 	
 	/* Create a new SID for the child process */
-	//~ sid = setsid();
-	//~ if (sid < 0) {
-		/* Log the failure */
-		//~ root.fatal("Failure creating new sessionID for daemon");
-		//~ exit(EXIT_FAILURE);
-	//~ }
+	sid = setsid();
+	if (sid < 0) {
+		//~ /* Log the failure */
+		root.fatal("Failure creating new sessionID for daemon");
+		exit(EXIT_FAILURE);
+	}
 	
 
 	
@@ -79,23 +88,17 @@ int main(void) {
 	}
 	
 	/* Close out the standard file descriptors */
-	//~ close(STDIN_FILENO);
-	//~ close(STDOUT_FILENO);
-	//~ close(STDERR_FILENO);
+	close(STDIN_FILENO);
+	close(STDOUT_FILENO);
+	close(STDERR_FILENO);
 	
 	/* Daemon-specific initialization goes here */
 	
 	//Create listen socket to recieve commands from control program
-	//~ struct sockaddr_un addr;
-	char *pipePath = "/etc/minecraft/control.pipe";
-	//~ unlink(pipePath);
-	mkfifo(pipePath, 0666);
-	
-	//~ if (fd = open(pipePath, O_RDONLY)) 
-	//~ {
-		//~ root.fatal("Failure opening pipe");
-		//~ exit(-1);
-	//~ }
+	char *controlPipePath = "/etc/minecraft/control.pipe";
+	char *outputPipePath = "/etc/minecraft/output.pipe";
+	mkfifo(controlPipePath, 0666);
+	mkfifo(outputPipePath, 0666);
 	
 	// Read from config file and set up servers
 	std::vector<Server> servers;
@@ -129,37 +132,22 @@ int main(void) {
 			Json::Value option = (*itr);
 			serverOptions.push_back(option.asString());
 		}
-		log4cpp::Category& serverLog = log4cpp::Category::getInstance(std::string(serverName));
-		serverLog.addAppender(appender2);
 		servers.push_back(Server(serverName ,serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, backupPath, worldsToBackup, javaArgs, serverOptions, serverLog));
 		servers.back().startServer();
 	}
-	char buf[4];
-	int fd,rc;
-	root.info("Opening pipe");
-	fd = open(pipePath, O_RDONLY);
-	root.info("Opened pipe");
+	root.info("Opening pipes");
+	fd[0] = open(controlPipePath, O_RDONLY);
+	fd[1] = open(outputPipePath, O_WRONLY);
+	root.info("Opened pipes");
 	/* The Big Loop */
 	while (true) {
-		while ( (rc=read(fd,buf,4)) > 0) {
-			buf[rc] = '\0';
-			int size = atoi(buf);
-			root.debug(std::to_string(size));
-			char line[size];
-			rc = read(fd,line,size);
-			line[rc] = '\0';
+		while (true) {
+			std::string command = readFromPipe();;
 			root.info("Client connected to control pipe");
-			std::string command(line);
 			root.debug(command);
 			if (command == "startServer") {
 				root.debug("Command recieved:  startServer");
-				rc=read(fd,buf,4);
-				size = atoi(buf);
-				root.debug(std::to_string(size));
-				char line[size];
-				rc = read(fd,line,size);
-				line[rc] = '\0';
-				std::string serverRequested(line);
+				std::string serverRequested = readFromPipe();
 				root.debug("Server name recieved");
 				for( Server i : servers) {
 					root.info(i.serverName);
@@ -170,19 +158,14 @@ int main(void) {
 				}
 			} else if (command == "stopServer") {
 				root.debug("Command recieved:  stopServer");
-				rc=read(fd,buf,4);
-				size = atoi(buf);
-				root.debug(std::to_string(size));
-				char line[size];
-				rc = read(fd,line,size);
-				line[rc] = '\0';
-				std::string serverRequested(line);
+				std::string serverRequested = readFromPipe();
 				root.debug("Server name recieved");
 				for( Server i : servers) {
 					root.info(i.serverName);
 					if (i.serverName == serverRequested) {
 						root.debug("Found server");
 						i.stopServer();
+						//~ writeToPipe("");
 						break;	
 					}
 				}
@@ -193,13 +176,7 @@ int main(void) {
 				}
 			} else if (command == "restartServer") {
 				root.debug("Command recieved:  restartServer");
-				rc=read(fd,buf,4);
-				size = atoi(buf);
-				root.debug(std::to_string(size));
-				char line[size];
-				rc = read(fd,line,size);
-				line[rc] = '\0';
-				std::string serverRequested(line);
+				std::string serverRequested = readFromPipe();
 				root.debug("Server name recieved");
 				for( Server i : servers) {
 					root.info(i.serverName);
@@ -215,12 +192,7 @@ int main(void) {
 				}
 			} else if (command == "serverStatus") {
 				root.debug("Command recieved:  serverStatus");
-				size = atoi(buf);
-				root.debug(std::to_string(size));
-				char line[size];
-				rc = read(fd,line,size);
-				line[rc] = '\0';
-				std::string serverRequested(line);
+				std::string serverRequested = readFromPipe();
 				root.debug("Server name recieved");
 				for( Server i : servers) {
 					root.info(i.serverName);
@@ -236,26 +208,14 @@ int main(void) {
 				}
 			} else if (command == "sendCommand") {
 				root.debug("Command recieved:  sendCommand");
-				rc=read(fd,buf,4);
-				size = atoi(buf);
-				root.debug(std::to_string(size));
-				char line[size];
-				rc = read(fd,line,size);
-				line[rc] = '\0';
-				std::string serverRequested(line);
+				std::string serverRequested = readFromPipe();
 				root.debug(serverRequested);
 				root.debug("Server name recieved");
 				for( Server i : servers) {
 					root.info(i.serverName);
 					if (i.serverName == serverRequested) {
 						root.debug("Found server");
-						rc=read(fd,buf,4);
-						size = atoi(buf);
-						root.debug(std::to_string(size));
-						char buff[size];
-						rc = read(fd,buff,size);
-						buff[rc] = '\0';
-						std::string serverCommand(buff);
+						std::string serverCommand = readFromPipe();
 						root.debug("Server command recieved");
 						root.debug(serverCommand);
 						i.sendCommand(serverCommand);
@@ -264,13 +224,7 @@ int main(void) {
 				}
 			} else if (command == "listOnlinePlayers") {
 				root.debug("Command recieved:  listOnlinePlayers");
-				rc=read(fd,buf,4);
-				size = atoi(buf);
-				root.debug(std::to_string(size));
-				char line[size];
-				rc = read(fd,line,size);
-				line[rc] = '\0';
-				std::string serverRequested(line);
+				std::string serverRequested = readFromPipe();
 				root.debug("Server name recieved");
 				for( Server i : servers) {
 					root.info(i.serverName);
@@ -281,24 +235,12 @@ int main(void) {
 				}
 			} else if (command == "listOnlinePlayersFiltered") {
 				root.info("Command recieved:  listOnlinePlayersFiltered");
-				rc=read(fd,buf,4);
-				size = atoi(buf);
-				root.debug(std::to_string(size));
-				char line[size];
-				rc = read(fd,line,size);
-				line[rc] = '\0';
-				std::string serverRequested(line);
+				std::string serverRequested = readFromPipe();
 				root.info("Server name recieved");
 				for( Server i : servers) {
 					root.info(i.serverName);
 					if (i.serverName == serverRequested) {
-						rc=read(fd,buf,4);
-						size = atoi(buf);
-						root.debug(std::to_string(size));
-						char buff[size];
-						rc = read(fd,buff,size);
-						buff[rc] = '\0';
-						std::string playerName(buff);
+						std::string playerName = readFromPipe();
 						root.debug("playerName recieved");
 						root.debug(playerName);
 						i.listOnlinePlayers(playerName);
@@ -307,13 +249,7 @@ int main(void) {
 				}
 			} else if (command == "updateServer") {
 				root.debug("Command recieved:  updateServer");
-				rc=read(fd,buf,4);
-				size = atoi(buf);
-				root.debug(std::to_string(size));
-				char line[size];
-				rc = read(fd,line,size);
-				line[rc] = '\0';
-				std::string serverRequested(line);
+				std::string serverRequested = readFromPipe();
 				root.debug("Server name recieved");
 				for( Server i : servers) {
 					root.info(i.serverName);
@@ -329,13 +265,7 @@ int main(void) {
 				}
 			} else if (command == "backupServer") {
 				root.debug("Command recieved:  backupServer");
-				rc=read(fd,buf,4);
-				size = atoi(buf);
-				root.debug(std::to_string(size));
-				char line[size];
-				rc = read(fd,line,size);
-				line[rc] = '\0';
-				std::string serverRequested(line);
+				std::string serverRequested = readFromPipe();
 				root.debug("Server name recieved");
 				for( Server i : servers) {
 					if (i.serverName == serverRequested) {
@@ -350,13 +280,13 @@ int main(void) {
 				}
 			}
 		}
-		fd = open(pipePath, O_RDONLY);
+		fd[0] = open(controlPipePath, O_RDONLY);
+		fd[1] = open(outputPipePath, O_WRONLY);
 		if (rc == -1) {
 		  root.error("Read from control pipe failed");
 		}
 		else if (rc == 0) {
 			root.info("Client disconnected from control pipe");
-			//~ close(cl);
 		}
 		//~ sleep(5);
 		

@@ -236,16 +236,19 @@ minecraftd-main.o: main.cpp /usr/include/stdc-predef.h server.h \
  parser.h json/json.h /usr/include/c++/5/deque \
  /usr/include/c++/5/bits/stl_deque.h /usr/include/c++/5/bits/deque.tcc \
  /usr/include/c++/5/stack /usr/include/c++/5/bits/stl_stack.h \
- /usr/local/include/log4cpp/FileAppender.hh \
- /usr/local/include/log4cpp/LayoutAppender.hh \
- /usr/local/include/log4cpp/AppenderSkeleton.hh \
- /usr/local/include/log4cpp/Filter.hh \
- /usr/local/include/log4cpp/BasicLayout.hh \
- /usr/local/include/log4cpp/OstreamAppender.hh /usr/include/c++/5/fstream \
+ /usr/local/include/log4cpp/PropertyConfigurator.hh \
+ /usr/local/include/log4cpp/Configurator.hh /usr/include/c++/5/fstream \
  /usr/include/c++/5/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/5/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/5/bits/c++io.h \
- /usr/include/c++/5/bits/fstream.tcc \
+ /usr/include/c++/5/bits/fstream.tcc /usr/include/c++/5/iomanip \
+ /usr/include/c++/5/locale /usr/include/c++/5/bits/locale_facets_nonio.h \
+ /usr/include/x86_64-linux-gnu/c++/5/bits/time_members.h \
+ /usr/include/x86_64-linux-gnu/c++/5/bits/messages_members.h \
+ /usr/include/libintl.h /usr/include/c++/5/bits/locale_facets_nonio.tcc \
+ /usr/include/c++/5/bits/locale_conv.h \
+ /usr/include/c++/5/bits/stringfwd.h /usr/include/c++/5/bits/allocator.h \
+ /usr/include/c++/5/bits/codecvt.h /usr/include/c++/5/bits/unique_ptr.h \
  /usr/include/x86_64-linux-gnu/sys/socket.h \
  /usr/include/x86_64-linux-gnu/sys/uio.h \
  /usr/include/x86_64-linux-gnu/bits/socket.h \
@@ -873,17 +876,9 @@ json/json.h:
 
 /usr/include/c++/5/bits/stl_stack.h:
 
-/usr/local/include/log4cpp/FileAppender.hh:
+/usr/local/include/log4cpp/PropertyConfigurator.hh:
 
-/usr/local/include/log4cpp/LayoutAppender.hh:
-
-/usr/local/include/log4cpp/AppenderSkeleton.hh:
-
-/usr/local/include/log4cpp/Filter.hh:
-
-/usr/local/include/log4cpp/BasicLayout.hh:
-
-/usr/local/include/log4cpp/OstreamAppender.hh:
+/usr/local/include/log4cpp/Configurator.hh:
 
 /usr/include/c++/5/fstream:
 
@@ -894,6 +889,30 @@ json/json.h:
 /usr/include/x86_64-linux-gnu/c++/5/bits/c++io.h:
 
 /usr/include/c++/5/bits/fstream.tcc:
+
+/usr/include/c++/5/iomanip:
+
+/usr/include/c++/5/locale:
+
+/usr/include/c++/5/bits/locale_facets_nonio.h:
+
+/usr/include/x86_64-linux-gnu/c++/5/bits/time_members.h:
+
+/usr/include/x86_64-linux-gnu/c++/5/bits/messages_members.h:
+
+/usr/include/libintl.h:
+
+/usr/include/c++/5/bits/locale_facets_nonio.tcc:
+
+/usr/include/c++/5/bits/locale_conv.h:
+
+/usr/include/c++/5/bits/stringfwd.h:
+
+/usr/include/c++/5/bits/allocator.h:
+
+/usr/include/c++/5/bits/codecvt.h:
+
+/usr/include/c++/5/bits/unique_ptr.h:
 
 /usr/include/x86_64-linux-gnu/sys/socket.h:
 

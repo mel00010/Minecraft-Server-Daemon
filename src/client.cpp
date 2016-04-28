@@ -9,9 +9,9 @@
 #include <sstream>
 #include <iomanip>
 //char *socket_path = "./socket";
-int fd;
-char *pipePath = "/etc/minecraft/control.pipe";	
-
+int fd[2];
+char *controlPipePath = "/etc/minecraft/control.pipe";
+char *outputPipePath = "/etc/minecraft/output.pipe";
 
 void help(char* argv0)
 {
@@ -23,14 +23,15 @@ void writeToPipe(std::string command)
 	ss << std::setw(4) << std::setfill('0') << command.size();
 	//~ std::string result = ss.str();
 	std::string buf = ss.str() + command;
-	write(fd, buf.c_str(), buf.size());
+	write(fd[1], buf.c_str(), buf.size());
 	//~ close(fd);
 }
 int main(int argc, char *argv[])
 {
 	if (argc > 1)
 	{
-		fd = open(pipePath, O_WRONLY);
+		fd[0] = open(outputPipePath, O_RDONLY);
+		fd[1] = open(controlPipePath, O_WRONLY);
 	    std::string option(argv[1]);
 		if (option == "list"){
 			writeToPipe("listServers");
@@ -92,7 +93,7 @@ int main(int argc, char *argv[])
 			help(argv[0]);
 			return 1;
 		}
-		close(fd);
+		close(fd[1]);
 		return 0;
 	} else {
 		help(argv[0]);

@@ -28,7 +28,7 @@
 	]
 	"options":
 	{
-		"logDir":"/var/log/minecraft",
+		"logFile":"/home/mel/minecraft/latest.log",
 		"logLevel":"DEBUG",
 	}
 }
