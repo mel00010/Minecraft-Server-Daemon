@@ -45,7 +45,7 @@ int main(void) {
 	/* Fork off the parent process */
 	pid = fork();
 	if (pid < 0) {
-		//~ // root.fatal("Failure forking from parent process");
+		std::cout << "Failure forking from parent process" << std::endl;
 		exit(EXIT_FAILURE);
 	}
 	if (pid > 0) {
@@ -53,7 +53,7 @@ int main(void) {
 	}
 	pid = fork();
 	if (pid < 0) {
-		// root.fatal("Failure forking from parent process");
+		std::cout << "Failure forking from parent process" << std::endl;
 		exit(EXIT_FAILURE);
 	}
 	if (pid > 0) {
@@ -100,17 +100,9 @@ int main(void) {
 	
 	/* Daemon-specific initialization goes here */
 	
-	//Create listen socket to recieve commands from control program
+	//Create pipe to recieve commands from control program
 	char *pipePath = "/etc/minecraft/control.pipe";
-	//~ unlink(pipePath);
 	mkfifo(pipePath, 0666);
-	
-	//~ if (fd = open(pipePath, O_RDONLY)) 
-	//~ {
-		//~ root.fatal("Failure opening pipe");
-		//~ exit(-1);
-	//~ }
-	
 	// Read from config file and set up servers
 	std::vector<Server> servers;
 	for (Json::Value::iterator itr = config["servers"].begin(); itr != config["servers"].end(); itr++)
@@ -143,8 +135,6 @@ int main(void) {
 			Json::Value option = (*itr);
 			serverOptions.push_back(option.asString());
 		}
-		//~ log4cpp::Category& serverLog = log4cpp::Category::getInstance(std::string(serverName));
-		//~ serverLog.addAppender(appender2);
 		servers.push_back(Server(serverName ,serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, backupPath, worldsToBackup, javaArgs, serverOptions, serverLog));
 		servers.back().startServer();
 	}
@@ -370,10 +360,7 @@ int main(void) {
 		}
 		else if (rc == 0) {
 			root.info("Client disconnected from control pipe");
-			//~ close(cl);
 		}
-		//~ sleep(5);
-		
 	}
 	exit(EXIT_SUCCESS);
 }

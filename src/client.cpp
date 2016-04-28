@@ -1,4 +1,3 @@
-
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -9,7 +8,7 @@
 #include <string>
 #include <sstream>
 #include <iomanip>
-//char *socket_path = "./socket";
+
 int fd;
 char *pipePath = "/etc/minecraft/control.pipe";	
 
@@ -22,10 +21,8 @@ void writeToPipe(std::string command)
 {
 	std::ostringstream ss;
 	ss << std::setw(4) << std::setfill('0') << command.size();
-	//~ std::string result = ss.str();
 	std::string buf = ss.str() + command;
 	write(fd, buf.c_str(), buf.size());
-	//~ close(fd);
 }
 int main(int argc, char *argv[])
 {
