@@ -43,22 +43,22 @@ int main(void) {
 	pid_t pid, sid;
 
 	/* Fork off the parent process */
-	pid = fork();
-	if (pid < 0) {
-		//~ root.fatal("Failure forking from parent process");
-		exit(EXIT_FAILURE);
-	}
-	if (pid > 0) {
-		exit(EXIT_SUCCESS);
-	}
-	pid = fork();
-	if (pid < 0) {
-		//~ root.fatal("Failure forking from parent process");
-		exit(EXIT_FAILURE);
-	}
-	if (pid > 0) {
-		exit(EXIT_SUCCESS);
-	}
+	//~ pid = fork();
+	//~ if (pid < 0) {
+		// root.fatal("Failure forking from parent process");
+		//~ exit(EXIT_FAILURE);
+	//~ }
+	//~ if (pid > 0) {
+		//~ exit(EXIT_SUCCESS);
+	//~ }
+	//~ pid = fork();
+	//~ if (pid < 0) {
+		//~ // root.fatal("Failure forking from parent process");
+		//~ exit(EXIT_FAILURE);
+	//~ }
+	//~ if (pid > 0) {
+		//~ exit(EXIT_SUCCESS);
+	//~ }
 	/* If we got a good PID, then
 	   we can exit the parent process. */
 	/* Change the file mode mask */
@@ -77,12 +77,12 @@ int main(void) {
 		log4cpp::Category::getInstance(std::string("server"));
 	
 	/* Create a new SID for the child process */
-	sid = setsid();
-	if (sid < 0) {
-		//~ /* Log the failure */
-		root.fatal("Failure creating new sessionID for daemon");
-		exit(EXIT_FAILURE);
-	}
+	//~ sid = setsid();
+	//~ if (sid < 0) {
+		/* Log the failure */
+		//~ root.fatal("Failure creating new sessionID for daemon");
+		//~ exit(EXIT_FAILURE);
+	//~ }
 	
 
 	
@@ -94,17 +94,22 @@ int main(void) {
 	}
 	
 	/* Close out the standard file descriptors */
-	close(STDIN_FILENO);
-	close(STDOUT_FILENO);
+	//~ close(STDIN_FILENO);
+	//~ close(STDOUT_FILENO);
 	close(STDERR_FILENO);
 	
 	/* Daemon-specific initialization goes here */
 	
 	//Create listen socket to recieve commands from control program
-	char *controlPipePath = "/etc/minecraft/control.pipe";
-	//~ char *outputPipePath = "/etc/minecraft/output.pipe";
-	mkfifo(controlPipePath, 0666);
-	//~ mkfifo(outputPipePath, 0666);
+	char *pipePath = "/etc/minecraft/control.pipe";
+	//~ unlink(pipePath);
+	mkfifo(pipePath, 0666);
+	
+	//~ if (fd = open(pipePath, O_RDONLY)) 
+	//~ {
+		//~ root.fatal("Failure opening pipe");
+		//~ exit(-1);
+	//~ }
 	
 	// Read from config file and set up servers
 	std::vector<Server> servers;
@@ -138,15 +143,16 @@ int main(void) {
 			Json::Value option = (*itr);
 			serverOptions.push_back(option.asString());
 		}
+		//~ log4cpp::Category& serverLog = log4cpp::Category::getInstance(std::string(serverName));
+		//~ serverLog.addAppender(appender2);
 		servers.push_back(Server(serverName ,serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, backupPath, worldsToBackup, javaArgs, serverOptions, serverLog));
 		servers.back().startServer();
 	}
-	root.info("Opening pipes");
 	char buf[4];
 	int fd,rc;
-	fd = open(controlPipePath, O_RDONLY);
-	//~ fd[1] = open(outputPipePath, O_WRONLY);
-	root.info("Opened pipes");
+	root.info("Opening pipe");
+	fd = open(pipePath, O_RDONLY);
+	root.info("Opened pipe");
 	/* The Big Loop */
 	while (true) {
 		while ( (rc=read(fd,buf,4)) > 0) {
@@ -358,13 +364,13 @@ int main(void) {
 				}
 			}
 		}
-		fd = open(controlPipePath, O_RDONLY);
-		//~ fd[1] = open(outputPipePath, O_WRONLY);
+		fd = open(pipePath, O_RDONLY);
 		if (rc == -1) {
 		  root.error("Read from control pipe failed");
 		}
 		else if (rc == 0) {
 			root.info("Client disconnected from control pipe");
+			//~ close(cl);
 		}
 		//~ sleep(5);
 		
