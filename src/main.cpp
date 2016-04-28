@@ -45,7 +45,7 @@ int main(void) {
 	/* Fork off the parent process */
 	pid = fork();
 	if (pid < 0) {
-		root.fatal("Failure forking from parent process");
+		//~ root.fatal("Failure forking from parent process");
 		exit(EXIT_FAILURE);
 	}
 	if (pid > 0) {
@@ -53,7 +53,7 @@ int main(void) {
 	}
 	pid = fork();
 	if (pid < 0) {
-		root.fatal("Failure forking from parent process");
+		//~ root.fatal("Failure forking from parent process");
 		exit(EXIT_FAILURE);
 	}
 	if (pid > 0) {
