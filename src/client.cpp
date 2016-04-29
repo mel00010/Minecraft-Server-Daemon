@@ -125,6 +125,10 @@ int main(int argc, char *argv[])
 			writeToPipe("backupAll");
 			sleep(1);
 			std::cout << readFromPipe() << std::endl;
+		} else if (option == "stopdaemon") {
+			writeToPipe("stopDaemon");
+			sleep(1);
+			std::cout << readFromPipe() << std::endl;
 		} else {
 			std::cout << "Error:  argument " << option << " not found" << std::endl;
 			help(argv[0]);

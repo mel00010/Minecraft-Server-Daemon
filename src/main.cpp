@@ -372,6 +372,17 @@ int main(void) {
 					i.backupServer();
 				}
 				writeToPipe("success");
+			} else if (command == "stopDaemon") {
+				root.debug("Command recieved:  stopDaemon");
+				writeToPipe("Stopped");
+				std::string serverList;
+				for( Server i : servers) {
+					root.debug(i.serverName);
+					i.stopServer();
+				}
+				root.debug("All servers stopped");
+				root.debug("Stopping");
+				exit(0);
 			}
 		}
 		fd = open(pipePath, O_RDONLY);
