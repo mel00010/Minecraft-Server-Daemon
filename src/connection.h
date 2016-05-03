@@ -11,15 +11,19 @@ class Connection
 {
 	public:
 		//~ Connection(std::string _screenSessionName);
-		Connection(log4cpp::Category& log);
+		//~ Connection();
+		Connection(std::string _serverName);
 		virtual ~Connection();
 		void sendCommand(std::string command);
-		std::shared_ptr<redi::pstream> startServer(std::string serverPath, std::string serverJarName, std::string serverAccount,
+		void startServer(std::string serverPath, std::string serverJarName, std::string serverAccount,
 			int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
 			std::vector<std::string> javaArgs, std::vector<std::string> serverOptions);
 		void stopServer();
 	protected:
-		log4cpp::Category& log;
+		void outputListener();
+		log4cpp::Category* log = nullptr;
 		std::shared_ptr<redi::pstream> server;
+		std::string serverName;
+		volatile bool running = false;
 };
 #endif /* CONNECTION_H */

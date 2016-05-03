@@ -7,4 +7,3 @@ AC_CONFIG_FILES([
  src/Makefile
 ])
 AC_OUTPUT
-

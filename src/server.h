@@ -11,15 +11,13 @@ class Server
 {
 	public:
 		Server(
-			//~ Log log,
 			std::string serverName,
 			std::string serverPath, std::string serverJarName, std::string serverAccount,
 			int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
 			std::string backupPath,
 			std::vector<std::string> worldsToBackup,
 			std::vector<std::string> javaArgs, 
-			std::vector<std::string> serverOptions,
-			log4cpp::Category& log
+			std::vector<std::string> serverOptions
 		);
 		virtual ~Server();
 		void updateServer();
@@ -32,12 +30,11 @@ class Server
 		void listOnlinePlayers();
 		void listOnlinePlayers(std::string playerName);
 		void sendCommand(std::string command);
-		static void updateServer(std::string serverPath, std::string serverJarName, std::string serverAccount);
-		static void backupServer(std::string serverPath, std::string serverAccount, std::string backupPath, std::vector<std::string> worldsToBackup);
+		void updateServer(std::string serverPath, std::string serverJarName, std::string serverAccount);
+		void backupServer(std::string serverPath, std::string serverAccount, std::string backupPath, std::vector<std::string> worldsToBackup);
 		std::string serverName;
+		volatile bool running = false;
 	protected:
-		void outputListener(std::shared_ptr<redi::pstream> server);
-		
 		std::string serverPath;
 		std::string serverJarName;
 		std::string serverAccount;
@@ -48,9 +45,8 @@ class Server
 		std::vector<std::string> worldsToBackup;
 		std::vector<std::string> javaArgs;
 		std::vector<std::string> serverOptions;
-		Connection connection;
-		log4cpp::Category& log;
-		//~ std::shared_ptr<redi::pstream> server;
+		Connection* connection = nullptr;
+		log4cpp::Category* log = nullptr;
 };
 #endif /* SERVER_H */
 

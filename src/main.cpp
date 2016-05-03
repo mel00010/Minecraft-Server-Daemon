@@ -75,13 +75,10 @@ int main(void) {
 	//Logging
 	Parser parser;
 	Json::Value config = parser.parse("/etc/minecraft/config.json");
-    std::string initFileName = "/etc/minecraft/log4cpp.properties";
-	log4cpp::PropertyConfigurator::configure(initFileName);
+    //~ std::string initFileName = "/etc/minecraft/log4cpp.properties";
+	log4cpp::PropertyConfigurator::configure("/etc/minecraft/log4cpp.properties");
 
 	log4cpp::Category& root = log4cpp::Category::getRoot();
-
-	log4cpp::Category& serverLog = 
-		log4cpp::Category::getInstance(std::string("server"));
 	
 	/* Create a new SID for the child process */
 	//~ sid = setsid();
@@ -110,7 +107,7 @@ int main(void) {
 	char *pipePath = "/etc/minecraft/control.pipe";
 	mkfifo(pipePath, 0666);
 	// Read from config file and set up servers
-	std::vector<Server> servers;
+	std::vector<Server*>* servers = new std::vector<Server*>;
 	for (Json::Value::iterator itr = config["servers"].begin(); itr != config["servers"].end(); itr++)
 	{
 		
@@ -141,8 +138,8 @@ int main(void) {
 			Json::Value option = (*itr);
 			serverOptions.push_back(option.asString());
 		}
-		servers.push_back(Server(serverName ,serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, backupPath, worldsToBackup, javaArgs, serverOptions, serverLog));
-		servers.back().startServer();
+		servers->push_back(new Server(serverName ,serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, backupPath, worldsToBackup, javaArgs, serverOptions));
+		servers->back()->startServer();
 	}
 	char buf[4];
 	int fd,rc;
@@ -171,10 +168,10 @@ int main(void) {
 				line[rc] = '\0';
 				std::string serverRequested(line);
 				root.debug("Server name recieved");
-				for( Server i : servers) {
-					root.debug(i.serverName);
-					if (i.serverName == serverRequested) {
-						i.startServer();
+				for( Server* i : *servers) {
+					root.debug(i->serverName);
+					if (i->serverName == serverRequested) {
+						i->startServer();
 						root.debug("Server starting not implemented yet");
 						writeToPipe("success");
 						break;
@@ -190,19 +187,29 @@ int main(void) {
 				line[rc] = '\0';
 				std::string serverRequested(line);
 				root.debug("Server name recieved");
-				for( Server i : servers) {
-					root.debug(i.serverName);
-					if (i.serverName == serverRequested) {
+				for( Server* i : *servers) {
+					root.debug(i->serverName);
+					if (i->serverName == serverRequested) {
 						root.debug("Found server");
-						i.stopServer();
-						writeToPipe("success");
-						break;	
+						if (i->running)
+						{
+							i->stopServer();
+							if (!i->running)
+							{
+								writeToPipe("success");
+							} else {
+								writeToPipe("failure");
+							}
+							break;
+						} else {
+							writeToPipe(i->serverName+"not running");
+						}
 					}
 				}
 			} else if (command == "stopAll") {
 				root.debug("Command recieved:  stopAll");
-				for( Server i : servers) {
-					i.stopServer();
+				for( Server* i : *servers) {
+					i->stopServer();
 				}
 				writeToPipe("success");
 			} else if (command == "restartServer") {
@@ -215,18 +222,18 @@ int main(void) {
 				line[rc] = '\0';
 				std::string serverRequested(line);
 				root.debug("Server name recieved");
-				for( Server i : servers) {
-					root.debug(i.serverName);
-					if (i.serverName == serverRequested) {
-						i.restartServer();
+				for( Server* i : *servers) {
+					root.debug(i->serverName);
+					if (i->serverName == serverRequested) {
+						i->restartServer();
 						writeToPipe("success");
 						break;
 					}
 				}
 			} else if (command == "restartAll") {
 				root.debug("Command recieved:  restartAll");
-				for( Server i : servers) {
-					i.restartServer();
+				for( Server* i : *servers) {
+					i->restartServer();
 				}
 				writeToPipe("success");
 			} else if (command == "serverStatus") {
@@ -238,9 +245,9 @@ int main(void) {
 				line[rc] = '\0';
 				std::string serverRequested(line);
 				root.debug("Server name recieved");
-				for( Server i : servers) {
-					root.debug(i.serverName);
-					if (i.serverName == serverRequested) {
+				for( Server* i : *servers) {
+					root.debug(i->serverName);
+					if (i->serverName == serverRequested) {
 						root.warn("Status not implemented yet");
 						break;
 					}
@@ -248,9 +255,9 @@ int main(void) {
 			} else if (command == "listServers") {
 				root.debug("Command recieved:  listServers");
 				std::string serverList;
-				for( Server i : servers) {
-					root.debug(i.serverName);
-					serverList = serverList+i.serverName + "\n";
+				for( Server* i : *servers) {
+					root.debug(i->serverName);
+					serverList = serverList+i->serverName + "\n";
 				}
 				writeToPipe(serverList);
 			} else if (command == "sendCommand") {
@@ -264,9 +271,9 @@ int main(void) {
 				std::string serverRequested(line);
 				root.debug(serverRequested);
 				root.debug("Server name recieved");
-				for( Server i : servers) {
-					root.debug(i.serverName);
-					if (i.serverName == serverRequested) {
+				for( Server* i : *servers) {
+					root.debug(i->serverName);
+					if (i->serverName == serverRequested) {
 						root.debug("Found server");
 						rc=read(fd,buf,4);
 						size = atoi(buf);
@@ -277,7 +284,7 @@ int main(void) {
 						std::string serverCommand(buff);
 						root.debug("Server command recieved");
 						root.debug(serverCommand);
-						i.sendCommand(serverCommand);
+						i->sendCommand(serverCommand);
 						writeToPipe("success");
 						break;
 					}
@@ -292,10 +299,10 @@ int main(void) {
 				line[rc] = '\0';
 				std::string serverRequested(line);
 				root.debug("Server name recieved");
-				for( Server i : servers) {
-					root.debug(i.serverName);
-					if (i.serverName == serverRequested) {
-						i.listOnlinePlayers();
+				for( Server* i : *servers) {
+					root.debug(i->serverName);
+					if (i->serverName == serverRequested) {
+						i->listOnlinePlayers();
 						break;
 					}
 				}
@@ -309,9 +316,9 @@ int main(void) {
 				line[rc] = '\0';
 				std::string serverRequested(line);
 				root.debug("Server name recieved");
-				for( Server i : servers) {
-					root.debug(i.serverName);
-					if (i.serverName == serverRequested) {
+				for( Server* i : *servers) {
+					root.debug(i->serverName);
+					if (i->serverName == serverRequested) {
 						rc=read(fd,buf,4);
 						size = atoi(buf);
 						root.debug(std::to_string(size));
@@ -321,7 +328,7 @@ int main(void) {
 						std::string playerName(buff);
 						root.debug("playerName recieved");
 						root.debug(playerName);
-						i.listOnlinePlayers(playerName);
+						i->listOnlinePlayers(playerName);
 						break;
 					}
 				}
@@ -335,18 +342,18 @@ int main(void) {
 				line[rc] = '\0';
 				std::string serverRequested(line);
 				root.debug("Server name recieved");
-				for( Server i : servers) {
-					root.debug(i.serverName);
-					if (i.serverName == serverRequested) {
-						i.updateServer();
+				for( Server* i : *servers) {
+					root.debug(i->serverName);
+					if (i->serverName == serverRequested) {
+						i->updateServer();
 						writeToPipe("success");
 						break;
 					}
 				}
 			} else if (command == "updateAll") {
 				root.debug("Command recieved:  updateAll");
-				for( Server i : servers) {
-					i.updateServer();
+				for( Server* i : *servers) {
+					i->updateServer();
 				}
 				writeToPipe("success");
 			} else if (command == "backupServer") {
@@ -359,26 +366,26 @@ int main(void) {
 				line[rc] = '\0';
 				std::string serverRequested(line);
 				root.debug("Server name recieved");
-				for( Server i : servers) {
-					if (i.serverName == serverRequested) {
-						i.backupServer();
+				for( Server* i : *servers) {
+					if (i->serverName == serverRequested) {
+						i->backupServer();
 						writeToPipe("success");
 						break;
 					}
 				}
 			} else if (command == "backupAll") {
 				root.debug("Command recieved:  backupAll");
-				for( Server i : servers) {
-					i.backupServer();
+				for( Server* i : *servers) {
+					i->backupServer();
 				}
 				writeToPipe("success");
 			} else if (command == "stopDaemon") {
 				root.debug("Command recieved:  stopDaemon");
 				writeToPipe("Stopped");
 				std::string serverList;
-				for( Server i : servers) {
-					root.debug(i.serverName);
-					i.stopServer();
+				for( Server* i : *servers) {
+					root.debug(i->serverName);
+					i->stopServer();
 				}
 				root.debug("All servers stopped");
 				root.debug("Stopping");

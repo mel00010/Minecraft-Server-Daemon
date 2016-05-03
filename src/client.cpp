@@ -79,7 +79,7 @@ int main(int argc, char *argv[])
 			}
 		} else if (option == "status") {
 			if (argc > 2){
-				writeToPipe("status");
+				writeToPipe("serverStatus");
 				writeToPipe(argv[2]);
 				sleep(1);
 				std::cout << readFromPipe() << std::endl;
