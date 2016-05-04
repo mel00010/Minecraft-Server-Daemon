@@ -26,11 +26,11 @@ Usage
 
 Using the program is pretty simple. To start the daemon, run this command in a terminal:  
 	
-	$ minecraftd
+	$ sudo -u minecraftd
 To control it, use the client program like this:
 
-	$ minecraft \<COMMAND\>
-The possible options for <COMMAND> are as follows:
+	$ minecraft <COMMAND>
+The possible options for \<COMMAND\> are as follows:
 * list:  Lists servers
 * status \<SERVER\>:  Gets the current status of a server \<SERVER\>
 * start \<SERVER\>:  Starts a server \<SERVER\>
