@@ -6,3 +6,4 @@ minecraftd_CXXFLAGS= -Wall -Wextra -g -std=gnu++11 -I /usr/local/include
 minecraft_SOURCES = client.cpp
 minecraft_LDFLAGS =
 minecraft_CXXFLAGS= -Wall -Wextra -g -std=gnu++11 -I /usr/local/include
+
