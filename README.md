@@ -32,18 +32,18 @@ To control it, use the client program like this:
 	$ minecraft <COMMAND>
 The possible options for <COMMAND> are as follows:
 * list:  Lists servers
-* status <SERVER>:  Gets the current status of a server <SERVER>
-* start <SERVER>:  Starts a server <SERVER>
-* stop <SERVER>:  Stops a server <SERVER>
+* status \<SERVER\>:  Gets the current status of a server \<SERVER\>
+* start \<SERVER\>:  Starts a server \<SERVER\>
+* stop \<SERVER\>:  Stops a server \<SERVER\>
 * stopall:  Stops all servers
-* restart <SERVER>:  Retarts a server <SERVER>
+* restart \<SERVER\>:  Retarts a server \<SERVER\>
 * restartall:  Restarts all servers
-* sendcommand <SERVER> <COMMAND>:  Sends a command <COMMAND> to a server <SERVER>
-* update <SERVER>:  Updates a server <SERVER>
+* sendcommand \<SERVER\> <COMMAND>:  Sends a command <COMMAND> to a server \<SERVER\>
+* update \<SERVER\>:  Updates a server \<SERVER\>
 * updateall:  Updates all servers
-* backup <SERVER>:  Backs up a server <SERVER>
+* backup \<SERVER\>:  Backs up a server \<SERVER\>
 * backupall:  Backs up all servers
-* listplayers <SERVER> [PLAYER]:  Lists players on a server <SERVER>.  
+* listplayers \<SERVER\> [PLAYER]:  Lists players on a server \<SERVER\>.  
 * stopdaemon:  Stops the server daemon
 
     
