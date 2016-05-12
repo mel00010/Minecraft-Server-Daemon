@@ -3,7 +3,7 @@
 	[
 		{
 			"serverName":"server",
-			"serverPath":"/home/minecraft",
+			"serverPath":"/home/mel/minecraft",
 			"serverJarName":"minecraft_server.jar",
 			"serverAccount":"minecraft",
 			"maxHeapAlloc":2048,

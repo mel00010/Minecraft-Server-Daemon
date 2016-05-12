@@ -167,6 +167,8 @@ void Server::sendCommand(std::string command)
 void Server::listOnlinePlayers()
 {
 	log->debug("Server::listOnlinePlayers");
+	
+	
 	//~ std::stringstream output;
 	//~ std::string line;
 	//~ int numPlayers = 0;

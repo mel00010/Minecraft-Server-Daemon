@@ -1,7 +1,11 @@
 #include "connection.h"
 #include "server.h"
 #include "log4cpp/Category.hh"
-#include <log4cpp/PropertyConfigurator.hh>
+#include "log4cpp/Appender.hh"
+#include "log4cpp/FileAppender.hh"
+#include "log4cpp/Layout.hh"
+#include "log4cpp/PatternLayout.hh"
+#include "log4cpp/Priority.hh"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -20,12 +24,18 @@
 Connection::Connection(std::string _serverName)
 {
 	serverName = _serverName;
-	log = &log4cpp::Category::getInstance(std::string("connection"));
+	log4cpp::Appender *appender = new log4cpp::FileAppender(serverName, "/var/log/minecraft/servers/"+serverName+".log");
+	log4cpp::PatternLayout* pattern = new log4cpp::PatternLayout();
+	pattern->setConversionPattern("%d %c [%p] %m%n");
+	appender->setLayout(pattern);
+	log = &log4cpp::Category::getInstance(serverName);
+	log->addAppender(appender);
 	log->debug("Connection::Connection");
 }
 Connection::~Connection()
 {
 	log->debug("Connection::~Connection");
+	log->getAppender()->close();
 	//~ delete(log);
 }
 void Connection::startServer(
@@ -139,6 +149,53 @@ void Connection::outputListener()
 		std::getline(*__server, output);
 		if(output.size() > 1)
 		{
+			//~ if (output.find("Server thread/") != std::string::npos) {
+				//~ std::string _output = output.substr(26, std::string::npos);
+				//~ size_t pos = _output.find_first_of(']');
+				//~ std::string priority(_output);
+				//~ priority.erase(pos, std::string::npos);
+				//~ if (priority.find("INFO") != std::string::npos) {
+					//~ log->info(_output.substr(7, std::string::npos));
+				//~ } else if (priority.find("WARNING") != std::string::npos) {
+					//~ log->warning(_output.substr(10, std::string::npos));
+				//~ } else if (priority.find("WARN") != std::string::npos) {
+					//~ log->warning(_output.substr(7, std::string::npos));
+				//~ } else if (priority.find("ERROR") != std::string::npos) {
+					//~ log->error(_output.substr(8, std::string::npos));
+				//~ } else if (priority.find("SEVERE") != std::string::npos) {
+					//~ log->severe(_output.substr(9, std::string::npos));
+				//~ } else {
+					//~ log->info(_output);
+				//~ }
+			//~ } else if (output.find("Server Shutdown Thread/") != std::string::npos) {
+				//~ std::string _output = output.substr(35, std::string::npos);
+				//~ size_t pos = _output.find_first_of(']');
+				//~ std::string priority(_output);
+				//~ priority.erase(pos, std::string::npos);
+				//~ if (priority.find("INFO") != std::string::npos) {
+					//~ log->info(_output.substr(7, std::string::npos));
+				//~ } else if (priority.find("WARNING") != std::string::npos) {
+					//~ log->warning(_output.substr(10, std::string::npos));
+				//~ } else if (priority.find("WARN") != std::string::npos) {
+					//~ log->warning(_output.substr(7, std::string::npos));
+				//~ } else if (priority.find("ERROR") != std::string::npos) {
+					//~ log->error(_output.substr(8, std::string::npos));
+				//~ } else if (priority.find("SEVERE") != std::string::npos) {
+					//~ log->severe(_output.substr(9, std::string::npos));
+				//~ } else {
+					//~ log->info(_output);
+				//~ }
+			//~ } else if (output.find("ERROR") != std::string::npos) {
+				//~ std::string _output = output.substr(24, std::string::npos);
+				//~ if (_output.substr(0, 5) == "ERROR"){
+					//~ log->error(_output.substr(6, std::string::npos));
+				//~ }
+			//~ } else if (output.find("SEVERE") != std::string::npos) {
+				//~ std::string _output = output.substr(24, std::string::npos);
+				//~ if (_output.substr(0, 6) == "SEVERE"){
+					//~ log->error(_output.substr(7, std::string::npos));
+				//~ }
+			//~ }
 			log->info(output);
 		}
 	}

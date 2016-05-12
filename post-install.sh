@@ -4,6 +4,7 @@ useradd -gminecraft -m minecraft
 #~ usermod –gminecraft minecraft
 mkdir /etc/minecraft
 mkdir /var/log/minecraft
+mkdir /var/log/minecraft/servers
 mkfifo /etc/minecraft/control.pipe
 mkfifo /etc/minecraft/output.pipe
 cp log4cpp.properties /etc/minecraft/log4cpp.properties
