@@ -1,6 +1,8 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <sys/socket.h>
+#include <sys/un.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,28 +11,27 @@
 #include <sstream>
 #include <iomanip>
 
-int fd, fd2, rc;
+int controlSocket, rc, len;
 char buff[4];
-char *pipePath = "/etc/minecraft/control.pipe";	
-char *outputPipePath = "/etc/minecraft/output.pipe";
 
 void help(char* argv0)
 {
 	std::cout << "Usage:  " << argv0 << " list|start <SERVER>|stop <SERVER>|restart <SERVER>|sendcommand <SERVER> <COMMAND>|status <SERVER>|update <SERVER>|backup <SERVER>|listplayers <SERVER> [PLAYER]|stopall|restartall|updateall|backupall|stopdaemon" << std::endl;
 }
-void writeToPipe(std::string command)
+void writeToSocket(std::string command)
 {
 	std::ostringstream ss;
 	ss << std::setw(4) << std::setfill('0') << command.size();
 	std::string buf = ss.str() + command;
-	write(fd, buf.c_str(), buf.size());
+	send(controlSocket, buf.c_str(), buf.size(), 0);
+
 }
-std::string readFromPipe()
+std::string readFromSocket()
 {
-	rc=read(fd2,buff,4);
+	rc=recv(controlSocket,buff,4,0);
 	int size = atoi(buff);
 	char line[size];
-	rc = read(fd2,line,size);
+	rc = recv(controlSocket,line,size,0);
 	line[rc] = '\0';
 	return std::string(line);
 }
@@ -38,103 +39,113 @@ int main(int argc, char *argv[])
 {
 	if (argc > 1)
 	{
-		//~ mkfifo(outputPipePath, 0666);
-		fd = open(pipePath, O_WRONLY);
-		fd2 = open(outputPipePath, O_RDONLY | O_NONBLOCK);
+		struct sockaddr_un remote;	
+		if ((controlSocket = socket(AF_UNIX, SOCK_STREAM, 0)) == -1) {
+			std::cerr << "Failure creating socket" << std::endl;
+			exit(1);
+		}
+	
+		remote.sun_family = AF_UNIX;
+		strcpy(remote.sun_path, "/etc/minecraft/control.socket");
+		len = strlen(remote.sun_path) + sizeof(remote.sun_family);
+		if (connect(controlSocket, (struct sockaddr *)&remote, len) == -1) {
+			std::cerr << "Failure connecting to socket" << std::endl;
+			exit(1);
+		}
 	    std::string option(argv[1]);
 		if (option == "list"){
-			writeToPipe("listServers");
-			sleep(1);
-			std::string response(readFromPipe());
+			writeToSocket("listServers");
+			//~ sleep(1);
+			std::string response(readFromSocket());
 			std::cout << response << std::endl;
 		} else if (option == "start") {
 			if (argc > 2){
-				writeToPipe("startServer");
-				writeToPipe(argv[2]);
-				sleep(1);
+				writeToSocket("startServer");
+				writeToSocket(argv[2]);
+				//~ sleep(1);
 				
-				std::cout << readFromPipe() << std::endl;
+				std::cout << readFromSocket() << std::endl;
 			}
 		} else if (option == "stop") {
 			if (argc > 2){
-				writeToPipe("stopServer");
-				writeToPipe(argv[2]);
-				sleep(1);
-				std::cout << readFromPipe() << std::endl;
+				writeToSocket("stopServer");
+				writeToSocket(argv[2]);
+				//~ sleep(1);
+				std::cout << readFromSocket() << std::endl;
 			}
 		} else if (option == "restart") {
 			if (argc > 2){
-				writeToPipe("restartServer");
-				writeToPipe(argv[2]);
-				sleep(1);
-				std::cout << readFromPipe() << std::endl;
+				writeToSocket("restartServer");
+				writeToSocket(argv[2]);
+				//~ sleep(1);
+				std::cout << readFromSocket() << std::endl;
 			}
 		} else if (option == "sendcommand") {
 			if (argc > 3){
-				writeToPipe("sendCommand");
-				writeToPipe(argv[2]);
-				writeToPipe(argv[3]);
-				sleep(1);
-				std::cout << readFromPipe() << std::endl;
+				writeToSocket("sendCommand");
+				writeToSocket(argv[2]);
+				writeToSocket(argv[3]);
+				//~ sleep(1);
+				std::cout << readFromSocket() << std::endl;
 			}
 		} else if (option == "status") {
 			if (argc > 2){
-				writeToPipe("serverStatus");
-				writeToPipe(argv[2]);
-				sleep(1);
-				std::cout << readFromPipe() << std::endl;
+				writeToSocket("serverStatus");
+				writeToSocket(argv[2]);
+				//~ sleep(1);
+				std::cout << readFromSocket() << std::endl;
 			}
 		} else if (option == "update") {
 			if (argc > 2){
-				writeToPipe("updateServer");
-				writeToPipe(argv[2]);
-				sleep(1);
-				std::cout << readFromPipe() << std::endl;
+				writeToSocket("updateServer");
+				writeToSocket(argv[2]);
+				//~ sleep(1);
+				std::cout << readFromSocket() << std::endl;
 			}
 		} else if (option == "backup") {
 			if (argc > 2){
-				writeToPipe("backupServer");
-				writeToPipe(argv[2]);
-				sleep(1);
-				std::cout << readFromPipe() << std::endl;
+				writeToSocket("backupServer");
+				writeToSocket(argv[2]);
+				//~ sleep(1);
+				std::cout << readFromSocket() << std::endl;
 			}
 		} else if (option == "listplayers") {
 			if (argc > 3){
-				writeToPipe("listOnlinePlayersFiltered");
-				writeToPipe(argv[2]);
-				writeToPipe(argv[3]);
+				writeToSocket("listOnlinePlayersFiltered");
+				writeToSocket(argv[2]);
+				writeToSocket(argv[3]);
 			} else if (argc > 2){
-				writeToPipe("listOnlinePlayers");
-				writeToPipe(argv[2]);
-				sleep(1);
-				std::cout << readFromPipe() << std::endl;
+				writeToSocket("listOnlinePlayers");
+				writeToSocket(argv[2]);
+				//~ sleep(1);
+				std::cout << readFromSocket() << std::endl;
 			}
 		} else if (option == "stopall") {
-			writeToPipe("stopAll");
-			sleep(1);
-			std::cout << readFromPipe() << std::endl;
+			writeToSocket("stopAll");
+			//~ sleep(1);
+			std::cout << readFromSocket() << std::endl;
 		} else if (option == "restartall") {
-			writeToPipe("restartAll");
-			sleep(1);
-			std::cout << readFromPipe() << std::endl;
+			writeToSocket("restartAll");
+			//~ sleep(1);
+			std::cout << readFromSocket() << std::endl;
 		} else if (option == "updateall") {
-			writeToPipe("updateAll");
-			sleep(1);
-			std::cout << readFromPipe() << std::endl;
+			writeToSocket("updateAll");
+			//~ sleep(1);
+			std::cout << readFromSocket() << std::endl;
 		} else if (option == "backupall") {
-			writeToPipe("backupAll");
-			sleep(1);
-			std::cout << readFromPipe() << std::endl;
+			writeToSocket("backupAll");
+			//~ sleep(1);
+			std::cout << readFromSocket() << std::endl;
 		} else if (option == "stopdaemon") {
-			writeToPipe("stopDaemon");
-			sleep(1);
-			std::cout << readFromPipe() << std::endl;
+			writeToSocket("stopDaemon");
+			//~ sleep(1);
+			std::cout << readFromSocket() << std::endl;
 		} else {
 			std::cout << "Error:  argument " << option << " not found" << std::endl;
 			help(argv[0]);
 			return 1;
 		}
-		close(fd);
+		close(controlSocket);
 		return 0;
 	} else {
 		help(argv[0]);

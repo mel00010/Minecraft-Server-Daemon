@@ -17,7 +17,8 @@ class Server
 			std::string backupPath,
 			std::vector<std::string> worldsToBackup,
 			std::vector<std::string> javaArgs, 
-			std::vector<std::string> serverOptions
+			std::vector<std::string> serverOptions,
+			struct event_base *base
 		);
 		virtual ~Server();
 		void updateServer();
@@ -47,6 +48,7 @@ class Server
 		std::vector<std::string> serverOptions;
 		Connection* connection = nullptr;
 		log4cpp::Category* log = nullptr;
+		struct event_base *event_base;
 };
 #endif /* SERVER_H */
 

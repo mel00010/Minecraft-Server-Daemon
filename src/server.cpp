@@ -19,7 +19,7 @@
 Server::Server( std::string _serverName, std::string _serverPath, std::string _serverJarName, std::string _serverAccount,
 				int _maxHeapAlloc, int _minHeapAlloc, int _gcThreadCount,
 				std::string _backupPath, std::vector<std::string> _worldsToBackup, std::vector<std::string> _javaArgs, 
-				std::vector<std::string> _serverOptions)
+				std::vector<std::string> _serverOptions, struct event_base *_event_base)
 {
 	
 	running = false;
@@ -34,6 +34,7 @@ Server::Server( std::string _serverName, std::string _serverPath, std::string _s
 	worldsToBackup = _worldsToBackup;
 	javaArgs = _javaArgs;
 	serverOptions = _serverOptions;
+	event_base = _event_base;
 	//~ log4cpp::PropertyConfigurator::configure("/etc/minecraft/log4cpp.properties");
 	log = &log4cpp::Category::getInstance(std::string("server"));
 	log->info(serverJarName);
@@ -123,7 +124,7 @@ void Server::startServer()
 	log->debug("Server::startServer");
 	if (!running)
 	{
-		Connection* _connection = new Connection(serverName);
+		Connection* _connection = new Connection(serverName, event_base);
 		connection = _connection;
 		connection->startServer(serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, javaArgs, serverOptions);
 	}
