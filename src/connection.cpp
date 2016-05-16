@@ -145,7 +145,7 @@ void Connection::outputListener()
 {
 	log->debug("Connection::outputListener");
 	std::weak_ptr<redi::pstream> _server = server;
-	event_reinit(event_base);
+	//~ event_reinit(event_base);
 	std::string output;
 	auto __server = _server.lock();
 	while (running) {
