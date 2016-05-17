@@ -4,35 +4,16 @@
 #include "setupServers.h"
 #include <json/json.h>
 #include "log4cpp/Category.hh"
-#include <log4cpp/PropertyConfigurator.hh>
-#include <iostream>
-#include <fstream>
 #include <string>
 #include <iomanip>
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <sys/socket.h>
 #include <sys/un.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <errno.h>
-#include <unistd.h>
-#include <syslog.h>
-#include <string.h>
 #include <event2/event.h>
-#include <event2/buffer.h>
-#include <event2/bufferevent.h>
 struct cb_data
 {
 	std::vector<Server*>* servers;
 	log4cpp::Category& root;
 };
-void cb(int sock, short what, void *arg)
-{
-    struct event_base *base = (event_base *)arg;
-    event_base_loopbreak(base);
-}
 void mainLoop (std::vector<Server*>* servers, log4cpp::Category& root, int controlSocket, struct event_base* base) 
 {
 	root.info("Starting main loop");

@@ -3,9 +3,7 @@
 #include "connection.h"
 #include "log4cpp/Category.hh"
 #include <string>
-#include <thread>
-#include <memory>
-
+#include <time.h>
 
 class Server
 {

@@ -1,19 +1,12 @@
 #include "server.h"
 #include "log4cpp/Category.hh"
-#include <log4cpp/PropertyConfigurator.hh>
 #include "connection.h"
 #include <pstreams/pstream.h>
-#include <iostream>
-#include <fstream>
 #include <sstream>
 #include <string>
 #include <vector>
 #include <thread>
-#include <memory>
-#include <future>
-#include <chrono>
 #include <time.h>
-#include <ctime>
 
 
 Server::Server( std::string _serverName, std::string _serverPath, std::string _serverJarName, std::string _serverAccount,

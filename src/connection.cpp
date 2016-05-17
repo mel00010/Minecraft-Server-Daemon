@@ -6,20 +6,12 @@
 #include "log4cpp/Layout.hh"
 #include "log4cpp/PatternLayout.hh"
 #include "log4cpp/Priority.hh"
-#include <iostream>
-#include <fstream>
 #include <string>
 #include <vector>
 #include <sstream>
 #include <thread>
-#include <algorithm>
-#include <iterator>
-#include <cstdlib>
+#include <time.h>
 #include <pstreams/pstream.h>
-#include <unistd.h>
-#include <string.h>
-#include <sys/ioctl.h>
-#include <memory>
 #include <event2/event.h>
 
 Connection::Connection(std::string _serverName, struct event_base *_event_base)

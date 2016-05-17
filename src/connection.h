@@ -3,7 +3,6 @@
 #include "log4cpp/Category.hh"
 #include <string>
 #include <vector>
-#include <atomic>
 #include <pstreams/pstream.h>
 #include <memory>
 
