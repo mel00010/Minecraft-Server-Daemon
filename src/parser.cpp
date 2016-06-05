@@ -10,7 +10,6 @@
 //~ Parser::Parser()
 //~ {
 //~ }
-
 Json::Value Parser::parse(std::string configFile)
 {
 	Json::Value root;

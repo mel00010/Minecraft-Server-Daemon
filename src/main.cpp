@@ -5,6 +5,9 @@
 #include "mainLoop.h"
 #include "createSocket.h"
 #include "setupServers.h"
+#include <unistd.h>
+#include <signal.h>
+#include <unistd.h>
 #include <json/json.h>
 #include "log4cpp/Category.hh"
 #include <log4cpp/PropertyConfigurator.hh>
@@ -12,7 +15,6 @@
 	#include <iostream>
 #endif
 #include <event2/event.h>
-
 int main(void) {
 	#if DEBUGGING == 0
 	/* Our process ID and Session ID */
@@ -38,6 +40,7 @@ int main(void) {
 	/* If we got a good PID, then
 	   we can exit the parent process. */
 	#endif	
+	signal(SIGINT, sigint_handler);
 	/* Change the file mode mask */
 	umask(0);
 	/* Open any logs here */        
@@ -74,10 +77,10 @@ int main(void) {
 	//Create pipe to recieve commands from control program
 	
 	// Read from config file and set up servers
-	struct event_base *base = event_base_new();
+	struct event_base* base = event_base_new();
 	int controlSocket = createSocket(root);
-	std::vector<Server*>* servers;
-	servers = setupServers(&config, base);
+	std::vector<MinecraftServerService::Server*>* servers;
+	servers = setupServers(&config);
 	/* The Big Loop */
 	mainLoop(servers, root, controlSocket, base);
 	

@@ -107,9 +107,9 @@ minecraft_LDADD = $(LDADD)
 minecraft_LINK = $(CXXLD) $(minecraft_CXXFLAGS) $(CXXFLAGS) \
 	$(minecraft_LDFLAGS) $(LDFLAGS) -o $@
 am_minecraftd_OBJECTS = minecraftd-main.$(OBJEXT) \
-	minecraftd-connection.$(OBJEXT) minecraftd-server.$(OBJEXT) \
-	minecraftd-parser.$(OBJEXT) minecraftd-jsoncpp.$(OBJEXT) \
-	minecraftd-mainLoop.$(OBJEXT) \
+	minecraftd-ServerProcessBuf.$(OBJEXT) \
+	minecraftd-server.$(OBJEXT) minecraftd-parser.$(OBJEXT) \
+	minecraftd-jsoncpp.$(OBJEXT) minecraftd-mainLoop.$(OBJEXT) \
 	minecraftd-setupServers.$(OBJEXT) \
 	minecraftd-createSocket.$(OBJEXT)
 minecraftd_OBJECTS = $(am_minecraftd_OBJECTS)
@@ -298,8 +298,8 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-minecraftd_SOURCES = main.cpp connection.cpp server.cpp parser.cpp jsoncpp.cpp mainLoop.cpp setupServers.cpp createSocket.cpp
-include_HEADERS = connection.h server.h parser.h mainLoop.h setupServers.h createSocket.h
+minecraftd_SOURCES = main.cpp ServerProcessBuf.cpp server.cpp parser.cpp jsoncpp.cpp mainLoop.cpp setupServers.cpp createSocket.cpp
+include_HEADERS = ServerProcessBuf.h server.h parser.h mainLoop.h setupServers.h createSocket.h
 minecraftd_LDFLAGS = -pthread -levent -Lusr/log4cpp/lib -llog4cpp
 minecraftd_CXXFLAGS = -Wall -Wextra -g -std=gnu++11 -I /usr/local/include
 minecraft_SOURCES = client.cpp
@@ -396,7 +396,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraft-client.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-connection.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-ServerProcessBuf.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-createSocket.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-jsoncpp.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-main.Po@am__quote@
@@ -447,19 +447,19 @@ minecraftd-main.obj: main.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-main.obj `if test -f 'main.cpp'; then $(CYGPATH_W) 'main.cpp'; else $(CYGPATH_W) '$(srcdir)/main.cpp'; fi`
 
-minecraftd-connection.o: connection.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-connection.o -MD -MP -MF $(DEPDIR)/minecraftd-connection.Tpo -c -o minecraftd-connection.o `test -f 'connection.cpp' || echo '$(srcdir)/'`connection.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-connection.Tpo $(DEPDIR)/minecraftd-connection.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='connection.cpp' object='minecraftd-connection.o' libtool=no @AMDEPBACKSLASH@
+minecraftd-ServerProcessBuf.o: ServerProcessBuf.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-ServerProcessBuf.o -MD -MP -MF $(DEPDIR)/minecraftd-ServerProcessBuf.Tpo -c -o minecraftd-ServerProcessBuf.o `test -f 'ServerProcessBuf.cpp' || echo '$(srcdir)/'`ServerProcessBuf.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-ServerProcessBuf.Tpo $(DEPDIR)/minecraftd-ServerProcessBuf.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='ServerProcessBuf.cpp' object='minecraftd-ServerProcessBuf.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-connection.o `test -f 'connection.cpp' || echo '$(srcdir)/'`connection.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-ServerProcessBuf.o `test -f 'ServerProcessBuf.cpp' || echo '$(srcdir)/'`ServerProcessBuf.cpp
 
-minecraftd-connection.obj: connection.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-connection.obj -MD -MP -MF $(DEPDIR)/minecraftd-connection.Tpo -c -o minecraftd-connection.obj `if test -f 'connection.cpp'; then $(CYGPATH_W) 'connection.cpp'; else $(CYGPATH_W) '$(srcdir)/connection.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-connection.Tpo $(DEPDIR)/minecraftd-connection.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='connection.cpp' object='minecraftd-connection.obj' libtool=no @AMDEPBACKSLASH@
+minecraftd-ServerProcessBuf.obj: ServerProcessBuf.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-ServerProcessBuf.obj -MD -MP -MF $(DEPDIR)/minecraftd-ServerProcessBuf.Tpo -c -o minecraftd-ServerProcessBuf.obj `if test -f 'ServerProcessBuf.cpp'; then $(CYGPATH_W) 'ServerProcessBuf.cpp'; else $(CYGPATH_W) '$(srcdir)/ServerProcessBuf.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-ServerProcessBuf.Tpo $(DEPDIR)/minecraftd-ServerProcessBuf.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='ServerProcessBuf.cpp' object='minecraftd-ServerProcessBuf.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-connection.obj `if test -f 'connection.cpp'; then $(CYGPATH_W) 'connection.cpp'; else $(CYGPATH_W) '$(srcdir)/connection.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-ServerProcessBuf.obj `if test -f 'ServerProcessBuf.cpp'; then $(CYGPATH_W) 'ServerProcessBuf.cpp'; else $(CYGPATH_W) '$(srcdir)/ServerProcessBuf.cpp'; fi`
 
 minecraftd-server.o: server.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-server.o -MD -MP -MF $(DEPDIR)/minecraftd-server.Tpo -c -o minecraftd-server.o `test -f 'server.cpp' || echo '$(srcdir)/'`server.cpp

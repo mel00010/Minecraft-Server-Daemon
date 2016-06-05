@@ -7,26 +7,29 @@
 #include <string>
 #include <iomanip>
 #include <sys/socket.h>
+#include <signal.h>
+#include <unistd.h>
 #include <sys/un.h>
 #include <event2/event.h>
+void sigint_handler(int sig)
+{
+	wait();
+	signal(SIGINT, SIG_DFL);
+	kill(getpid(), SIGINT);
+}
 struct cb_data
 {
-	std::vector<Server*>* servers;
+	std::vector<MinecraftServerService::Server*>* servers;
 	log4cpp::Category& root;
 };
-void mainLoop (std::vector<Server*>* servers, log4cpp::Category& root, int controlSocket, struct event_base* base) 
+void mainLoop (std::vector<MinecraftServerService::Server*>* servers, log4cpp::Category& root, int controlSocket, struct event_base* base) 
 {
 	root.info("Starting main loop");
-	struct event *ev1;
-	//~ struct event *ev2;
+	struct event *event;
 	cb_data _data{servers, root};
 	cb_data* data = &_data;
-	ev1 = event_new(base, controlSocket, EV_READ|EV_PERSIST|EV_ET, recieveCommand, data);
-	//~ ev2 = event_new(base, controlSocket, EV_WRITE|EV_PERSIST, wrt, recieveCommand
-		//~ (char*)"Writing event");
-
-	event_add(ev1, NULL);
-	//~ event_add(ev2, NULL);
+	event = event_new(base, controlSocket, EV_READ|EV_PERSIST|EV_ET, recieveCommand, data);
+	event_add(event, NULL);
 	event_base_dispatch(base);
 }
 void writeToSocket(std::string message, int controlSocket, log4cpp::Category& root)
@@ -55,7 +58,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 	int controlSocket = accept(_controlSocket, (struct sockaddr *) &peer_addr,
                  &peer_addr_size);
 	struct cb_data *data = (cb_data *)arg;
-	std::vector<Server*>* servers = data->servers;
+	std::vector<MinecraftServerService::Server*>* servers = data->servers;
 	log4cpp::Category& root = data->root;
 	int rc;
 	char buf[4];
@@ -85,7 +88,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			line[rc] = '\0';
 			std::string serverRequested(line);
 			root.debug("Server name recieved");
-			for( Server* i : *servers) {
+			for( MinecraftServerService::Server* i : *servers) {
 				root.debug(i->serverName);
 				if (i->serverName == serverRequested) {
 					i->startServer();
@@ -96,7 +99,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			}
 		} else if (command == "startAll") {
 			root.debug("Command recieved:  startAll");
-			for( Server* i : *servers) {
+			for( MinecraftServerService::Server* i : *servers) {
 				i->startServer();
 			}
 			writeToSocket("success", controlSocket, root);
@@ -110,28 +113,28 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			line[rc] = '\0';
 			std::string serverRequested(line);
 			root.debug("Server name recieved");
-			for( Server* i : *servers) {
+			for( MinecraftServerService::Server* i : *servers) {
 				root.debug(i->serverName);
 				if (i->serverName == serverRequested) {
 					root.debug("Found server");
-					if (i->running)
-					{
+					//~ if (!i->getStream()->rdbuf()->exited())
+					//~ {
 						i->stopServer();
-						if (!i->running)
-						{
+						//~ if (i->getStream()->rdbuf()->exited())
+						//~ {
 							writeToSocket("success", controlSocket, root);
-						} else {
-							writeToSocket("failure", controlSocket, root);
-						}
+						//~ } else {
+							//~ writeToSocket("failure", controlSocket, root);
+						//~ }
 						break;
-					} else {
-						writeToSocket(i->serverName+"not running", controlSocket, root);
-					}
+					//~ } else {
+						//~ writeToSocket(i->serverName+"not running", controlSocket, root);
+					//~ }
 				}
 			}
 		} else if (command == "stopAll") {
 			root.debug("Command recieved:  stopAll");
-			for( Server* i : *servers) {
+			for( MinecraftServerService::Server* i : *servers) {
 				i->stopServer();
 			}
 			writeToSocket("success", controlSocket, root);
@@ -145,7 +148,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			line[rc] = '\0';
 			std::string serverRequested(line);
 			root.debug("Server name recieved");
-			for( Server* i : *servers) {
+			for( MinecraftServerService::Server* i : *servers) {
 				root.debug(i->serverName);
 				if (i->serverName == serverRequested) {
 					i->restartServer();
@@ -155,7 +158,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			}
 		} else if (command == "restartAll") {
 			root.debug("Command recieved:  restartAll");
-			for( Server* i : *servers) {
+			for( MinecraftServerService::Server* i : *servers) {
 				i->restartServer();
 			}
 			writeToSocket("success", controlSocket, root);
@@ -168,7 +171,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			line[rc] = '\0';
 			std::string serverRequested(line);
 			root.debug("Server name recieved");
-			for( Server* i : *servers) {
+			for( MinecraftServerService::Server* i : *servers) {
 				root.debug(i->serverName);
 				if (i->serverName == serverRequested) {
 					root.warn("Status not implemented yet");
@@ -178,7 +181,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 		} else if (command == "listServers") {
 			root.debug("Command recieved:  listServers");
 			std::string serverList;
-			for( Server* i : *servers) {
+			for( MinecraftServerService::Server* i : *servers) {
 				root.debug(i->serverName);
 				serverList = serverList+i->serverName + "\n";
 			}
@@ -194,7 +197,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			std::string serverRequested(line);
 			root.debug(serverRequested);
 			root.debug("Server name recieved");
-			for( Server* i : *servers) {
+			for( MinecraftServerService::Server* i : *servers) {
 				root.debug(i->serverName);
 				if (i->serverName == serverRequested) {
 					root.debug("Found server");
@@ -222,7 +225,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			line[rc] = '\0';
 			std::string serverRequested(line);
 			root.debug("Server name recieved");
-			for( Server* i : *servers) {
+			for( MinecraftServerService::Server* i : *servers) {
 				root.debug(i->serverName);
 				if (i->serverName == serverRequested) {
 					i->listOnlinePlayers();
@@ -239,7 +242,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			line[rc] = '\0';
 			std::string serverRequested(line);
 			root.debug("Server name recieved");
-			for( Server* i : *servers) {
+			for( MinecraftServerService::Server* i : *servers) {
 				root.debug(i->serverName);
 				if (i->serverName == serverRequested) {
 					rc=recv(controlSocket,buf,4,0);
@@ -265,7 +268,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			line[rc] = '\0';
 			std::string serverRequested(line);
 			root.debug("Server name recieved");
-			for( Server* i : *servers) {
+			for( MinecraftServerService::Server* i : *servers) {
 				root.debug(i->serverName);
 				if (i->serverName == serverRequested) {
 					i->updateServer();
@@ -275,7 +278,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			}
 		} else if (command == "updateAll") {
 			root.debug("Command recieved:  updateAll");
-			for( Server* i : *servers) {
+			for( MinecraftServerService::Server* i : *servers) {
 				i->updateServer();
 			}
 			writeToSocket("success", controlSocket, root);
@@ -289,7 +292,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			line[rc] = '\0';
 			std::string serverRequested(line);
 			root.debug("Server name recieved");
-			for( Server* i : *servers) {
+			for( MinecraftServerService::Server* i : *servers) {
 				if (i->serverName == serverRequested) {
 					i->backupServer();
 					writeToSocket("success", controlSocket, root);
@@ -298,14 +301,14 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			}
 		} else if (command == "backupAll") {
 			root.debug("Command recieved:  backupAll");
-			for( Server* i : *servers) {
+			for( MinecraftServerService::Server* i : *servers) {
 				i->backupServer();
 			}
 			writeToSocket("success", controlSocket, root);
 		} else if (command == "stopDaemon") {
 			root.debug("Command recieved:  stopDaemon");
 			std::string serverList;
-			for( Server* i : *servers) {
+			for( MinecraftServerService::Server* i : *servers) {
 				root.debug(i->serverName);
 				i->stopServer();
 			}

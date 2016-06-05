@@ -1,9 +1,10 @@
 #ifndef SERVER_H
 #define SERVER_H
-#include "connection.h"
+#include "ServerStream.h"
 #include "log4cpp/Category.hh"
 #include <string>
 #include <time.h>
+namespace MinecraftServerService {
 
 class Server
 {
@@ -15,8 +16,7 @@ class Server
 			std::string backupPath,
 			std::vector<std::string> worldsToBackup,
 			std::vector<std::string> javaArgs, 
-			std::vector<std::string> serverOptions,
-			struct event_base *base
+			std::vector<std::string> serverOptions
 		);
 		virtual ~Server();
 		void updateServer();
@@ -31,9 +31,11 @@ class Server
 		void sendCommand(std::string command);
 		void updateServer(std::string serverPath, std::string serverJarName, std::string serverAccount);
 		void backupServer(std::string serverPath, std::string serverAccount, std::string backupPath, std::vector<std::string> worldsToBackup);
+		ServerStream* getStream();
 		std::string serverName;
-		volatile bool running = false;
 	protected:
+		//~ std::string getOutput(int timeout, int lines);
+		void logger();
 		std::string serverPath;
 		std::string serverJarName;
 		std::string serverAccount;
@@ -44,9 +46,9 @@ class Server
 		std::vector<std::string> worldsToBackup;
 		std::vector<std::string> javaArgs;
 		std::vector<std::string> serverOptions;
-		Connection* connection = nullptr;
+		std::iostream* serverProcess = nullptr;
 		log4cpp::Category* log = nullptr;
-		struct event_base *event_base;
 };
+}
 #endif /* SERVER_H */
 

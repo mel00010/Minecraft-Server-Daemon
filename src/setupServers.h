@@ -3,5 +3,5 @@
 #include "server.h"
 #include <vector>
 #include <json/json.h>
-std::vector<Server*>* setupServers(Json::Value* _config, struct event_base *base);
+std::vector<MinecraftServerService::Server*>* setupServers(Json::Value* _config);
 #endif /* SETUPSERVERS_H */

@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <string>
 #include <json/json.h>
-
 class Parser
 {
 	public:

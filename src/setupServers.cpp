@@ -5,10 +5,9 @@
 #include <string>
 #include "log4cpp/Category.hh"
 #include <log4cpp/PropertyConfigurator.hh>
-
-std::vector<Server*>* setupServers(Json::Value* _config, struct event_base *base) {
+std::vector<MinecraftServerService::Server*>* setupServers(Json::Value* _config) {
 	Json::Value config = *_config;
-	std::vector<Server*>* servers = new std::vector<Server*>;
+	std::vector<MinecraftServerService::Server*>* servers = new std::vector<MinecraftServerService::Server*>;
 	for (Json::Value::iterator itr = config["servers"].begin(); itr != config["servers"].end(); itr++)
 	{
 		
@@ -39,7 +38,7 @@ std::vector<Server*>* setupServers(Json::Value* _config, struct event_base *base
 			Json::Value option = (*itr);
 			serverOptions.push_back(option.asString());
 		}
-		servers->push_back(new Server(serverName ,serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, backupPath, worldsToBackup, javaArgs, serverOptions, base));
+		servers->push_back(new MinecraftServerService::Server(serverName ,serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, backupPath, worldsToBackup, javaArgs, serverOptions));
 		servers->back()->startServer();
 	}
 	return servers;
