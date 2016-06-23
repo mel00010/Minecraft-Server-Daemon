@@ -100,18 +100,11 @@ void SpigotServer::startServer()
 	log->debug("SpigotServer::startServer");
 	if (!isRunning())
 	{
-		//~ try {
-			startServerWithArgs(serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, javaArgs, serverOptions);
-			//~ std::thread outputListenerThread(&Server::outputListenerThread, serverProcess, outputListeners, log, 1);
-			//~ outputListenerThread.detach();
-			//~ std::function<void(size_t, std::stringstream*, log4cpp::Category*)> f = std::bind( &SpigotServer::logger, *this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
-			//~ OutputListener outputListener(1, std::string("logger"), true, f);
-			//~ addOutputListener(outputListener);
-		//~ } 
-		//~ catch (...) {
-			//~ log->fatal("Exception occurred while starting server.  Exiting daemon. ");
-			//~ exit(1);
-		//~ }
+		chdir(serverPath.c_str());
+		launchServerProcess(serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, javaArgs, serverOptions);
+		log->debug("Launched server process");			
+		std::thread outputListenerThread(&Server::outputListenerThread, serverPID, childProcessStdout[PIPE_READ], base, log);
+		outputListenerThread.detach();
 	}
 }
 void SpigotServer::stopServer()

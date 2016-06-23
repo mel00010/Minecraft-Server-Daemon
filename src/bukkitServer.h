@@ -32,7 +32,10 @@ class BukkitServer : public Server
 		std::string listOnlinePlayers();
 		void listOnlinePlayers(std::string playerName);
 		void sendCommand(std::string command);
+	
+	public:
 		std::string serverName;
+	
 	protected:
 		void logger(size_t linesRequested, std::stringstream* output, log4cpp::Category* log);
 		void listOnlinePlayersCallback(size_t linesRequested, std::stringstream* output, log4cpp::Category* log);

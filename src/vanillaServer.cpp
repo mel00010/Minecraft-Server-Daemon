@@ -94,14 +94,14 @@ void VanillaServer::backupServer(std::string _backupPath)
 void VanillaServer::startServer()
 {
 	log->debug("VanillaServer::startServer");
-	//~ if (!isRunning())
-	//~ {
+	if (!isRunning())
+	{
 		chdir(serverPath.c_str());
 		launchServerProcess(serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, javaArgs, serverOptions);
 		log->debug("Launched server process");			
 		std::thread outputListenerThread(&Server::outputListenerThread, serverPID, childProcessStdout[PIPE_READ], base, log);
 		outputListenerThread.detach();
-	//~ }
+	}
 }
 void VanillaServer::stopServer()
 {
@@ -116,7 +116,6 @@ void VanillaServer::stopServer()
 		*this << "say Saving map..." << std::endl;
 		*this << "save-all" << std::endl;
 		*this << "stop" << std::endl;
-		//~ sleep(10);
 		while(isRunning()) {
 			sleep(0.5);
 		}
@@ -132,7 +131,6 @@ void VanillaServer::serverStatus()
 void VanillaServer::restartServer()
 {
 	log->debug("VanillaServer::restartServer");
-	//~ if (isRunning() && !serverProcess->rdbuf()->exited())
 	if (isRunning())
 	{
 		stopServer();
@@ -142,7 +140,6 @@ void VanillaServer::restartServer()
 void VanillaServer::sendCommand(std::string command)
 {
 	log->debug("VanillaServer::sendCommand");
-	//~ if (isRunning() && !serverProcess->rdbuf()->exited())
 	if (isRunning())
 	{
 		*this << command << std::endl;

@@ -40,20 +40,31 @@ class Server
 		virtual void backupServer(std::string backupPath) = 0;
 		virtual void serverStatus() = 0;
 		virtual void startServer() = 0;
-		void startServerWithArgs(
-			std::string serverPath, std::string serverJarName, std::string serverAccount,
-			int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
-			std::vector<std::string> javaArgs, std::vector<std::string> serverOptions
-		)
+		virtual void stopServer() = 0;
+		virtual void restartServer() = 0;
+		virtual void reloadServer() = 0;
+		virtual std::string listOnlinePlayers() = 0;
+		virtual void listOnlinePlayers(std::string playerName) = 0;
+		virtual void sendCommand(std::string command) = 0;
+	
+	public:	
+		std::string serverName;
+		
+	protected:
+		//~ std::vector<OutputListener>* outputListeners = nullptr;
+		int serverPID = -1;
+		int childProcessUID;
+		int childProcessGID;
+		int childProcessStdin[2];
+		int childProcessStdout[2];
+		log4cpp::Category* log;
+		struct event_base* base = event_base_new();
+		
+	public:
+		enum PIPE_OPS 
 		{
-			log->info("Starting " + serverJarName);
-			//~ if (!isRunning()){
-				chdir(serverPath.c_str());
-				launchServerProcess(serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, javaArgs, serverOptions);
-				log->debug("Launched server process");
-			//~ } else {
-				//~ log->debug("Server process already running");
-			//~ }
+			PIPE_READ = 0,
+			PIPE_WRITE = 1,
 		};
 		struct eventData
 		{
@@ -65,28 +76,24 @@ class Server
 			uintptr_t   ptr;
 			int         size;
 		} token_t;
-		virtual void stopServer() = 0;
-		virtual void restartServer() = 0;
-		virtual void reloadServer() = 0;
-		virtual std::string listOnlinePlayers() = 0;
-		virtual void listOnlinePlayers(std::string playerName) = 0;
-		virtual void sendCommand(std::string command) = 0;
-		typedef std::streambuf::traits_type traits_type;
-		std::string serverName;
-		enum PIPE_OPS 
-		{
-			PIPE_READ = 0,
-			PIPE_WRITE = 1,
-		};
+		typedef Server& (*ServerManipulator)(Server&);
+		typedef std::basic_ostream<char, std::char_traits<char> > CoutType;
+		typedef CoutType& (*StandardEndLine)(CoutType&);
+	public:
 		bool isRunning() {
-			while(waitpid(-1, 0, WNOHANG) > 0) {
-				// Wait for defunct....
+			if(serverPID != -1)
+			{
+				while(waitpid(-1, 0, WNOHANG) > 0) {
+					// Wait for defunct....
+				}
+				if (0 == kill(serverPID, 0)){
+					return 1; // Process exists
+				} else {
+					return 0;
+				}
+			} else {
+				return 0;
 			}
-		
-			if (0 == kill(serverPID, 0))
-				return 1; // Process exists
-		
-			return 0;
 		};
 		template <typename T>
 		Server& operator<<(const T& x)
@@ -107,15 +114,6 @@ class Server
 			write(childProcessStdin[PIPE_WRITE], s.c_str(), s.size());
 			return in;
 		}
-		//~ // function that takes a custom stream, and returns it
-		typedef Server& (*ServerManipulator)(Server&);
-	
-		// this is the type of std::cout
-		typedef std::basic_ostream<char, std::char_traits<char> > CoutType;
-	
-		// this is the function signature of std::endl
-		typedef CoutType& (*StandardEndLine)(CoutType&);
-	
 		// define an operator<< to take in std::endl
 		Server& operator<<(StandardEndLine manip)
 		{
@@ -123,8 +121,9 @@ class Server
 			write(childProcessStdin[PIPE_WRITE], "\n", sizeof("\n"));
 			return *this;
 		}
+		
 	protected:
-		static void outputListenerThread(int serverPID, int childProcessStdout, struct event_base* base, log4cpp::Category* log) {
+				static void outputListenerThread(int serverPID, int childProcessStdout, struct event_base* base, log4cpp::Category* log) {
 			{
 				log->debug("Server::outputListenerThread");
 				struct event *evfifo;
@@ -141,7 +140,7 @@ class Server
 			len = read(fd, buf, sizeof(buf) - 1);
 			//~ ((eventData*)arg)->log->info("Read childProcessStdout into buf");
 			if (len <= 0) {
-				if (len == -1)
+				if (len == -1) {
 					((eventData*)arg)->log->fatal("Error reading");
 				} else if (len == 0) {
 					((eventData*)arg)->log->fatal("Connection closed");
@@ -284,14 +283,6 @@ class Server
 				close(childProcessStdout[PIPE_WRITE]);
 			}
 		};
-		//~ std::vector<OutputListener>* outputListeners = nullptr;
-		int serverPID;
-		int childProcessUID;
-		int childProcessGID;
-		int childProcessStdin[2];
-		int childProcessStdout[2];
-		log4cpp::Category* log;
-		struct event_base* base = event_base_new();
 };
 }
 #endif /* SERVER_H */
