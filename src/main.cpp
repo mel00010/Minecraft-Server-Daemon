@@ -50,21 +50,21 @@ int main(void) {
 	//~ std::string initFileName = "/etc/minecraft/log4cpp.properties";
 	log4cpp::PropertyConfigurator::configure("/etc/minecraft/log4cpp.properties");
 
-	log4cpp::Category& root = log4cpp::Category::getRoot();
+	log4cpp::Category& rootLog = log4cpp::Category::getRoot();
 	
 	/* Create a new SID for the child process */
 	#if DEBUGGING == 0
 	sid = setsid();
 	if (sid < 0) {
 		//~ /* Log the failure */
-		root.fatal("Failure creating new sessionID for daemon");
+		rootLog.fatal("Failure creating new sessionID for daemon");
 		exit(EXIT_FAILURE);
 	}
 	#endif
 	/* Change the current working directory */
 	if ((chdir("/")) < 0) {
 		/* Log the failure */
-		root.fatal("Failure changing working directory");
+		rootLog.fatal("Failure changing working directory");
 		exit(EXIT_FAILURE);
 	}
 	#if DEBUGGING == 0
@@ -78,11 +78,11 @@ int main(void) {
 	
 	// Read from config file and set up servers
 	struct event_base* base = event_base_new();
-	int controlSocket = createSocket(root);
+	int controlSocket = createSocket(rootLog);
 	std::vector<MinecraftServerService::Server*>* servers;
-	servers = setupServers(&config);
+	servers = setupServers(&config, rootLog);
 	/* The Big Loop */
-	mainLoop(servers, root, controlSocket, base);
+	mainLoop(servers, rootLog, controlSocket, base);
 	
 	exit(EXIT_SUCCESS);
 }
