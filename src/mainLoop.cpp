@@ -6,6 +6,8 @@
 #include "log4cpp/Category.hh"
 #include <string>
 #include <iomanip>
+#include <sys/types.h>
+#include <sys/wait.h>
 #include <sys/socket.h>
 #include <signal.h>
 #include <unistd.h>
@@ -13,7 +15,7 @@
 #include <event2/event.h>
 void sigint_handler(int sig)
 {
-	wait();
+	wait(NULL);
 	signal(SIGINT, SIG_DFL);
 	kill(getpid(), SIGINT);
 }

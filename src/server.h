@@ -1,6 +1,6 @@
 #ifndef SERVER_H
 #define SERVER_H
-#include "ServerStream.h"
+//~ #include "ServerStream.h"
 #include "outputListener.h"
 #include "log4cpp/Category.hh"
 #include <string>
@@ -9,6 +9,26 @@
 #include <thread>
 #include <mutex>
 #include <functional>
+#include <cstdlib>
+#include <iosfwd>
+#include <cctype>
+#include <algorithm>
+#include <iterator>
+#include <cstddef>
+#include <unistd.h>
+#include <ostream>
+#include <functional>
+#include <cassert>
+#include <cstring>
+#include <iostream>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <pwd.h>
+#include <vector>
+#include <algorithm>
 #include <time.h>
 namespace MinecraftServerService {
 class Server
@@ -25,7 +45,23 @@ class Server
 		virtual std::string listOnlinePlayers() = 0;
 		virtual void listOnlinePlayers(std::string playerName) = 0;
 		virtual void sendCommand(std::string command) = 0;
+		typedef std::streambuf::traits_type traits_type;
+		enum PIPE_OPS 
+		{
+			PIPE_READ = 0,
+			PIPE_WRITE = 1,
+		};
 		std::string serverName;
+		bool isRunning() {
+			while(waitpid(-1, 0, WNOHANG) > 0) {
+		        // Wait for defunct....
+		    }
+		
+		    if (0 == kill(server, 0))
+		        return 1; // Process exists
+		
+		    return 0;
+		};
 	protected:
 		void addOutputListener(OutputListener& outputListener)
 		{
@@ -113,7 +149,7 @@ class Server
 			chdir(serverPath.c_str());
 			launchServerProcess(serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, javaArgs, serverOptions);
 			log->debug("Launched server process");
-		}
+		};
 		void getUIDAndGIDFromUsername(const char* user) {
 		    struct passwd *pwd = new passwd[sizeof(struct passwd)]();
 		    size_t buffer_len = sysconf(_SC_GETPW_R_SIZE_MAX) * sizeof(char);
@@ -126,10 +162,12 @@ class Server
 			}
 		    childProcessUID = pwd->pw_uid;
 		    childProcessGID = pwd->pw_gid;
-		}
+		};
 		void launchServerProcess(std::string serverPath, std::string serverJarName, std::string serverAccount,
 			int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
-			std::vector<std::string> javaArgs, std::vector<std::string> serverOptions) {
+			std::vector<std::string> javaArgs, std::vector<std::string> serverOptions
+		) 
+		{
 			int result;
 			log->debug("ServerProcessBuf::createChild");
 			getUIDAndGIDFromUsername((char*)serverAccount.c_str());
@@ -223,30 +261,14 @@ class Server
 				close(childProcessStdout[PIPE_READ]);
 				close(childProcessStdout[PIPE_WRITE]);
 			}
-		}
-		bool isRunning() {
-			while(waitpid(-1, 0, WNOHANG) > 0) {
-		        // Wait for defunct....
-		    }
-		
-		    if (0 == kill(server, 0))
-		        return 1; // Process exists
-		
-		    return 0;
-		}
-		void stopServer() {
-			//~ if(!exited()) {
-				log->notice("Server shutting down");
-				while(!exited()) {}
-				log->notice("Server stopped.");
-			//~ }
-		}
+		};
 		std::shared_ptr<std::vector<OutputListener>> outputListeners = nullptr;
 		int server;
         int childProcessUID;
         int childProcessGID;
         int childProcessStdin[2];
 		int childProcessStdout[2];
+		log4cpp::Category* log = nullptr;
 };
 
 }

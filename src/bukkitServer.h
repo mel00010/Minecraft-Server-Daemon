@@ -1,7 +1,6 @@
-#ifndef VANILLA_SERVER_H
-#define VANILLA_SERVER_H
+#ifndef BUKKIT_SERVER_H
+#define BUKKIT_SERVER_H
 #include "server.h"
-#include "outputListener.h"
 #include "ServerStream.h"
 #include "log4cpp/Category.hh"
 #include <string>
@@ -10,10 +9,10 @@
 #include <thread>
 #include <time.h>
 namespace MinecraftServerService {
-class VanillaServer : public Server
+class BukkitServer : public Server
 {
 	public:
-		VanillaServer(
+		BukkitServer(
 			std::string serverName,
 			std::string serverPath, std::string serverJarName, std::string serverAccount,
 			int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
@@ -22,7 +21,7 @@ class VanillaServer : public Server
 			std::vector<std::string> javaArgs, 
 			std::vector<std::string> serverOptions
 		);
-		virtual ~VanillaServer();
+		virtual ~BukkitServer();
 		void updateServer();
 		void backupServer();
 		void backupServer(std::string backupPath);
@@ -30,14 +29,13 @@ class VanillaServer : public Server
 		void startServer();
 		void stopServer();
 		void restartServer();
-		void reloadServer() {};
+		void reloadServer();
 		std::string listOnlinePlayers();
 		void listOnlinePlayers(std::string playerName);
 		void sendCommand(std::string command);
 		std::string serverName;
 	protected:
 		void logger(size_t linesRequested, std::stringstream* output, log4cpp::Category* log);
-		void listOnlinePlayersCallback(size_t linesRequested, std::stringstream* output, log4cpp::Category* log);
 		std::string serverPath;
 		std::string serverJarName;
 		std::string serverAccount;
@@ -49,7 +47,7 @@ class VanillaServer : public Server
 		std::vector<std::string> javaArgs;
 		std::vector<std::string> serverOptions;
 		std::iostream* serverProcess = nullptr;
-		std::stringstream* callbackOutput = nullptr;
+		log4cpp::Category* log = nullptr;
 };
 }
-#endif /* VANILLA_SERVER_H */
+#endif /* BUKKIT_SERVER_H */

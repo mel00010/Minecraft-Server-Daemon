@@ -98,3 +98,4 @@ int ServerProcessBuf::sync(){
     }
     return this->pptr() != this->epptr()? 0: -1;
 }
+}
