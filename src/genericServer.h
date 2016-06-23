@@ -1,7 +1,6 @@
-#ifndef VANILLA_SERVER_H
-#define VANILLA_SERVER_H
+#ifndef GENERIC_SERVER_H
+#define GENERIC_SERVER_H
 #include "server.h"
-#include "outputListener.h"
 #include "log4cpp/Category.hh"
 #include <string>
 #include <sstream>
@@ -9,10 +8,10 @@
 #include <thread>
 #include <time.h>
 namespace MinecraftServerService {
-class VanillaServer : public Server
+class GenericServer : public Server
 {
 	public:
-		VanillaServer(
+		GenericServer(
 			std::string serverName,
 			std::string serverPath, std::string serverJarName, std::string serverAccount,
 			int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
@@ -21,7 +20,7 @@ class VanillaServer : public Server
 			std::vector<std::string> javaArgs, 
 			std::vector<std::string> serverOptions
 		);
-		virtual ~VanillaServer();
+		virtual ~GenericServer();
 		void updateServer();
 		void backupServer();
 		void backupServer(std::string backupPath);
@@ -29,14 +28,13 @@ class VanillaServer : public Server
 		void startServer();
 		void stopServer();
 		void restartServer();
-		void reloadServer() {};
-		std::string listOnlinePlayers();
-		void listOnlinePlayers(std::string playerName);
+		void reloadServer() {}
+		std::string listOnlinePlayers() {}
+		void listOnlinePlayers(std::string playerName) {}
 		void sendCommand(std::string command);
 		std::string serverName;
 	protected:
 		void logger(size_t linesRequested, std::stringstream* output, log4cpp::Category* log);
-		void listOnlinePlayersCallback(size_t linesRequested, std::stringstream* output, log4cpp::Category* log);
 		std::string serverPath;
 		std::string serverJarName;
 		std::string serverAccount;
@@ -49,4 +47,4 @@ class VanillaServer : public Server
 		std::vector<std::string> serverOptions;
 };
 }
-#endif /* VANILLA_SERVER_H */
+#endif /* GENERIC_SERVER_H */

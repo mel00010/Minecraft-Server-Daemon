@@ -1,4 +1,4 @@
-#include "bukkitServer.h"
+#include "genericServer.h"
 #include "log4cpp/Category.hh"
 #include <sstream>
 #include <string>
@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include <functional>
 namespace MinecraftServerService {
-BukkitServer::BukkitServer( std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount,
+GenericServer::GenericServer( std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount,
 				int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
 				std::string backupPath, std::vector<std::string> worldsToBackup, std::vector<std::string> javaArgs, 
 				std::vector<std::string> serverOptions) 
@@ -18,21 +18,21 @@ BukkitServer::BukkitServer( std::string serverName, std::string serverPath, std:
 {
 	log = &log4cpp::Category::getInstance(serverName);
 	log->info(serverJarName);
-	log->debug("BukkitServer::BukkitServer");
+	log->debug("GenericServer::GenericServer");
 }
-BukkitServer::~BukkitServer()
+GenericServer::~GenericServer()
 {
-	log->debug("BukkitServer::~BukkitServer");
+	log->debug("GenericServer::~GenericServer");
 }
-void BukkitServer::updateServer()
+void GenericServer::updateServer()
 {
-	log->debug("BukkitServer::updateServer");
+	log->debug("GenericServer::updateServer");
 }
-void BukkitServer::backupServer()
+void GenericServer::backupServer()
 {
-	log->debug("BukkitServer::backupServer");
+	log->debug("GenericServer::backupServer");
 	log->info("Starting backup");
-	*this << "say SERVER BACKUP STARTING. BukkitServer going readonly..." << std::endl;
+	*this << "say SERVER BACKUP STARTING. GenericServer going readonly..." << std::endl;
 	*this << "save-off" << std::endl;
 	*this << "save-all" << std::endl;
 	time_t now = time(0);
@@ -56,14 +56,14 @@ void BukkitServer::backupServer()
 	log->info(copyJarCommand);
 	system(copyJarCommand.c_str());
 	*this << "save-on" << std::endl;
-	*this << "say SERVER BACKUP ENDED. BukkitServer going read-write..." << std::endl;
+	*this << "say SERVER BACKUP ENDED. GenericServer going read-write..." << std::endl;
 	log->info("Backup finished");
 }
-void BukkitServer::backupServer(std::string _backupPath)
+void GenericServer::backupServer(std::string _backupPath)
 {
-	log->debug("BukkitServer::backupServer");
+	log->debug("GenericServer::backupServer");
 	log->info("Starting backup");
-	*this << "say SERVER BACKUP STARTING. BukkitServer going readonly..." << std::endl;
+	*this << "say SERVER BACKUP STARTING. GenericServer going readonly..." << std::endl;
 	*this << "save-off" << std::endl;
 	*this << "save-all" << std::endl;
 	time_t now = time(0);
@@ -88,23 +88,19 @@ void BukkitServer::backupServer(std::string _backupPath)
 	log->info(copyJarCommand);
 	system(copyJarCommand.c_str());
 	*this << "save-on" << std::endl;
-	*this << "say SERVER BACKUP ENDED. BukkitServer going read-write..." << std::endl;
+	*this << "say SERVER BACKUP ENDED. GenericServer going read-write..." << std::endl;
 	log->info("Backup finished");
 }
-void BukkitServer::reloadServer()
+void GenericServer::startServer()
 {
-	*this << "reload" << std::endl;
-}
-void BukkitServer::startServer()
-{
-	log->debug("BukkitServer::startServer");
+	log->debug("GenericServer::startServer");
 	if (!isRunning())
 	{
 		//~ try {
 			startServerWithArgs(serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, javaArgs, serverOptions);
 			//~ std::thread outputListenerThread(&Server::outputListenerThread, serverProcess, outputListeners, log, 1);
 			//~ outputListenerThread.detach();
-			//~ std::function<void(size_t, std::stringstream*, log4cpp::Category*)> f = std::bind( &BukkitServer::logger, *this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
+			//~ std::function<void(size_t, std::stringstream*, log4cpp::Category*)> f = std::bind( &GenericServer::logger, *this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
 			//~ OutputListener outputListener(1, std::string("logger"), true, f);
 			//~ addOutputListener(outputListener);
 		//~ } 
@@ -114,9 +110,9 @@ void BukkitServer::startServer()
 		//~ }
 	}
 }
-void BukkitServer::stopServer()
+void GenericServer::stopServer()
 {
-	log->debug("BukkitServer::stopServer");
+	log->debug("GenericServer::stopServer");
 	if (isRunning())
 	{
 		*this << "say SERVER SHUTTING DOWN IN 10 SECONDS." << std::endl;
@@ -136,13 +132,13 @@ void BukkitServer::stopServer()
 		log->info("Server already stopped");
 	}
 }
-void BukkitServer::serverStatus()
+void GenericServer::serverStatus()
 {
-	log->debug("BukkitServer::serverStatus");
+	log->debug("GenericServer::serverStatus");
 }
-void BukkitServer::restartServer()
+void GenericServer::restartServer()
 {
-	log->debug("BukkitServer::restartServer");
+	log->debug("GenericServer::restartServer");
 	//~ if (isRunning() && !serverProcess->rdbuf()->exited())
 	if (isRunning())
 	{
@@ -150,83 +146,13 @@ void BukkitServer::restartServer()
 		startServer();
 	}
 }
-void BukkitServer::sendCommand(std::string command)
+void GenericServer::sendCommand(std::string command)
 {
-	log->debug("BukkitServer::sendCommand");
+	log->debug("GenericServer::sendCommand");
 	//~ if (isRunning() && !serverProcess->rdbuf()->exited())
 	if (isRunning())
 	{
 		*this << command << std::endl;
 	}
-}
-
-std::string BukkitServer::listOnlinePlayers()
-{
-	//~ log->debug("BukkitServer::listOnlinePlayers");
-	//~ std::function<void(size_t, std::stringstream*, log4cpp::Category*)> f = std::bind( &BukkitServer::listOnlinePlayersCallback, *this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
-	//~ OutputListener outputListener(10, std::string("listOnlinePlayers"), false, f);
-	//~ addOutputListener(outputListener);
-	//~ *this << "list" << std::endl;
-	//~ while(callbackOutput == nullptr) { sleep(1); }
-	//~ if (callbackOutput->rdbuf()->in_avail() != 0) {
-		//~ log->info(callbackOutput->str());
-		//~ std::string returnValue(callbackOutput->str());
-		//~ delete callbackOutput;
-		//~ return returnValue;
-	//~ } else {
-		//~ log->info("No one is on the server");
-		//~ std::string returnValue = "No one is on the server";
-		//~ delete callbackOutput;
-		//~ return returnValue;
-	//~ }
-}
-void BukkitServer::listOnlinePlayersCallback(size_t linesRequested, std::stringstream* output, log4cpp::Category* log)
-{
-	//~ std::stringbuf *listBuf = output->rdbuf();
-	//~ std::stringstream playersOnline;
-	//~ std::string line;
-	//~ int numPlayers = 0;
-	
-	//~ // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	//~ while (listBuf->in_avail() != 0)
-	//~ {
-		//~ std::getline(*output, line);
-		//~ playersOnline << line << std::endl;
-		//~ numPlayers++;
-	//~ }
-	//~ if (numPlayers != 0) {
-		//~ std::stringstream* _callbackOutput = new std::stringstream();
-		//~ *_callbackOutput << playersOnline.str();
-		//~ callbackOutput=_callbackOutput;
-	//~ } else {
-		//~ std::stringstream* _callbackOutput = new std::stringstream();
-		//~ *_callbackOutput << playersOnline.str();
-		//~ callbackOutput=_callbackOutput;
-	//~ }
-}
-void BukkitServer::listOnlinePlayers(std::string playerName)
-{
-	//~ std::stringstream output;
-	//~ std::string line;
-	//~ int numPlayers = 0;
-	
-	//~ std::stringstream playerList = *this << "list";
-	//~ std::stringbuf *listBuf = playerList.rdbuf();
-	
-	//~ std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	//~ while (listBuf->in_avail() != 0)
-	//~ {
-		//~ getline(playerList, line);
-		//~ if (line != playerName) {
-			//~ output << line << std::endl;
-			//~ numPlayers++;
-		//~ }
-	//~ }
-	//~ if (numPlayers != 0) {
-		//~ std::string outputBuf = output.str();
-		//~ log->info(outputBuf);
-	//~ } else {
-		//~ log->info("No one is on the server");
-	//~ }
 }
 }

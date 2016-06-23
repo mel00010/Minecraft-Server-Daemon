@@ -1,4 +1,4 @@
-#include "bungeecordServer.h"
+#include "spigotServer.h"
 #include "log4cpp/Category.hh"
 #include <sstream>
 #include <string>
@@ -8,29 +8,31 @@
 #include <unistd.h>
 #include <functional>
 namespace MinecraftServerService {
-BungeeCordServer::BungeeCordServer( std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount,
+SpigotServer::SpigotServer( std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount,
 				int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
-				std::string backupPath, std::vector<std::string> javaArgs, std::vector<std::string> serverOptions)
-:	serverName{serverName}, serverPath{serverPath}, serverJarName{serverJarName}, serverAccount{serverAccount}, maxHeapAlloc{maxHeapAlloc},
-				minHeapAlloc{minHeapAlloc}, gcThreadCount{gcThreadCount}, backupPath{backupPath}, javaArgs{javaArgs}, serverOptions{serverOptions}
+				std::string backupPath, std::vector<std::string> worldsToBackup, std::vector<std::string> javaArgs, 
+				std::vector<std::string> serverOptions) 
+:	serverName{serverName}, serverPath{serverPath}, serverJarName{serverJarName}, serverAccount{serverAccount},
+				maxHeapAlloc{maxHeapAlloc}, minHeapAlloc{minHeapAlloc}, gcThreadCount{gcThreadCount}, backupPath{backupPath},
+				worldsToBackup{worldsToBackup}, javaArgs{javaArgs}, serverOptions{serverOptions}
 {
 	log = &log4cpp::Category::getInstance(serverName);
 	log->info(serverJarName);
-	log->debug("BungeeCordServer::BungeeCordServer");
+	log->debug("SpigotServer::SpigotServer");
 }
-BungeeCordServer::~BungeeCordServer()
+SpigotServer::~SpigotServer()
 {
-	log->debug("BungeeCordServer::~BungeeCordServer");
+	log->debug("SpigotServer::~SpigotServer");
 }
-void BungeeCordServer::updateServer()
+void SpigotServer::updateServer()
 {
-	log->debug("BungeeCordServer::updateServer");
+	log->debug("SpigotServer::updateServer");
 }
-void BungeeCordServer::backupServer()
+void SpigotServer::backupServer()
 {
-	log->debug("BungeeCordServer::backupServer");
+	log->debug("SpigotServer::backupServer");
 	log->info("Starting backup");
-	*this << "say SERVER BACKUP STARTING. BungeeCordServer going readonly..." << std::endl;
+	*this << "say SERVER BACKUP STARTING. SpigotServer going readonly..." << std::endl;
 	*this << "save-off" << std::endl;
 	*this << "save-all" << std::endl;
 	time_t now = time(0);
@@ -54,14 +56,14 @@ void BungeeCordServer::backupServer()
 	log->info(copyJarCommand);
 	system(copyJarCommand.c_str());
 	*this << "save-on" << std::endl;
-	*this << "say SERVER BACKUP ENDED. BungeeCordServer going read-write..." << std::endl;
+	*this << "say SERVER BACKUP ENDED. SpigotServer going read-write..." << std::endl;
 	log->info("Backup finished");
 }
-void BungeeCordServer::backupServer(std::string _backupPath)
+void SpigotServer::backupServer(std::string _backupPath)
 {
-	log->debug("BungeeCordServer::backupServer");
+	log->debug("SpigotServer::backupServer");
 	log->info("Starting backup");
-	*this << "say SERVER BACKUP STARTING. BungeeCordServer going readonly..." << std::endl;
+	*this << "say SERVER BACKUP STARTING. SpigotServer going readonly..." << std::endl;
 	*this << "save-off" << std::endl;
 	*this << "save-all" << std::endl;
 	time_t now = time(0);
@@ -86,23 +88,23 @@ void BungeeCordServer::backupServer(std::string _backupPath)
 	log->info(copyJarCommand);
 	system(copyJarCommand.c_str());
 	*this << "save-on" << std::endl;
-	*this << "say SERVER BACKUP ENDED. BungeeCordServer going read-write..." << std::endl;
+	*this << "say SERVER BACKUP ENDED. SpigotServer going read-write..." << std::endl;
 	log->info("Backup finished");
 }
-void BungeeCordServer::reloadServer()
+void SpigotServer::reloadServer()
 {
 	*this << "reload" << std::endl;
 }
-void BungeeCordServer::startServer()
+void SpigotServer::startServer()
 {
-	log->debug("BungeeCordServer::startServer");
+	log->debug("SpigotServer::startServer");
 	if (!isRunning())
 	{
 		//~ try {
 			startServerWithArgs(serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, javaArgs, serverOptions);
 			//~ std::thread outputListenerThread(&Server::outputListenerThread, serverProcess, outputListeners, log, 1);
 			//~ outputListenerThread.detach();
-			//~ std::function<void(size_t, std::stringstream*, log4cpp::Category*)> f = std::bind( &BungeeCordServer::logger, *this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
+			//~ std::function<void(size_t, std::stringstream*, log4cpp::Category*)> f = std::bind( &SpigotServer::logger, *this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
 			//~ OutputListener outputListener(1, std::string("logger"), true, f);
 			//~ addOutputListener(outputListener);
 		//~ } 
@@ -112,9 +114,9 @@ void BungeeCordServer::startServer()
 		//~ }
 	}
 }
-void BungeeCordServer::stopServer()
+void SpigotServer::stopServer()
 {
-	log->debug("BungeeCordServer::stopServer");
+	log->debug("SpigotServer::stopServer");
 	if (isRunning())
 	{
 		*this << "say SERVER SHUTTING DOWN IN 10 SECONDS." << std::endl;
@@ -134,13 +136,13 @@ void BungeeCordServer::stopServer()
 		log->info("Server already stopped");
 	}
 }
-void BungeeCordServer::serverStatus()
+void SpigotServer::serverStatus()
 {
-	log->debug("BungeeCordServer::serverStatus");
+	log->debug("SpigotServer::serverStatus");
 }
-void BungeeCordServer::restartServer()
+void SpigotServer::restartServer()
 {
-	log->debug("BungeeCordServer::restartServer");
+	log->debug("SpigotServer::restartServer");
 	//~ if (isRunning() && !serverProcess->rdbuf()->exited())
 	if (isRunning())
 	{
@@ -148,9 +150,9 @@ void BungeeCordServer::restartServer()
 		startServer();
 	}
 }
-void BungeeCordServer::sendCommand(std::string command)
+void SpigotServer::sendCommand(std::string command)
 {
-	log->debug("BungeeCordServer::sendCommand");
+	log->debug("SpigotServer::sendCommand");
 	//~ if (isRunning() && !serverProcess->rdbuf()->exited())
 	if (isRunning())
 	{
@@ -158,10 +160,10 @@ void BungeeCordServer::sendCommand(std::string command)
 	}
 }
 
-std::string BungeeCordServer::listOnlinePlayers()
+std::string SpigotServer::listOnlinePlayers()
 {
-	//~ log->debug("BungeeCordServer::listOnlinePlayers");
-	//~ std::function<void(size_t, std::stringstream*, log4cpp::Category*)> f = std::bind( &BungeeCordServer::listOnlinePlayersCallback, *this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
+	//~ log->debug("SpigotServer::listOnlinePlayers");
+	//~ std::function<void(size_t, std::stringstream*, log4cpp::Category*)> f = std::bind( &SpigotServer::listOnlinePlayersCallback, *this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
 	//~ OutputListener outputListener(10, std::string("listOnlinePlayers"), false, f);
 	//~ addOutputListener(outputListener);
 	//~ *this << "list" << std::endl;
@@ -178,7 +180,7 @@ std::string BungeeCordServer::listOnlinePlayers()
 		//~ return returnValue;
 	//~ }
 }
-void BungeeCordServer::listOnlinePlayersCallback(size_t linesRequested, std::stringstream* output, log4cpp::Category* log)
+void SpigotServer::listOnlinePlayersCallback(size_t linesRequested, std::stringstream* output, log4cpp::Category* log)
 {
 	//~ std::stringbuf *listBuf = output->rdbuf();
 	//~ std::stringstream playersOnline;
@@ -202,7 +204,7 @@ void BungeeCordServer::listOnlinePlayersCallback(size_t linesRequested, std::str
 		//~ callbackOutput=_callbackOutput;
 	//~ }
 }
-void BungeeCordServer::listOnlinePlayers(std::string playerName)
+void SpigotServer::listOnlinePlayers(std::string playerName)
 {
 	//~ std::stringstream output;
 	//~ std::string line;

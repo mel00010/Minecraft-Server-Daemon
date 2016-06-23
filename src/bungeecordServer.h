@@ -1,7 +1,6 @@
 #ifndef BUNGEECORD_SERVER_H
 #define BUNGEECORD_SERVER_H
 #include "server.h"
-#include "ServerStream.h"
 #include "log4cpp/Category.hh"
 #include <string>
 #include <sstream>
@@ -35,6 +34,7 @@ class BungeeCordServer : public Server
 		std::string serverName;
 	protected:
 		void logger(size_t linesRequested, std::stringstream* output, log4cpp::Category* log);
+		void listOnlinePlayersCallback(size_t linesRequested, std::stringstream* output, log4cpp::Category* log);
 		std::string serverPath;
 		std::string serverJarName;
 		std::string serverAccount;
@@ -42,10 +42,9 @@ class BungeeCordServer : public Server
 		int minHeapAlloc;
 		int gcThreadCount;
 		std::string backupPath;
+		std::vector<std::string> worldsToBackup;
 		std::vector<std::string> javaArgs;
 		std::vector<std::string> serverOptions;
-		std::iostream* serverProcess = nullptr;
-		log4cpp::Category* log = nullptr;
 };
 }
 #endif /* BUNGEECORD_SERVER_H */

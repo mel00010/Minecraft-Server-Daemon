@@ -111,11 +111,11 @@ am_minecraftd_OBJECTS = minecraftd-main.$(OBJEXT) \
 	minecraftd-mainLoop.$(OBJEXT) \
 	minecraftd-setupServers.$(OBJEXT) \
 	minecraftd-createSocket.$(OBJEXT) \
+	minecraftd-vanillaServer.$(OBJEXT) \
 	minecraftd-bukkitServer.$(OBJEXT) \
 	minecraftd-bungeecordServer.$(OBJEXT) \
 	minecraftd-genericServer.$(OBJEXT) \
-	minecraftd-spigotServer.$(OBJEXT) \
-	minecraftd-vanillaServer.$(OBJEXT)
+	minecraftd-spigotServer.$(OBJEXT)
 minecraftd_OBJECTS = $(am_minecraftd_OBJECTS)
 minecraftd_LDADD = $(LDADD)
 minecraftd_LINK = $(CXXLD) $(minecraftd_CXXFLAGS) $(CXXFLAGS) \
@@ -302,8 +302,8 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-minecraftd_SOURCES = main.cpp parser.cpp jsoncpp.cpp mainLoop.cpp setupServers.cpp createSocket.cpp bukkitServer.cpp bungeecordServer.cpp genericServer.cpp spigotServer.cpp vanillaServer.cpp 
-include_HEADERS = ServerProcessBuf.h server.h parser.h mainLoop.h setupServers.h createSocket.h bukkitServer.h bungeecordServer.h genericServer.h spigotServer.h vanillaServer.h 
+minecraftd_SOURCES = main.cpp parser.cpp jsoncpp.cpp mainLoop.cpp setupServers.cpp createSocket.cpp vanillaServer.cpp bukkitServer.cpp bungeecordServer.cpp genericServer.cpp spigotServer.cpp  
+include_HEADERS = ServerProcessBuf.h server.h parser.h mainLoop.h setupServers.h createSocket.h vanillaServer.h bukkitServer.h bungeecordServer.h genericServer.h spigotServer.h  
 minecraftd_LDFLAGS = -pthread -levent -Lusr/log4cpp/lib -llog4cpp
 minecraftd_CXXFLAGS = -Wall -Wextra -g -std=gnu++11 -I /usr/local/include
 minecraft_SOURCES = client.cpp
@@ -524,6 +524,20 @@ minecraftd-createSocket.obj: createSocket.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-createSocket.obj `if test -f 'createSocket.cpp'; then $(CYGPATH_W) 'createSocket.cpp'; else $(CYGPATH_W) '$(srcdir)/createSocket.cpp'; fi`
 
+minecraftd-vanillaServer.o: vanillaServer.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-vanillaServer.o -MD -MP -MF $(DEPDIR)/minecraftd-vanillaServer.Tpo -c -o minecraftd-vanillaServer.o `test -f 'vanillaServer.cpp' || echo '$(srcdir)/'`vanillaServer.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-vanillaServer.Tpo $(DEPDIR)/minecraftd-vanillaServer.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='vanillaServer.cpp' object='minecraftd-vanillaServer.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-vanillaServer.o `test -f 'vanillaServer.cpp' || echo '$(srcdir)/'`vanillaServer.cpp
+
+minecraftd-vanillaServer.obj: vanillaServer.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-vanillaServer.obj -MD -MP -MF $(DEPDIR)/minecraftd-vanillaServer.Tpo -c -o minecraftd-vanillaServer.obj `if test -f 'vanillaServer.cpp'; then $(CYGPATH_W) 'vanillaServer.cpp'; else $(CYGPATH_W) '$(srcdir)/vanillaServer.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-vanillaServer.Tpo $(DEPDIR)/minecraftd-vanillaServer.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='vanillaServer.cpp' object='minecraftd-vanillaServer.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-vanillaServer.obj `if test -f 'vanillaServer.cpp'; then $(CYGPATH_W) 'vanillaServer.cpp'; else $(CYGPATH_W) '$(srcdir)/vanillaServer.cpp'; fi`
+
 minecraftd-bukkitServer.o: bukkitServer.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-bukkitServer.o -MD -MP -MF $(DEPDIR)/minecraftd-bukkitServer.Tpo -c -o minecraftd-bukkitServer.o `test -f 'bukkitServer.cpp' || echo '$(srcdir)/'`bukkitServer.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-bukkitServer.Tpo $(DEPDIR)/minecraftd-bukkitServer.Po
@@ -579,20 +593,6 @@ minecraftd-spigotServer.obj: spigotServer.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='spigotServer.cpp' object='minecraftd-spigotServer.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-spigotServer.obj `if test -f 'spigotServer.cpp'; then $(CYGPATH_W) 'spigotServer.cpp'; else $(CYGPATH_W) '$(srcdir)/spigotServer.cpp'; fi`
-
-minecraftd-vanillaServer.o: vanillaServer.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-vanillaServer.o -MD -MP -MF $(DEPDIR)/minecraftd-vanillaServer.Tpo -c -o minecraftd-vanillaServer.o `test -f 'vanillaServer.cpp' || echo '$(srcdir)/'`vanillaServer.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-vanillaServer.Tpo $(DEPDIR)/minecraftd-vanillaServer.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='vanillaServer.cpp' object='minecraftd-vanillaServer.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-vanillaServer.o `test -f 'vanillaServer.cpp' || echo '$(srcdir)/'`vanillaServer.cpp
-
-minecraftd-vanillaServer.obj: vanillaServer.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-vanillaServer.obj -MD -MP -MF $(DEPDIR)/minecraftd-vanillaServer.Tpo -c -o minecraftd-vanillaServer.obj `if test -f 'vanillaServer.cpp'; then $(CYGPATH_W) 'vanillaServer.cpp'; else $(CYGPATH_W) '$(srcdir)/vanillaServer.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-vanillaServer.Tpo $(DEPDIR)/minecraftd-vanillaServer.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='vanillaServer.cpp' object='minecraftd-vanillaServer.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-vanillaServer.obj `if test -f 'vanillaServer.cpp'; then $(CYGPATH_W) 'vanillaServer.cpp'; else $(CYGPATH_W) '$(srcdir)/vanillaServer.cpp'; fi`
 install-includeHEADERS: $(include_HEADERS)
 	@$(NORMAL_INSTALL)
 	@list='$(include_HEADERS)'; test -n "$(includedir)" || list=; \

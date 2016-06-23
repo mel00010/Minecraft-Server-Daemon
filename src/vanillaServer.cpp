@@ -1,6 +1,5 @@
 #include "vanillaServer.h"
 #include "log4cpp/Category.hh"
-#include "ServerStream.h"
 #include <sstream>
 #include <string>
 #include <vector>
@@ -17,7 +16,7 @@ VanillaServer::VanillaServer( std::string serverName, std::string serverPath, st
 				maxHeapAlloc{maxHeapAlloc}, minHeapAlloc{minHeapAlloc}, gcThreadCount{gcThreadCount}, backupPath{backupPath},
 				worldsToBackup{worldsToBackup}, javaArgs{javaArgs}, serverOptions{serverOptions}
 {
-	log = &log4cpp::Category::getInstance(std::string("server"));
+	log = &log4cpp::Category::getInstance(serverName);
 	log->info(serverJarName);
 	log->debug("VanillaServer::VanillaServer");
 }
@@ -33,9 +32,9 @@ void VanillaServer::backupServer()
 {
 	log->debug("VanillaServer::backupServer");
 	log->info("Starting backup");
-	*serverProcess << "say SERVER BACKUP STARTING. VanillaServer going readonly..." << std::endl;
-	*serverProcess << "save-off" << std::endl;
-	*serverProcess << "save-all" << std::endl;
+	*this << "say SERVER BACKUP STARTING. VanillaServer going readonly..." << std::endl;
+	*this << "save-off" << std::endl;
+	*this << "save-all" << std::endl;
 	time_t now = time(0);
 	struct tm tstruct;
 	char buf[80];
@@ -56,17 +55,17 @@ void VanillaServer::backupServer()
 	std::string copyJarCommand = "cp \""+serverPath+"/"+serverJarName+"\" \""+backupPath+"/"+serverJarName.substr(0, serverJarName.size()-4)+"_"+time+".jar\"";
 	log->info(copyJarCommand);
 	system(copyJarCommand.c_str());
-	*serverProcess << "save-on" << std::endl;
-	*serverProcess << "say SERVER BACKUP ENDED. VanillaServer going read-write..." << std::endl;
+	*this << "save-on" << std::endl;
+	*this << "say SERVER BACKUP ENDED. VanillaServer going read-write..." << std::endl;
 	log->info("Backup finished");
 }
 void VanillaServer::backupServer(std::string _backupPath)
 {
 	log->debug("VanillaServer::backupServer");
 	log->info("Starting backup");
-	*serverProcess << "say SERVER BACKUP STARTING. VanillaServer going readonly..." << std::endl;
-	*serverProcess << "save-off" << std::endl;
-	*serverProcess << "save-all" << std::endl;
+	*this << "say SERVER BACKUP STARTING. VanillaServer going readonly..." << std::endl;
+	*this << "save-off" << std::endl;
+	*this << "save-all" << std::endl;
 	time_t now = time(0);
 
 	struct tm tstruct;
@@ -88,51 +87,42 @@ void VanillaServer::backupServer(std::string _backupPath)
 	std::string copyJarCommand = "cp \""+serverPath+"/"+serverJarName+"\" \""+_backupPath+"/"+serverJarName.substr(0, serverJarName.size()-4)+"_"+time+".jar\"";
 	log->info(copyJarCommand);
 	system(copyJarCommand.c_str());
-	*serverProcess << "save-on" << std::endl;
-	*serverProcess << "say SERVER BACKUP ENDED. VanillaServer going read-write..." << std::endl;
+	*this << "save-on" << std::endl;
+	*this << "say SERVER BACKUP ENDED. VanillaServer going read-write..." << std::endl;
 	log->info("Backup finished");
 }
 void VanillaServer::startServer()
 {
 	log->debug("VanillaServer::startServer");
-	if (serverProcess == nullptr)
-	{
-		try {
-			ServerProcessBuf* serverStreamBuf = new ServerProcessBuf(serverName, serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, javaArgs, serverOptions);
-			serverProcess = new std::iostream(serverStreamBuf);
-			std::thread outputListenerThread(&Server::outputListenerThread, serverProcess, outputListeners, log, 1);
-			outputListenerThread.detach();
-			std::function<void(size_t, std::stringstream*, log4cpp::Category*)> f = std::bind( &VanillaServer::logger, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
-			OutputListener outputListener(1, std::string("logger"), true, f);
-			addOutputListener(outputListener);
-			
-		} 
-		catch (...) {
-			log->fatal("Exception occurred while starting server.  Exiting daemon. ");
-			exit(1);
-		}
-	}
+	//~ if (!isRunning())
+	//~ {
+		chdir(serverPath.c_str());
+		launchServerProcess(serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, javaArgs, serverOptions);
+		log->debug("Launched server process");			
+		std::thread outputListenerThread(&Server::outputListenerThread, serverPID, childProcessStdout[PIPE_READ], base, log);
+		outputListenerThread.detach();
+	//~ }
 }
 void VanillaServer::stopServer()
 {
 	log->debug("VanillaServer::stopServer");
-	if (serverProcess != nullptr)
+	if (isRunning())
 	{
-		*serverProcess << "say SERVER SHUTTING DOWN IN 10 SECONDS." << std::endl;
+		*this << "say SERVER SHUTTING DOWN IN 10 SECONDS." << std::endl;
 		for (int i=10; i>0; --i) {
-			*serverProcess << "say "+std::to_string(i) << std::endl;
+			*this << "say "+std::to_string(i) << std::endl;
 			sleep(1);
 		}
-		*serverProcess << "say Saving map..." << std::endl;
-		*serverProcess << "save-all" << std::endl;
-		*serverProcess << "stop" << std::endl;
+		*this << "say Saving map..." << std::endl;
+		*this << "save-all" << std::endl;
+		*this << "stop" << std::endl;
 		//~ sleep(10);
-		delete(serverProcess);
-		//~ delete(serverProcess);
-		serverProcess = NULL;
-		log->info("VanillaServer stopped");
+		while(isRunning()) {
+			sleep(0.5);
+		}
+		log->info("Server stopped");
 	} else {
-		log->info("VanillaServer already stopped");
+		log->info("Server already stopped");
 	}
 }
 void VanillaServer::serverStatus()
@@ -142,8 +132,8 @@ void VanillaServer::serverStatus()
 void VanillaServer::restartServer()
 {
 	log->debug("VanillaServer::restartServer");
-	//~ if (serverProcess != nullptr && !serverProcess->rdbuf()->exited())
-	if (serverProcess != nullptr)
+	//~ if (isRunning() && !serverProcess->rdbuf()->exited())
+	if (isRunning())
 	{
 		stopServer();
 		startServer();
@@ -152,56 +142,56 @@ void VanillaServer::restartServer()
 void VanillaServer::sendCommand(std::string command)
 {
 	log->debug("VanillaServer::sendCommand");
-	//~ if (serverProcess != nullptr && !serverProcess->rdbuf()->exited())
-	if (serverProcess != nullptr)
+	//~ if (isRunning() && !serverProcess->rdbuf()->exited())
+	if (isRunning())
 	{
-		*serverProcess << command << std::endl;
+		*this << command << std::endl;
 	}
 }
 
 std::string VanillaServer::listOnlinePlayers()
 {
-	log->debug("VanillaServer::listOnlinePlayers");
-	std::function<void(size_t, std::stringstream*, log4cpp::Category*)> f = std::bind( &VanillaServer::listOnlinePlayersCallback, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
-	OutputListener outputListener(10, std::string("listOnlinePlayers"), false, f);
-	addOutputListener(outputListener);
-	*serverProcess << "list" << std::endl;
-	while(callbackOutput == nullptr) { sleep(1); }
-	if (callbackOutput->rdbuf()->in_avail() != 0) {
-		log->info(callbackOutput->str());
-		std::string returnValue(callbackOutput->str());
-		delete callbackOutput;
-		return returnValue;
-	} else {
-		log->info("No one is on the server");
-		std::string returnValue = "No one is on the server";
-		delete callbackOutput;
-		return returnValue;
-	}
+	//~ log->debug("VanillaServer::listOnlinePlayers");
+	//~ std::function<void(size_t, std::stringstream*, log4cpp::Category*)> f = std::bind( &VanillaServer::listOnlinePlayersCallback, *this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
+	//~ OutputListener outputListener(10, std::string("listOnlinePlayers"), false, f);
+	//~ addOutputListener(outputListener);
+	//~ *this << "list" << std::endl;
+	//~ while(callbackOutput == nullptr) { sleep(1); }
+	//~ if (callbackOutput->rdbuf()->in_avail() != 0) {
+		//~ log->info(callbackOutput->str());
+		//~ std::string returnValue(callbackOutput->str());
+		//~ delete callbackOutput;
+		//~ return returnValue;
+	//~ } else {
+		//~ log->info("No one is on the server");
+		//~ std::string returnValue = "No one is on the server";
+		//~ delete callbackOutput;
+		//~ return returnValue;
+	//~ }
 }
 void VanillaServer::listOnlinePlayersCallback(size_t linesRequested, std::stringstream* output, log4cpp::Category* log)
 {
-	std::stringbuf *listBuf = output->rdbuf();
-	std::stringstream playersOnline;
-	std::string line;
-	int numPlayers = 0;
+	//~ std::stringbuf *listBuf = output->rdbuf();
+	//~ std::stringstream playersOnline;
+	//~ std::string line;
+	//~ int numPlayers = 0;
 	
-	//~ std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	while (listBuf->in_avail() != 0)
-	{
-		std::getline(*output, line);
-		playersOnline << line << std::endl;
-		numPlayers++;
-	}
-	if (numPlayers != 0) {
-		std::stringstream* _callbackOutput = new std::stringstream();
-		*_callbackOutput << playersOnline.str();
-		callbackOutput=_callbackOutput;
-	} else {
-		std::stringstream* _callbackOutput = new std::stringstream();
-		*_callbackOutput << playersOnline.str();
-		callbackOutput=_callbackOutput;
-	}
+	//~ // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	//~ while (listBuf->in_avail() != 0)
+	//~ {
+		//~ std::getline(*output, line);
+		//~ playersOnline << line << std::endl;
+		//~ numPlayers++;
+	//~ }
+	//~ if (numPlayers != 0) {
+		//~ std::stringstream* _callbackOutput = new std::stringstream();
+		//~ *_callbackOutput << playersOnline.str();
+		//~ callbackOutput=_callbackOutput;
+	//~ } else {
+		//~ std::stringstream* _callbackOutput = new std::stringstream();
+		//~ *_callbackOutput << playersOnline.str();
+		//~ callbackOutput=_callbackOutput;
+	//~ }
 }
 void VanillaServer::listOnlinePlayers(std::string playerName)
 {
@@ -209,7 +199,7 @@ void VanillaServer::listOnlinePlayers(std::string playerName)
 	//~ std::string line;
 	//~ int numPlayers = 0;
 	
-	//~ std::stringstream playerList = *serverProcess << "list");
+	//~ std::stringstream playerList = *this << "list";
 	//~ std::stringbuf *listBuf = playerList.rdbuf();
 	
 	//~ std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -227,15 +217,5 @@ void VanillaServer::listOnlinePlayers(std::string playerName)
 	//~ } else {
 		//~ log->info("No one is on the server");
 	//~ }
-}
-void VanillaServer::logger(size_t linesRequested, std::stringstream* output, log4cpp::Category* log)
-{
-	//~ std::string _output;
-	for (size_t i = 0; i < linesRequested; i++) {
-		std::getline(*serverProcess, _output);
-		if (_output.size() > 0) {
-			log->info(_output);
-		}
-	}
 }
 }

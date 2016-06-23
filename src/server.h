@@ -1,8 +1,9 @@
 #ifndef SERVER_H
 #define SERVER_H
-//~ #include "ServerStream.h"
 #include "outputListener.h"
 #include "log4cpp/Category.hh"
+#include <event2/event-config.h>
+#include <event2/event.h>
 #include <string>
 #include <sstream>
 #include <vector>
@@ -39,6 +40,31 @@ class Server
 		virtual void backupServer(std::string backupPath) = 0;
 		virtual void serverStatus() = 0;
 		virtual void startServer() = 0;
+		void startServerWithArgs(
+			std::string serverPath, std::string serverJarName, std::string serverAccount,
+			int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
+			std::vector<std::string> javaArgs, std::vector<std::string> serverOptions
+		)
+		{
+			log->info("Starting " + serverJarName);
+			//~ if (!isRunning()){
+				chdir(serverPath.c_str());
+				launchServerProcess(serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, javaArgs, serverOptions);
+				log->debug("Launched server process");
+			//~ } else {
+				//~ log->debug("Server process already running");
+			//~ }
+		};
+		struct eventData
+		{
+			struct event_base* base;
+			log4cpp::Category* log;
+		};
+		typedef struct
+		{
+			uintptr_t   ptr;
+			int         size;
+		} token_t;
 		virtual void stopServer() = 0;
 		virtual void restartServer() = 0;
 		virtual void reloadServer() = 0;
@@ -46,122 +72,117 @@ class Server
 		virtual void listOnlinePlayers(std::string playerName) = 0;
 		virtual void sendCommand(std::string command) = 0;
 		typedef std::streambuf::traits_type traits_type;
+		std::string serverName;
 		enum PIPE_OPS 
 		{
 			PIPE_READ = 0,
 			PIPE_WRITE = 1,
 		};
-		std::string serverName;
 		bool isRunning() {
 			while(waitpid(-1, 0, WNOHANG) > 0) {
-		        // Wait for defunct....
-		    }
+				// Wait for defunct....
+			}
 		
-		    if (0 == kill(server, 0))
-		        return 1; // Process exists
+			if (0 == kill(serverPID, 0))
+				return 1; // Process exists
 		
-		    return 0;
+			return 0;
 		};
+		template <typename T>
+		Server& operator<<(const T& x)
+		{
+			write(childProcessStdin[PIPE_WRITE], x, sizeof(x));
+			return *this;
+		}
+		Server& operator<<(const std::string& x)
+		{
+			write(childProcessStdin[PIPE_WRITE], x.c_str(), x.size());
+			return *this;
+		}
+		std::istream& operator>> (std::istream &in)
+		{
+			// Since operator>> is a friend of the Point class, we can access Point's members directly.
+			// note that parameter point must be non-const so we can modify the class members with the input values
+			std::string s(std::istreambuf_iterator<char>(in), {});
+			write(childProcessStdin[PIPE_WRITE], s.c_str(), s.size());
+			return in;
+		}
+		//~ // function that takes a custom stream, and returns it
+		typedef Server& (*ServerManipulator)(Server&);
+	
+		// this is the type of std::cout
+		typedef std::basic_ostream<char, std::char_traits<char> > CoutType;
+	
+		// this is the function signature of std::endl
+		typedef CoutType& (*StandardEndLine)(CoutType&);
+	
+		// define an operator<< to take in std::endl
+		Server& operator<<(StandardEndLine manip)
+		{
+			// call the function, but we cannot return it's value
+			write(childProcessStdin[PIPE_WRITE], "\n", sizeof("\n"));
+			return *this;
+		}
 	protected:
-		void addOutputListener(OutputListener& outputListener)
-		{
-			if (outputListeners != nullptr) {
-				std::shared_ptr<std::vector<OutputListener>> _outputListeners = outputListeners;
-				{
-					static std::mutex io_mutex;
-					std::lock_guard<std::mutex> lk(io_mutex);
-					_outputListeners.get()->push_back(outputListener);
-				}
-			}
-		};
-		void removeOutputListener(OutputListener& outputListener)
-		{
-			if (outputListeners != nullptr) {
-				std::shared_ptr<std::vector<OutputListener>> _outputListeners = outputListeners;
-				{
-					static std::mutex io_mutex;
-					std::lock_guard<std::mutex> lk(io_mutex);
-					for (std::vector<OutputListener>::iterator it = outputListeners.get()->begin(); it != outputListeners.get()->end(); ++it) {
-						if (outputListener.listenerName == it->listenerName) {
-							outputListeners.get()->erase(it);
-							break;
-						}
-					}
-				}
-			}
-		};
-		static void outputListenerThread(std::iostream* serverProcess, std::shared_ptr<std::vector<OutputListener>> _outputListeners, log4cpp::Category* log, size_t timeout = 5)
-		{
-			std::shared_ptr<std::vector<OutputListener>> outputListeners = _outputListeners;
+		static void outputListenerThread(int serverPID, int childProcessStdout, struct event_base* base, log4cpp::Category* log) {
 			{
-				static std::mutex io_mutex;
 				log->debug("Server::outputListenerThread");
-				std::string output;
-				while (serverProcess != nullptr) {
-					bool timedOut = true;
-					time_t t = time(NULL) + timeout;
-					while (time(NULL)<t) {
-						if (serverProcess->peek()!=EOF) {
-							timedOut = false;
-							break;
-						}
-					}
-					if (!timedOut)
-					{
-						std::getline(*serverProcess, output);
-						//~ std::thread t([&]{
-							if (output.size() > 0) {
-								std::lock_guard<std::mutex> lk(io_mutex);
-								for (std::vector<OutputListener>::iterator it = outputListeners.get()->begin(); it != outputListeners.get()->end(); ++it) {
-									if (it->currentLine != it->linesRequested) {
-										*(it->lines) << output;
-										it->currentLine++;
-									} else {
-										it->callback(it->linesRequested, it->lines, log);
-										if(!it->persistent){
-											outputListeners.get()->erase(it);
-										}
-									}
-								}
-								log->info(output);
-							}
-						//~ });
-						//~ t.join();
-					} else {
-						//~ std::lock_guard<std::mutex> lk(io_mutex);
-						for (std::vector<OutputListener>::iterator it = outputListeners.get()->begin(); it != outputListeners.get()->end(); ++it) {
-							it->callback(it->linesRequested, it->lines, log);
-							if(!it->persistent){
-								outputListeners.get()->erase(it);
-							}
-						}
-					}
-				}
+				struct event *evfifo;
+				eventData* data = new eventData{base, log};
+				evfifo = event_new(base, (evutil_socket_t)childProcessStdout, EV_READ|EV_PERSIST, Server::fifo_read, (void*)data);
+				event_add(evfifo, NULL);
+				event_base_dispatch(base);
 			}
 		};
-		void startServer(
-			std::string serverPath, std::string serverJarName, std::string serverAccount,
-			int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
-			std::vector<std::string> javaArgs, std::vector<std::string> serverOptions
-		)
-		{
-			log->info("Starting " + serverJarName);
-			chdir(serverPath.c_str());
-			launchServerProcess(serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, javaArgs, serverOptions);
-			log->debug("Launched server process");
+		static void fifo_read(evutil_socket_t fd, short event, void *arg) {
+			//~ ((eventData*)arg)->log->info("Server::fifo_read");
+			char buf[8192];
+			int len;
+			len = read(fd, buf, sizeof(buf) - 1);
+			//~ ((eventData*)arg)->log->info("Read childProcessStdout into buf");
+			if (len <= 0) {
+				if (len == -1)
+					((eventData*)arg)->log->fatal("Error reading");
+				} else if (len == 0) {
+					((eventData*)arg)->log->fatal("Connection closed");
+					event_base_loopbreak(((eventData*)arg)->base);
+					return;
+				}
+			}
+			buf[len] = '\0';
+			//~ ((eventData*)arg)->log->info("Wrote null to end of buf");
+			char* c = buf;
+		    char* chars_array = strtok(buf, "\n");
+		    while(chars_array != NULL)
+		    {
+				if (strlen(chars_array) > 0) {
+					if(chars_array[strlen(chars_array)-1]!='%'){
+						((eventData*)arg)->log->info(chars_array);
+					} else {
+						char _chars_array[strlen(chars_array)+5];
+						strcpy (_chars_array,chars_array);
+						_chars_array[strlen(chars_array)+1] = '\0';
+						_chars_array[strlen(chars_array)] = '\t';
+						//~ ((eventData*)arg)->log->info("Replaced %NULL with %\tNULL in while loop");
+						((eventData*)arg)->log->info(_chars_array);
+					}
+				}
+		        chars_array = strtok(NULL, "\n");
+		    }
+		    return;
 		};
 		void getUIDAndGIDFromUsername(const char* user) {
-		    struct passwd *pwd = new passwd[sizeof(struct passwd)]();
-		    size_t buffer_len = sysconf(_SC_GETPW_R_SIZE_MAX) * sizeof(char);
-		    char buffer[buffer_len];
+			struct passwd *pwd = new passwd[sizeof(struct passwd)]();
+			size_t buffer_len = sysconf(_SC_GETPW_R_SIZE_MAX) * sizeof(char);
+			char buffer[buffer_len];
 			getpwnam_r(user, pwd, buffer, buffer_len, &pwd);
 			if(pwd == NULL)
 			{
 				log->fatal("getpwnam_r failed to find username!! Does the user exist!!");
 				throw;
 			}
-		    childProcessUID = pwd->pw_uid;
-		    childProcessGID = pwd->pw_gid;
+			childProcessUID = pwd->pw_uid;
+			childProcessGID = pwd->pw_gid;
 		};
 		void launchServerProcess(std::string serverPath, std::string serverJarName, std::string serverAccount,
 			int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
@@ -208,9 +229,10 @@ class Server
 				log->fatal("allocating pipe for child output redirect");
 				exit(-1);
 			}
+			fcntl(childProcessStdout[PIPE_READ], F_SETFL, O_NONBLOCK);
 			//~ int server;
-			server = fork();
-			if (server == 0) {
+			serverPID = fork();
+			if (serverPID == 0) {
 				// child continues here
 		
 				// redirect stdin
@@ -248,7 +270,7 @@ class Server
 				log->fatal(std::to_string(result));
 				log->fatal(std::to_string(errno));
 				throw result;
-			} else if (server > 0) {
+			} else if (serverPID > 0) {
 				// parent continues here
 		
 				// close unused file descriptors, these are for child only
@@ -262,14 +284,14 @@ class Server
 				close(childProcessStdout[PIPE_WRITE]);
 			}
 		};
-		std::shared_ptr<std::vector<OutputListener>> outputListeners = nullptr;
-		int server;
-        int childProcessUID;
-        int childProcessGID;
-        int childProcessStdin[2];
+		//~ std::vector<OutputListener>* outputListeners = nullptr;
+		int serverPID;
+		int childProcessUID;
+		int childProcessGID;
+		int childProcessStdin[2];
 		int childProcessStdout[2];
-		log4cpp::Category* log = nullptr;
+		log4cpp::Category* log;
+		struct event_base* base = event_base_new();
 };
-
 }
 #endif /* SERVER_H */

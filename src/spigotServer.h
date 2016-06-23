@@ -1,7 +1,6 @@
-#ifndef VANILLA_SERVER_H
-#define VANILLA_SERVER_H
+#ifndef SPIGOT_SERVER_H
+#define SPIGOT_SERVER_H
 #include "server.h"
-#include "outputListener.h"
 #include "log4cpp/Category.hh"
 #include <string>
 #include <sstream>
@@ -9,10 +8,10 @@
 #include <thread>
 #include <time.h>
 namespace MinecraftServerService {
-class VanillaServer : public Server
+class SpigotServer : public Server
 {
 	public:
-		VanillaServer(
+		SpigotServer(
 			std::string serverName,
 			std::string serverPath, std::string serverJarName, std::string serverAccount,
 			int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
@@ -21,7 +20,7 @@ class VanillaServer : public Server
 			std::vector<std::string> javaArgs, 
 			std::vector<std::string> serverOptions
 		);
-		virtual ~VanillaServer();
+		virtual ~SpigotServer();
 		void updateServer();
 		void backupServer();
 		void backupServer(std::string backupPath);
@@ -29,7 +28,7 @@ class VanillaServer : public Server
 		void startServer();
 		void stopServer();
 		void restartServer();
-		void reloadServer() {};
+		void reloadServer();
 		std::string listOnlinePlayers();
 		void listOnlinePlayers(std::string playerName);
 		void sendCommand(std::string command);
@@ -49,4 +48,4 @@ class VanillaServer : public Server
 		std::vector<std::string> serverOptions;
 };
 }
-#endif /* VANILLA_SERVER_H */
+#endif /* SPIGOT_SERVER_H */
