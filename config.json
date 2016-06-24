@@ -5,7 +5,7 @@
 			"serverName":"server",
 			"serverPath":"/home/mel/minecraft",
 			"serverJarName":"minecraft_server.jar",
-			"serverType":"vanilla"
+			"serverType":"vanilla",
 			"serverAccount":"minecraft",
 			"maxHeapAlloc":2048,
 			"minHeapAlloc":1024,
