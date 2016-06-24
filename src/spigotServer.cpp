@@ -32,7 +32,7 @@ void SpigotServer::backupServer()
 {
 	log->debug("SpigotServer::backupServer");
 	log->info("Starting backup");
-	*this << "say SERVER BACKUP STARTING. SpigotServer going readonly..." << std::endl;
+	*this << "say SERVER BACKUP STARTING. Server going readonly..." << std::endl;
 	*this << "save-off" << std::endl;
 	*this << "save-all" << std::endl;
 	time_t now = time(0);
@@ -56,14 +56,14 @@ void SpigotServer::backupServer()
 	log->info(copyJarCommand);
 	system(copyJarCommand.c_str());
 	*this << "save-on" << std::endl;
-	*this << "say SERVER BACKUP ENDED. SpigotServer going read-write..." << std::endl;
+	*this << "say SERVER BACKUP ENDED. Server going read-write..." << std::endl;
 	log->info("Backup finished");
 }
 void SpigotServer::backupServer(std::string _backupPath)
 {
 	log->debug("SpigotServer::backupServer");
 	log->info("Starting backup");
-	*this << "say SERVER BACKUP STARTING. SpigotServer going readonly..." << std::endl;
+	*this << "say SERVER BACKUP STARTING. Server going readonly..." << std::endl;
 	*this << "save-off" << std::endl;
 	*this << "save-all" << std::endl;
 	time_t now = time(0);
@@ -88,7 +88,7 @@ void SpigotServer::backupServer(std::string _backupPath)
 	log->info(copyJarCommand);
 	system(copyJarCommand.c_str());
 	*this << "save-on" << std::endl;
-	*this << "say SERVER BACKUP ENDED. SpigotServer going read-write..." << std::endl;
+	*this << "say SERVER BACKUP ENDED. Server going read-write..." << std::endl;
 	log->info("Backup finished");
 }
 void SpigotServer::reloadServer()

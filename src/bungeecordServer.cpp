@@ -30,7 +30,7 @@ void BungeeCordServer::backupServer()
 {
 	log->debug("BungeeCordServer::backupServer");
 	log->info("Starting backup");
-	*this << "say SERVER BACKUP STARTING. BungeeCordServer going readonly..." << std::endl;
+	*this << "say SERVER BACKUP STARTING. Server going readonly..." << std::endl;
 	*this << "save-off" << std::endl;
 	*this << "save-all" << std::endl;
 	time_t now = time(0);
@@ -54,14 +54,14 @@ void BungeeCordServer::backupServer()
 	log->info(copyJarCommand);
 	system(copyJarCommand.c_str());
 	*this << "save-on" << std::endl;
-	*this << "say SERVER BACKUP ENDED. BungeeCordServer going read-write..." << std::endl;
+	*this << "say SERVER BACKUP ENDED. Server going read-write..." << std::endl;
 	log->info("Backup finished");
 }
 void BungeeCordServer::backupServer(std::string _backupPath)
 {
 	log->debug("BungeeCordServer::backupServer");
 	log->info("Starting backup");
-	*this << "say SERVER BACKUP STARTING. BungeeCordServer going readonly..." << std::endl;
+	*this << "say SERVER BACKUP STARTING. Server going readonly..." << std::endl;
 	*this << "save-off" << std::endl;
 	*this << "save-all" << std::endl;
 	time_t now = time(0);
@@ -71,22 +71,12 @@ void BungeeCordServer::backupServer(std::string _backupPath)
 	tstruct = *localtime(&now);
 	std::strftime(buf, sizeof(buf), "%Y-%m-%d_%Hh%M", &tstruct);
 	std::string time(buf);
-	for (std::string world : worldsToBackup)
-	{
-		log->info("Backing up "+world);
-		std::string tarCommand = "tar -C \""+serverPath+"\" -cf "+_backupPath+"/"+world+"_"+time+".tar\" "+world;
-		std::string gzipCommand = "gzip -f \""+backupPath+"/"+world+"_"+time+".tar\"";
-		log->info(tarCommand);
-		system(tarCommand.c_str());
-		log->info(gzipCommand);
-		system(gzipCommand.c_str());
-	}
 	log->info("Backing up "+serverJarName);
 	std::string copyJarCommand = "cp \""+serverPath+"/"+serverJarName+"\" \""+_backupPath+"/"+serverJarName.substr(0, serverJarName.size()-4)+"_"+time+".jar\"";
 	log->info(copyJarCommand);
 	system(copyJarCommand.c_str());
 	*this << "save-on" << std::endl;
-	*this << "say SERVER BACKUP ENDED. BungeeCordServer going read-write..." << std::endl;
+	*this << "say SERVER BACKUP ENDED. Server going read-write..." << std::endl;
 	log->info("Backup finished");
 }
 void BungeeCordServer::reloadServer()
