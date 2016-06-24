@@ -1,4 +1,4 @@
-#define DEBUGGING 1
+#define DEBUGGING 0
 
 #include "server.h"
 #include "parser.h"
