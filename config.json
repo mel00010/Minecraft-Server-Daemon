@@ -5,6 +5,7 @@
 			"serverName":"server",
 			"serverPath":"/home/mel/minecraft",
 			"serverJarName":"minecraft_server.jar",
+			"serverType":"vanilla"
 			"serverAccount":"minecraft",
 			"maxHeapAlloc":2048,
 			"minHeapAlloc":1024,
@@ -28,7 +29,5 @@
 	]
 	"options":
 	{
-		"logFile":"/home/mel/minecraft/latest.log",
-		"logLevel":"DEBUG",
 	}
 }
