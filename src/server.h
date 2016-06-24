@@ -135,7 +135,7 @@ class Server
 		};
 		static void fifo_read(evutil_socket_t fd, short event, void *arg) {
 			//~ ((eventData*)arg)->log->info("Server::fifo_read");
-			char buf[8192];
+			char buf[262144];
 			int len;
 			len = read(fd, buf, sizeof(buf) - 1);
 			//~ ((eventData*)arg)->log->info("Read childProcessStdout into buf");
@@ -155,15 +155,25 @@ class Server
 		    while(chars_array != NULL)
 		    {
 				if (strlen(chars_array) > 0) {
-					if(chars_array[strlen(chars_array)-1]!='%'){
+					if(strchr(chars_array, '%')==NULL){
 						((eventData*)arg)->log->info(chars_array);
 					} else {
-						char _chars_array[strlen(chars_array)+5];
-						strcpy (_chars_array,chars_array);
-						_chars_array[strlen(chars_array)+1] = '\0';
-						_chars_array[strlen(chars_array)] = '\t';
+						std::string buffer(chars_array);
+						size_t position;
+						std::string escapeBuffer(buffer);
+						position = buffer.rfind("%");
+						while (position != std::string::npos){
+							escapeBuffer.replace (position, 1,"\%");
+							buffer.erase(position);
+							position = buffer.rfind("%");
+						}
+						((eventData*)arg)->log->info(escapeBuffer);
+						//~ char _chars_array[strlen(chars_array)+5];
+						//~ strcpy (_chars_array,chars_array);
+						//~ _chars_array[strlen(chars_array)+1] = '\0';
+						//~ _chars_array[strlen(chars_array)] = '\t';
 						//~ ((eventData*)arg)->log->info("Replaced %NULL with %\tNULL in while loop");
-						((eventData*)arg)->log->info(_chars_array);
+						//~ ((eventData*)arg)->log->info(_chars_array);
 					}
 				}
 		        chars_array = strtok(NULL, "\n");
@@ -257,7 +267,7 @@ class Server
 				close(childProcessStdin[PIPE_WRITE]);
 				close(childProcessStdout[PIPE_READ]);
 				close(childProcessStdout[PIPE_WRITE]); 
-				setgid(childProcessGID);
+				//~ setgid(childProcessGID);
 				setuid(childProcessUID);
 				// run child process image
 				// replace this with any exec* function find easier to use ("man exec")
