@@ -110,15 +110,7 @@ void BungeeCordServer::stopServer()
 	log->debug("BungeeCordServer::stopServer");
 	if (isRunning())
 	{
-		*this << "say SERVER SHUTTING DOWN IN 10 SECONDS." << std::endl;
-		for (int i=10; i>0; --i) {
-			*this << "say "+std::to_string(i) << std::endl;
-			sleep(1);
-		}
-		*this << "say Saving map..." << std::endl;
-		*this << "save-all" << std::endl;
-		*this << "stop" << std::endl;
-		//~ sleep(10);
+		*this << "end" << std::endl;
 		while(isRunning()) {
 			sleep(0.5);
 		}
