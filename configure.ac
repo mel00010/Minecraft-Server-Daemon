@@ -11,9 +11,12 @@ AC_LANG_PUSH([C++])
 #~ PKG_PROG_PKG_CONFIG
 #~ PKG_CHECK_MODULES([pstreams],[libpstreams-dev])
 PKG_CHECK_MODULES([log4cpp],[log4cpp])
-AC_CHECK_HEADERS([pstreams/pstream.h],
-[],
-[AC_MSG_ERROR([Could not find or include pstreams/pstream.h.  Is libpstreams-dev installed?])],
-[])
-
+AC_ARG_ENABLE([debug],
+[  --enable-debug    Turn on debugging],
+[case "${enableval}" in
+  yes) debug=true ;;
+  no)  debug=true ;;
+  *) AC_MSG_ERROR([bad value ${enableval} for --enable-debug]) ;;
+esac],[debug=false])
+AM_CONDITIONAL([DEBUG], [test x$debug = xtrue])
 AC_OUTPUT

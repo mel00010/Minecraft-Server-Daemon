@@ -1,261 +1,197 @@
 #include "server.h"
-#include "log4cpp/Category.hh"
-#include "connection.h"
-#include <pstreams/pstream.h>
-#include <sstream>
+#include <event2/event-config.h>
+#include <event2/event.h>
+#include <event2/util.h>
 #include <string>
+#include <sstream>
 #include <vector>
 #include <thread>
+#include <mutex>
+#include <functional>
+#include <cstdlib>
+#include <iosfwd>
+#include <cctype>
+#include <algorithm>
+#include <iterator>
+#include <cstddef>
+#include <unistd.h>
+#include <ostream>
+#include <functional>
+#include <cassert>
+#include <cstring>
+#include <iostream>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <pwd.h>
+#include <vector>
+#include <algorithm>
 #include <time.h>
 namespace MinecraftServerService {
-
-Server::Server( std::string _serverName, std::string _serverPath, std::string _serverJarName, std::string _serverAccount,
-				int _maxHeapAlloc, int _minHeapAlloc, int _gcThreadCount,
-				std::string _backupPath, std::vector<std::string> _worldsToBackup, std::vector<std::string> _javaArgs, 
-				std::vector<std::string> _serverOptions)
-{
-	serverName = _serverName;
-	serverPath = _serverPath;
-	serverJarName = _serverJarName;
-	serverAccount = _serverAccount;
-	maxHeapAlloc = _maxHeapAlloc;
-	minHeapAlloc = _minHeapAlloc;
-	gcThreadCount = _gcThreadCount;
-	backupPath = _backupPath;
-	worldsToBackup = _worldsToBackup;
-	javaArgs = _javaArgs;
-	serverOptions = _serverOptions;
-	//~ log4cpp::PropertyConfigurator::configure("/etc/minecraft/log4cpp.properties");
-	//~ serverProcess = new std::iostream();
-	log = &log4cpp::Category::getInstance(std::string("server"));
-	log->info(serverJarName);
-	log->debug("Server::Server");
-}
-Server::~Server()
-{
-	log->debug("Server::~Server");
-}
-void Server::updateServer()
-{
-	log->debug("Server::updateServer");
-}
-void Server::updateServer(std::string serverPath, std::string serverJarName, std::string serverAccount)
-{
-	log->debug("Server::updateServer");
-}
-void Server::backupServer()
-{
-	log->debug("Server::backupServer");
-	log->info("Starting backup");
-	*serverProcess << "say SERVER BACKUP STARTING. Server going readonly..." << std::endl;
-	*serverProcess << "save-off" << std::endl;
-	*serverProcess << "save-all" << std::endl;
-	time_t now = time(0);
-	struct tm tstruct;
-	char buf[80];
-	tstruct = *localtime(&now);
-	std::strftime(buf, sizeof(buf), "%Y-%m-%d_%Hh%M", &tstruct);
-	std::string time(buf);
-	for (std::string world : worldsToBackup)
+void Server::outputListenerThread(int serverPID, int childProcessStdout, struct event_base* base, log4cpp::Category* log) {
 	{
-		log->info("Backing up "+ world);
-		std::string tarCommand = "tar -C \""+serverPath+"\" -cf "+serverPath+"/"+backupPath+"/"+world+"_"+time+".tar\" "+world;
-		std::string gzipCommand = "gzip -f \""+serverPath+"/"+backupPath+"/"+world+"_"+time+".tar\"";
-		log->info(tarCommand);
-		system(tarCommand.c_str());
-		log->info(gzipCommand);
-		system(gzipCommand.c_str());
+		log->debug("Server::outputListenerThread");
+		struct event *evfifo;
+		eventData* data = new eventData{base, log};
+		evfifo = event_new(base, (evutil_socket_t)childProcessStdout, EV_READ|EV_PERSIST, Server::fifo_read, (void*)data);
+		event_add(evfifo, NULL);
+		event_base_dispatch(base);
 	}
-	log->info("Backing up "+serverJarName);
-	std::string copyJarCommand = "cp \""+serverPath+"/"+serverJarName+"\" \""+backupPath+"/"+serverJarName.substr(0, serverJarName.size()-4)+"_"+time+".jar\"";
-	log->info(copyJarCommand);
-	system(copyJarCommand.c_str());
-	*serverProcess << "save-on" << std::endl;
-	*serverProcess << "say SERVER BACKUP ENDED. Server going read-write..." << std::endl;
-	log->info("Backup finished");
 }
-void Server::backupServer(std::string _backupPath)
-{
-	log->debug("Server::backupServer");
-	log->info("Starting backup");
-	*serverProcess << "say SERVER BACKUP STARTING. Server going readonly..." << std::endl;
-	*serverProcess << "save-off" << std::endl;
-	*serverProcess << "save-all" << std::endl;
-	time_t now = time(0);
-
-	struct tm tstruct;
-	char buf[80];
-	tstruct = *localtime(&now);
-	std::strftime(buf, sizeof(buf), "%Y-%m-%d_%Hh%M", &tstruct);
-	std::string time(buf);
-	for (std::string world : worldsToBackup)
-	{
-		log->info("Backing up "+world);
-		std::string tarCommand = "tar -C \""+serverPath+"\" -cf "+_backupPath+"/"+world+"_"+time+".tar\" "+world;
-		std::string gzipCommand = "gzip -f \""+backupPath+"/"+world+"_"+time+".tar\"";
-		log->info(tarCommand);
-		system(tarCommand.c_str());
-		log->info(gzipCommand);
-		system(gzipCommand.c_str());
-	}
-	log->info("Backing up "+serverJarName);
-	std::string copyJarCommand = "cp \""+serverPath+"/"+serverJarName+"\" \""+_backupPath+"/"+serverJarName.substr(0, serverJarName.size()-4)+"_"+time+".jar\"";
-	log->info(copyJarCommand);
-	system(copyJarCommand.c_str());
-	*serverProcess << "save-on" << std::endl;
-	*serverProcess << "say SERVER BACKUP ENDED. Server going read-write..." << std::endl;
-	log->info("Backup finished");
-}
-void Server::backupServer(std::string _serverPath, std::string _serverAccount, std::string _backupPath, std::vector<std::string> _worldsToBackup)
-{
-	log->debug("Server::backupServer");
-}
-void Server::startServer()
-{
-	log->debug("Server::startServer");
-	if (serverProcess == nullptr)
-	{
-		try {
-			ServerProcessBuf* serverStreamBuf = new ServerProcessBuf(serverName, serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, javaArgs, serverOptions);
-			serverProcess = new std::iostream(serverStreamBuf);
-			std::thread logger(&Server::logger, this);
-			logger.detach();
-		} 
-		catch (...) {
-			log->fatal("Exception occurred while starting server.  Exiting daemon. ");
-			exit(1);
+void Server::fifo_read(evutil_socket_t fd, short event, void *arg) {
+	//~ ((eventData*)arg)->log->info("Server::fifo_read");
+	char buf[262144];
+	int len;
+	len = read(fd, buf, sizeof(buf) - 1);
+	//~ ((eventData*)arg)->log->info("Read childProcessStdout into buf");
+	if (len <= 0) {
+		if (len == -1) {
+			((eventData*)arg)->log->fatal("Error reading");
+		} else if (len == 0) {
+			((eventData*)arg)->log->fatal("Connection closed");
+			event_base_loopbreak(((eventData*)arg)->base);
+			return;
 		}
 	}
-}
-void Server::stopServer()
-{
-	log->debug("Server::stopServer");
-	if (serverProcess != nullptr)
-	{
-		*serverProcess << "say SERVER SHUTTING DOWN IN 10 SECONDS." << std::endl;
-		for (int i=10; i>0; --i) {
-			*serverProcess << "say "+std::to_string(i) << std::endl;
-			sleep(1);
+	buf[len] = '\0';
+	//~ ((eventData*)arg)->log->info("Wrote null to end of buf");
+	char* c = buf;
+    char* chars_array = strtok(buf, "\n");
+    while(chars_array != NULL)
+    {
+		if (strlen(chars_array) > 0) {
+			if(strchr(chars_array, '%')==NULL){
+				((eventData*)arg)->log->info(chars_array);
+			} else {
+				std::string buffer(chars_array);
+				size_t position;
+				std::string escapeBuffer(buffer);
+				position = buffer.rfind("%");
+				while (position != std::string::npos){
+					escapeBuffer.replace (position, 1,"\%");
+					buffer.erase(position);
+					position = buffer.rfind("%");
+				}
+				((eventData*)arg)->log->info(escapeBuffer);
+			}
 		}
-		*serverProcess << "say Saving map..." << std::endl;
-		*serverProcess << "save-all" << std::endl;
-		*serverProcess << "stop" << std::endl;
-		//~ sleep(10);
-		delete(serverProcess);
-		//~ delete(serverProcess);
-		serverProcess = NULL;
-		log->info("Server stopped");
+        chars_array = strtok(NULL, "\n");
+    }
+    return;
+}
+void Server::getUIDAndGIDFromUsername(const char* user) {
+	struct passwd *pwd = new passwd[sizeof(struct passwd)]();
+	size_t buffer_len = sysconf(_SC_GETPW_R_SIZE_MAX) * sizeof(char);
+	char buffer[buffer_len];
+	getpwnam_r(user, pwd, buffer, buffer_len, &pwd);
+	if(pwd == NULL)
+	{
+		log->fatal("getpwnam_r failed to find username!! Does the user exist!!");
+		throw;
+	}
+	childProcessUID = pwd->pw_uid;
+	childProcessGID = pwd->pw_gid;
+}
+void Server::launchServerProcess(std::string serverPath, std::string serverJarName, std::string serverAccount,
+	int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
+	std::vector<std::string> javaArgs, std::vector<std::string> serverOptions
+) 
+{
+	int result;
+	log->debug("ServerProcessBuf::createChild");
+	getUIDAndGIDFromUsername((char*)serverAccount.c_str());
+	int javaArgsSize = javaArgs.size();
+	int serverOptionsSize = serverOptions.size();
+	int arraySize = (javaArgsSize+serverOptionsSize+7);
+	char* serverCommand[arraySize];
+	std::string _maxHeapAlloc = "-Xmx"+std::to_string(maxHeapAlloc)+"M";
+	std::string _minHeapAlloc = "-Xms"+std::to_string(minHeapAlloc)+"M";
+	std::string _gcThreadCount= "-XX:ParallelGCThreads="+std::to_string(gcThreadCount);
+	serverCommand[0] = "/usr/bin/java";
+	serverCommand[1] = (char*)_maxHeapAlloc.c_str();
+	serverCommand[2] = (char*)_minHeapAlloc.c_str();
+	serverCommand[3] = (char*)_gcThreadCount.c_str();
+	size_t i = 0;
+	for (;i < javaArgs.size(); ++i)
+	{
+		javaArgs[i]="-"+javaArgs[i];
+		serverCommand[i+4]= (char*)javaArgs[i].c_str();
+	}
+	serverCommand[i+4] = "-jar";
+	std::string _serverJarPath;
+	_serverJarPath= serverPath+"/"+serverJarName;
+	serverCommand[i+5] = (char*)_serverJarPath.c_str();
+	size_t j = 0;
+	for (; j < serverOptions.size(); ++j)
+	{
+		serverCommand[j+i+6]=(char*)serverOptions[j].c_str();
+	}
+	serverCommand[i+j+7]=NULL;
+	if (pipe(childProcessStdin) < 0) {
+		log->fatal("allocating pipe for child input redirect");
+		exit(-1);
+	}
+	if (pipe(childProcessStdout) < 0) {
+		close(childProcessStdin[PIPE_READ]);
+		close(childProcessStdin[PIPE_WRITE]);
+		log->fatal("allocating pipe for child output redirect");
+		exit(-1);
+	}
+	fcntl(childProcessStdout[PIPE_READ], F_SETFL, O_NONBLOCK);
+	//~ int server;
+	serverPID = fork();
+	if (serverPID == 0) {
+		// child continues here
+
+		// redirect stdin
+		if (dup2(childProcessStdin[PIPE_READ], STDIN_FILENO) == -1) {
+			log->fatal("redirecting stdin");
+			exit(-1);
+		}
+
+		// redirect stdout
+		if (dup2(childProcessStdout[PIPE_WRITE], STDOUT_FILENO) == -1) {
+			log->fatal("redirecting stdout");
+			exit(-1);
+		}
+
+		// redirect stderr
+		if (dup2(childProcessStdout[PIPE_WRITE], STDERR_FILENO) == -1) {
+			log->fatal("redirecting stderr");
+			exit(-1);
+		}
+
+		//~ // all these are for use by parent only
+		close(childProcessStdin[PIPE_READ]);
+		close(childProcessStdin[PIPE_WRITE]);
+		close(childProcessStdout[PIPE_READ]);
+		close(childProcessStdout[PIPE_WRITE]); 
+		//~ setgid(childProcessGID);
+		setuid(childProcessUID);
+		// run child process image
+		// replace this with any exec* function find easier to use ("man exec")
+		execv("/usr/bin/java", serverCommand);
+
+		// if we get here at all, an error occurred, but we are in the child
+		// process, so just exit
+		log->fatal("Server process crashed with error ");
+		log->fatal(std::to_string(result));
+		log->fatal(std::to_string(errno));
+		throw result;
+	} else if (serverPID > 0) {
+		// parent continues here
+
+		// close unused file descriptors, these are for child only
+		close(childProcessStdin[PIPE_READ]);
+		close(childProcessStdout[PIPE_WRITE]); 
 	} else {
-		log->info("Server already stopped");
-	}
-}
-void Server::serverStatus()
-{
-	log->debug("Server::serverStatus");
-}
-void Server::restartServer()
-{
-	log->debug("Server::restartServer");
-	//~ if (serverProcess != nullptr && !serverProcess->rdbuf()->exited())
-	if (serverProcess != nullptr)
-	{
-		stopServer();
-		startServer();
-	}
-}
-void Server::sendCommand(std::string command)
-{
-	log->debug("Server::sendCommand");
-	//~ if (serverProcess != nullptr && !serverProcess->rdbuf()->exited())
-	if (serverProcess != nullptr)
-	{
-		*serverProcess << command << std::endl;
-	}
-}
-
-void Server::listOnlinePlayers()
-{
-	log->debug("Server::listOnlinePlayers");
-	
-	
-	//~ std::stringstream output;
-	//~ std::string line;
-	//~ int numPlayers = 0;
-	
-	//~ std::stringstream playerList = connection->*serverProcess << "list");
-	//~ std::stringbuf *listBuf = playerList.rdbuf();
-	
-	//~ std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	//~ while (listBuf->in_avail() != 0)
-	//~ {
-		//~ getline(playerList, line);
-		//~ output << line << std::endl;
-		//~ numPlayers++;
-	//~ }
-	//~ if (numPlayers != 0) {
-		//~ std::string outputBuf = output.str();
-		//~ log->info(outputBuf);
-	//~ } else {
-		//~ log->info("No one is on the server");
-	//~ }
-}
-void Server::listOnlinePlayers(std::string playerName)
-{
-	//~ std::stringstream output;
-	//~ std::string line;
-	//~ int numPlayers = 0;
-	
-	//~ std::stringstream playerList = *serverProcess << "list");
-	//~ std::stringbuf *listBuf = playerList.rdbuf();
-	
-	//~ std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	//~ while (listBuf->in_avail() != 0)
-	//~ {
-		//~ getline(playerList, line);
-		//~ if (line != playerName) {
-			//~ output << line << std::endl;
-			//~ numPlayers++;
-		//~ }
-	//~ }
-	//~ if (numPlayers != 0) {
-		//~ std::string outputBuf = output.str();
-		//~ log->info(outputBuf);
-	//~ } else {
-		//~ log->info("No one is on the server");
-	//~ }
-}
-//~ std::string Server::getOutput(int timeout, int lines)
-//~ {
-	//~ std::stringstream _output;
-    //~ std::future_status status;
-    //~ for(int i = 0; i < lines - 1; i++){
-		//~ std::future<std::string> future = std::async(std::launch::async, [this](){ 
-			//~ std::string __output;
-			//serverOutput->mutex.lock();
-			//std::getline(serverOutput->output, output);
-			//~ std::getline(*output, __output);
-			//serverOutput->mutex.unlock();
-			//~ return __output;
-		//~ }); 
-        //~ status = future.wait_for(std::chrono::seconds(timeout));
-        //~ if (status == std::future_status::timeout) {
-            //~ break;
-        //~ } else if (status == std::future_status::ready) {
-            //~ _output << future.get();
-        //~ }
-	//~ }
-    //~ return _output.str();
-//~ }
-void Server::logger()
-{
-	log->debug("ServerStream::logger");
-	std::string _output;
-	while (serverProcess != nullptr) {
-	//~ while (true) {
-		std::getline(*serverProcess, _output);
-		if (_output.size() > 0) {
-			log->info(_output);
-		}
+		// failed to create child
+		close(childProcessStdin[PIPE_READ]);
+		close(childProcessStdin[PIPE_WRITE]);
+		close(childProcessStdout[PIPE_READ]);
+		close(childProcessStdout[PIPE_WRITE]);
 	}
 }
 }

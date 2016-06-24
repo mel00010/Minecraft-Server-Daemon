@@ -1,5 +1,3 @@
-#define DEBUGGING 0
-
 #include "server.h"
 #include "parser.h"
 #include "mainLoop.h"
@@ -13,7 +11,7 @@
 #include <log4cpp/PropertyConfigurator.hh>
 #if DEBUGGING == 1
 	#include <iostream>
-#endif
+#endif /* DEBUGGING == 1 */
 #include <event2/event.h>
 int main(void) {
 	#if DEBUGGING == 0
@@ -39,7 +37,7 @@ int main(void) {
 	}
 	/* If we got a good PID, then
 	   we can exit the parent process. */
-	#endif	
+	#endif	/* DEBUGGING == 0 */
 	signal(SIGINT, sigint_handler);
 	/* Change the file mode mask */
 	umask(0);
@@ -60,7 +58,7 @@ int main(void) {
 		rootLog.fatal("Failure creating new sessionID for daemon");
 		exit(EXIT_FAILURE);
 	}
-	#endif
+	#endif /* DEBUGGING == 0 */
 	/* Change the current working directory */
 	if ((chdir("/")) < 0) {
 		/* Log the failure */
@@ -72,7 +70,7 @@ int main(void) {
 	close(STDIN_FILENO);
 	close(STDOUT_FILENO);
 	close(STDERR_FILENO);
-	#endif
+	#endif /* DEBUGGING == 0 */
 	/* Daemon-specific initialization goes here */
 	//Create pipe to recieve commands from control program
 	

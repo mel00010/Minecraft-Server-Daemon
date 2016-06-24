@@ -4,33 +4,36 @@
 #include "log4cpp/Category.hh"
 #include <event2/event-config.h>
 #include <event2/event.h>
-#include <string>
-#include <sstream>
-#include <vector>
-#include <thread>
-#include <mutex>
-#include <functional>
-#include <cstdlib>
-#include <iosfwd>
-#include <cctype>
-#include <algorithm>
-#include <iterator>
-#include <cstddef>
-#include <unistd.h>
-#include <ostream>
-#include <functional>
-#include <cassert>
-#include <cstring>
-#include <iostream>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/types.h>
+#include <event2/util.h>
 #include <sys/wait.h>
-#include <sys/ioctl.h>
-#include <pwd.h>
-#include <vector>
-#include <algorithm>
-#include <time.h>
+#include <unistd.h>
+
+#if DEBUGGING == 0
+	#include <string>
+	#include <sstream>
+	#include <vector>
+	#include <thread>
+	#include <mutex>
+	#include <functional>
+	#include <cstdlib>
+	#include <iosfwd>
+	#include <cctype>
+	#include <algorithm>
+	#include <iterator>
+	#include <cstddef>
+	#include <unistd.h>
+	#include <ostream>
+	#include <functional>
+	#include <cassert>
+	#include <cstring>
+	#include <iostream>
+	#include <stdlib.h>
+	#include <unistd.h>
+	#include <pwd.h>
+	#include <vector>
+	#include <algorithm>
+	#include <time.h>
+#endif /* DEBUGGING == 0 */
 namespace MinecraftServerService {
 class Server
 {
@@ -79,6 +82,7 @@ class Server
 		typedef Server& (*ServerManipulator)(Server&);
 		typedef std::basic_ostream<char, std::char_traits<char> > CoutType;
 		typedef CoutType& (*StandardEndLine)(CoutType&);
+		
 	public:
 		bool isRunning() {
 			if(serverPID != -1)
@@ -121,9 +125,10 @@ class Server
 			write(childProcessStdin[PIPE_WRITE], "\n", sizeof("\n"));
 			return *this;
 		}
-		
+
+#if DEBUGGING == 0		
 	protected:
-				static void outputListenerThread(int serverPID, int childProcessStdout, struct event_base* base, log4cpp::Category* log) {
+		static void outputListenerThread(int serverPID, int childProcessStdout, struct event_base* base, log4cpp::Category* log) {
 			{
 				log->debug("Server::outputListenerThread");
 				struct event *evfifo;
@@ -168,12 +173,6 @@ class Server
 							position = buffer.rfind("%");
 						}
 						((eventData*)arg)->log->info(escapeBuffer);
-						//~ char _chars_array[strlen(chars_array)+5];
-						//~ strcpy (_chars_array,chars_array);
-						//~ _chars_array[strlen(chars_array)+1] = '\0';
-						//~ _chars_array[strlen(chars_array)] = '\t';
-						//~ ((eventData*)arg)->log->info("Replaced %NULL with %\tNULL in while loop");
-						//~ ((eventData*)arg)->log->info(_chars_array);
 					}
 				}
 		        chars_array = strtok(NULL, "\n");
@@ -293,6 +292,16 @@ class Server
 				close(childProcessStdout[PIPE_WRITE]);
 			}
 		};
+#else
+	protected:
+		static void outputListenerThread(int serverPID, int childProcessStdout, struct event_base* base, log4cpp::Category* log);
+		static void fifo_read(evutil_socket_t fd, short event, void *arg);
+		void getUIDAndGIDFromUsername(const char* user);
+		void launchServerProcess(std::string serverPath, std::string serverJarName, std::string serverAccount,
+			int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
+			std::vector<std::string> javaArgs, std::vector<std::string> serverOptions
+		);
+#endif /* DEBUGGING == 0 */
 };
 }
 #endif /* SERVER_H */

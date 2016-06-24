@@ -106,16 +106,33 @@ minecraft_OBJECTS = $(am_minecraft_OBJECTS)
 minecraft_LDADD = $(LDADD)
 minecraft_LINK = $(CXXLD) $(minecraft_CXXFLAGS) $(CXXFLAGS) \
 	$(minecraft_LDFLAGS) $(LDFLAGS) -o $@
-am_minecraftd_OBJECTS = minecraftd-main.$(OBJEXT) \
-	minecraftd-parser.$(OBJEXT) minecraftd-jsoncpp.$(OBJEXT) \
-	minecraftd-mainLoop.$(OBJEXT) \
-	minecraftd-setupServers.$(OBJEXT) \
-	minecraftd-createSocket.$(OBJEXT) \
-	minecraftd-vanillaServer.$(OBJEXT) \
-	minecraftd-bukkitServer.$(OBJEXT) \
-	minecraftd-bungeecordServer.$(OBJEXT) \
-	minecraftd-genericServer.$(OBJEXT) \
-	minecraftd-spigotServer.$(OBJEXT)
+am__minecraftd_SOURCES_DIST = main.cpp parser.cpp jsoncpp.cpp \
+	mainLoop.cpp setupServers.cpp createSocket.cpp \
+	vanillaServer.cpp bukkitServer.cpp bungeecordServer.cpp \
+	genericServer.cpp spigotServer.cpp server.cpp
+@DEBUG_FALSE@am_minecraftd_OBJECTS = minecraftd-main.$(OBJEXT) \
+@DEBUG_FALSE@	minecraftd-parser.$(OBJEXT) \
+@DEBUG_FALSE@	minecraftd-jsoncpp.$(OBJEXT) \
+@DEBUG_FALSE@	minecraftd-mainLoop.$(OBJEXT) \
+@DEBUG_FALSE@	minecraftd-setupServers.$(OBJEXT) \
+@DEBUG_FALSE@	minecraftd-createSocket.$(OBJEXT) \
+@DEBUG_FALSE@	minecraftd-vanillaServer.$(OBJEXT) \
+@DEBUG_FALSE@	minecraftd-bukkitServer.$(OBJEXT) \
+@DEBUG_FALSE@	minecraftd-bungeecordServer.$(OBJEXT) \
+@DEBUG_FALSE@	minecraftd-genericServer.$(OBJEXT) \
+@DEBUG_FALSE@	minecraftd-spigotServer.$(OBJEXT)
+@DEBUG_TRUE@am_minecraftd_OBJECTS = minecraftd-main.$(OBJEXT) \
+@DEBUG_TRUE@	minecraftd-parser.$(OBJEXT) \
+@DEBUG_TRUE@	minecraftd-jsoncpp.$(OBJEXT) \
+@DEBUG_TRUE@	minecraftd-mainLoop.$(OBJEXT) \
+@DEBUG_TRUE@	minecraftd-server.$(OBJEXT) \
+@DEBUG_TRUE@	minecraftd-setupServers.$(OBJEXT) \
+@DEBUG_TRUE@	minecraftd-createSocket.$(OBJEXT) \
+@DEBUG_TRUE@	minecraftd-vanillaServer.$(OBJEXT) \
+@DEBUG_TRUE@	minecraftd-bukkitServer.$(OBJEXT) \
+@DEBUG_TRUE@	minecraftd-bungeecordServer.$(OBJEXT) \
+@DEBUG_TRUE@	minecraftd-genericServer.$(OBJEXT) \
+@DEBUG_TRUE@	minecraftd-spigotServer.$(OBJEXT)
 minecraftd_OBJECTS = $(am_minecraftd_OBJECTS)
 minecraftd_LDADD = $(LDADD)
 minecraftd_LINK = $(CXXLD) $(minecraftd_CXXFLAGS) $(CXXFLAGS) \
@@ -154,7 +171,7 @@ am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
 SOURCES = $(minecraft_SOURCES) $(minecraftd_SOURCES)
-DIST_SOURCES = $(minecraft_SOURCES) $(minecraftd_SOURCES)
+DIST_SOURCES = $(minecraft_SOURCES) $(am__minecraftd_SOURCES_DIST)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -218,7 +235,6 @@ AUTOMAKE = @AUTOMAKE@
 AWK = @AWK@
 CPPFLAGS = @CPPFLAGS@
 CXX = @CXX@
-CXXCPP = @CXXCPP@
 CXXDEPMODE = @CXXDEPMODE@
 CXXFLAGS = @CXXFLAGS@
 CYGPATH_W = @CYGPATH_W@
@@ -227,9 +243,7 @@ DEPDIR = @DEPDIR@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
 ECHO_T = @ECHO_T@
-EGREP = @EGREP@
 EXEEXT = @EXEEXT@
-GREP = @GREP@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
@@ -302,10 +316,12 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-minecraftd_SOURCES = main.cpp parser.cpp jsoncpp.cpp mainLoop.cpp setupServers.cpp createSocket.cpp vanillaServer.cpp bukkitServer.cpp bungeecordServer.cpp genericServer.cpp spigotServer.cpp  
-include_HEADERS = ServerProcessBuf.h server.h parser.h mainLoop.h setupServers.h createSocket.h vanillaServer.h bukkitServer.h bungeecordServer.h genericServer.h spigotServer.h  
+@DEBUG_FALSE@minecraftd_SOURCES = main.cpp parser.cpp jsoncpp.cpp mainLoop.cpp setupServers.cpp createSocket.cpp vanillaServer.cpp bukkitServer.cpp bungeecordServer.cpp genericServer.cpp spigotServer.cpp  
+@DEBUG_TRUE@minecraftd_SOURCES = main.cpp parser.cpp jsoncpp.cpp mainLoop.cpp server.cpp setupServers.cpp createSocket.cpp vanillaServer.cpp bukkitServer.cpp bungeecordServer.cpp genericServer.cpp spigotServer.cpp  
+@DEBUG_FALSE@minecraftd_CXXFLAGS = -Wall -Wextra -g -std=gnu++11 -I /usr/local/include -D DEBUGGING=0
+@DEBUG_TRUE@minecraftd_CXXFLAGS = -Wall -Wextra -g -std=gnu++11 -I /usr/local/include -D DEBUGGING=1
+include_HEADERS = server.h parser.h mainLoop.h setupServers.h createSocket.h vanillaServer.h bukkitServer.h bungeecordServer.h genericServer.h spigotServer.h  
 minecraftd_LDFLAGS = -pthread -levent -Lusr/log4cpp/lib -llog4cpp
-minecraftd_CXXFLAGS = -Wall -Wextra -g -std=gnu++11 -I /usr/local/include
 minecraft_SOURCES = client.cpp
 minecraft_LDFLAGS = 
 minecraft_CXXFLAGS = -Wall -Wextra -g -std=gnu++11 -I /usr/local/include
@@ -408,6 +424,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-main.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-mainLoop.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-parser.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-server.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-setupServers.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-spigotServer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-vanillaServer.Po@am__quote@
@@ -593,6 +610,20 @@ minecraftd-spigotServer.obj: spigotServer.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='spigotServer.cpp' object='minecraftd-spigotServer.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-spigotServer.obj `if test -f 'spigotServer.cpp'; then $(CYGPATH_W) 'spigotServer.cpp'; else $(CYGPATH_W) '$(srcdir)/spigotServer.cpp'; fi`
+
+minecraftd-server.o: server.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-server.o -MD -MP -MF $(DEPDIR)/minecraftd-server.Tpo -c -o minecraftd-server.o `test -f 'server.cpp' || echo '$(srcdir)/'`server.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-server.Tpo $(DEPDIR)/minecraftd-server.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='server.cpp' object='minecraftd-server.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-server.o `test -f 'server.cpp' || echo '$(srcdir)/'`server.cpp
+
+minecraftd-server.obj: server.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-server.obj -MD -MP -MF $(DEPDIR)/minecraftd-server.Tpo -c -o minecraftd-server.obj `if test -f 'server.cpp'; then $(CYGPATH_W) 'server.cpp'; else $(CYGPATH_W) '$(srcdir)/server.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-server.Tpo $(DEPDIR)/minecraftd-server.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='server.cpp' object='minecraftd-server.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-server.obj `if test -f 'server.cpp'; then $(CYGPATH_W) 'server.cpp'; else $(CYGPATH_W) '$(srcdir)/server.cpp'; fi`
 install-includeHEADERS: $(include_HEADERS)
 	@$(NORMAL_INSTALL)
 	@list='$(include_HEADERS)'; test -n "$(includedir)" || list=; \
