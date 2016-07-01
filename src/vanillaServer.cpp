@@ -99,7 +99,7 @@ void VanillaServer::startServer()
 		chdir(serverPath.c_str());
 		launchServerProcess(serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, javaArgs, serverOptions);
 		log->debug("Launched server process");			
-		std::thread outputListenerThread(&Server::outputListenerThread, serverPID, childProcessStdout[PIPE_READ], base, log);
+		std::thread outputListenerThread(&Server::outputListenerThread, serverPID, childProcessStdout[PIPE_READ], base, log, listeners);
 		outputListenerThread.detach();
 	}
 }
@@ -148,71 +148,50 @@ void VanillaServer::sendCommand(std::string command)
 
 std::string VanillaServer::listOnlinePlayers()
 {
-	//~ log->debug("VanillaServer::listOnlinePlayers");
-	//~ std::function<void(size_t, std::stringstream*, log4cpp::Category*)> f = std::bind( &VanillaServer::listOnlinePlayersCallback, *this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
-	//~ OutputListener outputListener(10, std::string("listOnlinePlayers"), false, f);
-	//~ addOutputListener(outputListener);
-	//~ *this << "list" << std::endl;
-	//~ while(callbackOutput == nullptr) { sleep(1); }
-	//~ if (callbackOutput->rdbuf()->in_avail() != 0) {
-		//~ log->info(callbackOutput->str());
-		//~ std::string returnValue(callbackOutput->str());
-		//~ delete callbackOutput;
-		//~ return returnValue;
-	//~ } else {
-		//~ log->info("No one is on the server");
-		//~ std::string returnValue = "No one is on the server";
-		//~ delete callbackOutput;
-		//~ return returnValue;
-	//~ }
+	log->debug("VanillaServer::listOnlinePlayers");
+	struct event* event;
+	std::string* callbackOutput = new std::string;
+	*callbackOutput = '\0';
+	std::string output = '\0';
+	Listener* listener = new Listener{callbackOutput, 10, false, 0, output};
+	listeners->push_back(listener);
+	*this << "list" << std::endl;
+	while(*callbackOutput == "\0") { sleep(0.1); }
+	if (callbackOutput->size() > 0) {
+		std::string returnValue(*callbackOutput);
+		delete callbackOutput;
+		callbackOutput = nullptr;
+		return returnValue;
+	} else {
+		log->info("No one is on the server");
+		std::string returnValue = "No one is on the server";
+		delete callbackOutput;
+		callbackOutput = nullptr;
+		return returnValue;
+	}
 }
-void VanillaServer::listOnlinePlayersCallback(size_t linesRequested, std::stringstream* output, log4cpp::Category* log)
+bool VanillaServer::listOnlinePlayers(std::string playerName)
 {
-	//~ std::stringbuf *listBuf = output->rdbuf();
-	//~ std::stringstream playersOnline;
-	//~ std::string line;
-	//~ int numPlayers = 0;
-	
-	//~ // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	//~ while (listBuf->in_avail() != 0)
-	//~ {
-		//~ std::getline(*output, line);
-		//~ playersOnline << line << std::endl;
-		//~ numPlayers++;
-	//~ }
-	//~ if (numPlayers != 0) {
-		//~ std::stringstream* _callbackOutput = new std::stringstream();
-		//~ *_callbackOutput << playersOnline.str();
-		//~ callbackOutput=_callbackOutput;
-	//~ } else {
-		//~ std::stringstream* _callbackOutput = new std::stringstream();
-		//~ *_callbackOutput << playersOnline.str();
-		//~ callbackOutput=_callbackOutput;
-	//~ }
-}
-void VanillaServer::listOnlinePlayers(std::string playerName)
-{
-	//~ std::stringstream output;
-	//~ std::string line;
-	//~ int numPlayers = 0;
-	
-	//~ std::stringstream playerList = *this << "list";
-	//~ std::stringbuf *listBuf = playerList.rdbuf();
-	
-	//~ std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	//~ while (listBuf->in_avail() != 0)
-	//~ {
-		//~ getline(playerList, line);
-		//~ if (line != playerName) {
-			//~ output << line << std::endl;
-			//~ numPlayers++;
-		//~ }
-	//~ }
-	//~ if (numPlayers != 0) {
-		//~ std::string outputBuf = output.str();
-		//~ log->info(outputBuf);
-	//~ } else {
-		//~ log->info("No one is on the server");
-	//~ }
+	log->debug("VanillaServer::listOnlinePlayers");
+	struct event* event;
+	std::string* callbackOutput = new std::string;
+	*callbackOutput = '\0';
+	std::string output = '\0';
+	Listener* listener = new Listener{callbackOutput, 10, false, 0, output};
+	listeners->push_back(listener);
+	*this << "list" << std::endl;
+	while(*callbackOutput == "\0") { sleep(0.1); }
+	if (callbackOutput->size() > 0) {
+		std::string returnValue(*callbackOutput);
+		delete callbackOutput;
+		callbackOutput = nullptr;
+		return true;
+	} else {
+		log->info("No one is on the server");
+		std::string returnValue = "No one is on the server";
+		delete callbackOutput;
+		callbackOutput = nullptr;
+		return false;
+	}
 }
 }

@@ -30,40 +30,55 @@
 #include <algorithm>
 #include <time.h>
 namespace MinecraftServerService {
-void Server::outputListenerThread(int serverPID, int childProcessStdout, struct event_base* base, log4cpp::Category* log) {
-	{
-		log->debug("Server::outputListenerThread");
-		struct event *evfifo;
-		eventData* data = new eventData{base, log};
-		evfifo = event_new(base, (evutil_socket_t)childProcessStdout, EV_READ|EV_PERSIST, Server::fifo_read, (void*)data);
-		event_add(evfifo, NULL);
-		event_base_dispatch(base);
-	}
+void Server::outputListenerThread(int serverPID, int childProcessStdout, struct event_base* base, log4cpp::Category* log, std::vector<Listener*>* listeners) {
+	log->debug("Server::outputListenerThread");
+	struct event *outputListener;
+	ServerOutputEventData* data = new ServerOutputEventData{base, log, listeners};
+	outputListener = event_new(base, (evutil_socket_t)childProcessStdout, EV_READ|EV_PERSIST, Server::serverOutputEvent, (void*)data);
+	event_add(outputListener, NULL);
+	event_base_dispatch(base);
 }
-void Server::fifo_read(evutil_socket_t fd, short event, void *arg) {
-	//~ ((eventData*)arg)->log->info("Server::fifo_read");
+void Server::serverOutputEvent(evutil_socket_t fd, short event, void *arg) {
+	//~ ((ServerOutputEventData*)arg)->log->info("Server::fifo_read");
 	char buf[262144];
 	int len;
 	len = read(fd, buf, sizeof(buf) - 1);
-	//~ ((eventData*)arg)->log->info("Read childProcessStdout into buf");
+	//~ ((ServerOutputEventData*)arg)->log->info("Read childProcessStdout into buf");
 	if (len <= 0) {
 		if (len == -1) {
-			((eventData*)arg)->log->fatal("Error reading");
+			((ServerOutputEventData*)arg)->log->fatal("Error reading");
 		} else if (len == 0) {
-			((eventData*)arg)->log->fatal("Connection closed");
-			event_base_loopbreak(((eventData*)arg)->base);
+			((ServerOutputEventData*)arg)->log->fatal("Connection closed");
+			event_base_loopbreak(((ServerOutputEventData*)arg)->base);
 			return;
 		}
 	}
 	buf[len] = '\0';
-	//~ ((eventData*)arg)->log->info("Wrote null to end of buf");
+	//~ ((ServerOutputEventData*)arg)->log->info("Wrote null to end of buf");
 	char* c = buf;
     char* chars_array = strtok(buf, "\n");
     while(chars_array != NULL)
     {
 		if (strlen(chars_array) > 0) {
 			if(strchr(chars_array, '%')==NULL){
-				((eventData*)arg)->log->info(chars_array);
+				((ServerOutputEventData*)arg)->log->info(chars_array);
+				for( std::vector<Listener*>::iterator i = ((ServerOutputEventData*)arg)->listeners->begin() ; i != ((ServerOutputEventData*)arg)->listeners->end(); i++)
+				{
+					if((*i)->currentLine == (*i)->lines)
+					{
+						*((*i)->callbackOutput) = (*i)->output;
+						if (!(*i)->persistent){
+							((ServerOutputEventData*)arg)->listeners->erase(i);
+						} else {
+							(*i)->currentLine = 0;
+							(*i)->output = '\0';
+							(*i)->callbackOutput ='\0';
+						}
+					} else {
+						(*i)->output = (*i)->output + std::string(chars_array);
+						(*i)->currentLine++;
+					}
+				}
 			} else {
 				std::string buffer(chars_array);
 				size_t position;
@@ -74,7 +89,24 @@ void Server::fifo_read(evutil_socket_t fd, short event, void *arg) {
 					buffer.erase(position);
 					position = buffer.rfind("%");
 				}
-				((eventData*)arg)->log->info(escapeBuffer);
+				((ServerOutputEventData*)arg)->log->info(escapeBuffer);
+				for( std::vector<Listener*>::iterator i = ((ServerOutputEventData*)arg)->listeners->begin() ; i != ((ServerOutputEventData*)arg)->listeners->end(); i++)
+				{
+					if((*i)->currentLine == (*i)->lines)
+					{
+						*((*i)->callbackOutput) = (*i)->output;
+						if (!(*i)->persistent){
+							((ServerOutputEventData*)arg)->listeners->erase(i);
+						} else {
+							(*i)->currentLine = 0;
+							(*i)->output = '\0';
+							(*i)->callbackOutput ='\0';
+						}
+					} else {
+						(*i)->output = (*i)->output + std::string(chars_array);
+						(*i)->currentLine++;
+					}
+				}
 			}
 		}
         chars_array = strtok(NULL, "\n");

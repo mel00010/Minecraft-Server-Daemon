@@ -38,6 +38,35 @@ namespace MinecraftServerService {
 class Server
 {
 	public:
+		enum PIPE_OPS 
+		{
+			PIPE_READ = 0,
+			PIPE_WRITE = 1,
+		};
+		struct Listener
+		{
+			std::string* callbackOutput;
+			size_t lines;
+			bool persistent;
+			size_t currentLine;
+			std::string output;
+		};
+		struct ServerOutputEventData
+		{
+			struct event_base* base;
+			log4cpp::Category* log;
+			std::vector<Listener*>* listeners;
+		};
+		typedef struct
+		{
+			uintptr_t   ptr;
+			int         size;
+		} token_t;
+		typedef Server& (*ServerManipulator)(Server&);
+		typedef std::basic_ostream<char, std::char_traits<char> > CoutType;
+		typedef CoutType& (*StandardEndLine)(CoutType&);
+		
+	public:
 		virtual void updateServer() = 0;
 		virtual void backupServer() = 0;
 		virtual void backupServer(std::string backupPath) = 0;
@@ -47,7 +76,7 @@ class Server
 		virtual void restartServer() = 0;
 		virtual void reloadServer() = 0;
 		virtual std::string listOnlinePlayers() = 0;
-		virtual void listOnlinePlayers(std::string playerName) = 0;
+		virtual bool listOnlinePlayers(std::string playerName) = 0;
 		virtual void sendCommand(std::string command) = 0;
 	
 	public:	
@@ -62,27 +91,7 @@ class Server
 		int childProcessStdout[2];
 		log4cpp::Category* log;
 		struct event_base* base = event_base_new();
-		
-	public:
-		enum PIPE_OPS 
-		{
-			PIPE_READ = 0,
-			PIPE_WRITE = 1,
-		};
-		struct eventData
-		{
-			struct event_base* base;
-			log4cpp::Category* log;
-		};
-		typedef struct
-		{
-			uintptr_t   ptr;
-			int         size;
-		} token_t;
-		typedef Server& (*ServerManipulator)(Server&);
-		typedef std::basic_ostream<char, std::char_traits<char> > CoutType;
-		typedef CoutType& (*StandardEndLine)(CoutType&);
-		
+		std::vector<Listener*>* listeners = new std::vector<Listener*>;
 	public:
 		bool isRunning() {
 			if(serverPID != -1)
@@ -128,40 +137,55 @@ class Server
 
 #if DEBUGGING == 0		
 	protected:
-		static void outputListenerThread(int serverPID, int childProcessStdout, struct event_base* base, log4cpp::Category* log) {
-			{
-				log->debug("Server::outputListenerThread");
-				struct event *evfifo;
-				eventData* data = new eventData{base, log};
-				evfifo = event_new(base, (evutil_socket_t)childProcessStdout, EV_READ|EV_PERSIST, Server::fifo_read, (void*)data);
-				event_add(evfifo, NULL);
-				event_base_dispatch(base);
-			}
-		};
-		static void fifo_read(evutil_socket_t fd, short event, void *arg) {
-			//~ ((eventData*)arg)->log->info("Server::fifo_read");
+		static void outputListenerThread(int serverPID, int childProcessStdout, struct event_base* base, log4cpp::Category* log, std::vector<Listener*>* listeners) {
+			log->debug("Server::outputListenerThread");
+			struct event *outputListener;
+			ServerOutputEventData* data = new ServerOutputEventData{base, log, listeners};
+			outputListener = event_new(base, (evutil_socket_t)childProcessStdout, EV_READ|EV_PERSIST, Server::serverOutputEvent, (void*)data);
+			event_add(outputListener, NULL);
+			event_base_dispatch(base);
+		}
+		static void serverOutputEvent(evutil_socket_t fd, short event, void *arg) {
+			//~ ((ServerOutputEventData*)arg)->log->info("Server::fifo_read");
 			char buf[262144];
 			int len;
 			len = read(fd, buf, sizeof(buf) - 1);
-			//~ ((eventData*)arg)->log->info("Read childProcessStdout into buf");
+			//~ ((ServerOutputEventData*)arg)->log->info("Read childProcessStdout into buf");
 			if (len <= 0) {
 				if (len == -1) {
-					((eventData*)arg)->log->fatal("Error reading");
+					((ServerOutputEventData*)arg)->log->fatal("Error reading");
 				} else if (len == 0) {
-					((eventData*)arg)->log->fatal("Connection closed");
-					event_base_loopbreak(((eventData*)arg)->base);
+					((ServerOutputEventData*)arg)->log->fatal("Connection closed");
+					event_base_loopbreak(((ServerOutputEventData*)arg)->base);
 					return;
 				}
 			}
 			buf[len] = '\0';
-			//~ ((eventData*)arg)->log->info("Wrote null to end of buf");
+			//~ ((ServerOutputEventData*)arg)->log->info("Wrote null to end of buf");
 			char* c = buf;
 		    char* chars_array = strtok(buf, "\n");
 		    while(chars_array != NULL)
 		    {
 				if (strlen(chars_array) > 0) {
 					if(strchr(chars_array, '%')==NULL){
-						((eventData*)arg)->log->info(chars_array);
+						((ServerOutputEventData*)arg)->log->info(chars_array);
+						for( std::vector<Listener*>::iterator i = ((ServerOutputEventData*)arg)->listeners->begin() ; i != ((ServerOutputEventData*)arg)->listeners->end(); i++)
+						{
+							if((*i)->currentLine == (*i)->lines)
+							{
+								*((*i)->callbackOutput) = (*i)->output;
+								if (!(*i)->persistent){
+									((ServerOutputEventData*)arg)->listeners->erase(i);
+								} else {
+									(*i)->currentLine = 0;
+									(*i)->output = '\0';
+									(*i)->callbackOutput ='\0';
+								}
+							} else {
+								(*i)->output = (*i)->output + std::string(chars_array);
+								(*i)->currentLine++;
+							}
+						}
 					} else {
 						std::string buffer(chars_array);
 						size_t position;
@@ -172,13 +196,30 @@ class Server
 							buffer.erase(position);
 							position = buffer.rfind("%");
 						}
-						((eventData*)arg)->log->info(escapeBuffer);
+						((ServerOutputEventData*)arg)->log->info(escapeBuffer);
+						for( std::vector<Listener*>::iterator i = ((ServerOutputEventData*)arg)->listeners->begin() ; i != ((ServerOutputEventData*)arg)->listeners->end(); i++)
+						{
+							if((*i)->currentLine == (*i)->lines)
+							{
+								*((*i)->callbackOutput) = (*i)->output;
+								if (!(*i)->persistent){
+									((ServerOutputEventData*)arg)->listeners->erase(i);
+								} else {
+									(*i)->currentLine = 0;
+									(*i)->output = '\0';
+									(*i)->callbackOutput ='\0';
+								}
+							} else {
+								(*i)->output = (*i)->output + std::string(chars_array);
+								(*i)->currentLine++;
+							}
+						}
 					}
 				}
 		        chars_array = strtok(NULL, "\n");
 		    }
 		    return;
-		};
+		}
 		void getUIDAndGIDFromUsername(const char* user) {
 			struct passwd *pwd = new passwd[sizeof(struct passwd)]();
 			size_t buffer_len = sysconf(_SC_GETPW_R_SIZE_MAX) * sizeof(char);
@@ -191,7 +232,7 @@ class Server
 			}
 			childProcessUID = pwd->pw_uid;
 			childProcessGID = pwd->pw_gid;
-		};
+		}
 		void launchServerProcess(std::string serverPath, std::string serverJarName, std::string serverAccount,
 			int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
 			std::vector<std::string> javaArgs, std::vector<std::string> serverOptions
@@ -291,11 +332,13 @@ class Server
 				close(childProcessStdout[PIPE_READ]);
 				close(childProcessStdout[PIPE_WRITE]);
 			}
-		};
+		}
 #else
 	protected:
-		static void outputListenerThread(int serverPID, int childProcessStdout, struct event_base* base, log4cpp::Category* log);
-		static void fifo_read(evutil_socket_t fd, short event, void *arg);
+		static void outputListenerThread(int serverPID, int childProcessStdout, struct event_base* base, 
+			log4cpp::Category* log, std::vector<Listener*>* listeners
+		);
+		static void serverOutputEvent(evutil_socket_t fd, short event, void *arg);
 		void getUIDAndGIDFromUsername(const char* user);
 		void launchServerProcess(std::string serverPath, std::string serverJarName, std::string serverAccount,
 			int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,

@@ -30,7 +30,7 @@ class BukkitServer : public Server
 		void restartServer();
 		void reloadServer();
 		std::string listOnlinePlayers();
-		void listOnlinePlayers(std::string playerName);
+		bool listOnlinePlayers(std::string playerName);
 		void sendCommand(std::string command);
 	
 	public:

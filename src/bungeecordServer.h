@@ -29,7 +29,7 @@ class BungeeCordServer : public Server
 		void restartServer();
 		void reloadServer();
 		std::string listOnlinePlayers();
-		void listOnlinePlayers(std::string playerName);
+		bool listOnlinePlayers(std::string playerName);
 		void sendCommand(std::string command);
 		
 	public:
@@ -37,7 +37,6 @@ class BungeeCordServer : public Server
 		
 	protected:
 		void logger(size_t linesRequested, std::stringstream* output, log4cpp::Category* log);
-		void listOnlinePlayersCallback(size_t linesRequested, std::stringstream* output, log4cpp::Category* log);
 		std::string serverPath;
 		std::string serverJarName;
 		std::string serverAccount;
