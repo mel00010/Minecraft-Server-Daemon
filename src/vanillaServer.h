@@ -34,7 +34,7 @@ class VanillaServer : public Server
 {
 	public:
 		VanillaServer(
-			std::string serverName,
+			std::string _serverName,
 			std::string serverPath, std::string serverJarName, std::string serverAccount,
 			int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
 			std::string backupPath,
@@ -54,8 +54,12 @@ class VanillaServer : public Server
 		std::string listOnlinePlayers();
 		bool listOnlinePlayers(std::string playerName);
 		void sendCommand(std::string command);
-		std::string serverName;
+		std::string getServerName()
+		{
+			return serverName;
+		};
 	protected:
+		std::string serverName;
 		void logger(size_t linesRequested, std::stringstream* output, log4cpp::Category* log);
 		std::string serverPath;
 		std::string serverJarName;

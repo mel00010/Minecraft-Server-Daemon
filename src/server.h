@@ -99,12 +99,11 @@ class Server
 		virtual std::string listOnlinePlayers() = 0;
 		virtual bool listOnlinePlayers(std::string playerName) = 0;
 		virtual void sendCommand(std::string command) = 0;
-	
+		virtual std::string getServerName() = 0;
 	public:	
-		std::string serverName;
+		//~ std::string serverName;
 		
 	protected:
-		//~ std::vector<OutputListener>* outputListeners = nullptr;
 		int serverPID = -1;
 		int childProcessUID;
 		int childProcessGID;

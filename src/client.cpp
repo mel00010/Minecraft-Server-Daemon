@@ -38,7 +38,7 @@ char buff[4];
 
 void help(char* argv0)
 {
-	std::cout << "Usage:  " << argv0 << " list|start <SERVER>|stop <SERVER>|restart <SERVER>|sendcommand <SERVER> <COMMAND>|status <SERVER>|update <SERVER>|backup <SERVER>|listplayers <SERVER> [PLAYER]|stopall|restartall|updateall|backupall|stopdaemon" << std::endl;
+	std::cout << "Usage:  " << argv0 << " {list|start <SERVER>|stop <SERVER>|restart <SERVER>|sendcommand <SERVER> <COMMAND>|status <SERVER>|update <SERVER>|backup <SERVER>|listplayers <SERVER> [PLAYER]|stopall|restartall|updateall|backupall|stopdaemon}" << std::endl;
 }
 void writeToSocket(std::string command)
 {
@@ -46,7 +46,6 @@ void writeToSocket(std::string command)
 	ss << std::setw(4) << std::setfill('0') << command.size();
 	std::string buf = ss.str() + command;
 	send(controlSocket, buf.c_str(), buf.size(), 0);
-
 }
 std::string readFromSocket()
 {
@@ -62,7 +61,9 @@ int main(int argc, char *argv[])
 	if (argc > 1)
 	{
 		std::string option(argv[1]);
-		if (option == "startdaemon") {
+		if (option == "--help") {
+			help(argv[0]);
+		} else if (option == "startdaemon") {
 			if (system("minecraftd")==0)
 			{
 				std::cout << "Daemon started" << std::endl;

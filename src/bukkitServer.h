@@ -54,11 +54,12 @@ class BukkitServer : public Server
 		std::string listOnlinePlayers();
 		bool listOnlinePlayers(std::string playerName);
 		void sendCommand(std::string command);
-	
-	public:
-		std::string serverName;
-	
+		std::string getServerName()
+		{
+			return serverName;
+		};	
 	protected:
+		std::string serverName;
 		void logger(size_t linesRequested, std::stringstream* output, log4cpp::Category* log);
 		void listOnlinePlayersCallback(size_t linesRequested, std::stringstream* output, log4cpp::Category* log);
 		std::string serverPath;
