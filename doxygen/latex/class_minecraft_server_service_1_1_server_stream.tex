@@ -1,0 +1,214 @@
+\hypertarget{class_minecraft_server_service_1_1_server_stream}{}\section{Minecraft\+Server\+Service\+:\+:Server\+Stream Class Reference}
+\label{class_minecraft_server_service_1_1_server_stream}\index{Minecraft\+Server\+Service\+::\+Server\+Stream@{Minecraft\+Server\+Service\+::\+Server\+Stream}}
+
+
+{\ttfamily \#include $<$Server\+Stream.\+h$>$}
+
+
+
+Inheritance diagram for Minecraft\+Server\+Service\+:\+:Server\+Stream\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{class_minecraft_server_service_1_1_server_stream__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Minecraft\+Server\+Service\+:\+:Server\+Stream\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{class_minecraft_server_service_1_1_server_stream__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_minecraft_server_service_1_1_server_stream_a18567f4d5f6752325172e3fb5efb0f6c}{Server\+Stream} (std\+::string \+\_\+server\+Name, std\+::string \+\_\+server\+Path, std\+::string \+\_\+server\+Jar\+Name, std\+::string \+\_\+server\+Account, int \+\_\+max\+Heap\+Alloc, int \+\_\+min\+Heap\+Alloc, int \+\_\+gc\+Thread\+Count, std\+::vector$<$ std\+::string $>$ \+\_\+java\+Args, std\+::vector$<$ std\+::string $>$ \+\_\+server\+Options)
+\item 
+virtual \hyperlink{class_minecraft_server_service_1_1_server_stream_a8cb55e6e481c6d4338d446a7b92df3d3}{$\sim$\+Server\+Stream} ()
+\item 
+\hyperlink{class_minecraft_server_service_1_1_server_process_buf}{Server\+Process\+Buf} $\ast$ \hyperlink{class_minecraft_server_service_1_1_server_stream_acfaf50ff9b711062de3bb8a650ba11dd}{rdbuf} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_server_stream_af8529e03480497e12e171cf93709e757}{stop\+Server} ()
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_server_stream_a194212956c6eb928a2db1b25e70dc565}{send\+Command} (std\+::string command)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_minecraft_server_service_1_1_server_process_buf}{Server\+Process\+Buf} $\ast$ \hyperlink{class_minecraft_server_service_1_1_server_stream_a974b8007a5c437d221f482543044acb4}{server\+Process} = nullptr
+\item 
+log4cpp\+::\+Category $\ast$ \hyperlink{class_minecraft_server_service_1_1_server_stream_a698b7dfef7f76adc005d81eb6a11dd28}{log} = nullptr
+\item 
+std\+::string \hyperlink{class_minecraft_server_service_1_1_server_stream_aa6aeeef202bcbaf6b6668a03f7682efb}{server\+Name}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 9 of file Server\+Stream.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Minecraft\+Server\+Service\+::\+Server\+Stream@{Minecraft\+Server\+Service\+::\+Server\+Stream}!Server\+Stream@{Server\+Stream}}
+\index{Server\+Stream@{Server\+Stream}!Minecraft\+Server\+Service\+::\+Server\+Stream@{Minecraft\+Server\+Service\+::\+Server\+Stream}}
+\subsubsection[{\texorpdfstring{Server\+Stream(std\+::string \+\_\+server\+Name, std\+::string \+\_\+server\+Path, std\+::string \+\_\+server\+Jar\+Name, std\+::string \+\_\+server\+Account, int \+\_\+max\+Heap\+Alloc, int \+\_\+min\+Heap\+Alloc, int \+\_\+gc\+Thread\+Count, std\+::vector$<$ std\+::string $>$ \+\_\+java\+Args, std\+::vector$<$ std\+::string $>$ \+\_\+server\+Options)}{ServerStream(std::string _serverName, std::string _serverPath, std::string _serverJarName, std::string _serverAccount, int _maxHeapAlloc, int _minHeapAlloc, int _gcThreadCount, std::vector< std::string > _javaArgs, std::vector< std::string > _serverOptions)}}]{\setlength{\rightskip}{0pt plus 5cm}Minecraft\+Server\+Service\+::\+Server\+Stream\+::\+Server\+Stream (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{\+\_\+server\+Name, }
+\item[{std\+::string}]{\+\_\+server\+Path, }
+\item[{std\+::string}]{\+\_\+server\+Jar\+Name, }
+\item[{std\+::string}]{\+\_\+server\+Account, }
+\item[{int}]{\+\_\+max\+Heap\+Alloc, }
+\item[{int}]{\+\_\+min\+Heap\+Alloc, }
+\item[{int}]{\+\_\+gc\+Thread\+Count, }
+\item[{std\+::vector$<$ std\+::string $>$}]{\+\_\+java\+Args, }
+\item[{std\+::vector$<$ std\+::string $>$}]{\+\_\+server\+Options}
+\end{DoxyParamCaption}
+)}\hypertarget{class_minecraft_server_service_1_1_server_stream_a18567f4d5f6752325172e3fb5efb0f6c}{}\label{class_minecraft_server_service_1_1_server_stream_a18567f4d5f6752325172e3fb5efb0f6c}
+
+
+Definition at line 20 of file Server\+Stream.\+cpp.
+
+\index{Minecraft\+Server\+Service\+::\+Server\+Stream@{Minecraft\+Server\+Service\+::\+Server\+Stream}!````~Server\+Stream@{$\sim$\+Server\+Stream}}
+\index{````~Server\+Stream@{$\sim$\+Server\+Stream}!Minecraft\+Server\+Service\+::\+Server\+Stream@{Minecraft\+Server\+Service\+::\+Server\+Stream}}
+\subsubsection[{\texorpdfstring{$\sim$\+Server\+Stream()}{~ServerStream()}}]{\setlength{\rightskip}{0pt plus 5cm}Minecraft\+Server\+Service\+::\+Server\+Stream\+::$\sim$\+Server\+Stream (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_server_stream_a8cb55e6e481c6d4338d446a7b92df3d3}{}\label{class_minecraft_server_service_1_1_server_stream_a8cb55e6e481c6d4338d446a7b92df3d3}
+
+
+Definition at line 35 of file Server\+Stream.\+cpp.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_server_stream_a8cb55e6e481c6d4338d446a7b92df3d3_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Function Documentation}
+\index{Minecraft\+Server\+Service\+::\+Server\+Stream@{Minecraft\+Server\+Service\+::\+Server\+Stream}!rdbuf@{rdbuf}}
+\index{rdbuf@{rdbuf}!Minecraft\+Server\+Service\+::\+Server\+Stream@{Minecraft\+Server\+Service\+::\+Server\+Stream}}
+\subsubsection[{\texorpdfstring{rdbuf()}{rdbuf()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Server\+Process\+Buf} $\ast$ Minecraft\+Server\+Service\+::\+Server\+Stream\+::rdbuf (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_minecraft_server_service_1_1_server_stream_acfaf50ff9b711062de3bb8a650ba11dd}{}\label{class_minecraft_server_service_1_1_server_stream_acfaf50ff9b711062de3bb8a650ba11dd}
+
+
+Definition at line 75 of file Server\+Stream.\+cpp.
+
+\index{Minecraft\+Server\+Service\+::\+Server\+Stream@{Minecraft\+Server\+Service\+::\+Server\+Stream}!send\+Command@{send\+Command}}
+\index{send\+Command@{send\+Command}!Minecraft\+Server\+Service\+::\+Server\+Stream@{Minecraft\+Server\+Service\+::\+Server\+Stream}}
+\subsubsection[{\texorpdfstring{send\+Command(std\+::string command)}{sendCommand(std::string command)}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Server\+Stream\+::send\+Command (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{command}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_server_stream_a194212956c6eb928a2db1b25e70dc565}{}\label{class_minecraft_server_service_1_1_server_stream_a194212956c6eb928a2db1b25e70dc565}
+
+
+Definition at line 63 of file Server\+Stream.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_server_stream_a194212956c6eb928a2db1b25e70dc565_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_server_stream_a194212956c6eb928a2db1b25e70dc565_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Minecraft\+Server\+Service\+::\+Server\+Stream@{Minecraft\+Server\+Service\+::\+Server\+Stream}!stop\+Server@{stop\+Server}}
+\index{stop\+Server@{stop\+Server}!Minecraft\+Server\+Service\+::\+Server\+Stream@{Minecraft\+Server\+Service\+::\+Server\+Stream}}
+\subsubsection[{\texorpdfstring{stop\+Server()}{stopServer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Server\+Stream\+::stop\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_server_stream_af8529e03480497e12e171cf93709e757}{}\label{class_minecraft_server_service_1_1_server_stream_af8529e03480497e12e171cf93709e757}
+
+
+Definition at line 43 of file Server\+Stream.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_server_stream_af8529e03480497e12e171cf93709e757_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_server_stream_af8529e03480497e12e171cf93709e757_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\index{Minecraft\+Server\+Service\+::\+Server\+Stream@{Minecraft\+Server\+Service\+::\+Server\+Stream}!log@{log}}
+\index{log@{log}!Minecraft\+Server\+Service\+::\+Server\+Stream@{Minecraft\+Server\+Service\+::\+Server\+Stream}}
+\subsubsection[{\texorpdfstring{log}{log}}]{\setlength{\rightskip}{0pt plus 5cm}log4cpp\+::\+Category$\ast$ Minecraft\+Server\+Service\+::\+Server\+Stream\+::log = nullptr\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_server_stream_a698b7dfef7f76adc005d81eb6a11dd28}{}\label{class_minecraft_server_service_1_1_server_stream_a698b7dfef7f76adc005d81eb6a11dd28}
+
+
+Definition at line 22 of file Server\+Stream.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Server\+Stream@{Minecraft\+Server\+Service\+::\+Server\+Stream}!server\+Name@{server\+Name}}
+\index{server\+Name@{server\+Name}!Minecraft\+Server\+Service\+::\+Server\+Stream@{Minecraft\+Server\+Service\+::\+Server\+Stream}}
+\subsubsection[{\texorpdfstring{server\+Name}{serverName}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Minecraft\+Server\+Service\+::\+Server\+Stream\+::server\+Name\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_server_stream_aa6aeeef202bcbaf6b6668a03f7682efb}{}\label{class_minecraft_server_service_1_1_server_stream_aa6aeeef202bcbaf6b6668a03f7682efb}
+
+
+Definition at line 23 of file Server\+Stream.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Server\+Stream@{Minecraft\+Server\+Service\+::\+Server\+Stream}!server\+Process@{server\+Process}}
+\index{server\+Process@{server\+Process}!Minecraft\+Server\+Service\+::\+Server\+Stream@{Minecraft\+Server\+Service\+::\+Server\+Stream}}
+\subsubsection[{\texorpdfstring{server\+Process}{serverProcess}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Server\+Process\+Buf}$\ast$ Minecraft\+Server\+Service\+::\+Server\+Stream\+::server\+Process = nullptr\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_server_stream_a974b8007a5c437d221f482543044acb4}{}\label{class_minecraft_server_service_1_1_server_stream_a974b8007a5c437d221f482543044acb4}
+
+
+Definition at line 21 of file Server\+Stream.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/mel/projects/\+Misc/\+Minecraft Server Service/src/\hyperlink{_server_stream_8h}{Server\+Stream.\+h}\item 
+/home/mel/projects/\+Misc/\+Minecraft Server Service/src/\hyperlink{_server_stream_8cpp}{Server\+Stream.\+cpp}\end{DoxyCompactItemize}

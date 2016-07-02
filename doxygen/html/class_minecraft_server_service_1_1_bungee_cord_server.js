@@ -1,0 +1,28 @@
+var class_minecraft_server_service_1_1_bungee_cord_server =
+[
+    [ "BungeeCordServer", "class_minecraft_server_service_1_1_bungee_cord_server.html#a1b99966f745f910715dcf7c52839850b", null ],
+    [ "~BungeeCordServer", "class_minecraft_server_service_1_1_bungee_cord_server.html#a6b01c6e4f7ee0544d27d8f09fa21f426", null ],
+    [ "backupServer", "class_minecraft_server_service_1_1_bungee_cord_server.html#a775734dcde149377ccc8f83d206b7bf0", null ],
+    [ "backupServer", "class_minecraft_server_service_1_1_bungee_cord_server.html#a5e1a0b0e5be34b9e4be1ea3c97177d6c", null ],
+    [ "listOnlinePlayers", "class_minecraft_server_service_1_1_bungee_cord_server.html#a23b4c91d8c1461c0505d9276f0c42f73", null ],
+    [ "listOnlinePlayers", "class_minecraft_server_service_1_1_bungee_cord_server.html#ab74599186e768c2b0a6bbac2ec60cefa", null ],
+    [ "logger", "class_minecraft_server_service_1_1_bungee_cord_server.html#af3bdb081f45df9ffe6bcef267c4d19f3", null ],
+    [ "reloadServer", "class_minecraft_server_service_1_1_bungee_cord_server.html#a4fc15adfabbab2c3d1008af5c5b33114", null ],
+    [ "restartServer", "class_minecraft_server_service_1_1_bungee_cord_server.html#a471a30d5fd0c2dca57970aef99eaa2b7", null ],
+    [ "sendCommand", "class_minecraft_server_service_1_1_bungee_cord_server.html#a4c398b65df83fe47cdaf8c4e5de66dff", null ],
+    [ "serverStatus", "class_minecraft_server_service_1_1_bungee_cord_server.html#a7282786d28d234f51cb7c3803ed548df", null ],
+    [ "startServer", "class_minecraft_server_service_1_1_bungee_cord_server.html#a5f03992324f892fa1cedcef5153a7d3f", null ],
+    [ "stopServer", "class_minecraft_server_service_1_1_bungee_cord_server.html#a20602e6aa9b12c5f7c1c61e0a3341ab7", null ],
+    [ "updateServer", "class_minecraft_server_service_1_1_bungee_cord_server.html#a9b52175a0cd65b4ee1298c6b8f88a9a3", null ],
+    [ "backupPath", "class_minecraft_server_service_1_1_bungee_cord_server.html#aa087aafe4137b677f19f1757e088ea08", null ],
+    [ "gcThreadCount", "class_minecraft_server_service_1_1_bungee_cord_server.html#a993736356331c55b759b8af235c547de", null ],
+    [ "javaArgs", "class_minecraft_server_service_1_1_bungee_cord_server.html#a23dbf0f91c62b61730c643f93f9e1927", null ],
+    [ "maxHeapAlloc", "class_minecraft_server_service_1_1_bungee_cord_server.html#acefb624eabfc4d7516329e28ccb2acde", null ],
+    [ "minHeapAlloc", "class_minecraft_server_service_1_1_bungee_cord_server.html#a9a888b11ba14938f093957e4108bd22b", null ],
+    [ "serverAccount", "class_minecraft_server_service_1_1_bungee_cord_server.html#a962f4683af0dcd67eadb62875d926142", null ],
+    [ "serverJarName", "class_minecraft_server_service_1_1_bungee_cord_server.html#a68a7e4caf06617af4713dd905ec3ce52", null ],
+    [ "serverName", "class_minecraft_server_service_1_1_bungee_cord_server.html#affe74246ec8e01cadd21fb8ffe613934", null ],
+    [ "serverOptions", "class_minecraft_server_service_1_1_bungee_cord_server.html#a3fc820aa9d0a5620f10c59e585690aa5", null ],
+    [ "serverPath", "class_minecraft_server_service_1_1_bungee_cord_server.html#a6d51d89bb1978039381a04af2f7b5880", null ],
+    [ "worldsToBackup", "class_minecraft_server_service_1_1_bungee_cord_server.html#a9cdff082e45d4ef5ffc6c4fd7143e8b7", null ]
+];

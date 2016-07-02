@@ -1,0 +1,545 @@
+\hypertarget{class_minecraft_server_service_1_1_server}{}\section{Minecraft\+Server\+Service\+:\+:Server Class Reference}
+\label{class_minecraft_server_service_1_1_server}\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+
+
+{\ttfamily \#include $<$server.\+h$>$}
+
+
+
+Inheritance diagram for Minecraft\+Server\+Service\+:\+:Server\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_server__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_minecraft_server_service_1_1_server_1_1_listener}{Listener}
+\item 
+struct \hyperlink{struct_minecraft_server_service_1_1_server_1_1_server_output_event_data}{Server\+Output\+Event\+Data}
+\item 
+struct \hyperlink{struct_minecraft_server_service_1_1_server_1_1token__t}{token\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_minecraft_server_service_1_1_server_a7b9b73779645007e9f9c33dac1436d47}{P\+I\+P\+E\+\_\+\+O\+PS} \{ \hyperlink{class_minecraft_server_service_1_1_server_a7b9b73779645007e9f9c33dac1436d47ae4f50d706aa789aa79b1815ea83ca96a}{P\+I\+P\+E\+\_\+\+R\+E\+AD} = 0, 
+\hyperlink{class_minecraft_server_service_1_1_server_a7b9b73779645007e9f9c33dac1436d47a57f3281db4e9bfe3825337d696eb24a4}{P\+I\+P\+E\+\_\+\+W\+R\+I\+TE} = 1
+ \}
+\item 
+typedef \hyperlink{class_minecraft_server_service_1_1_server}{Server} \&($\ast$ \hyperlink{class_minecraft_server_service_1_1_server_af07a3457e3239d898b8f84809b0703e4}{Server\+Manipulator}) (\hyperlink{class_minecraft_server_service_1_1_server}{Server} \&)
+\item 
+typedef std\+::basic\+\_\+ostream$<$ char, std\+::char\+\_\+traits$<$ char $>$ $>$ \hyperlink{class_minecraft_server_service_1_1_server_a9a78d018fb71e9aa0a054ff39cba5083}{Cout\+Type}
+\item 
+typedef \hyperlink{class_minecraft_server_service_1_1_server_a9a78d018fb71e9aa0a054ff39cba5083}{Cout\+Type} \&($\ast$ \hyperlink{class_minecraft_server_service_1_1_server_aabd71f679656f27eec9b0d66be40f5a1}{Standard\+End\+Line}) (\hyperlink{class_minecraft_server_service_1_1_server_a9a78d018fb71e9aa0a054ff39cba5083}{Cout\+Type} \&)
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_minecraft_server_service_1_1_server_a0715bfc451f5abbd2f47d0895e5a2355}{update\+Server} ()=0
+\item 
+virtual void \hyperlink{class_minecraft_server_service_1_1_server_a58373fb195d9546e4a843ba83d741f36}{backup\+Server} ()=0
+\item 
+virtual void \hyperlink{class_minecraft_server_service_1_1_server_a3045f178ed407b157a21da66a245e61f}{backup\+Server} (std\+::string backup\+Path)=0
+\item 
+virtual void \hyperlink{class_minecraft_server_service_1_1_server_af972c950277b436d85513ff5e8003df2}{server\+Status} ()=0
+\item 
+virtual void \hyperlink{class_minecraft_server_service_1_1_server_ac84f4a395d9680ba4d7405996dcb445c}{start\+Server} ()=0
+\item 
+virtual void \hyperlink{class_minecraft_server_service_1_1_server_a45fb906a041e3f6c59128a0e9c4cd289}{stop\+Server} ()=0
+\item 
+virtual void \hyperlink{class_minecraft_server_service_1_1_server_a9cfcad805db7ffd3f5ad10ef7a726cf9}{restart\+Server} ()=0
+\item 
+virtual void \hyperlink{class_minecraft_server_service_1_1_server_a68757647a604e935d365672b53c82d98}{reload\+Server} ()=0
+\item 
+virtual std\+::string \hyperlink{class_minecraft_server_service_1_1_server_a86455e8351ecc7af502e681daf023eb3}{list\+Online\+Players} ()=0
+\item 
+virtual bool \hyperlink{class_minecraft_server_service_1_1_server_adf8951b2a9337983e8ced4b148e1ed5e}{list\+Online\+Players} (std\+::string player\+Name)=0
+\item 
+virtual void \hyperlink{class_minecraft_server_service_1_1_server_a9c2d6b9b94d490405bf74109e7794cb1}{send\+Command} (std\+::string command)=0
+\item 
+bool \hyperlink{class_minecraft_server_service_1_1_server_a1954e7c7756cd956e7282887ffca73e4}{is\+Running} ()
+\item 
+{\footnotesize template$<$typename T $>$ }\\\hyperlink{class_minecraft_server_service_1_1_server}{Server} \& \hyperlink{class_minecraft_server_service_1_1_server_a21a2533f4998ccc209c53a48cdb58718}{operator$<$$<$} (const T \&x)
+\item 
+\hyperlink{class_minecraft_server_service_1_1_server}{Server} \& \hyperlink{class_minecraft_server_service_1_1_server_a885bdc0a0267d25168bf6d35086d6090}{operator$<$$<$} (const std\+::string \&x)
+\item 
+std\+::istream \& \hyperlink{class_minecraft_server_service_1_1_server_a2b2cca8ee2e09c7236bc668e8522cb6a}{operator$>$$>$} (std\+::istream \&in)
+\item 
+\hyperlink{class_minecraft_server_service_1_1_server}{Server} \& \hyperlink{class_minecraft_server_service_1_1_server_aad73f651ba11cfc4815f8763edd6b914}{operator$<$$<$} (\hyperlink{class_minecraft_server_service_1_1_server_aabd71f679656f27eec9b0d66be40f5a1}{Standard\+End\+Line} manip)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{class_minecraft_server_service_1_1_server_a4a4a359e824e19e2a0c4d105ee4fad91}{server\+Name}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_server_a085f201bd563ce47e2b41778ef72d20d}{get\+U\+I\+D\+And\+G\+I\+D\+From\+Username} (const char $\ast$user)
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_server_a16a19b4cfd94f23c20442cea9b46f678}{launch\+Server\+Process} (std\+::string server\+Path, std\+::string server\+Jar\+Name, std\+::string server\+Account, int max\+Heap\+Alloc, int min\+Heap\+Alloc, int gc\+Thread\+Count, std\+::vector$<$ std\+::string $>$ java\+Args, std\+::vector$<$ std\+::string $>$ server\+Options)
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{class_minecraft_server_service_1_1_server_a3040817c744456263f8ba36bdb72bf20}{output\+Listener\+Thread} (int \hyperlink{class_minecraft_server_service_1_1_server_abdb911338643b10beee5393851afb4c8}{server\+P\+ID}, int \hyperlink{class_minecraft_server_service_1_1_server_abb0ccd5070cc03476fc00e2e7674de6a}{child\+Process\+Stdout}, struct event\+\_\+base $\ast$\hyperlink{class_minecraft_server_service_1_1_server_a12dbc6c931c04754ef5600e8ad03cc4c}{base}, log4cpp\+::\+Category $\ast$\hyperlink{class_minecraft_server_service_1_1_server_aea87340c35422279f868ecf8edc4a9f6}{log}, std\+::vector$<$ \hyperlink{struct_minecraft_server_service_1_1_server_1_1_listener}{Listener} $\ast$ $>$ $\ast$\hyperlink{class_minecraft_server_service_1_1_server_a51c6dda2196eb9ee8ff671deacb66dae}{listeners})
+\item 
+static void \hyperlink{class_minecraft_server_service_1_1_server_a4ecf103c62bd8f1e54b2ff436fa1645a}{server\+Output\+Event} (evutil\+\_\+socket\+\_\+t fd, short event, void $\ast$arg)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_minecraft_server_service_1_1_server_abdb911338643b10beee5393851afb4c8}{server\+P\+ID} = -\/1
+\item 
+int \hyperlink{class_minecraft_server_service_1_1_server_af2c725b65183545aee7228aae35b6967}{child\+Process\+U\+ID}
+\item 
+int \hyperlink{class_minecraft_server_service_1_1_server_a116eb894b58076ec10c694d4acb11d48}{child\+Process\+G\+ID}
+\item 
+int \hyperlink{class_minecraft_server_service_1_1_server_a6fa4025b32b4ff9aa2cce5c33c6a5eff}{child\+Process\+Stdin} \mbox{[}2\mbox{]}
+\item 
+int \hyperlink{class_minecraft_server_service_1_1_server_abb0ccd5070cc03476fc00e2e7674de6a}{child\+Process\+Stdout} \mbox{[}2\mbox{]}
+\item 
+log4cpp\+::\+Category $\ast$ \hyperlink{class_minecraft_server_service_1_1_server_aea87340c35422279f868ecf8edc4a9f6}{log}
+\item 
+struct event\+\_\+base $\ast$ \hyperlink{class_minecraft_server_service_1_1_server_a12dbc6c931c04754ef5600e8ad03cc4c}{base} = event\+\_\+base\+\_\+new()
+\item 
+std\+::vector$<$ \hyperlink{struct_minecraft_server_service_1_1_server_1_1_listener}{Listener} $\ast$ $>$ $\ast$ \hyperlink{class_minecraft_server_service_1_1_server_a51c6dda2196eb9ee8ff671deacb66dae}{listeners} = new std\+::vector$<$\hyperlink{struct_minecraft_server_service_1_1_server_1_1_listener}{Listener}$\ast$$>$
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 60 of file server.\+h.
+
+
+
+\subsection{Member Typedef Documentation}
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!Cout\+Type@{Cout\+Type}}
+\index{Cout\+Type@{Cout\+Type}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{Cout\+Type}{CoutType}}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\+::basic\+\_\+ostream$<$char, std\+::char\+\_\+traits$<$char$>$ $>$ {\bf Minecraft\+Server\+Service\+::\+Server\+::\+Cout\+Type}}\hypertarget{class_minecraft_server_service_1_1_server_a9a78d018fb71e9aa0a054ff39cba5083}{}\label{class_minecraft_server_service_1_1_server_a9a78d018fb71e9aa0a054ff39cba5083}
+
+
+Definition at line 88 of file server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!Server\+Manipulator@{Server\+Manipulator}}
+\index{Server\+Manipulator@{Server\+Manipulator}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{Server\+Manipulator}{ServerManipulator}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Server}\&($\ast$ Minecraft\+Server\+Service\+::\+Server\+::\+Server\+Manipulator) ({\bf Server} \&)}\hypertarget{class_minecraft_server_service_1_1_server_af07a3457e3239d898b8f84809b0703e4}{}\label{class_minecraft_server_service_1_1_server_af07a3457e3239d898b8f84809b0703e4}
+
+
+Definition at line 87 of file server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!Standard\+End\+Line@{Standard\+End\+Line}}
+\index{Standard\+End\+Line@{Standard\+End\+Line}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{Standard\+End\+Line}{StandardEndLine}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Cout\+Type}\&($\ast$ Minecraft\+Server\+Service\+::\+Server\+::\+Standard\+End\+Line) ({\bf Cout\+Type} \&)}\hypertarget{class_minecraft_server_service_1_1_server_aabd71f679656f27eec9b0d66be40f5a1}{}\label{class_minecraft_server_service_1_1_server_aabd71f679656f27eec9b0d66be40f5a1}
+
+
+Definition at line 89 of file server.\+h.
+
+
+
+\subsection{Member Enumeration Documentation}
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!P\+I\+P\+E\+\_\+\+O\+PS@{P\+I\+P\+E\+\_\+\+O\+PS}}
+\index{P\+I\+P\+E\+\_\+\+O\+PS@{P\+I\+P\+E\+\_\+\+O\+PS}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{P\+I\+P\+E\+\_\+\+O\+PS}{PIPE_OPS}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Minecraft\+Server\+Service\+::\+Server\+::\+P\+I\+P\+E\+\_\+\+O\+PS}}\hypertarget{class_minecraft_server_service_1_1_server_a7b9b73779645007e9f9c33dac1436d47}{}\label{class_minecraft_server_service_1_1_server_a7b9b73779645007e9f9c33dac1436d47}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{P\+I\+P\+E\+\_\+\+R\+E\+AD@{P\+I\+P\+E\+\_\+\+R\+E\+AD}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!P\+I\+P\+E\+\_\+\+R\+E\+AD@{P\+I\+P\+E\+\_\+\+R\+E\+AD}}\item[{\em 
+P\+I\+P\+E\+\_\+\+R\+E\+AD\hypertarget{class_minecraft_server_service_1_1_server_a7b9b73779645007e9f9c33dac1436d47ae4f50d706aa789aa79b1815ea83ca96a}{}\label{class_minecraft_server_service_1_1_server_a7b9b73779645007e9f9c33dac1436d47ae4f50d706aa789aa79b1815ea83ca96a}
+}]\index{P\+I\+P\+E\+\_\+\+W\+R\+I\+TE@{P\+I\+P\+E\+\_\+\+W\+R\+I\+TE}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!P\+I\+P\+E\+\_\+\+W\+R\+I\+TE@{P\+I\+P\+E\+\_\+\+W\+R\+I\+TE}}\item[{\em 
+P\+I\+P\+E\+\_\+\+W\+R\+I\+TE\hypertarget{class_minecraft_server_service_1_1_server_a7b9b73779645007e9f9c33dac1436d47a57f3281db4e9bfe3825337d696eb24a4}{}\label{class_minecraft_server_service_1_1_server_a7b9b73779645007e9f9c33dac1436d47a57f3281db4e9bfe3825337d696eb24a4}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 63 of file server.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!backup\+Server@{backup\+Server}}
+\index{backup\+Server@{backup\+Server}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{backup\+Server()=0}{backupServer()=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Minecraft\+Server\+Service\+::\+Server\+::backup\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_minecraft_server_service_1_1_server_a58373fb195d9546e4a843ba83d741f36}{}\label{class_minecraft_server_service_1_1_server_a58373fb195d9546e4a843ba83d741f36}
+
+
+Implemented in \hyperlink{class_minecraft_server_service_1_1_bukkit_server_a53bab0244678db1586fb3544c3e66c9e}{Minecraft\+Server\+Service\+::\+Bukkit\+Server}, \hyperlink{class_minecraft_server_service_1_1_generic_server_a20ffc509d921cb8e990c19bf26139714}{Minecraft\+Server\+Service\+::\+Generic\+Server}, \hyperlink{class_minecraft_server_service_1_1_spigot_server_ae210f6a553988cc2fa54cfa2f5740c49}{Minecraft\+Server\+Service\+::\+Spigot\+Server}, \hyperlink{class_minecraft_server_service_1_1_vanilla_server_a5c1e812a1961e1487b5d874602951ffe}{Minecraft\+Server\+Service\+::\+Vanilla\+Server}, and \hyperlink{class_minecraft_server_service_1_1_bungee_cord_server_a775734dcde149377ccc8f83d206b7bf0}{Minecraft\+Server\+Service\+::\+Bungee\+Cord\+Server}.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!backup\+Server@{backup\+Server}}
+\index{backup\+Server@{backup\+Server}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{backup\+Server(std\+::string backup\+Path)=0}{backupServer(std::string backupPath)=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Minecraft\+Server\+Service\+::\+Server\+::backup\+Server (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{backup\+Path}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_minecraft_server_service_1_1_server_a3045f178ed407b157a21da66a245e61f}{}\label{class_minecraft_server_service_1_1_server_a3045f178ed407b157a21da66a245e61f}
+
+
+Implemented in \hyperlink{class_minecraft_server_service_1_1_bukkit_server_afbd8754f15d30c31b498c5e6e256a3d5}{Minecraft\+Server\+Service\+::\+Bukkit\+Server}, \hyperlink{class_minecraft_server_service_1_1_generic_server_a99b71eeffc23ca9e6a61c82fb3255fba}{Minecraft\+Server\+Service\+::\+Generic\+Server}, \hyperlink{class_minecraft_server_service_1_1_spigot_server_a48055f2ec0703f54ac853d829f1cc077}{Minecraft\+Server\+Service\+::\+Spigot\+Server}, \hyperlink{class_minecraft_server_service_1_1_vanilla_server_a7ac1bae67e8ff658ad2b24ac852ffbdf}{Minecraft\+Server\+Service\+::\+Vanilla\+Server}, and \hyperlink{class_minecraft_server_service_1_1_bungee_cord_server_a5e1a0b0e5be34b9e4be1ea3c97177d6c}{Minecraft\+Server\+Service\+::\+Bungee\+Cord\+Server}.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!get\+U\+I\+D\+And\+G\+I\+D\+From\+Username@{get\+U\+I\+D\+And\+G\+I\+D\+From\+Username}}
+\index{get\+U\+I\+D\+And\+G\+I\+D\+From\+Username@{get\+U\+I\+D\+And\+G\+I\+D\+From\+Username}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{get\+U\+I\+D\+And\+G\+I\+D\+From\+Username(const char $\ast$user)}{getUIDAndGIDFromUsername(const char *user)}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Server\+::get\+U\+I\+D\+And\+G\+I\+D\+From\+Username (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{user}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_server_a085f201bd563ce47e2b41778ef72d20d}{}\label{class_minecraft_server_service_1_1_server_a085f201bd563ce47e2b41778ef72d20d}
+
+
+Definition at line 245 of file server.\+h.
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_server_a085f201bd563ce47e2b41778ef72d20d_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!is\+Running@{is\+Running}}
+\index{is\+Running@{is\+Running}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{is\+Running()}{isRunning()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Minecraft\+Server\+Service\+::\+Server\+::is\+Running (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_minecraft_server_service_1_1_server_a1954e7c7756cd956e7282887ffca73e4}{}\label{class_minecraft_server_service_1_1_server_a1954e7c7756cd956e7282887ffca73e4}
+
+
+Definition at line 118 of file server.\+h.
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_minecraft_server_service_1_1_server_a1954e7c7756cd956e7282887ffca73e4_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!launch\+Server\+Process@{launch\+Server\+Process}}
+\index{launch\+Server\+Process@{launch\+Server\+Process}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{launch\+Server\+Process(std\+::string server\+Path, std\+::string server\+Jar\+Name, std\+::string server\+Account, int max\+Heap\+Alloc, int min\+Heap\+Alloc, int gc\+Thread\+Count, std\+::vector$<$ std\+::string $>$ java\+Args, std\+::vector$<$ std\+::string $>$ server\+Options)}{launchServerProcess(std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc, int gcThreadCount, std::vector< std::string > javaArgs, std::vector< std::string > serverOptions)}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Server\+::launch\+Server\+Process (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{server\+Path, }
+\item[{std\+::string}]{server\+Jar\+Name, }
+\item[{std\+::string}]{server\+Account, }
+\item[{int}]{max\+Heap\+Alloc, }
+\item[{int}]{min\+Heap\+Alloc, }
+\item[{int}]{gc\+Thread\+Count, }
+\item[{std\+::vector$<$ std\+::string $>$}]{java\+Args, }
+\item[{std\+::vector$<$ std\+::string $>$}]{server\+Options}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_server_a16a19b4cfd94f23c20442cea9b46f678}{}\label{class_minecraft_server_service_1_1_server_a16a19b4cfd94f23c20442cea9b46f678}
+
+
+Definition at line 258 of file server.\+h.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_server_a16a19b4cfd94f23c20442cea9b46f678_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_server_a16a19b4cfd94f23c20442cea9b46f678_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!list\+Online\+Players@{list\+Online\+Players}}
+\index{list\+Online\+Players@{list\+Online\+Players}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{list\+Online\+Players()=0}{listOnlinePlayers()=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual std\+::string Minecraft\+Server\+Service\+::\+Server\+::list\+Online\+Players (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_minecraft_server_service_1_1_server_a86455e8351ecc7af502e681daf023eb3}{}\label{class_minecraft_server_service_1_1_server_a86455e8351ecc7af502e681daf023eb3}
+
+
+Implemented in \hyperlink{class_minecraft_server_service_1_1_bukkit_server_a98a9cd7e35bcd664d39d7068a167108c}{Minecraft\+Server\+Service\+::\+Bukkit\+Server}, \hyperlink{class_minecraft_server_service_1_1_generic_server_a17b8ff45c08bbd1fb1acb85bd9f10039}{Minecraft\+Server\+Service\+::\+Generic\+Server}, \hyperlink{class_minecraft_server_service_1_1_spigot_server_a47e66899b9d4fd1a3fe4855f16e07afb}{Minecraft\+Server\+Service\+::\+Spigot\+Server}, \hyperlink{class_minecraft_server_service_1_1_vanilla_server_a81e6f53665fb9a7a2956417174df44ca}{Minecraft\+Server\+Service\+::\+Vanilla\+Server}, and \hyperlink{class_minecraft_server_service_1_1_bungee_cord_server_a23b4c91d8c1461c0505d9276f0c42f73}{Minecraft\+Server\+Service\+::\+Bungee\+Cord\+Server}.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!list\+Online\+Players@{list\+Online\+Players}}
+\index{list\+Online\+Players@{list\+Online\+Players}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{list\+Online\+Players(std\+::string player\+Name)=0}{listOnlinePlayers(std::string playerName)=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Minecraft\+Server\+Service\+::\+Server\+::list\+Online\+Players (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{player\+Name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_minecraft_server_service_1_1_server_adf8951b2a9337983e8ced4b148e1ed5e}{}\label{class_minecraft_server_service_1_1_server_adf8951b2a9337983e8ced4b148e1ed5e}
+
+
+Implemented in \hyperlink{class_minecraft_server_service_1_1_bukkit_server_a9d83f2e1f4ef1b586c40dd29abd0d529}{Minecraft\+Server\+Service\+::\+Bukkit\+Server}, \hyperlink{class_minecraft_server_service_1_1_generic_server_ac1dbf140a9e263090602995dd5cb1fa6}{Minecraft\+Server\+Service\+::\+Generic\+Server}, \hyperlink{class_minecraft_server_service_1_1_spigot_server_a44c1324092f2a45889f0935a77ed0a89}{Minecraft\+Server\+Service\+::\+Spigot\+Server}, \hyperlink{class_minecraft_server_service_1_1_vanilla_server_a27d6f17970b982075cf37c973c37b35d}{Minecraft\+Server\+Service\+::\+Vanilla\+Server}, and \hyperlink{class_minecraft_server_service_1_1_bungee_cord_server_ab74599186e768c2b0a6bbac2ec60cefa}{Minecraft\+Server\+Service\+::\+Bungee\+Cord\+Server}.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{operator$<$$<$(const T \&x)}{operator<<(const T &x)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ {\bf Server}\& Minecraft\+Server\+Service\+::\+Server\+::operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_minecraft_server_service_1_1_server_a21a2533f4998ccc209c53a48cdb58718}{}\label{class_minecraft_server_service_1_1_server_a21a2533f4998ccc209c53a48cdb58718}
+
+
+Definition at line 134 of file server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{operator$<$$<$(const std\+::string \&x)}{operator<<(const std::string &x)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Server}\& Minecraft\+Server\+Service\+::\+Server\+::operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_minecraft_server_service_1_1_server_a885bdc0a0267d25168bf6d35086d6090}{}\label{class_minecraft_server_service_1_1_server_a885bdc0a0267d25168bf6d35086d6090}
+
+
+Definition at line 139 of file server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{operator$<$$<$(\+Standard\+End\+Line manip)}{operator<<(StandardEndLine manip)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Server}\& Minecraft\+Server\+Service\+::\+Server\+::operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{{\bf Standard\+End\+Line}}]{manip}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_minecraft_server_service_1_1_server_aad73f651ba11cfc4815f8763edd6b914}{}\label{class_minecraft_server_service_1_1_server_aad73f651ba11cfc4815f8763edd6b914}
+
+
+Definition at line 153 of file server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{operator$>$$>$(std\+::istream \&in)}{operator>>(std::istream &in)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::istream\& Minecraft\+Server\+Service\+::\+Server\+::operator$>$$>$ (
+\begin{DoxyParamCaption}
+\item[{std\+::istream \&}]{in}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_minecraft_server_service_1_1_server_a2b2cca8ee2e09c7236bc668e8522cb6a}{}\label{class_minecraft_server_service_1_1_server_a2b2cca8ee2e09c7236bc668e8522cb6a}
+
+
+Definition at line 144 of file server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!output\+Listener\+Thread@{output\+Listener\+Thread}}
+\index{output\+Listener\+Thread@{output\+Listener\+Thread}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{output\+Listener\+Thread(int server\+P\+I\+D, int child\+Process\+Stdout, struct event\+\_\+base $\ast$base, log4cpp\+::\+Category $\ast$log, std\+::vector$<$ Listener $\ast$ $>$ $\ast$listeners)}{outputListenerThread(int serverPID, int childProcessStdout, struct event_base *base, log4cpp::Category *log, std::vector< Listener * > *listeners)}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Server\+::output\+Listener\+Thread (
+\begin{DoxyParamCaption}
+\item[{int}]{server\+P\+ID, }
+\item[{int}]{child\+Process\+Stdout, }
+\item[{struct event\+\_\+base $\ast$}]{base, }
+\item[{log4cpp\+::\+Category $\ast$}]{log, }
+\item[{std\+::vector$<$ {\bf Listener} $\ast$ $>$ $\ast$}]{listeners}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_server_a3040817c744456263f8ba36bdb72bf20}{}\label{class_minecraft_server_service_1_1_server_a3040817c744456263f8ba36bdb72bf20}
+
+
+Definition at line 162 of file server.\+h.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_server_a3040817c744456263f8ba36bdb72bf20_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_server_a3040817c744456263f8ba36bdb72bf20_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!reload\+Server@{reload\+Server}}
+\index{reload\+Server@{reload\+Server}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{reload\+Server()=0}{reloadServer()=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Minecraft\+Server\+Service\+::\+Server\+::reload\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_minecraft_server_service_1_1_server_a68757647a604e935d365672b53c82d98}{}\label{class_minecraft_server_service_1_1_server_a68757647a604e935d365672b53c82d98}
+
+
+Implemented in \hyperlink{class_minecraft_server_service_1_1_bukkit_server_ad0f007c1f66d065037f04b36dfe29595}{Minecraft\+Server\+Service\+::\+Bukkit\+Server}, \hyperlink{class_minecraft_server_service_1_1_generic_server_afff8182bd666f261ab76375c98fa4bf7}{Minecraft\+Server\+Service\+::\+Generic\+Server}, \hyperlink{class_minecraft_server_service_1_1_spigot_server_a2cf305102eece78f29bae746459d650b}{Minecraft\+Server\+Service\+::\+Spigot\+Server}, \hyperlink{class_minecraft_server_service_1_1_vanilla_server_a64fb96ddf16973c340ba04416787340e}{Minecraft\+Server\+Service\+::\+Vanilla\+Server}, and \hyperlink{class_minecraft_server_service_1_1_bungee_cord_server_a4fc15adfabbab2c3d1008af5c5b33114}{Minecraft\+Server\+Service\+::\+Bungee\+Cord\+Server}.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!restart\+Server@{restart\+Server}}
+\index{restart\+Server@{restart\+Server}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{restart\+Server()=0}{restartServer()=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Minecraft\+Server\+Service\+::\+Server\+::restart\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_minecraft_server_service_1_1_server_a9cfcad805db7ffd3f5ad10ef7a726cf9}{}\label{class_minecraft_server_service_1_1_server_a9cfcad805db7ffd3f5ad10ef7a726cf9}
+
+
+Implemented in \hyperlink{class_minecraft_server_service_1_1_bukkit_server_afdd768465fedfbea100da7f62cbd11d0}{Minecraft\+Server\+Service\+::\+Bukkit\+Server}, \hyperlink{class_minecraft_server_service_1_1_generic_server_a91d7fee4ca078709180084768e85149f}{Minecraft\+Server\+Service\+::\+Generic\+Server}, \hyperlink{class_minecraft_server_service_1_1_spigot_server_a8868ea31ed029270de60becebf36fc69}{Minecraft\+Server\+Service\+::\+Spigot\+Server}, \hyperlink{class_minecraft_server_service_1_1_vanilla_server_a99ac73bdf44e6d77933e95c769f4d95a}{Minecraft\+Server\+Service\+::\+Vanilla\+Server}, and \hyperlink{class_minecraft_server_service_1_1_bungee_cord_server_a471a30d5fd0c2dca57970aef99eaa2b7}{Minecraft\+Server\+Service\+::\+Bungee\+Cord\+Server}.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!send\+Command@{send\+Command}}
+\index{send\+Command@{send\+Command}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{send\+Command(std\+::string command)=0}{sendCommand(std::string command)=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Minecraft\+Server\+Service\+::\+Server\+::send\+Command (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{command}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_minecraft_server_service_1_1_server_a9c2d6b9b94d490405bf74109e7794cb1}{}\label{class_minecraft_server_service_1_1_server_a9c2d6b9b94d490405bf74109e7794cb1}
+
+
+Implemented in \hyperlink{class_minecraft_server_service_1_1_bukkit_server_a177fd65626604d0cdf2b105454bd1d18}{Minecraft\+Server\+Service\+::\+Bukkit\+Server}, \hyperlink{class_minecraft_server_service_1_1_generic_server_a42c34bc2e24173077e67c6b83a346b5d}{Minecraft\+Server\+Service\+::\+Generic\+Server}, \hyperlink{class_minecraft_server_service_1_1_spigot_server_a3982946d2881f27cc95791214ab8da27}{Minecraft\+Server\+Service\+::\+Spigot\+Server}, \hyperlink{class_minecraft_server_service_1_1_vanilla_server_ad488208dfbf40e94a3c692a8fce9531a}{Minecraft\+Server\+Service\+::\+Vanilla\+Server}, and \hyperlink{class_minecraft_server_service_1_1_bungee_cord_server_a4c398b65df83fe47cdaf8c4e5de66dff}{Minecraft\+Server\+Service\+::\+Bungee\+Cord\+Server}.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!server\+Output\+Event@{server\+Output\+Event}}
+\index{server\+Output\+Event@{server\+Output\+Event}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{server\+Output\+Event(evutil\+\_\+socket\+\_\+t fd, short event, void $\ast$arg)}{serverOutputEvent(evutil_socket_t fd, short event, void *arg)}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Server\+::server\+Output\+Event (
+\begin{DoxyParamCaption}
+\item[{evutil\+\_\+socket\+\_\+t}]{fd, }
+\item[{short}]{event, }
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_server_a4ecf103c62bd8f1e54b2ff436fa1645a}{}\label{class_minecraft_server_service_1_1_server_a4ecf103c62bd8f1e54b2ff436fa1645a}
+
+
+Definition at line 170 of file server.\+h.
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_server_a4ecf103c62bd8f1e54b2ff436fa1645a_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!server\+Status@{server\+Status}}
+\index{server\+Status@{server\+Status}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{server\+Status()=0}{serverStatus()=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Minecraft\+Server\+Service\+::\+Server\+::server\+Status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_minecraft_server_service_1_1_server_af972c950277b436d85513ff5e8003df2}{}\label{class_minecraft_server_service_1_1_server_af972c950277b436d85513ff5e8003df2}
+
+
+Implemented in \hyperlink{class_minecraft_server_service_1_1_bukkit_server_a84a79d7fcc9f543d97a22934bb218517}{Minecraft\+Server\+Service\+::\+Bukkit\+Server}, \hyperlink{class_minecraft_server_service_1_1_generic_server_a5094b1882230b9a73030c711f1474156}{Minecraft\+Server\+Service\+::\+Generic\+Server}, \hyperlink{class_minecraft_server_service_1_1_spigot_server_a0309d91a87890eaa0163c24b72508dfa}{Minecraft\+Server\+Service\+::\+Spigot\+Server}, \hyperlink{class_minecraft_server_service_1_1_vanilla_server_adea3b82ff41d249809057ed941b29a07}{Minecraft\+Server\+Service\+::\+Vanilla\+Server}, and \hyperlink{class_minecraft_server_service_1_1_bungee_cord_server_a7282786d28d234f51cb7c3803ed548df}{Minecraft\+Server\+Service\+::\+Bungee\+Cord\+Server}.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!start\+Server@{start\+Server}}
+\index{start\+Server@{start\+Server}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{start\+Server()=0}{startServer()=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Minecraft\+Server\+Service\+::\+Server\+::start\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_minecraft_server_service_1_1_server_ac84f4a395d9680ba4d7405996dcb445c}{}\label{class_minecraft_server_service_1_1_server_ac84f4a395d9680ba4d7405996dcb445c}
+
+
+Implemented in \hyperlink{class_minecraft_server_service_1_1_bukkit_server_a40a879282d13c0996d05f1165fa5c4c2}{Minecraft\+Server\+Service\+::\+Bukkit\+Server}, \hyperlink{class_minecraft_server_service_1_1_generic_server_aa3e2da3f6458e579697154360f6e05e5}{Minecraft\+Server\+Service\+::\+Generic\+Server}, \hyperlink{class_minecraft_server_service_1_1_spigot_server_a08bc3d74d604968034303efc7334dd08}{Minecraft\+Server\+Service\+::\+Spigot\+Server}, \hyperlink{class_minecraft_server_service_1_1_vanilla_server_a9f1ea90c5bcd4f183303d169d0427b46}{Minecraft\+Server\+Service\+::\+Vanilla\+Server}, and \hyperlink{class_minecraft_server_service_1_1_bungee_cord_server_a5f03992324f892fa1cedcef5153a7d3f}{Minecraft\+Server\+Service\+::\+Bungee\+Cord\+Server}.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!stop\+Server@{stop\+Server}}
+\index{stop\+Server@{stop\+Server}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{stop\+Server()=0}{stopServer()=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Minecraft\+Server\+Service\+::\+Server\+::stop\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_minecraft_server_service_1_1_server_a45fb906a041e3f6c59128a0e9c4cd289}{}\label{class_minecraft_server_service_1_1_server_a45fb906a041e3f6c59128a0e9c4cd289}
+
+
+Implemented in \hyperlink{class_minecraft_server_service_1_1_bukkit_server_ace18180c1ffb7c6c24942b5569793539}{Minecraft\+Server\+Service\+::\+Bukkit\+Server}, \hyperlink{class_minecraft_server_service_1_1_generic_server_a81adc767332fdbffdb1ca2ca5c4033ec}{Minecraft\+Server\+Service\+::\+Generic\+Server}, \hyperlink{class_minecraft_server_service_1_1_spigot_server_a2b0c13a87da4d1766ee0cc645732865a}{Minecraft\+Server\+Service\+::\+Spigot\+Server}, \hyperlink{class_minecraft_server_service_1_1_vanilla_server_ab59cc32c01c07debeadd0d6c349f2772}{Minecraft\+Server\+Service\+::\+Vanilla\+Server}, and \hyperlink{class_minecraft_server_service_1_1_bungee_cord_server_a20602e6aa9b12c5f7c1c61e0a3341ab7}{Minecraft\+Server\+Service\+::\+Bungee\+Cord\+Server}.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!update\+Server@{update\+Server}}
+\index{update\+Server@{update\+Server}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{update\+Server()=0}{updateServer()=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Minecraft\+Server\+Service\+::\+Server\+::update\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_minecraft_server_service_1_1_server_a0715bfc451f5abbd2f47d0895e5a2355}{}\label{class_minecraft_server_service_1_1_server_a0715bfc451f5abbd2f47d0895e5a2355}
+
+
+Implemented in \hyperlink{class_minecraft_server_service_1_1_bukkit_server_a77fdee48679e182768489020d86e7e8f}{Minecraft\+Server\+Service\+::\+Bukkit\+Server}, \hyperlink{class_minecraft_server_service_1_1_generic_server_abb89d4233143d48e2f12ada83a7d0957}{Minecraft\+Server\+Service\+::\+Generic\+Server}, \hyperlink{class_minecraft_server_service_1_1_spigot_server_a054ddb4477a413d22365ecae0321ae71}{Minecraft\+Server\+Service\+::\+Spigot\+Server}, \hyperlink{class_minecraft_server_service_1_1_vanilla_server_a1cecbb185fabf2c2e966b080136a8a41}{Minecraft\+Server\+Service\+::\+Vanilla\+Server}, and \hyperlink{class_minecraft_server_service_1_1_bungee_cord_server_a9b52175a0cd65b4ee1298c6b8f88a9a3}{Minecraft\+Server\+Service\+::\+Bungee\+Cord\+Server}.
+
+
+
+\subsection{Member Data Documentation}
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!base@{base}}
+\index{base@{base}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{base}{base}}]{\setlength{\rightskip}{0pt plus 5cm}struct event\+\_\+base$\ast$ Minecraft\+Server\+Service\+::\+Server\+::base = event\+\_\+base\+\_\+new()\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_server_a12dbc6c931c04754ef5600e8ad03cc4c}{}\label{class_minecraft_server_service_1_1_server_a12dbc6c931c04754ef5600e8ad03cc4c}
+
+
+Definition at line 115 of file server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!child\+Process\+G\+ID@{child\+Process\+G\+ID}}
+\index{child\+Process\+G\+ID@{child\+Process\+G\+ID}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{child\+Process\+G\+ID}{childProcessGID}}]{\setlength{\rightskip}{0pt plus 5cm}int Minecraft\+Server\+Service\+::\+Server\+::child\+Process\+G\+ID\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_server_a116eb894b58076ec10c694d4acb11d48}{}\label{class_minecraft_server_service_1_1_server_a116eb894b58076ec10c694d4acb11d48}
+
+
+Definition at line 111 of file server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!child\+Process\+Stdin@{child\+Process\+Stdin}}
+\index{child\+Process\+Stdin@{child\+Process\+Stdin}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{child\+Process\+Stdin}{childProcessStdin}}]{\setlength{\rightskip}{0pt plus 5cm}int Minecraft\+Server\+Service\+::\+Server\+::child\+Process\+Stdin\mbox{[}2\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_server_a6fa4025b32b4ff9aa2cce5c33c6a5eff}{}\label{class_minecraft_server_service_1_1_server_a6fa4025b32b4ff9aa2cce5c33c6a5eff}
+
+
+Definition at line 112 of file server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!child\+Process\+Stdout@{child\+Process\+Stdout}}
+\index{child\+Process\+Stdout@{child\+Process\+Stdout}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{child\+Process\+Stdout}{childProcessStdout}}]{\setlength{\rightskip}{0pt plus 5cm}int Minecraft\+Server\+Service\+::\+Server\+::child\+Process\+Stdout\mbox{[}2\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_server_abb0ccd5070cc03476fc00e2e7674de6a}{}\label{class_minecraft_server_service_1_1_server_abb0ccd5070cc03476fc00e2e7674de6a}
+
+
+Definition at line 113 of file server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!child\+Process\+U\+ID@{child\+Process\+U\+ID}}
+\index{child\+Process\+U\+ID@{child\+Process\+U\+ID}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{child\+Process\+U\+ID}{childProcessUID}}]{\setlength{\rightskip}{0pt plus 5cm}int Minecraft\+Server\+Service\+::\+Server\+::child\+Process\+U\+ID\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_server_af2c725b65183545aee7228aae35b6967}{}\label{class_minecraft_server_service_1_1_server_af2c725b65183545aee7228aae35b6967}
+
+
+Definition at line 110 of file server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!listeners@{listeners}}
+\index{listeners@{listeners}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{listeners}{listeners}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Listener}$\ast$$>$$\ast$ Minecraft\+Server\+Service\+::\+Server\+::listeners = new std\+::vector$<${\bf Listener}$\ast$$>$\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_server_a51c6dda2196eb9ee8ff671deacb66dae}{}\label{class_minecraft_server_service_1_1_server_a51c6dda2196eb9ee8ff671deacb66dae}
+
+
+Definition at line 116 of file server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!log@{log}}
+\index{log@{log}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{log}{log}}]{\setlength{\rightskip}{0pt plus 5cm}log4cpp\+::\+Category$\ast$ Minecraft\+Server\+Service\+::\+Server\+::log\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_server_aea87340c35422279f868ecf8edc4a9f6}{}\label{class_minecraft_server_service_1_1_server_aea87340c35422279f868ecf8edc4a9f6}
+
+
+Definition at line 114 of file server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!server\+Name@{server\+Name}}
+\index{server\+Name@{server\+Name}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{server\+Name}{serverName}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Minecraft\+Server\+Service\+::\+Server\+::server\+Name}\hypertarget{class_minecraft_server_service_1_1_server_a4a4a359e824e19e2a0c4d105ee4fad91}{}\label{class_minecraft_server_service_1_1_server_a4a4a359e824e19e2a0c4d105ee4fad91}
+
+
+Definition at line 105 of file server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}!server\+P\+ID@{server\+P\+ID}}
+\index{server\+P\+ID@{server\+P\+ID}!Minecraft\+Server\+Service\+::\+Server@{Minecraft\+Server\+Service\+::\+Server}}
+\subsubsection[{\texorpdfstring{server\+P\+ID}{serverPID}}]{\setlength{\rightskip}{0pt plus 5cm}int Minecraft\+Server\+Service\+::\+Server\+::server\+P\+ID = -\/1\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_server_abdb911338643b10beee5393851afb4c8}{}\label{class_minecraft_server_service_1_1_server_abdb911338643b10beee5393851afb4c8}
+
+
+Definition at line 109 of file server.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/mel/projects/\+Misc/\+Minecraft Server Service/src/\hyperlink{server_8h}{server.\+h}\item 
+/home/mel/projects/\+Misc/\+Minecraft Server Service/src/\hyperlink{server_8cpp}{server.\+cpp}\end{DoxyCompactItemize}

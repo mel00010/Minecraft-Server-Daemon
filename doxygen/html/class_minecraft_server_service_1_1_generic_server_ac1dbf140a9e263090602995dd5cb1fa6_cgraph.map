@@ -1,0 +1,4 @@
+<map id="MinecraftServerService::GenericServer::listOnlinePlayers" name="MinecraftServerService::GenericServer::listOnlinePlayers">
+<area shape="rect" id="node2" href="$class_minecraft_server_service_1_1_generic_server.html#a42c34bc2e24173077e67c6b83a346b5d" title="MinecraftServerService\l::GenericServer::sendCommand" alt="" coords="272,5,481,47"/>
+<area shape="rect" id="node3" href="$class_minecraft_server_service_1_1_server.html#a1954e7c7756cd956e7282887ffca73e4" title="MinecraftServerService\l::Server::isRunning" alt="" coords="529,5,688,47"/>
+</map>

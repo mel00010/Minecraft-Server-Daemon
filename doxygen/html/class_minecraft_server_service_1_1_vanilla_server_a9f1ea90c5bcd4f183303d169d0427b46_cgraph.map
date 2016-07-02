@@ -1,0 +1,7 @@
+<map id="MinecraftServerService::VanillaServer::startServer" name="MinecraftServerService::VanillaServer::startServer">
+<area shape="rect" id="node2" href="$class_minecraft_server_service_1_1_server.html#a1954e7c7756cd956e7282887ffca73e4" title="MinecraftServerService\l::Server::isRunning" alt="" coords="253,5,411,47"/>
+<area shape="rect" id="node3" href="$class_minecraft_server_service_1_1_server.html#a16a19b4cfd94f23c20442cea9b46f678" title="MinecraftServerService\l::Server::launchServerProcess" alt="" coords="232,71,432,112"/>
+<area shape="rect" id="node5" href="$class_minecraft_server_service_1_1_server.html#a3040817c744456263f8ba36bdb72bf20" title="MinecraftServerService\l::Server::outputListenerThread" alt="" coords="508,129,707,171"/>
+<area shape="rect" id="node4" href="$class_minecraft_server_service_1_1_server.html#a085f201bd563ce47e2b41778ef72d20d" title="MinecraftServerService\l::Server::getUIDAndGIDFromUsername" alt="" coords="480,12,735,53"/>
+<area shape="rect" id="node6" href="$class_minecraft_server_service_1_1_server.html#a4ecf103c62bd8f1e54b2ff436fa1645a" title="MinecraftServerService\l::Server::serverOutputEvent" alt="" coords="783,100,968,141"/>
+</map>

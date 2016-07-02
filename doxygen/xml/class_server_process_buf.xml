@@ -1,0 +1,274 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="class_server_process_buf" kind="class" language="C++" prot="public">
+    <compoundname>ServerProcessBuf</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">streambuf</basecompoundref>
+    <includes refid="_server_process_buf_8h" local="no">ServerProcessBuf.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_server_process_buf_1a636f846d4acee2f3db91b44ac4f7d756" prot="private" static="no" mutable="no">
+        <type>std::iostream &amp;</type>
+        <definition>std::iostream&amp; ServerProcessBuf::sink_</definition>
+        <argsstring></argsstring>
+        <name>sink_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.h" line="34" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_server_process_buf_1a96825e69bf52fa7b2bffc3ef197de134" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; char &gt;</type>
+        <definition>std::vector&lt;char&gt; ServerProcessBuf::buffer_</definition>
+        <argsstring></argsstring>
+        <name>buffer_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.h" line="35" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_server_process_buf_1aeda18d47994dc471a6bdc469b3394fb4" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ServerProcessBuf::ServerProcessBuf</definition>
+        <argsstring>(std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc, int gcThreadCount, std::vector&lt; std::string &gt; javaArgs, std::vector&lt; std::string &gt; serverOptions, std::iostream &amp;sink, std::size_t buff_sz)</argsstring>
+        <name>ServerProcessBuf</name>
+        <param>
+          <type>std::string</type>
+          <declname>serverPath</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>serverJarName</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>serverAccount</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>maxHeapAlloc</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>minHeapAlloc</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>gcThreadCount</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt;</type>
+          <declname>javaArgs</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt;</type>
+          <declname>serverOptions</declname>
+        </param>
+        <param>
+          <type>std::iostream &amp;</type>
+          <declname>sink</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>buff_sz</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.h" line="16" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.cpp" bodystart="14" bodyend="23"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_server_process_buf_1aa584a10c5acb48923e0d512e34a9db86" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ServerProcessBuf::sync</definition>
+        <argsstring>()</argsstring>
+        <name>sync</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.h" line="21" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.cpp" bodystart="37" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="class_server_process_buf_1a450eaa038e4bee21c2fb873bdd7c39b5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int_type</type>
+        <definition>ServerProcessBuf::int_type ServerProcessBuf::overflow</definition>
+        <argsstring>(int_type ch)</argsstring>
+        <name>overflow</name>
+        <param>
+          <type>int_type</type>
+          <declname>ch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.h" line="22" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.cpp" bodystart="25" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="class_server_process_buf_1a33938a383580475bfe02f2f9b443f28d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int_type</type>
+        <definition>ServerProcessBuf::int_type ServerProcessBuf::uflow</definition>
+        <argsstring>()</argsstring>
+        <name>uflow</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.h" line="23" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.cpp" bodystart="51" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_server_process_buf_1a184314081d6c5b5bd14bbe7e8a1c3e36" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int_type</type>
+        <definition>ServerProcessBuf::int_type ServerProcessBuf::underflow</definition>
+        <argsstring>()</argsstring>
+        <name>underflow</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.h" line="24" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.cpp" bodystart="43" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="class_server_process_buf_1a72ec5db938ce2ca2bd1b82647779c7a7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int_type</type>
+        <definition>ServerProcessBuf::int_type ServerProcessBuf::pbackfail</definition>
+        <argsstring>(int_type ch)</argsstring>
+        <name>pbackfail</name>
+        <param>
+          <type>int_type</type>
+          <declname>ch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.h" line="25" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.cpp" bodystart="59" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_server_process_buf_1a865046ec13c30551204951700d7818f6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::streamsize</type>
+        <definition>std::streamsize ServerProcessBuf::showmanyc</definition>
+        <argsstring>()</argsstring>
+        <name>showmanyc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.h" line="26" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.cpp" bodystart="67" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="class_server_process_buf_1a3442787ee9a05b8f8c992b81aadeebc9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>pid_t</type>
+        <definition>pid_t ServerProcessBuf::pcreate</definition>
+        <argsstring>(int fds[2], pfunc_t pfunc)</argsstring>
+        <name>pcreate</name>
+        <param>
+          <type>int</type>
+          <declname>fds</declname>
+          <array>[2]</array>
+        </param>
+        <param>
+          <type>pfunc_t</type>
+          <declname>pfunc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.h" line="27" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_server_process_buf_1a81f3ab559fe590a75b2cbef506f516d6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ServerProcessBuf::ServerProcessBuf</definition>
+        <argsstring>(const ServerProcessBuf &amp;)</argsstring>
+        <name>ServerProcessBuf</name>
+        <param>
+          <type>const <ref refid="class_server_process_buf" kindref="compound">ServerProcessBuf</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.h" line="30" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_server_process_buf_1a7c90dd6556bab3d6d38e588bf0b47664" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_server_process_buf" kindref="compound">ServerProcessBuf</ref> &amp;</type>
+        <definition>ServerProcessBuf&amp; ServerProcessBuf::operator=</definition>
+        <argsstring>(const ServerProcessBuf &amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="class_server_process_buf" kindref="compound">ServerProcessBuf</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.h" line="31" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="27">
+        <label>ServerProcessBuf</label>
+        <link refid="class_server_process_buf"/>
+        <childnode refid="28" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>std::streambuf</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="29">
+        <label>ServerProcessBuf</label>
+        <link refid="class_server_process_buf"/>
+        <childnode refid="30" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>std::streambuf</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.h" line="14" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.h" bodystart="13" bodyend="36"/>
+    <listofallmembers>
+      <member refid="class_server_process_buf_1a96825e69bf52fa7b2bffc3ef197de134" prot="private" virt="non-virtual"><scope>ServerProcessBuf</scope><name>buffer_</name></member>
+      <member refid="class_server_process_buf_1a7c90dd6556bab3d6d38e588bf0b47664" prot="private" virt="non-virtual"><scope>ServerProcessBuf</scope><name>operator=</name></member>
+      <member refid="class_server_process_buf_1a450eaa038e4bee21c2fb873bdd7c39b5" prot="private" virt="non-virtual"><scope>ServerProcessBuf</scope><name>overflow</name></member>
+      <member refid="class_server_process_buf_1a72ec5db938ce2ca2bd1b82647779c7a7" prot="private" virt="non-virtual"><scope>ServerProcessBuf</scope><name>pbackfail</name></member>
+      <member refid="class_server_process_buf_1a3442787ee9a05b8f8c992b81aadeebc9" prot="private" virt="non-virtual"><scope>ServerProcessBuf</scope><name>pcreate</name></member>
+      <member refid="class_server_process_buf_1aeda18d47994dc471a6bdc469b3394fb4" prot="public" virt="non-virtual"><scope>ServerProcessBuf</scope><name>ServerProcessBuf</name></member>
+      <member refid="class_server_process_buf_1a81f3ab559fe590a75b2cbef506f516d6" prot="private" virt="non-virtual"><scope>ServerProcessBuf</scope><name>ServerProcessBuf</name></member>
+      <member refid="class_server_process_buf_1a865046ec13c30551204951700d7818f6" prot="private" virt="non-virtual"><scope>ServerProcessBuf</scope><name>showmanyc</name></member>
+      <member refid="class_server_process_buf_1a636f846d4acee2f3db91b44ac4f7d756" prot="private" virt="non-virtual"><scope>ServerProcessBuf</scope><name>sink_</name></member>
+      <member refid="class_server_process_buf_1aa584a10c5acb48923e0d512e34a9db86" prot="private" virt="non-virtual"><scope>ServerProcessBuf</scope><name>sync</name></member>
+      <member refid="class_server_process_buf_1a33938a383580475bfe02f2f9b443f28d" prot="private" virt="non-virtual"><scope>ServerProcessBuf</scope><name>uflow</name></member>
+      <member refid="class_server_process_buf_1a184314081d6c5b5bd14bbe7e8a1c3e36" prot="private" virt="non-virtual"><scope>ServerProcessBuf</scope><name>underflow</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

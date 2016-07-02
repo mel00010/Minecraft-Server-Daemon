@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="class_json_1_1_our_char_reader" kind="class" language="C++" prot="public">
+    <compoundname>Json::OurCharReader</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">CharReader</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_json_1_1_our_char_reader_1aa6afd3d0f754cadad0f6d2be38bcfee0" prot="private" static="no" mutable="no">
+        <type>bool const</type>
+        <definition>bool const Json::OurCharReader::collectComments_</definition>
+        <argsstring></argsstring>
+        <name>collectComments_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="2085" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="2085" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_json_1_1_our_char_reader_1aedd4520b8570654ed7aa0726075ee58d" prot="private" static="no" mutable="no">
+        <type><ref refid="class_json_1_1_our_reader" kindref="compound">OurReader</ref></type>
+        <definition>OurReader Json::OurCharReader::reader_</definition>
+        <argsstring></argsstring>
+        <name>reader_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="2086" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="2086" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_json_1_1_our_char_reader_1a5015506620e7ba7bab417756fa1ca9fe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Json::OurCharReader::OurCharReader</definition>
+        <argsstring>(bool collectComments, OurFeatures const &amp;features)</argsstring>
+        <name>OurCharReader</name>
+        <param>
+          <type>bool</type>
+          <declname>collectComments</declname>
+        </param>
+        <param>
+          <type><ref refid="class_json_1_1_our_features" kindref="compound">OurFeatures</ref> const &amp;</type>
+          <declname>features</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="2088" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="2088" bodyend="2093"/>
+      </memberdef>
+      <memberdef kind="function" id="class_json_1_1_our_char_reader_1a52a1fb5fee88d9b63dd462f63b1c9570" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Json::OurCharReader::parse</definition>
+        <argsstring>(char const *beginDoc, char const *endDoc, Value *root, std::string *errs) override</argsstring>
+        <name>parse</name>
+        <param>
+          <type>char const *</type>
+          <declname>beginDoc</declname>
+        </param>
+        <param>
+          <type>char const *</type>
+          <declname>endDoc</declname>
+        </param>
+        <param>
+          <type>Value *</type>
+          <declname>root</declname>
+        </param>
+        <param>
+          <type>std::string *</type>
+          <declname>errs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="2094" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="2094" bodyend="2102"/>
+        <references refid="class_json_1_1_our_reader_1aba4f8749aab7f02ec17f107e392caf80" compoundref="jsoncpp_8cpp" startline="1232" endline="1278">Json::OurReader::parse</references>
+        <references refid="class_json_1_1_our_reader_1ae9cbb7dbd9c6c96be37432e8dfa1afcb" compoundref="jsoncpp_8cpp" startline="2013" endline="2027">Json::OurReader::getFormattedErrorMessages</references>
+        <references refid="class_json_1_1_our_features_1a0686e1406b6677f496529f9f3fe98d1e" compoundref="jsoncpp_8cpp" startline="1100" endline="1100">Json::OurFeatures::all</references>
+        <references refid="class_json_1_1_our_features_1ac71bb7ba7363d3b05ed76602b036ce33" compoundref="jsoncpp_8cpp" startline="1086">Json::OurFeatures::allowComments_</references>
+        <references refid="class_json_1_1_our_features_1a2095f66a776c0a4ae6cc931a0c94242e" compoundref="jsoncpp_8cpp" startline="1087">Json::OurFeatures::strictRoot_</references>
+        <references refid="class_json_1_1_our_features_1a13963bc44bf948eec1968f7ff8e8f5f1" compoundref="jsoncpp_8cpp" startline="1088">Json::OurFeatures::allowDroppedNullPlaceholders_</references>
+        <references refid="class_json_1_1_our_features_1af6973fc7e774ce2d634ba99442aeb91a" compoundref="jsoncpp_8cpp" startline="1089">Json::OurFeatures::allowNumericKeys_</references>
+        <references refid="class_json_1_1_our_features_1abbd6c196d7a22e2a360a59887eda4610" compoundref="jsoncpp_8cpp" startline="1090">Json::OurFeatures::allowSingleQuotes_</references>
+        <references refid="class_json_1_1_our_features_1a9a786713902d14be6d57a08cc03ccfff" compoundref="jsoncpp_8cpp" startline="1094">Json::OurFeatures::stackLimit_</references>
+        <references refid="class_json_1_1_our_features_1ae8ad25b90706c78f1a8fe929191ac61b" compoundref="jsoncpp_8cpp" startline="1091">Json::OurFeatures::failIfExtra_</references>
+        <references refid="class_json_1_1_our_features_1a39b8e0b86b1c24a45e800c023bb715aa" compoundref="jsoncpp_8cpp" startline="1092">Json::OurFeatures::rejectDupKeys_</references>
+        <references refid="class_json_1_1_our_features_1af760f91cc2a7af37e44f78fb466061bb" compoundref="jsoncpp_8cpp" startline="1093">Json::OurFeatures::allowSpecialFloats_</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="25">
+        <label>Json::OurCharReader</label>
+        <link refid="class_json_1_1_our_char_reader"/>
+        <childnode refid="26" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>CharReader</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="30">
+        <label>Json::OurFeatures</label>
+        <link refid="class_json_1_1_our_features"/>
+      </node>
+      <node id="29">
+        <label>Json::OurReader</label>
+        <link refid="class_json_1_1_our_reader"/>
+        <childnode refid="30" relation="usage">
+          <edgelabel>features_</edgelabel>
+        </childnode>
+      </node>
+      <node id="27">
+        <label>Json::OurCharReader</label>
+        <link refid="class_json_1_1_our_char_reader"/>
+        <childnode refid="28" relation="public-inheritance">
+        </childnode>
+        <childnode refid="29" relation="usage">
+          <edgelabel>reader_</edgelabel>
+        </childnode>
+      </node>
+      <node id="28">
+        <label>CharReader</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="2084" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="2084" bodyend="2103"/>
+    <listofallmembers>
+      <member refid="class_json_1_1_our_char_reader_1aa6afd3d0f754cadad0f6d2be38bcfee0" prot="private" virt="non-virtual"><scope>Json::OurCharReader</scope><name>collectComments_</name></member>
+      <member refid="class_json_1_1_our_char_reader_1a5015506620e7ba7bab417756fa1ca9fe" prot="public" virt="non-virtual"><scope>Json::OurCharReader</scope><name>OurCharReader</name></member>
+      <member refid="class_json_1_1_our_char_reader_1a52a1fb5fee88d9b63dd462f63b1c9570" prot="public" virt="non-virtual"><scope>Json::OurCharReader</scope><name>parse</name></member>
+      <member refid="class_json_1_1_our_char_reader_1aedd4520b8570654ed7aa0726075ee58d" prot="private" virt="non-virtual"><scope>Json::OurCharReader</scope><name>reader_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

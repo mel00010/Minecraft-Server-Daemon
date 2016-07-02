@@ -1,0 +1,292 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="class_minecraft_server_service_1_1_generic_server">
+<title>MinecraftServerService::GenericServer class Reference</title>
+<para>
+    <programlisting>#include <link linkend="generic_server_8h">&lt;genericServer.h&gt;</link></programlisting>
+</para>
+<para>Inheritance diagram for MinecraftServerService::GenericServer</para>
+<para>
+    <figure>
+        <title>Inheritance graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="class_minecraft_server_service_1_1_generic_server__inherit__graph.svg"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+<para>Collaboration diagram for MinecraftServerService::GenericServer</para>
+<para>
+    <figure>
+        <title>Collaboration graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="class_minecraft_server_service_1_1_generic_server__coll__graph.svg"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+        <section>
+            <title>Public Attributes</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::string serverName</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Protected Attributes</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::string serverPath</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::string serverJarName</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::string serverAccount</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int maxHeapAlloc</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int minHeapAlloc</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int gcThreadCount</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::string backupPath</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::vector&lt; std::string &gt; worldsToBackup</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::vector&lt; std::string &gt; javaArgs</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::vector&lt; std::string &gt; serverOptions</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="class_minecraft_server_service_1_1_generic_server_1a5e50ec81786b021ea76f3efbbd5ce5b6">GenericServer</link> (
+std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc, int gcThreadCount, std::string backupPath, std::vector&lt; std::string &gt; worldsToBackup, std::vector&lt; std::string &gt; javaArgs, std::vector&lt; std::string &gt; serverOptions)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>virtual <link linkend="class_minecraft_server_service_1_1_generic_server_1a9274b1be2f47bd21c7df59c189d66cc4">~GenericServer</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_minecraft_server_service_1_1_generic_server_1abb89d4233143d48e2f12ada83a7d0957">updateServer</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_minecraft_server_service_1_1_generic_server_1a20ffc509d921cb8e990c19bf26139714">backupServer</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_minecraft_server_service_1_1_generic_server_1a99b71eeffc23ca9e6a61c82fb3255fba">backupServer</link> (
+std::string backupPath)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_minecraft_server_service_1_1_generic_server_1a5094b1882230b9a73030c711f1474156">serverStatus</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_minecraft_server_service_1_1_generic_server_1aa3e2da3f6458e579697154360f6e05e5">startServer</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_minecraft_server_service_1_1_generic_server_1a81adc767332fdbffdb1ca2ca5c4033ec">stopServer</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_minecraft_server_service_1_1_generic_server_1a91d7fee4ca078709180084768e85149f">restartServer</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_minecraft_server_service_1_1_generic_server_1afff8182bd666f261ab76375c98fa4bf7">reloadServer</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::string <link linkend="class_minecraft_server_service_1_1_generic_server_1a17b8ff45c08bbd1fb1acb85bd9f10039">listOnlinePlayers</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="class_minecraft_server_service_1_1_generic_server_1ac1dbf140a9e263090602995dd5cb1fa6">listOnlinePlayers</link> (
+std::string playerName)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_minecraft_server_service_1_1_generic_server_1a42c34bc2e24173077e67c6b83a346b5d">sendCommand</link> (
+std::string command)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_minecraft_server_service_1_1_generic_server_1aad20afc93c404e6f56b0a591ae2dbae8">logger</link> (
+size_t linesRequested, std::stringstream * output, log4cpp::Category * log)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Member Data Documentation</title>
+        </section>
+        <section>
+            <title>Member Data Documentation</title>
+        </section>
+            <section xml:id="class_minecraft_server_service_1_1_generic_server_1a5e50ec81786b021ea76f3efbbd5ce5b6">
+                <title>MinecraftServerService::GenericServer::GenericServer (std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc, int gcThreadCount, std::string backupPath, std::vector&lt; std::string &gt; worldsToBackup, std::vector&lt; std::string &gt; javaArgs, std::vector&lt; std::string &gt; serverOptions)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_generic_server_1a9274b1be2f47bd21c7df59c189d66cc4">
+                <title>MinecraftServerService::GenericServer::~GenericServer ()</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_generic_server_1abb89d4233143d48e2f12ada83a7d0957">
+                <title>void MinecraftServerService::GenericServer::updateServer ()</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_generic_server_1a20ffc509d921cb8e990c19bf26139714">
+                <title>void MinecraftServerService::GenericServer::backupServer ()</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_generic_server_1a99b71eeffc23ca9e6a61c82fb3255fba">
+                <title>void MinecraftServerService::GenericServer::backupServer (std::string backupPath)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_generic_server_1a5094b1882230b9a73030c711f1474156">
+                <title>void MinecraftServerService::GenericServer::serverStatus ()</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_generic_server_1aa3e2da3f6458e579697154360f6e05e5">
+                <title>void MinecraftServerService::GenericServer::startServer ()</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_generic_server_1a81adc767332fdbffdb1ca2ca5c4033ec">
+                <title>void MinecraftServerService::GenericServer::stopServer ()</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_generic_server_1a91d7fee4ca078709180084768e85149f">
+                <title>void MinecraftServerService::GenericServer::restartServer ()</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_generic_server_1afff8182bd666f261ab76375c98fa4bf7">
+                <title>void MinecraftServerService::GenericServer::reloadServer ()</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_generic_server_1a17b8ff45c08bbd1fb1acb85bd9f10039">
+                <title>std::string MinecraftServerService::GenericServer::listOnlinePlayers ()</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_generic_server_1ac1dbf140a9e263090602995dd5cb1fa6">
+                <title>bool MinecraftServerService::GenericServer::listOnlinePlayers (std::string playerName)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_generic_server_1a42c34bc2e24173077e67c6b83a346b5d">
+                <title>void MinecraftServerService::GenericServer::sendCommand (std::string command)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_generic_server_1aad20afc93c404e6f56b0a591ae2dbae8">
+                <title>void MinecraftServerService::GenericServer::logger (size_t linesRequested, std::stringstream *output, log4cpp::Category *log)</title> <emphasis></emphasis>
+                
+            </section>
+</section>

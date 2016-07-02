@@ -1,0 +1,5 @@
+<map id="MinecraftServerService::ServerStream::~ServerStream" name="MinecraftServerService::ServerStream::~ServerStream">
+<area shape="rect" id="node2" href="$class_minecraft_server_service_1_1_server_stream.html#af8529e03480497e12e171cf93709e757" title="MinecraftServerService\l::ServerStream::stopServer" alt="" coords="260,5,441,47"/>
+<area shape="rect" id="node3" href="$class_minecraft_server_service_1_1_server_process_buf.html#aea2e874a9ba6aa6558201008d9b909f0" title="MinecraftServerService\l::ServerProcessBuf::exited" alt="" coords="744,5,923,47"/>
+<area shape="rect" id="node4" href="$class_minecraft_server_service_1_1_server_stream.html#a194212956c6eb928a2db1b25e70dc565" title="MinecraftServerService\l::ServerStream::sendCommand" alt="" coords="489,35,696,76"/>
+</map>

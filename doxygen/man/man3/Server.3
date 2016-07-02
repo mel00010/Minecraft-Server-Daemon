@@ -1,0 +1,177 @@
+.TH "Server" 3 "Thu Jun 2 2016" "Version 0.7.4" "Minecraft Server Service" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Server \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <server\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBServer\fP (std::string \fBserverName\fP, std::string \fBserverPath\fP, std::string \fBserverJarName\fP, std::string \fBserverAccount\fP, int \fBmaxHeapAlloc\fP, int \fBminHeapAlloc\fP, int \fBgcThreadCount\fP, std::string \fBbackupPath\fP, std::vector< std::string > \fBworldsToBackup\fP, std::vector< std::string > \fBjavaArgs\fP, std::vector< std::string > \fBserverOptions\fP, struct \fBevent_base\fP *base)"
+.br
+.ti -1c
+.RI "virtual \fB~Server\fP ()"
+.br
+.ti -1c
+.RI "void \fBupdateServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBbackupServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBbackupServer\fP (std::string \fBbackupPath\fP)"
+.br
+.ti -1c
+.RI "void \fBserverStatus\fP ()"
+.br
+.ti -1c
+.RI "void \fBstartServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBstopServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBrestartServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBlistOnlinePlayers\fP ()"
+.br
+.ti -1c
+.RI "void \fBlistOnlinePlayers\fP (std::string playerName)"
+.br
+.ti -1c
+.RI "void \fBsendCommand\fP (std::string command)"
+.br
+.ti -1c
+.RI "void \fBupdateServer\fP (std::string \fBserverPath\fP, std::string \fBserverJarName\fP, std::string \fBserverAccount\fP)"
+.br
+.ti -1c
+.RI "void \fBbackupServer\fP (std::string \fBserverPath\fP, std::string \fBserverAccount\fP, std::string \fBbackupPath\fP, std::vector< std::string > \fBworldsToBackup\fP)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBserverName\fP"
+.br
+.ti -1c
+.RI "volatile bool \fBrunning\fP = false"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBserverPath\fP"
+.br
+.ti -1c
+.RI "std::string \fBserverJarName\fP"
+.br
+.ti -1c
+.RI "std::string \fBserverAccount\fP"
+.br
+.ti -1c
+.RI "int \fBmaxHeapAlloc\fP"
+.br
+.ti -1c
+.RI "int \fBminHeapAlloc\fP"
+.br
+.ti -1c
+.RI "int \fBgcThreadCount\fP"
+.br
+.ti -1c
+.RI "std::string \fBbackupPath\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBworldsToBackup\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBjavaArgs\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBserverOptions\fP"
+.br
+.ti -1c
+.RI "Connection * \fBconnection\fP = nullptr"
+.br
+.ti -1c
+.RI "log4cpp::Category * \fBlog\fP = nullptr"
+.br
+.ti -1c
+.RI "struct event_base * \fBevent_base\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Server::Server (std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc, int gcThreadCount, std::string backupPath, std::vector< std::string > worldsToBackup, std::vector< std::string > javaArgs, std::vector< std::string > serverOptions, struct \fBevent_base\fP * base)"
+
+.SS "Server::~Server ()\fC [virtual]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Server::backupServer ()"
+
+.SS "void Server::backupServer (std::string backupPath)"
+
+.SS "void Server::backupServer (std::string serverPath, std::string serverAccount, std::string backupPath, std::vector< std::string > worldsToBackup)"
+
+.SS "void Server::listOnlinePlayers ()"
+
+.SS "void Server::listOnlinePlayers (std::string playerName)"
+
+.SS "void Server::restartServer ()"
+
+.SS "void Server::sendCommand (std::string command)"
+
+.SS "void Server::serverStatus ()"
+
+.SS "void Server::startServer ()"
+
+.SS "void Server::stopServer ()"
+
+.SS "void Server::updateServer ()"
+
+.SS "void Server::updateServer (std::string serverPath, std::string serverJarName, std::string serverAccount)"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "std::string Server::backupPath\fC [protected]\fP"
+
+.SS "Connection* Server::connection = nullptr\fC [protected]\fP"
+
+.SS "struct event_base* Server::event_base\fC [protected]\fP"
+
+.SS "int Server::gcThreadCount\fC [protected]\fP"
+
+.SS "std::vector<std::string> Server::javaArgs\fC [protected]\fP"
+
+.SS "log4cpp::Category* Server::log = nullptr\fC [protected]\fP"
+
+.SS "int Server::maxHeapAlloc\fC [protected]\fP"
+
+.SS "int Server::minHeapAlloc\fC [protected]\fP"
+
+.SS "volatile bool Server::running = false"
+
+.SS "std::string Server::serverAccount\fC [protected]\fP"
+
+.SS "std::string Server::serverJarName\fC [protected]\fP"
+
+.SS "std::string Server::serverName"
+
+.SS "std::vector<std::string> Server::serverOptions\fC [protected]\fP"
+
+.SS "std::string Server::serverPath\fC [protected]\fP"
+
+.SS "std::vector<std::string> Server::worldsToBackup\fC [protected]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Minecraft Server Service from the source code\&.

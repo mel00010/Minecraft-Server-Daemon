@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="namespace_minecraft_server_service" kind="namespace" language="C++">
+    <compoundname>MinecraftServerService</compoundname>
+    <innerclass refid="class_minecraft_server_service_1_1_bukkit_server" prot="public">MinecraftServerService::BukkitServer</innerclass>
+    <innerclass refid="class_minecraft_server_service_1_1_bungee_cord_server" prot="public">MinecraftServerService::BungeeCordServer</innerclass>
+    <innerclass refid="class_minecraft_server_service_1_1_generic_server" prot="public">MinecraftServerService::GenericServer</innerclass>
+    <innerclass refid="class_minecraft_server_service_1_1_server" prot="public">MinecraftServerService::Server</innerclass>
+    <innerclass refid="class_minecraft_server_service_1_1_spigot_server" prot="public">MinecraftServerService::SpigotServer</innerclass>
+    <innerclass refid="class_minecraft_server_service_1_1_vanilla_server" prot="public">MinecraftServerService::VanillaServer</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/mel/projects/Misc/Minecraft Server Service/src/bukkitServer.cpp" line="32" column="1"/>
+  </compounddef>
+</doxygen>

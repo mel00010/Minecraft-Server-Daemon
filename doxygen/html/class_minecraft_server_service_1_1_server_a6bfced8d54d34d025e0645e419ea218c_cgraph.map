@@ -1,0 +1,5 @@
+<map id="MinecraftServerService::Server::restartServer" name="MinecraftServerService::Server::restartServer">
+<area shape="rect" id="node2" href="$class_minecraft_server_service_1_1_server.html#a9551b00a1b2a9cd4bee7fee4f25fd2b5" title="MinecraftServerService\l::Server::stopServer" alt="" coords="212,5,371,47"/>
+<area shape="rect" id="node3" href="$class_minecraft_server_service_1_1_server.html#a5c1e2e5d5a66b5771ce567d4bb9e82a6" title="MinecraftServerService\l::Server::startServer" alt="" coords="212,71,371,112"/>
+<area shape="rect" id="node4" href="$class_minecraft_server_service_1_1_server.html#a4961cf46d11ae83a66585d9f1b53b59b" title="MinecraftServerService\l::Server::logger" alt="" coords="419,71,577,112"/>
+</map>

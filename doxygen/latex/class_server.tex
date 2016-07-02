@@ -1,0 +1,331 @@
+\hypertarget{class_server}{}\section{Server Class Reference}
+\label{class_server}\index{Server@{Server}}
+
+
+{\ttfamily \#include $<$server.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_server_a8613abefade901e8f3ae2a028ab985f0}{Server} (std\+::string \hyperlink{class_server_aa96465f7e42dc0a43997e80aa002f5dc}{server\+Name}, std\+::string \hyperlink{class_server_a3435a7c091cb1184892e0a8a89838aa8}{server\+Path}, std\+::string \hyperlink{class_server_a00fa649de7a3b16e3884e7f0edb01cbc}{server\+Jar\+Name}, std\+::string \hyperlink{class_server_a1e9675de0f07622b12fa6848bc2d24b2}{server\+Account}, int \hyperlink{class_server_af2edab4046d3ca9525dc117582b1efa5}{max\+Heap\+Alloc}, int \hyperlink{class_server_ab572c4b5477a4dcfdf264e9fcb5b9f82}{min\+Heap\+Alloc}, int \hyperlink{class_server_a3586f498f31d9b52f122b48dff5bebb8}{gc\+Thread\+Count}, std\+::string \hyperlink{class_server_a5519da36a05003e5b724f6c0ae6a80a0}{backup\+Path}, std\+::vector$<$ std\+::string $>$ \hyperlink{class_server_ac0981101c974ac4173f98c3d2b9adc20}{worlds\+To\+Backup}, std\+::vector$<$ std\+::string $>$ \hyperlink{class_server_a97edc18388a8b8c94193dabfdadcf389}{java\+Args}, std\+::vector$<$ std\+::string $>$ \hyperlink{class_server_a955aa6e6e4f11b3809db65a16f16f14e}{server\+Options}, struct \hyperlink{class_server_afd7e0781dcfb8315807e3b173f84d8a9}{event\+\_\+base} $\ast$base)
+\item 
+virtual \hyperlink{class_server_a4b3aa2579cb1c8cd1d069582c14d0fa6}{$\sim$\+Server} ()
+\item 
+void \hyperlink{class_server_a1735675f39611edc89fc6363446c393c}{update\+Server} ()
+\item 
+void \hyperlink{class_server_a1c24b1f9b8b8ac513382ae0e7ba229eb}{backup\+Server} ()
+\item 
+void \hyperlink{class_server_ab16d98a8889b690225f65aee757b5998}{backup\+Server} (std\+::string \hyperlink{class_server_a5519da36a05003e5b724f6c0ae6a80a0}{backup\+Path})
+\item 
+void \hyperlink{class_server_aaa084c42dc896c290a30b685305e38e6}{server\+Status} ()
+\item 
+void \hyperlink{class_server_af59bb3a96b3311ed2b87e2d6899d9f79}{start\+Server} ()
+\item 
+void \hyperlink{class_server_a31d9bbeeaa6ced18c7096acd0b52c3ae}{stop\+Server} ()
+\item 
+void \hyperlink{class_server_af5dbf324376f0ee7a703876089a75abc}{restart\+Server} ()
+\item 
+void \hyperlink{class_server_af300244b0ce025b2699fcdcc221be563}{list\+Online\+Players} ()
+\item 
+void \hyperlink{class_server_ac773bd5a8ccf7e27690e252559e7846b}{list\+Online\+Players} (std\+::string player\+Name)
+\item 
+void \hyperlink{class_server_a461abb1e8cfeae55f4e58d97b8a4113f}{send\+Command} (std\+::string command)
+\item 
+void \hyperlink{class_server_ab4925438fd1c24ea6797197a1f251a37}{update\+Server} (std\+::string \hyperlink{class_server_a3435a7c091cb1184892e0a8a89838aa8}{server\+Path}, std\+::string \hyperlink{class_server_a00fa649de7a3b16e3884e7f0edb01cbc}{server\+Jar\+Name}, std\+::string \hyperlink{class_server_a1e9675de0f07622b12fa6848bc2d24b2}{server\+Account})
+\item 
+void \hyperlink{class_server_a0cebe27c0019b62a41109217feddbe3b}{backup\+Server} (std\+::string \hyperlink{class_server_a3435a7c091cb1184892e0a8a89838aa8}{server\+Path}, std\+::string \hyperlink{class_server_a1e9675de0f07622b12fa6848bc2d24b2}{server\+Account}, std\+::string \hyperlink{class_server_a5519da36a05003e5b724f6c0ae6a80a0}{backup\+Path}, std\+::vector$<$ std\+::string $>$ \hyperlink{class_server_ac0981101c974ac4173f98c3d2b9adc20}{worlds\+To\+Backup})
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{class_server_aa96465f7e42dc0a43997e80aa002f5dc}{server\+Name}
+\item 
+volatile bool \hyperlink{class_server_a1f19d2430f0ac53f68b69c74abaf5477}{running} = false
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{class_server_a3435a7c091cb1184892e0a8a89838aa8}{server\+Path}
+\item 
+std\+::string \hyperlink{class_server_a00fa649de7a3b16e3884e7f0edb01cbc}{server\+Jar\+Name}
+\item 
+std\+::string \hyperlink{class_server_a1e9675de0f07622b12fa6848bc2d24b2}{server\+Account}
+\item 
+int \hyperlink{class_server_af2edab4046d3ca9525dc117582b1efa5}{max\+Heap\+Alloc}
+\item 
+int \hyperlink{class_server_ab572c4b5477a4dcfdf264e9fcb5b9f82}{min\+Heap\+Alloc}
+\item 
+int \hyperlink{class_server_a3586f498f31d9b52f122b48dff5bebb8}{gc\+Thread\+Count}
+\item 
+std\+::string \hyperlink{class_server_a5519da36a05003e5b724f6c0ae6a80a0}{backup\+Path}
+\item 
+std\+::vector$<$ std\+::string $>$ \hyperlink{class_server_ac0981101c974ac4173f98c3d2b9adc20}{worlds\+To\+Backup}
+\item 
+std\+::vector$<$ std\+::string $>$ \hyperlink{class_server_a97edc18388a8b8c94193dabfdadcf389}{java\+Args}
+\item 
+std\+::vector$<$ std\+::string $>$ \hyperlink{class_server_a955aa6e6e4f11b3809db65a16f16f14e}{server\+Options}
+\item 
+Connection $\ast$ \hyperlink{class_server_a3e056084670831acaff47913ac9e87cd}{connection} = nullptr
+\item 
+log4cpp\+::\+Category $\ast$ \hyperlink{class_server_a94a7ba28c6d4348929055cc28886db28}{log} = nullptr
+\item 
+struct event\+\_\+base $\ast$ \hyperlink{class_server_afd7e0781dcfb8315807e3b173f84d8a9}{event\+\_\+base}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Server@{Server}!Server@{Server}}
+\index{Server@{Server}!Server@{Server}}
+\subsubsection[{\texorpdfstring{Server(std\+::string server\+Name, std\+::string server\+Path, std\+::string server\+Jar\+Name, std\+::string server\+Account, int max\+Heap\+Alloc, int min\+Heap\+Alloc, int gc\+Thread\+Count, std\+::string backup\+Path, std\+::vector$<$ std\+::string $>$ worlds\+To\+Backup, std\+::vector$<$ std\+::string $>$ java\+Args, std\+::vector$<$ std\+::string $>$ server\+Options, struct event\+\_\+base $\ast$base)}{Server(std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc, int gcThreadCount, std::string backupPath, std::vector< std::string > worldsToBackup, std::vector< std::string > javaArgs, std::vector< std::string > serverOptions, struct event_base *base)}}]{\setlength{\rightskip}{0pt plus 5cm}Server\+::\+Server (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{server\+Name, }
+\item[{std\+::string}]{server\+Path, }
+\item[{std\+::string}]{server\+Jar\+Name, }
+\item[{std\+::string}]{server\+Account, }
+\item[{int}]{max\+Heap\+Alloc, }
+\item[{int}]{min\+Heap\+Alloc, }
+\item[{int}]{gc\+Thread\+Count, }
+\item[{std\+::string}]{backup\+Path, }
+\item[{std\+::vector$<$ std\+::string $>$}]{worlds\+To\+Backup, }
+\item[{std\+::vector$<$ std\+::string $>$}]{java\+Args, }
+\item[{std\+::vector$<$ std\+::string $>$}]{server\+Options, }
+\item[{struct {\bf event\+\_\+base} $\ast$}]{base}
+\end{DoxyParamCaption}
+)}\hypertarget{class_server_a8613abefade901e8f3ae2a028ab985f0}{}\label{class_server_a8613abefade901e8f3ae2a028ab985f0}
+\index{Server@{Server}!````~Server@{$\sim$\+Server}}
+\index{````~Server@{$\sim$\+Server}!Server@{Server}}
+\subsubsection[{\texorpdfstring{$\sim$\+Server()}{~Server()}}]{\setlength{\rightskip}{0pt plus 5cm}Server\+::$\sim$\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_server_a4b3aa2579cb1c8cd1d069582c14d0fa6}{}\label{class_server_a4b3aa2579cb1c8cd1d069582c14d0fa6}
+
+
+\subsection{Member Function Documentation}
+\index{Server@{Server}!backup\+Server@{backup\+Server}}
+\index{backup\+Server@{backup\+Server}!Server@{Server}}
+\subsubsection[{\texorpdfstring{backup\+Server()}{backupServer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Server\+::backup\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_server_a1c24b1f9b8b8ac513382ae0e7ba229eb}{}\label{class_server_a1c24b1f9b8b8ac513382ae0e7ba229eb}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{class_server_a1c24b1f9b8b8ac513382ae0e7ba229eb_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Server@{Server}!backup\+Server@{backup\+Server}}
+\index{backup\+Server@{backup\+Server}!Server@{Server}}
+\subsubsection[{\texorpdfstring{backup\+Server(std\+::string backup\+Path)}{backupServer(std::string backupPath)}}]{\setlength{\rightskip}{0pt plus 5cm}void Server\+::backup\+Server (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{backup\+Path}
+\end{DoxyParamCaption}
+)}\hypertarget{class_server_ab16d98a8889b690225f65aee757b5998}{}\label{class_server_ab16d98a8889b690225f65aee757b5998}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{class_server_ab16d98a8889b690225f65aee757b5998_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Server@{Server}!backup\+Server@{backup\+Server}}
+\index{backup\+Server@{backup\+Server}!Server@{Server}}
+\subsubsection[{\texorpdfstring{backup\+Server(std\+::string server\+Path, std\+::string server\+Account, std\+::string backup\+Path, std\+::vector$<$ std\+::string $>$ worlds\+To\+Backup)}{backupServer(std::string serverPath, std::string serverAccount, std::string backupPath, std::vector< std::string > worldsToBackup)}}]{\setlength{\rightskip}{0pt plus 5cm}void Server\+::backup\+Server (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{server\+Path, }
+\item[{std\+::string}]{server\+Account, }
+\item[{std\+::string}]{backup\+Path, }
+\item[{std\+::vector$<$ std\+::string $>$}]{worlds\+To\+Backup}
+\end{DoxyParamCaption}
+)}\hypertarget{class_server_a0cebe27c0019b62a41109217feddbe3b}{}\label{class_server_a0cebe27c0019b62a41109217feddbe3b}
+\index{Server@{Server}!list\+Online\+Players@{list\+Online\+Players}}
+\index{list\+Online\+Players@{list\+Online\+Players}!Server@{Server}}
+\subsubsection[{\texorpdfstring{list\+Online\+Players()}{listOnlinePlayers()}}]{\setlength{\rightskip}{0pt plus 5cm}void Server\+::list\+Online\+Players (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_server_af300244b0ce025b2699fcdcc221be563}{}\label{class_server_af300244b0ce025b2699fcdcc221be563}
+\index{Server@{Server}!list\+Online\+Players@{list\+Online\+Players}}
+\index{list\+Online\+Players@{list\+Online\+Players}!Server@{Server}}
+\subsubsection[{\texorpdfstring{list\+Online\+Players(std\+::string player\+Name)}{listOnlinePlayers(std::string playerName)}}]{\setlength{\rightskip}{0pt plus 5cm}void Server\+::list\+Online\+Players (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{player\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{class_server_ac773bd5a8ccf7e27690e252559e7846b}{}\label{class_server_ac773bd5a8ccf7e27690e252559e7846b}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_server_ac773bd5a8ccf7e27690e252559e7846b_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Server@{Server}!restart\+Server@{restart\+Server}}
+\index{restart\+Server@{restart\+Server}!Server@{Server}}
+\subsubsection[{\texorpdfstring{restart\+Server()}{restartServer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Server\+::restart\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_server_af5dbf324376f0ee7a703876089a75abc}{}\label{class_server_af5dbf324376f0ee7a703876089a75abc}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{class_server_af5dbf324376f0ee7a703876089a75abc_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Server@{Server}!send\+Command@{send\+Command}}
+\index{send\+Command@{send\+Command}!Server@{Server}}
+\subsubsection[{\texorpdfstring{send\+Command(std\+::string command)}{sendCommand(std::string command)}}]{\setlength{\rightskip}{0pt plus 5cm}void Server\+::send\+Command (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{command}
+\end{DoxyParamCaption}
+)}\hypertarget{class_server_a461abb1e8cfeae55f4e58d97b8a4113f}{}\label{class_server_a461abb1e8cfeae55f4e58d97b8a4113f}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_server_a461abb1e8cfeae55f4e58d97b8a4113f_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Server@{Server}!server\+Status@{server\+Status}}
+\index{server\+Status@{server\+Status}!Server@{Server}}
+\subsubsection[{\texorpdfstring{server\+Status()}{serverStatus()}}]{\setlength{\rightskip}{0pt plus 5cm}void Server\+::server\+Status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_server_aaa084c42dc896c290a30b685305e38e6}{}\label{class_server_aaa084c42dc896c290a30b685305e38e6}
+\index{Server@{Server}!start\+Server@{start\+Server}}
+\index{start\+Server@{start\+Server}!Server@{Server}}
+\subsubsection[{\texorpdfstring{start\+Server()}{startServer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Server\+::start\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_server_af59bb3a96b3311ed2b87e2d6899d9f79}{}\label{class_server_af59bb3a96b3311ed2b87e2d6899d9f79}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{class_server_af59bb3a96b3311ed2b87e2d6899d9f79_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Server@{Server}!stop\+Server@{stop\+Server}}
+\index{stop\+Server@{stop\+Server}!Server@{Server}}
+\subsubsection[{\texorpdfstring{stop\+Server()}{stopServer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Server\+::stop\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_server_a31d9bbeeaa6ced18c7096acd0b52c3ae}{}\label{class_server_a31d9bbeeaa6ced18c7096acd0b52c3ae}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{class_server_a31d9bbeeaa6ced18c7096acd0b52c3ae_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Server@{Server}!update\+Server@{update\+Server}}
+\index{update\+Server@{update\+Server}!Server@{Server}}
+\subsubsection[{\texorpdfstring{update\+Server()}{updateServer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Server\+::update\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_server_a1735675f39611edc89fc6363446c393c}{}\label{class_server_a1735675f39611edc89fc6363446c393c}
+\index{Server@{Server}!update\+Server@{update\+Server}}
+\index{update\+Server@{update\+Server}!Server@{Server}}
+\subsubsection[{\texorpdfstring{update\+Server(std\+::string server\+Path, std\+::string server\+Jar\+Name, std\+::string server\+Account)}{updateServer(std::string serverPath, std::string serverJarName, std::string serverAccount)}}]{\setlength{\rightskip}{0pt plus 5cm}void Server\+::update\+Server (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{server\+Path, }
+\item[{std\+::string}]{server\+Jar\+Name, }
+\item[{std\+::string}]{server\+Account}
+\end{DoxyParamCaption}
+)}\hypertarget{class_server_ab4925438fd1c24ea6797197a1f251a37}{}\label{class_server_ab4925438fd1c24ea6797197a1f251a37}
+
+
+\subsection{Member Data Documentation}
+\index{Server@{Server}!backup\+Path@{backup\+Path}}
+\index{backup\+Path@{backup\+Path}!Server@{Server}}
+\subsubsection[{\texorpdfstring{backup\+Path}{backupPath}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Server\+::backup\+Path\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_server_a5519da36a05003e5b724f6c0ae6a80a0}{}\label{class_server_a5519da36a05003e5b724f6c0ae6a80a0}
+\index{Server@{Server}!connection@{connection}}
+\index{connection@{connection}!Server@{Server}}
+\subsubsection[{\texorpdfstring{connection}{connection}}]{\setlength{\rightskip}{0pt plus 5cm}Connection$\ast$ Server\+::connection = nullptr\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_server_a3e056084670831acaff47913ac9e87cd}{}\label{class_server_a3e056084670831acaff47913ac9e87cd}
+\index{Server@{Server}!event\+\_\+base@{event\+\_\+base}}
+\index{event\+\_\+base@{event\+\_\+base}!Server@{Server}}
+\subsubsection[{\texorpdfstring{event\+\_\+base}{event_base}}]{\setlength{\rightskip}{0pt plus 5cm}struct event\+\_\+base$\ast$ Server\+::event\+\_\+base\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_server_afd7e0781dcfb8315807e3b173f84d8a9}{}\label{class_server_afd7e0781dcfb8315807e3b173f84d8a9}
+\index{Server@{Server}!gc\+Thread\+Count@{gc\+Thread\+Count}}
+\index{gc\+Thread\+Count@{gc\+Thread\+Count}!Server@{Server}}
+\subsubsection[{\texorpdfstring{gc\+Thread\+Count}{gcThreadCount}}]{\setlength{\rightskip}{0pt plus 5cm}int Server\+::gc\+Thread\+Count\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_server_a3586f498f31d9b52f122b48dff5bebb8}{}\label{class_server_a3586f498f31d9b52f122b48dff5bebb8}
+\index{Server@{Server}!java\+Args@{java\+Args}}
+\index{java\+Args@{java\+Args}!Server@{Server}}
+\subsubsection[{\texorpdfstring{java\+Args}{javaArgs}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::string$>$ Server\+::java\+Args\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_server_a97edc18388a8b8c94193dabfdadcf389}{}\label{class_server_a97edc18388a8b8c94193dabfdadcf389}
+\index{Server@{Server}!log@{log}}
+\index{log@{log}!Server@{Server}}
+\subsubsection[{\texorpdfstring{log}{log}}]{\setlength{\rightskip}{0pt plus 5cm}log4cpp\+::\+Category$\ast$ Server\+::log = nullptr\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_server_a94a7ba28c6d4348929055cc28886db28}{}\label{class_server_a94a7ba28c6d4348929055cc28886db28}
+\index{Server@{Server}!max\+Heap\+Alloc@{max\+Heap\+Alloc}}
+\index{max\+Heap\+Alloc@{max\+Heap\+Alloc}!Server@{Server}}
+\subsubsection[{\texorpdfstring{max\+Heap\+Alloc}{maxHeapAlloc}}]{\setlength{\rightskip}{0pt plus 5cm}int Server\+::max\+Heap\+Alloc\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_server_af2edab4046d3ca9525dc117582b1efa5}{}\label{class_server_af2edab4046d3ca9525dc117582b1efa5}
+\index{Server@{Server}!min\+Heap\+Alloc@{min\+Heap\+Alloc}}
+\index{min\+Heap\+Alloc@{min\+Heap\+Alloc}!Server@{Server}}
+\subsubsection[{\texorpdfstring{min\+Heap\+Alloc}{minHeapAlloc}}]{\setlength{\rightskip}{0pt plus 5cm}int Server\+::min\+Heap\+Alloc\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_server_ab572c4b5477a4dcfdf264e9fcb5b9f82}{}\label{class_server_ab572c4b5477a4dcfdf264e9fcb5b9f82}
+\index{Server@{Server}!running@{running}}
+\index{running@{running}!Server@{Server}}
+\subsubsection[{\texorpdfstring{running}{running}}]{\setlength{\rightskip}{0pt plus 5cm}volatile bool Server\+::running = false}\hypertarget{class_server_a1f19d2430f0ac53f68b69c74abaf5477}{}\label{class_server_a1f19d2430f0ac53f68b69c74abaf5477}
+\index{Server@{Server}!server\+Account@{server\+Account}}
+\index{server\+Account@{server\+Account}!Server@{Server}}
+\subsubsection[{\texorpdfstring{server\+Account}{serverAccount}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Server\+::server\+Account\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_server_a1e9675de0f07622b12fa6848bc2d24b2}{}\label{class_server_a1e9675de0f07622b12fa6848bc2d24b2}
+\index{Server@{Server}!server\+Jar\+Name@{server\+Jar\+Name}}
+\index{server\+Jar\+Name@{server\+Jar\+Name}!Server@{Server}}
+\subsubsection[{\texorpdfstring{server\+Jar\+Name}{serverJarName}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Server\+::server\+Jar\+Name\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_server_a00fa649de7a3b16e3884e7f0edb01cbc}{}\label{class_server_a00fa649de7a3b16e3884e7f0edb01cbc}
+\index{Server@{Server}!server\+Name@{server\+Name}}
+\index{server\+Name@{server\+Name}!Server@{Server}}
+\subsubsection[{\texorpdfstring{server\+Name}{serverName}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Server\+::server\+Name}\hypertarget{class_server_aa96465f7e42dc0a43997e80aa002f5dc}{}\label{class_server_aa96465f7e42dc0a43997e80aa002f5dc}
+\index{Server@{Server}!server\+Options@{server\+Options}}
+\index{server\+Options@{server\+Options}!Server@{Server}}
+\subsubsection[{\texorpdfstring{server\+Options}{serverOptions}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::string$>$ Server\+::server\+Options\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_server_a955aa6e6e4f11b3809db65a16f16f14e}{}\label{class_server_a955aa6e6e4f11b3809db65a16f16f14e}
+\index{Server@{Server}!server\+Path@{server\+Path}}
+\index{server\+Path@{server\+Path}!Server@{Server}}
+\subsubsection[{\texorpdfstring{server\+Path}{serverPath}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Server\+::server\+Path\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_server_a3435a7c091cb1184892e0a8a89838aa8}{}\label{class_server_a3435a7c091cb1184892e0a8a89838aa8}
+\index{Server@{Server}!worlds\+To\+Backup@{worlds\+To\+Backup}}
+\index{worlds\+To\+Backup@{worlds\+To\+Backup}!Server@{Server}}
+\subsubsection[{\texorpdfstring{worlds\+To\+Backup}{worldsToBackup}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::string$>$ Server\+::worlds\+To\+Backup\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_server_ac0981101c974ac4173f98c3d2b9adc20}{}\label{class_server_ac0981101c974ac4173f98c3d2b9adc20}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/mel/projects/\+Misc/\+Minecraft Server Service/src/\hyperlink{server_8h}{server.\+h}\item 
+/home/mel/projects/\+Misc/\+Minecraft Server Service/src/\hyperlink{server_8cpp}{server.\+cpp}\end{DoxyCompactItemize}

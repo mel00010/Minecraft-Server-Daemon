@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="_server_stream_8h" kind="file" language="C++">
+    <compoundname>ServerStream.h</compoundname>
+    <includes local="yes">log4cpp/Category.hh</includes>
+    <includes refid="_server_process_buf_8h" local="yes">ServerProcessBuf.h</includes>
+    <includes local="no">string</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">memory</includes>
+    <includedby refid="server_8h" local="yes">/home/mel/projects/Misc/Minecraft Server Service/src/server.h</includedby>
+    <includedby refid="_server_stream_8cpp" local="yes">/home/mel/projects/Misc/Minecraft Server Service/src/ServerStream.cpp</includedby>
+    <incdepgraph>
+      <node id="233">
+        <label>ServerProcessBuf.h</label>
+        <link refid="_server_process_buf_8h"/>
+        <childnode refid="234" relation="include">
+        </childnode>
+        <childnode refid="235" relation="include">
+        </childnode>
+        <childnode refid="236" relation="include">
+        </childnode>
+        <childnode refid="237" relation="include">
+        </childnode>
+        <childnode refid="232" relation="include">
+        </childnode>
+      </node>
+      <node id="232">
+        <label>log4cpp/Category.hh</label>
+      </node>
+      <node id="238">
+        <label>string</label>
+      </node>
+      <node id="231">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/ServerStream.h</label>
+        <link refid="ServerStream.h"/>
+        <childnode refid="232" relation="include">
+        </childnode>
+        <childnode refid="233" relation="include">
+        </childnode>
+        <childnode refid="238" relation="include">
+        </childnode>
+        <childnode refid="237" relation="include">
+        </childnode>
+        <childnode refid="239" relation="include">
+        </childnode>
+      </node>
+      <node id="237">
+        <label>vector</label>
+      </node>
+      <node id="234">
+        <label>streambuf</label>
+      </node>
+      <node id="235">
+        <label>iosfwd</label>
+      </node>
+      <node id="236">
+        <label>cstdlib</label>
+      </node>
+      <node id="239">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="247">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/ServerStream.cpp</label>
+        <link refid="_server_stream_8cpp"/>
+      </node>
+      <node id="245">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/setupServers.cpp</label>
+        <link refid="setup_servers_8cpp"/>
+      </node>
+      <node id="240">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/ServerStream.h</label>
+        <link refid="ServerStream.h"/>
+        <childnode refid="241" relation="include">
+        </childnode>
+        <childnode refid="247" relation="include">
+        </childnode>
+      </node>
+      <node id="241">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/server.h</label>
+        <link refid="server_8h"/>
+        <childnode refid="242" relation="include">
+        </childnode>
+        <childnode refid="243" relation="include">
+        </childnode>
+        <childnode refid="244" relation="include">
+        </childnode>
+        <childnode refid="246" relation="include">
+        </childnode>
+        <childnode refid="247" relation="include">
+        </childnode>
+        <childnode refid="245" relation="include">
+        </childnode>
+      </node>
+      <node id="246">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+      <node id="242">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="243">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/setupServers.h</label>
+        <link refid="setup_servers_8h"/>
+        <childnode refid="242" relation="include">
+        </childnode>
+        <childnode refid="244" relation="include">
+        </childnode>
+        <childnode refid="245" relation="include">
+        </childnode>
+      </node>
+      <node id="244">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/mainLoop.cpp</label>
+        <link refid="main_loop_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_minecraft_server_service_1_1_server_stream" prot="public">MinecraftServerService::ServerStream</innerclass>
+    <innernamespace refid="namespace_minecraft_server_service">MinecraftServerService</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>CONNECTION_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONNECTION_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;log4cpp/Category.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_server_process_buf_8h" kindref="compound">ServerProcessBuf.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_minecraft_server_service" kindref="compound">MinecraftServerService</ref><sp/>{</highlight></codeline>
+<codeline lineno="9" refid="class_minecraft_server_service_1_1_server_stream" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_minecraft_server_service_1_1_server_stream" kindref="compound">ServerStream</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::iostream</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a18567f4d5f6752325172e3fb5efb0f6c" kindref="member">ServerStream</ref>(<sp/>std::string<sp/>_serverName,<sp/>std::string<sp/>_serverPath,<sp/>std::string<sp/>_serverJarName,<sp/>std::string<sp/>_serverAccount,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>_maxHeapAlloc,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>_minHeapAlloc,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>_gcThreadCount,</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>_javaArgs,</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>_serverOptions);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a8cb55e6e481c6d4338d446a7b92df3d3" kindref="member">~ServerStream</ref>();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_process_buf" kindref="compound">ServerProcessBuf</ref>*<sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1acfaf50ff9b711062de3bb8a650ba11dd" kindref="member">rdbuf</ref>();</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1af8529e03480497e12e171cf93709e757" kindref="member">stopServer</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a194212956c6eb928a2db1b25e70dc565" kindref="member">sendCommand</ref>(std::string<sp/>command);</highlight></codeline>
+<codeline lineno="21" refid="class_minecraft_server_service_1_1_server_stream_1a974b8007a5c437d221f482543044acb4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_process_buf" kindref="compound">ServerProcessBuf</ref>*<sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a974b8007a5c437d221f482543044acb4" kindref="member">serverProcess</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22" refid="class_minecraft_server_service_1_1_server_stream_1a698b7dfef7f76adc005d81eb6a11dd28" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log4cpp::Category*<sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a698b7dfef7f76adc005d81eb6a11dd28" kindref="member">log</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23" refid="class_minecraft_server_service_1_1_server_stream_1aa6aeeef202bcbaf6b6668a03f7682efb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1aa6aeeef202bcbaf6b6668a03f7682efb" kindref="member">serverName</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>CONNECTION_H<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/mel/projects/Misc/Minecraft Server Service/src/ServerStream.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,370 @@
+.TH "Json" 3 "Fri Jul 1 2016" "Minecraft Server Daemon" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Json \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBBuiltStyledStreamWriter\fP"
+.br
+.ti -1c
+.RI "struct \fBCommentStyle\fP"
+.br
+.RI "\fIScoped enums are not available until C++11\&. \fP"
+.ti -1c
+.RI "class \fBOurCharReader\fP"
+.br
+.ti -1c
+.RI "class \fBOurFeatures\fP"
+.br
+.ti -1c
+.RI "class \fBOurReader\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef char \fBUIntToStringBuffer\fP[\fBuintToStringBufferSize\fP]"
+.br
+.ti -1c
+.RI "typedef std::auto_ptr< CharReader > \fBCharReaderPtr\fP"
+.br
+.ti -1c
+.RI "typedef std::auto_ptr< StreamWriter > \fBStreamWriterPtr\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBuintToStringBufferSize\fP = 3 * sizeof(LargestUInt) + 1 }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "static std::string \fBcodePointToUTF8\fP (unsigned int cp)"
+.br
+.RI "\fIConverts a unicode code-point to UTF-8\&. \fP"
+.ti -1c
+.RI "static bool \fBisControlCharacter\fP (char ch)"
+.br
+.RI "\fIReturns true if ch is a control character (in range [1,31])\&. \fP"
+.ti -1c
+.RI "static void \fBuintToString\fP (LargestUInt value, char *&current)"
+.br
+.ti -1c
+.RI "static void \fBfixNumericLocale\fP (char *begin, char *end)"
+.br
+.ti -1c
+.RI "static bool \fBcontainsNewLine\fP (Reader::Location begin, Reader::Location end)"
+.br
+.ti -1c
+.RI "static std::string \fBnormalizeEOL\fP (Reader::Location begin, Reader::Location end)"
+.br
+.ti -1c
+.RI "static void \fBgetValidReaderKeys\fP (std::set< std::string > *valid_keys)"
+.br
+.ti -1c
+.RI "bool \fBparseFromStream\fP (CharReader::Factory const &fact, std::istream &sin, Value *root, std::string *errs)"
+.br
+.ti -1c
+.RI "std::istream & \fBoperator>>\fP (std::istream &sin, Value &root)"
+.br
+.ti -1c
+.RI "static const unsigned char \fBALIGNAS\fP (8) kNull[sizeof(Value)]"
+.br
+.ti -1c
+.RI "template<typename T , typename U > static bool \fBInRange\fP (double d, T min, U max)"
+.br
+.ti -1c
+.RI "static char * \fBduplicateStringValue\fP (const char *value, size_t length)"
+.br
+.ti -1c
+.RI "static char * \fBduplicateAndPrefixStringValue\fP (const char *value, unsigned int length)"
+.br
+.ti -1c
+.RI "static void \fBdecodePrefixedString\fP (bool isPrefixed, char const *prefixed, unsigned *length, char const **value)"
+.br
+.ti -1c
+.RI "static void \fBreleaseStringValue\fP (char *value)"
+.br
+.ti -1c
+.RI "void \fBthrowRuntimeError\fP (std::string const &msg)"
+.br
+.ti -1c
+.RI "void \fBthrowLogicError\fP (std::string const &msg)"
+.br
+.ti -1c
+.RI "static bool \fBIsIntegral\fP (double d)"
+.br
+.ti -1c
+.RI "static bool \fBcontainsControlCharacter\fP (const char *str)"
+.br
+.ti -1c
+.RI "static bool \fBcontainsControlCharacter0\fP (const char *str, unsigned \fBlen\fP)"
+.br
+.ti -1c
+.RI "std::string \fBvalueToString\fP (LargestInt value)"
+.br
+.ti -1c
+.RI "std::string \fBvalueToString\fP (LargestUInt value)"
+.br
+.ti -1c
+.RI "std::string \fBvalueToString\fP (Int value)"
+.br
+.ti -1c
+.RI "std::string \fBvalueToString\fP (UInt value)"
+.br
+.ti -1c
+.RI "std::string \fBvalueToString\fP (double value, bool useSpecialFloats, unsigned int precision)"
+.br
+.ti -1c
+.RI "std::string \fBvalueToString\fP (double value)"
+.br
+.ti -1c
+.RI "std::string \fBvalueToString\fP (bool value)"
+.br
+.ti -1c
+.RI "std::string \fBvalueToQuotedString\fP (const char *value)"
+.br
+.ti -1c
+.RI "static char const * \fBstrnpbrk\fP (char const *s, char const *accept, size_t n)"
+.br
+.ti -1c
+.RI "static std::string \fBvalueToQuotedStringN\fP (const char *value, unsigned length)"
+.br
+.ti -1c
+.RI "static void \fBgetValidWriterKeys\fP (std::set< std::string > *valid_keys)"
+.br
+.ti -1c
+.RI "std::string \fBwriteString\fP (StreamWriter::Factory const &builder, Value const &root)"
+.br
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &sout, Value const &root)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const unsigned char & \fBkNullRef\fP = kNull[0]"
+.br
+.ti -1c
+.RI "static const double \fBmaxUInt64AsDouble\fP = 18446744073709551615\&.0"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef std::auto_ptr<CharReader> \fBJson::CharReaderPtr\fP"
+
+.PP
+Definition at line 242 of file jsoncpp\&.cpp\&.
+.SS "typedef std::auto_ptr<StreamWriter> \fBJson::StreamWriterPtr\fP"
+
+.PP
+Definition at line 4059 of file jsoncpp\&.cpp\&.
+.SS "typedef char Json::UIntToStringBuffer[\fBuintToStringBufferSize\fP]"
+
+.PP
+Definition at line 142 of file jsoncpp\&.cpp\&.
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIuintToStringBufferSize \fP\fP
+Constant that specify the size of the buffer that must be passed to uintToString\&. 
+.PP
+Definition at line 135 of file jsoncpp\&.cpp\&.
+.SH "Function Documentation"
+.PP 
+.SS "static const unsigned char Json::ALIGNAS (8)\fC [static]\fP"
+
+.SS "static std::string Json::codePointToUTF8 (unsigned int cp)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Converts a unicode code-point to UTF-8\&. 
+.PP
+Definition at line 104 of file jsoncpp\&.cpp\&.
+.SS "static bool Json::containsControlCharacter (const char * str)\fC [static]\fP"
+
+.PP
+Definition at line 4062 of file jsoncpp\&.cpp\&.
+.SS "static bool Json::containsControlCharacter0 (const char * str, unsigned len)\fC [static]\fP"
+
+.PP
+Definition at line 4070 of file jsoncpp\&.cpp\&.
+.SS "static bool Json::containsNewLine (Reader::Location begin, Reader::Location end)\fC [static]\fP"
+
+.PP
+Definition at line 266 of file jsoncpp\&.cpp\&.
+.SS "static void Json::decodePrefixedString (bool isPrefixed, char const * prefixed, unsigned * length, char const ** value)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Definition at line 2545 of file jsoncpp\&.cpp\&.
+.SS "static char* Json::duplicateAndPrefixStringValue (const char * value, unsigned int length)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Definition at line 2524 of file jsoncpp\&.cpp\&.
+.SS "static char* Json::duplicateStringValue (const char * value, size_t length)\fC [inline]\fP, \fC [static]\fP"
+Duplicates the specified string value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Pointer to the string to duplicate\&. Must be zero-terminated if length is 'unknown'\&. 
+.br
+\fIlength\fP Length of the value\&. if equals to unknown, then it will be computed using strlen(value)\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer on the duplicate instance of string\&. 
+.RE
+.PP
+
+.PP
+Definition at line 2504 of file jsoncpp\&.cpp\&.
+.SS "static void Json::fixNumericLocale (char * begin, char * end)\fC [inline]\fP, \fC [static]\fP"
+Change ',' to '\&.' everywhere in buffer\&.
+.PP
+We had a sophisticated way, but it did not work in WinCE\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+https://github.com/open-source-parsers/jsoncpp/pull/9 
+.RE
+.PP
+
+.PP
+Definition at line 162 of file jsoncpp\&.cpp\&.
+.SS "static void Json::getValidReaderKeys (std::set< std::string > * valid_keys)\fC [static]\fP"
+
+.PP
+Definition at line 2126 of file jsoncpp\&.cpp\&.
+.SS "static void Json::getValidWriterKeys (std::set< std::string > * valid_keys)\fC [static]\fP"
+
+.PP
+Definition at line 5136 of file jsoncpp\&.cpp\&.
+.SS "template<typename T , typename U > static bool Json::InRange (double d, T min, U max)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Definition at line 2476 of file jsoncpp\&.cpp\&.
+.SS "static bool Json::isControlCharacter (char ch)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Returns true if ch is a control character (in range [1,31])\&. 
+.PP
+Definition at line 133 of file jsoncpp\&.cpp\&.
+.SS "static bool Json::IsIntegral (double d)\fC [static]\fP"
+
+.PP
+Definition at line 3633 of file jsoncpp\&.cpp\&.
+.SS "static std::string Json::normalizeEOL (Reader::Location begin, Reader::Location end)\fC [static]\fP"
+
+.PP
+Definition at line 558 of file jsoncpp\&.cpp\&.
+.SS "std::ostream& Json::operator<< (std::ostream & sout, Value const & root)"
+
+.PP
+Definition at line 5187 of file jsoncpp\&.cpp\&.
+.SS "std::istream& Json::operator>> (std::istream & sin, Value & root)"
+
+.PP
+Definition at line 2210 of file jsoncpp\&.cpp\&.
+.SS "bool Json::parseFromStream (CharReader::Factory const & fact, std::istream & sin, Value * root, std::string * errs)"
+
+.PP
+Definition at line 2196 of file jsoncpp\&.cpp\&.
+.SS "static void Json::releaseStringValue (char * value)\fC [inline]\fP, \fC [static]\fP"
+Free the string duplicated by \fBduplicateStringValue()\fP/duplicateAndPrefixStringValue()\&. 
+.PP
+Definition at line 2559 of file jsoncpp\&.cpp\&.
+.SS "static char const* Json::strnpbrk (char const * s, char const * accept, size_t n)\fC [static]\fP"
+
+.PP
+Definition at line 4213 of file jsoncpp\&.cpp\&.
+.SS "void Json::throwLogicError (std::string const & msg)"
+
+.PP
+Definition at line 2596 of file jsoncpp\&.cpp\&.
+.SS "void Json::throwRuntimeError (std::string const & msg)"
+
+.PP
+Definition at line 2592 of file jsoncpp\&.cpp\&.
+.SS "static void Json::uintToString (LargestUInt value, char *& current)\fC [inline]\fP, \fC [static]\fP"
+Converts an unsigned integer to string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Unsigned interger to convert to string 
+.br
+\fIcurrent\fP Input/Output string buffer\&. Must have at least uintToStringBufferSize chars free\&. 
+.RE
+.PP
+
+.PP
+Definition at line 149 of file jsoncpp\&.cpp\&.
+.SS "std::string Json::valueToQuotedString (const char * value)"
+
+.PP
+Definition at line 4150 of file jsoncpp\&.cpp\&.
+.SS "static std::string Json::valueToQuotedStringN (const char * value, unsigned length)\fC [static]\fP"
+
+.PP
+Definition at line 4227 of file jsoncpp\&.cpp\&.
+.SS "std::string Json::valueToString (LargestInt value)"
+
+.PP
+Definition at line 4080 of file jsoncpp\&.cpp\&.
+.SS "std::string Json::valueToString (LargestUInt value)"
+
+.PP
+Definition at line 4096 of file jsoncpp\&.cpp\&.
+.SS "std::string Json::valueToString (Int value)"
+
+.PP
+Definition at line 4106 of file jsoncpp\&.cpp\&.
+.SS "std::string Json::valueToString (UInt value)"
+
+.PP
+Definition at line 4110 of file jsoncpp\&.cpp\&.
+.SS "std::string Json::valueToString (double value, bool useSpecialFloats, unsigned int precision)"
+
+.PP
+Definition at line 4116 of file jsoncpp\&.cpp\&.
+.SS "std::string Json::valueToString (double value)"
+
+.PP
+Definition at line 4146 of file jsoncpp\&.cpp\&.
+.SS "std::string Json::valueToString (bool value)"
+
+.PP
+Definition at line 4148 of file jsoncpp\&.cpp\&.
+.SS "std::string Json::writeString (StreamWriter::Factory const & builder, Value const & root)"
+
+.PP
+Definition at line 5180 of file jsoncpp\&.cpp\&.
+.SH "Variable Documentation"
+.PP 
+.SS "const unsigned char& Json::kNullRef = kNull[0]"
+
+.PP
+Definition at line 2454 of file jsoncpp\&.cpp\&.
+.SS "const double Json::maxUInt64AsDouble = 18446744073709551615\&.0\fC [static]\fP"
+
+.PP
+Definition at line 2468 of file jsoncpp\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Minecraft Server Daemon from the source code\&.

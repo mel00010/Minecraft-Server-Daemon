@@ -1,0 +1,480 @@
+\hypertarget{class_minecraft_server_service_1_1_generic_server}{}\section{Minecraft\+Server\+Service\+:\+:Generic\+Server Class Reference}
+\label{class_minecraft_server_service_1_1_generic_server}\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+
+
+{\ttfamily \#include $<$generic\+Server.\+h$>$}
+
+
+
+Inheritance diagram for Minecraft\+Server\+Service\+:\+:Generic\+Server\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{class_minecraft_server_service_1_1_generic_server__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Minecraft\+Server\+Service\+:\+:Generic\+Server\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{class_minecraft_server_service_1_1_generic_server__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_minecraft_server_service_1_1_generic_server_a5e50ec81786b021ea76f3efbbd5ce5b6}{Generic\+Server} (std\+::string \hyperlink{class_minecraft_server_service_1_1_generic_server_a5586cb49baa6e827fd2d755dfa3b5c5d}{server\+Name}, std\+::string \hyperlink{class_minecraft_server_service_1_1_generic_server_a10ccbcf30f81af95aa5e75726f2c1d80}{server\+Path}, std\+::string \hyperlink{class_minecraft_server_service_1_1_generic_server_add9023bc7c35b390e67507493449f7a5}{server\+Jar\+Name}, std\+::string \hyperlink{class_minecraft_server_service_1_1_generic_server_a0192c45acc976639f38aa7206586abcf}{server\+Account}, int \hyperlink{class_minecraft_server_service_1_1_generic_server_a025ace4dd732e9e1a3d47e695ebfabc1}{max\+Heap\+Alloc}, int \hyperlink{class_minecraft_server_service_1_1_generic_server_a75978615a6ba8576a5d97664ffd85142}{min\+Heap\+Alloc}, int \hyperlink{class_minecraft_server_service_1_1_generic_server_ad3e3e744983ef46efed8f5d2189e353f}{gc\+Thread\+Count}, std\+::string \hyperlink{class_minecraft_server_service_1_1_generic_server_a1f4d8509d45d7b8c6cb020499c1da17f}{backup\+Path}, std\+::vector$<$ std\+::string $>$ \hyperlink{class_minecraft_server_service_1_1_generic_server_a4add7010fca034d10e98ee0adb1c36cc}{worlds\+To\+Backup}, std\+::vector$<$ std\+::string $>$ \hyperlink{class_minecraft_server_service_1_1_generic_server_aed22e47eba34c39feb62ca62ad02dbb2}{java\+Args}, std\+::vector$<$ std\+::string $>$ \hyperlink{class_minecraft_server_service_1_1_generic_server_a1d5d6d5242a619f299427d18ab3969eb}{server\+Options})
+\item 
+virtual \hyperlink{class_minecraft_server_service_1_1_generic_server_a9274b1be2f47bd21c7df59c189d66cc4}{$\sim$\+Generic\+Server} ()
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_generic_server_abb89d4233143d48e2f12ada83a7d0957}{update\+Server} ()
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_generic_server_a20ffc509d921cb8e990c19bf26139714}{backup\+Server} ()
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_generic_server_a99b71eeffc23ca9e6a61c82fb3255fba}{backup\+Server} (std\+::string \hyperlink{class_minecraft_server_service_1_1_generic_server_a1f4d8509d45d7b8c6cb020499c1da17f}{backup\+Path})
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_generic_server_a5094b1882230b9a73030c711f1474156}{server\+Status} ()
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_generic_server_aa3e2da3f6458e579697154360f6e05e5}{start\+Server} ()
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_generic_server_a81adc767332fdbffdb1ca2ca5c4033ec}{stop\+Server} ()
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_generic_server_a91d7fee4ca078709180084768e85149f}{restart\+Server} ()
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_generic_server_afff8182bd666f261ab76375c98fa4bf7}{reload\+Server} ()
+\item 
+std\+::string \hyperlink{class_minecraft_server_service_1_1_generic_server_a17b8ff45c08bbd1fb1acb85bd9f10039}{list\+Online\+Players} ()
+\item 
+bool \hyperlink{class_minecraft_server_service_1_1_generic_server_ac1dbf140a9e263090602995dd5cb1fa6}{list\+Online\+Players} (std\+::string player\+Name)
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_generic_server_a42c34bc2e24173077e67c6b83a346b5d}{send\+Command} (std\+::string command)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{class_minecraft_server_service_1_1_generic_server_a5586cb49baa6e827fd2d755dfa3b5c5d}{server\+Name}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_generic_server_aad20afc93c404e6f56b0a591ae2dbae8}{logger} (size\+\_\+t lines\+Requested, std\+::stringstream $\ast$output, log4cpp\+::\+Category $\ast$\hyperlink{class_minecraft_server_service_1_1_server_aea87340c35422279f868ecf8edc4a9f6}{log})
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{class_minecraft_server_service_1_1_generic_server_a10ccbcf30f81af95aa5e75726f2c1d80}{server\+Path}
+\item 
+std\+::string \hyperlink{class_minecraft_server_service_1_1_generic_server_add9023bc7c35b390e67507493449f7a5}{server\+Jar\+Name}
+\item 
+std\+::string \hyperlink{class_minecraft_server_service_1_1_generic_server_a0192c45acc976639f38aa7206586abcf}{server\+Account}
+\item 
+int \hyperlink{class_minecraft_server_service_1_1_generic_server_a025ace4dd732e9e1a3d47e695ebfabc1}{max\+Heap\+Alloc}
+\item 
+int \hyperlink{class_minecraft_server_service_1_1_generic_server_a75978615a6ba8576a5d97664ffd85142}{min\+Heap\+Alloc}
+\item 
+int \hyperlink{class_minecraft_server_service_1_1_generic_server_ad3e3e744983ef46efed8f5d2189e353f}{gc\+Thread\+Count}
+\item 
+std\+::string \hyperlink{class_minecraft_server_service_1_1_generic_server_a1f4d8509d45d7b8c6cb020499c1da17f}{backup\+Path}
+\item 
+std\+::vector$<$ std\+::string $>$ \hyperlink{class_minecraft_server_service_1_1_generic_server_a4add7010fca034d10e98ee0adb1c36cc}{worlds\+To\+Backup}
+\item 
+std\+::vector$<$ std\+::string $>$ \hyperlink{class_minecraft_server_service_1_1_generic_server_aed22e47eba34c39feb62ca62ad02dbb2}{java\+Args}
+\item 
+std\+::vector$<$ std\+::string $>$ \hyperlink{class_minecraft_server_service_1_1_generic_server_a1d5d6d5242a619f299427d18ab3969eb}{server\+Options}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 33 of file generic\+Server.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!Generic\+Server@{Generic\+Server}}
+\index{Generic\+Server@{Generic\+Server}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{Generic\+Server(std\+::string server\+Name, std\+::string server\+Path, std\+::string server\+Jar\+Name, std\+::string server\+Account, int max\+Heap\+Alloc, int min\+Heap\+Alloc, int gc\+Thread\+Count, std\+::string backup\+Path, std\+::vector$<$ std\+::string $>$ worlds\+To\+Backup, std\+::vector$<$ std\+::string $>$ java\+Args, std\+::vector$<$ std\+::string $>$ server\+Options)}{GenericServer(std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc, int gcThreadCount, std::string backupPath, std::vector< std::string > worldsToBackup, std::vector< std::string > javaArgs, std::vector< std::string > serverOptions)}}]{\setlength{\rightskip}{0pt plus 5cm}Minecraft\+Server\+Service\+::\+Generic\+Server\+::\+Generic\+Server (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{server\+Name, }
+\item[{std\+::string}]{server\+Path, }
+\item[{std\+::string}]{server\+Jar\+Name, }
+\item[{std\+::string}]{server\+Account, }
+\item[{int}]{max\+Heap\+Alloc, }
+\item[{int}]{min\+Heap\+Alloc, }
+\item[{int}]{gc\+Thread\+Count, }
+\item[{std\+::string}]{backup\+Path, }
+\item[{std\+::vector$<$ std\+::string $>$}]{worlds\+To\+Backup, }
+\item[{std\+::vector$<$ std\+::string $>$}]{java\+Args, }
+\item[{std\+::vector$<$ std\+::string $>$}]{server\+Options}
+\end{DoxyParamCaption}
+)}\hypertarget{class_minecraft_server_service_1_1_generic_server_a5e50ec81786b021ea76f3efbbd5ce5b6}{}\label{class_minecraft_server_service_1_1_generic_server_a5e50ec81786b021ea76f3efbbd5ce5b6}
+
+
+Definition at line 33 of file generic\+Server.\+cpp.
+
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!````~Generic\+Server@{$\sim$\+Generic\+Server}}
+\index{````~Generic\+Server@{$\sim$\+Generic\+Server}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{$\sim$\+Generic\+Server()}{~GenericServer()}}]{\setlength{\rightskip}{0pt plus 5cm}Minecraft\+Server\+Service\+::\+Generic\+Server\+::$\sim$\+Generic\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_a9274b1be2f47bd21c7df59c189d66cc4}{}\label{class_minecraft_server_service_1_1_generic_server_a9274b1be2f47bd21c7df59c189d66cc4}
+
+
+Definition at line 45 of file generic\+Server.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!backup\+Server@{backup\+Server}}
+\index{backup\+Server@{backup\+Server}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{backup\+Server()}{backupServer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Generic\+Server\+::backup\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_a20ffc509d921cb8e990c19bf26139714}{}\label{class_minecraft_server_service_1_1_generic_server_a20ffc509d921cb8e990c19bf26139714}
+
+
+Implements \hyperlink{class_minecraft_server_service_1_1_server_a58373fb195d9546e4a843ba83d741f36}{Minecraft\+Server\+Service\+::\+Server}.
+
+
+
+Definition at line 53 of file generic\+Server.\+cpp.
+
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!backup\+Server@{backup\+Server}}
+\index{backup\+Server@{backup\+Server}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{backup\+Server(std\+::string backup\+Path)}{backupServer(std::string backupPath)}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Generic\+Server\+::backup\+Server (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{backup\+Path}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_a99b71eeffc23ca9e6a61c82fb3255fba}{}\label{class_minecraft_server_service_1_1_generic_server_a99b71eeffc23ca9e6a61c82fb3255fba}
+
+
+Implements \hyperlink{class_minecraft_server_service_1_1_server_a3045f178ed407b157a21da66a245e61f}{Minecraft\+Server\+Service\+::\+Server}.
+
+
+
+Definition at line 84 of file generic\+Server.\+cpp.
+
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!list\+Online\+Players@{list\+Online\+Players}}
+\index{list\+Online\+Players@{list\+Online\+Players}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{list\+Online\+Players()}{listOnlinePlayers()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Minecraft\+Server\+Service\+::\+Generic\+Server\+::list\+Online\+Players (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_a17b8ff45c08bbd1fb1acb85bd9f10039}{}\label{class_minecraft_server_service_1_1_generic_server_a17b8ff45c08bbd1fb1acb85bd9f10039}
+
+
+Implements \hyperlink{class_minecraft_server_service_1_1_server_a86455e8351ecc7af502e681daf023eb3}{Minecraft\+Server\+Service\+::\+Server}.
+
+
+
+Definition at line 54 of file generic\+Server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!list\+Online\+Players@{list\+Online\+Players}}
+\index{list\+Online\+Players@{list\+Online\+Players}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{list\+Online\+Players(std\+::string player\+Name)}{listOnlinePlayers(std::string playerName)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Minecraft\+Server\+Service\+::\+Generic\+Server\+::list\+Online\+Players (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{player\+Name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_ac1dbf140a9e263090602995dd5cb1fa6}{}\label{class_minecraft_server_service_1_1_generic_server_ac1dbf140a9e263090602995dd5cb1fa6}
+
+
+Implements \hyperlink{class_minecraft_server_service_1_1_server_adf8951b2a9337983e8ced4b148e1ed5e}{Minecraft\+Server\+Service\+::\+Server}.
+
+
+
+Definition at line 55 of file generic\+Server.\+h.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_generic_server_ac1dbf140a9e263090602995dd5cb1fa6_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!logger@{logger}}
+\index{logger@{logger}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{logger(size\+\_\+t lines\+Requested, std\+::stringstream $\ast$output, log4cpp\+::\+Category $\ast$log)}{logger(size_t linesRequested, std::stringstream *output, log4cpp::Category *log)}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Generic\+Server\+::logger (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+t}]{lines\+Requested, }
+\item[{std\+::stringstream $\ast$}]{output, }
+\item[{log4cpp\+::\+Category $\ast$}]{log}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_aad20afc93c404e6f56b0a591ae2dbae8}{}\label{class_minecraft_server_service_1_1_generic_server_aad20afc93c404e6f56b0a591ae2dbae8}
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!reload\+Server@{reload\+Server}}
+\index{reload\+Server@{reload\+Server}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{reload\+Server()}{reloadServer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Generic\+Server\+::reload\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_afff8182bd666f261ab76375c98fa4bf7}{}\label{class_minecraft_server_service_1_1_generic_server_afff8182bd666f261ab76375c98fa4bf7}
+
+
+Implements \hyperlink{class_minecraft_server_service_1_1_server_a68757647a604e935d365672b53c82d98}{Minecraft\+Server\+Service\+::\+Server}.
+
+
+
+Definition at line 53 of file generic\+Server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!restart\+Server@{restart\+Server}}
+\index{restart\+Server@{restart\+Server}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{restart\+Server()}{restartServer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Generic\+Server\+::restart\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_a91d7fee4ca078709180084768e85149f}{}\label{class_minecraft_server_service_1_1_generic_server_a91d7fee4ca078709180084768e85149f}
+
+
+Implements \hyperlink{class_minecraft_server_service_1_1_server_a9cfcad805db7ffd3f5ad10ef7a726cf9}{Minecraft\+Server\+Service\+::\+Server}.
+
+
+
+Definition at line 154 of file generic\+Server.\+cpp.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_generic_server_a91d7fee4ca078709180084768e85149f_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!send\+Command@{send\+Command}}
+\index{send\+Command@{send\+Command}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{send\+Command(std\+::string command)}{sendCommand(std::string command)}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Generic\+Server\+::send\+Command (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{command}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_a42c34bc2e24173077e67c6b83a346b5d}{}\label{class_minecraft_server_service_1_1_generic_server_a42c34bc2e24173077e67c6b83a346b5d}
+
+
+Implements \hyperlink{class_minecraft_server_service_1_1_server_a9c2d6b9b94d490405bf74109e7794cb1}{Minecraft\+Server\+Service\+::\+Server}.
+
+
+
+Definition at line 164 of file generic\+Server.\+cpp.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_generic_server_a42c34bc2e24173077e67c6b83a346b5d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_generic_server_a42c34bc2e24173077e67c6b83a346b5d_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!server\+Status@{server\+Status}}
+\index{server\+Status@{server\+Status}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{server\+Status()}{serverStatus()}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Generic\+Server\+::server\+Status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_a5094b1882230b9a73030c711f1474156}{}\label{class_minecraft_server_service_1_1_generic_server_a5094b1882230b9a73030c711f1474156}
+
+
+Implements \hyperlink{class_minecraft_server_service_1_1_server_af972c950277b436d85513ff5e8003df2}{Minecraft\+Server\+Service\+::\+Server}.
+
+
+
+Definition at line 150 of file generic\+Server.\+cpp.
+
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!start\+Server@{start\+Server}}
+\index{start\+Server@{start\+Server}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{start\+Server()}{startServer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Generic\+Server\+::start\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_aa3e2da3f6458e579697154360f6e05e5}{}\label{class_minecraft_server_service_1_1_generic_server_aa3e2da3f6458e579697154360f6e05e5}
+
+
+Implements \hyperlink{class_minecraft_server_service_1_1_server_ac84f4a395d9680ba4d7405996dcb445c}{Minecraft\+Server\+Service\+::\+Server}.
+
+
+
+Definition at line 116 of file generic\+Server.\+cpp.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_generic_server_aa3e2da3f6458e579697154360f6e05e5_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_generic_server_aa3e2da3f6458e579697154360f6e05e5_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!stop\+Server@{stop\+Server}}
+\index{stop\+Server@{stop\+Server}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{stop\+Server()}{stopServer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Generic\+Server\+::stop\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_a81adc767332fdbffdb1ca2ca5c4033ec}{}\label{class_minecraft_server_service_1_1_generic_server_a81adc767332fdbffdb1ca2ca5c4033ec}
+
+
+Implements \hyperlink{class_minecraft_server_service_1_1_server_a45fb906a041e3f6c59128a0e9c4cd289}{Minecraft\+Server\+Service\+::\+Server}.
+
+
+
+Definition at line 128 of file generic\+Server.\+cpp.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_generic_server_a81adc767332fdbffdb1ca2ca5c4033ec_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_generic_server_a81adc767332fdbffdb1ca2ca5c4033ec_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!update\+Server@{update\+Server}}
+\index{update\+Server@{update\+Server}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{update\+Server()}{updateServer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Generic\+Server\+::update\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_abb89d4233143d48e2f12ada83a7d0957}{}\label{class_minecraft_server_service_1_1_generic_server_abb89d4233143d48e2f12ada83a7d0957}
+
+
+Implements \hyperlink{class_minecraft_server_service_1_1_server_a0715bfc451f5abbd2f47d0895e5a2355}{Minecraft\+Server\+Service\+::\+Server}.
+
+
+
+Definition at line 49 of file generic\+Server.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!backup\+Path@{backup\+Path}}
+\index{backup\+Path@{backup\+Path}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{backup\+Path}{backupPath}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Minecraft\+Server\+Service\+::\+Generic\+Server\+::backup\+Path\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_a1f4d8509d45d7b8c6cb020499c1da17f}{}\label{class_minecraft_server_service_1_1_generic_server_a1f4d8509d45d7b8c6cb020499c1da17f}
+
+
+Definition at line 69 of file generic\+Server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!gc\+Thread\+Count@{gc\+Thread\+Count}}
+\index{gc\+Thread\+Count@{gc\+Thread\+Count}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{gc\+Thread\+Count}{gcThreadCount}}]{\setlength{\rightskip}{0pt plus 5cm}int Minecraft\+Server\+Service\+::\+Generic\+Server\+::gc\+Thread\+Count\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_ad3e3e744983ef46efed8f5d2189e353f}{}\label{class_minecraft_server_service_1_1_generic_server_ad3e3e744983ef46efed8f5d2189e353f}
+
+
+Definition at line 68 of file generic\+Server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!java\+Args@{java\+Args}}
+\index{java\+Args@{java\+Args}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{java\+Args}{javaArgs}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::string$>$ Minecraft\+Server\+Service\+::\+Generic\+Server\+::java\+Args\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_aed22e47eba34c39feb62ca62ad02dbb2}{}\label{class_minecraft_server_service_1_1_generic_server_aed22e47eba34c39feb62ca62ad02dbb2}
+
+
+Definition at line 71 of file generic\+Server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!max\+Heap\+Alloc@{max\+Heap\+Alloc}}
+\index{max\+Heap\+Alloc@{max\+Heap\+Alloc}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{max\+Heap\+Alloc}{maxHeapAlloc}}]{\setlength{\rightskip}{0pt plus 5cm}int Minecraft\+Server\+Service\+::\+Generic\+Server\+::max\+Heap\+Alloc\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_a025ace4dd732e9e1a3d47e695ebfabc1}{}\label{class_minecraft_server_service_1_1_generic_server_a025ace4dd732e9e1a3d47e695ebfabc1}
+
+
+Definition at line 66 of file generic\+Server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!min\+Heap\+Alloc@{min\+Heap\+Alloc}}
+\index{min\+Heap\+Alloc@{min\+Heap\+Alloc}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{min\+Heap\+Alloc}{minHeapAlloc}}]{\setlength{\rightskip}{0pt plus 5cm}int Minecraft\+Server\+Service\+::\+Generic\+Server\+::min\+Heap\+Alloc\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_a75978615a6ba8576a5d97664ffd85142}{}\label{class_minecraft_server_service_1_1_generic_server_a75978615a6ba8576a5d97664ffd85142}
+
+
+Definition at line 67 of file generic\+Server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!server\+Account@{server\+Account}}
+\index{server\+Account@{server\+Account}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{server\+Account}{serverAccount}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Minecraft\+Server\+Service\+::\+Generic\+Server\+::server\+Account\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_a0192c45acc976639f38aa7206586abcf}{}\label{class_minecraft_server_service_1_1_generic_server_a0192c45acc976639f38aa7206586abcf}
+
+
+Definition at line 65 of file generic\+Server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!server\+Jar\+Name@{server\+Jar\+Name}}
+\index{server\+Jar\+Name@{server\+Jar\+Name}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{server\+Jar\+Name}{serverJarName}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Minecraft\+Server\+Service\+::\+Generic\+Server\+::server\+Jar\+Name\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_add9023bc7c35b390e67507493449f7a5}{}\label{class_minecraft_server_service_1_1_generic_server_add9023bc7c35b390e67507493449f7a5}
+
+
+Definition at line 64 of file generic\+Server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!server\+Name@{server\+Name}}
+\index{server\+Name@{server\+Name}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{server\+Name}{serverName}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Minecraft\+Server\+Service\+::\+Generic\+Server\+::server\+Name}\hypertarget{class_minecraft_server_service_1_1_generic_server_a5586cb49baa6e827fd2d755dfa3b5c5d}{}\label{class_minecraft_server_service_1_1_generic_server_a5586cb49baa6e827fd2d755dfa3b5c5d}
+
+
+Definition at line 59 of file generic\+Server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!server\+Options@{server\+Options}}
+\index{server\+Options@{server\+Options}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{server\+Options}{serverOptions}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::string$>$ Minecraft\+Server\+Service\+::\+Generic\+Server\+::server\+Options\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_a1d5d6d5242a619f299427d18ab3969eb}{}\label{class_minecraft_server_service_1_1_generic_server_a1d5d6d5242a619f299427d18ab3969eb}
+
+
+Definition at line 72 of file generic\+Server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!server\+Path@{server\+Path}}
+\index{server\+Path@{server\+Path}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{server\+Path}{serverPath}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Minecraft\+Server\+Service\+::\+Generic\+Server\+::server\+Path\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_a10ccbcf30f81af95aa5e75726f2c1d80}{}\label{class_minecraft_server_service_1_1_generic_server_a10ccbcf30f81af95aa5e75726f2c1d80}
+
+
+Definition at line 63 of file generic\+Server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}!worlds\+To\+Backup@{worlds\+To\+Backup}}
+\index{worlds\+To\+Backup@{worlds\+To\+Backup}!Minecraft\+Server\+Service\+::\+Generic\+Server@{Minecraft\+Server\+Service\+::\+Generic\+Server}}
+\subsubsection[{\texorpdfstring{worlds\+To\+Backup}{worldsToBackup}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::string$>$ Minecraft\+Server\+Service\+::\+Generic\+Server\+::worlds\+To\+Backup\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_generic_server_a4add7010fca034d10e98ee0adb1c36cc}{}\label{class_minecraft_server_service_1_1_generic_server_a4add7010fca034d10e98ee0adb1c36cc}
+
+
+Definition at line 70 of file generic\+Server.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/mel/projects/\+Misc/\+Minecraft Server Service/src/\hyperlink{generic_server_8h}{generic\+Server.\+h}\item 
+/home/mel/projects/\+Misc/\+Minecraft Server Service/src/\hyperlink{generic_server_8cpp}{generic\+Server.\+cpp}\end{DoxyCompactItemize}

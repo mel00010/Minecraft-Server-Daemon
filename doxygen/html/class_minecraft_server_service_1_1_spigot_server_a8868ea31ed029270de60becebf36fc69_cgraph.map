@@ -1,0 +1,9 @@
+<map id="MinecraftServerService::SpigotServer::restartServer" name="MinecraftServerService::SpigotServer::restartServer">
+<area shape="rect" id="node2" href="$class_minecraft_server_service_1_1_server.html#a1954e7c7756cd956e7282887ffca73e4" title="MinecraftServerService\l::Server::isRunning" alt="" coords="487,25,646,66"/>
+<area shape="rect" id="node3" href="$class_minecraft_server_service_1_1_spigot_server.html#a2b0c13a87da4d1766ee0cc645732865a" title="MinecraftServerService\l::SpigotServer::stopServer" alt="" coords="242,25,418,66"/>
+<area shape="rect" id="node4" href="$class_minecraft_server_service_1_1_spigot_server.html#a08bc3d74d604968034303efc7334dd08" title="MinecraftServerService\l::SpigotServer::startServer" alt="" coords="241,90,419,131"/>
+<area shape="rect" id="node5" href="$class_minecraft_server_service_1_1_server.html#a16a19b4cfd94f23c20442cea9b46f678" title="MinecraftServerService\l::Server::launchServerProcess" alt="" coords="467,90,667,131"/>
+<area shape="rect" id="node7" href="$class_minecraft_server_service_1_1_server.html#a3040817c744456263f8ba36bdb72bf20" title="MinecraftServerService\l::Server::outputListenerThread" alt="" coords="743,149,941,190"/>
+<area shape="rect" id="node6" href="$class_minecraft_server_service_1_1_server.html#a085f201bd563ce47e2b41778ef72d20d" title="MinecraftServerService\l::Server::getUIDAndGIDFromUsername" alt="" coords="715,31,969,73"/>
+<area shape="rect" id="node8" href="$class_minecraft_server_service_1_1_server.html#a4ecf103c62bd8f1e54b2ff436fa1645a" title="MinecraftServerService\l::Server::serverOutputEvent" alt="" coords="1017,119,1203,161"/>
+</map>

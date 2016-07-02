@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="struct_minecraft_server_service_1_1_server_1_1_listener" kind="struct" language="C++" prot="public">
+    <compoundname>MinecraftServerService::Server::Listener</compoundname>
+    <includes refid="server_8h" local="no">server.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_minecraft_server_service_1_1_server_1_1_listener_1afe51cb4015caab08814ce3bd0a3ec82a" prot="public" static="no" mutable="no">
+        <type>std::string *</type>
+        <definition>std::string* MinecraftServerService::Server::Listener::callbackOutput</definition>
+        <argsstring></argsstring>
+        <name>callbackOutput</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/server.h" line="70" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/server.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_minecraft_server_service_1_1_server_1_1_listener_1a5a853e93216533fd712c340a1a205bd6" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t MinecraftServerService::Server::Listener::lines</definition>
+        <argsstring></argsstring>
+        <name>lines</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/server.h" line="71" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/server.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_minecraft_server_service_1_1_server_1_1_listener_1a5c2d263cbd47b373785c121fa90e8018" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool MinecraftServerService::Server::Listener::persistent</definition>
+        <argsstring></argsstring>
+        <name>persistent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/server.h" line="72" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/server.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_minecraft_server_service_1_1_server_1_1_listener_1a9a92bb07a6417a09094c7495f5fa6c84" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t MinecraftServerService::Server::Listener::currentLine</definition>
+        <argsstring></argsstring>
+        <name>currentLine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/server.h" line="73" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/server.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_minecraft_server_service_1_1_server_1_1_listener_1a556f64e2111a3ba08538fda0ec9e63f9" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string MinecraftServerService::Server::Listener::output</definition>
+        <argsstring></argsstring>
+        <name>output</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/server.h" line="74" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/server.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/mel/projects/Misc/Minecraft Server Service/src/server.h" line="69" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/server.h" bodystart="68" bodyend="75"/>
+    <listofallmembers>
+      <member refid="struct_minecraft_server_service_1_1_server_1_1_listener_1afe51cb4015caab08814ce3bd0a3ec82a" prot="public" virt="non-virtual"><scope>MinecraftServerService::Server::Listener</scope><name>callbackOutput</name></member>
+      <member refid="struct_minecraft_server_service_1_1_server_1_1_listener_1a9a92bb07a6417a09094c7495f5fa6c84" prot="public" virt="non-virtual"><scope>MinecraftServerService::Server::Listener</scope><name>currentLine</name></member>
+      <member refid="struct_minecraft_server_service_1_1_server_1_1_listener_1a5a853e93216533fd712c340a1a205bd6" prot="public" virt="non-virtual"><scope>MinecraftServerService::Server::Listener</scope><name>lines</name></member>
+      <member refid="struct_minecraft_server_service_1_1_server_1_1_listener_1a556f64e2111a3ba08538fda0ec9e63f9" prot="public" virt="non-virtual"><scope>MinecraftServerService::Server::Listener</scope><name>output</name></member>
+      <member refid="struct_minecraft_server_service_1_1_server_1_1_listener_1a5c2d263cbd47b373785c121fa90e8018" prot="public" virt="non-virtual"><scope>MinecraftServerService::Server::Listener</scope><name>persistent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

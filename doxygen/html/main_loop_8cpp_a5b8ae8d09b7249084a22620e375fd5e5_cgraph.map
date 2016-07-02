@@ -1,0 +1,4 @@
+<map id="mainLoop" name="mainLoop">
+<area shape="rect" id="node2" href="$main_loop_8cpp.html#a016c2c474e0f9f1d97700898a33615e4" title="recieveCommand" alt="" coords="132,5,256,32"/>
+<area shape="rect" id="node3" href="$main_loop_8cpp.html#ae78f03fb04ce6bc07ec81b0f6648e0b4" title="writeToSocket" alt="" coords="304,5,411,32"/>
+</map>

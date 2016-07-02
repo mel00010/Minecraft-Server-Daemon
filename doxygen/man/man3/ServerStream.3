@@ -1,0 +1,84 @@
+.TH "ServerStream" 3 "Thu Jun 2 2016" "Version 0.7.4" "Minecraft Server Service" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ServerStream \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ServerStream\&.h>\fP
+.PP
+Inherits iostream\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBServerStream\fP (std::string _serverName)"
+.br
+.ti -1c
+.RI "virtual \fB~ServerStream\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBsendCommand\fP (std::string command)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBoutputListener\fP ()"
+.br
+.ti -1c
+.RI "void \fBlogger\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBgetOutput\fP (int timeout=1, int lines=20)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBServerProcessBuf\fP \fBserverProcess\fP"
+.br
+.ti -1c
+.RI "log4cpp::Category * \fBlog\fP = nullptr"
+.br
+.ti -1c
+.RI "std::string \fBserverName\fP"
+.br
+.ti -1c
+.RI "volatile bool \fBrunning\fP = false"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ServerStream::ServerStream (std::string _serverName)"
+
+.SS "ServerStream::~ServerStream ()\fC [virtual]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "std::string ServerStream::getOutput (int timeout = \fC1\fP, int lines = \fC20\fP)\fC [protected]\fP"
+
+.SS "void ServerStream::logger ()\fC [protected]\fP"
+
+.SS "void ServerStream::outputListener ()\fC [protected]\fP"
+
+.SS "std::string ServerStream::sendCommand (std::string command)"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "log4cpp::Category* ServerStream::log = nullptr\fC [protected]\fP"
+
+.SS "volatile bool ServerStream::running = false\fC [protected]\fP"
+
+.SS "std::string ServerStream::serverName\fC [protected]\fP"
+
+.SS "\fBServerProcessBuf\fP ServerStream::serverProcess\fC [protected]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Minecraft Server Service from the source code\&.

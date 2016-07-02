@@ -1,0 +1,104 @@
+.TH "/home/mel/projects/Misc/Minecraft Server Service/src/client.cpp" 3 "Fri Jul 1 2016" "Minecraft Server Daemon" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/mel/projects/Misc/Minecraft Server Service/src/client.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <fcntl\&.h>\fP
+.br
+\fC#include <sys/stat\&.h>\fP
+.br
+\fC#include <sys/types\&.h>\fP
+.br
+\fC#include <sys/socket\&.h>\fP
+.br
+\fC#include <sys/un\&.h>\fP
+.br
+\fC#include <unistd\&.h>\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <iostream>\fP
+.br
+\fC#include <string>\fP
+.br
+\fC#include <sstream>\fP
+.br
+\fC#include <iomanip>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBhelp\fP (char *argv0)"
+.br
+.ti -1c
+.RI "void \fBwriteToSocket\fP (std::string command)"
+.br
+.ti -1c
+.RI "std::string \fBreadFromSocket\fP ()"
+.br
+.ti -1c
+.RI "int \fBmain\fP (int argc, char *argv[])"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "int \fBcontrolSocket\fP"
+.br
+.ti -1c
+.RI "int \fBrc\fP"
+.br
+.ti -1c
+.RI "int \fBlen\fP"
+.br
+.ti -1c
+.RI "char \fBbuff\fP [4]"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void help (char * argv0)"
+
+.PP
+Definition at line 39 of file client\&.cpp\&.
+.SS "int main (int argc, char * argv[])"
+
+.PP
+Definition at line 60 of file client\&.cpp\&.
+.SS "std::string readFromSocket ()"
+
+.PP
+Definition at line 51 of file client\&.cpp\&.
+.SS "void writeToSocket (std::string command)"
+
+.PP
+Definition at line 43 of file client\&.cpp\&.
+.SH "Variable Documentation"
+.PP 
+.SS "char buff[4]"
+
+.PP
+Definition at line 37 of file client\&.cpp\&.
+.SS "int controlSocket"
+
+.PP
+Definition at line 36 of file client\&.cpp\&.
+.SS "int len"
+
+.PP
+Definition at line 36 of file client\&.cpp\&.
+.SS "int rc"
+
+.PP
+Definition at line 36 of file client\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Minecraft Server Daemon from the source code\&.

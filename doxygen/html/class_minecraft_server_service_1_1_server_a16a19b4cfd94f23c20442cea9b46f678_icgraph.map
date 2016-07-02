@@ -1,0 +1,12 @@
+<map id="MinecraftServerService::Server::launchServerProcess" name="MinecraftServerService::Server::launchServerProcess">
+<area shape="rect" id="node2" href="$class_minecraft_server_service_1_1_bukkit_server.html#a40a879282d13c0996d05f1165fa5c4c2" title="MinecraftServerService\l::BukkitServer::startServer" alt="" coords="271,5,448,47"/>
+<area shape="rect" id="node4" href="$class_minecraft_server_service_1_1_bungee_cord_server.html#a5f03992324f892fa1cedcef5153a7d3f" title="MinecraftServerService\l::BungeeCordServer::startServer" alt="" coords="253,71,465,112"/>
+<area shape="rect" id="node6" href="$class_minecraft_server_service_1_1_generic_server.html#aa3e2da3f6458e579697154360f6e05e5" title="MinecraftServerService\l::GenericServer::startServer" alt="" coords="267,136,452,177"/>
+<area shape="rect" id="node8" href="$class_minecraft_server_service_1_1_spigot_server.html#a08bc3d74d604968034303efc7334dd08" title="MinecraftServerService\l::SpigotServer::startServer" alt="" coords="271,201,448,243"/>
+<area shape="rect" id="node10" href="$class_minecraft_server_service_1_1_vanilla_server.html#a9f1ea90c5bcd4f183303d169d0427b46" title="MinecraftServerService\l::VanillaServer::startServer" alt="" coords="270,267,449,308"/>
+<area shape="rect" id="node3" href="$class_minecraft_server_service_1_1_bukkit_server.html#afdd768465fedfbea100da7f62cbd11d0" title="MinecraftServerService\l::BukkitServer::restartServer" alt="" coords="531,5,719,47"/>
+<area shape="rect" id="node5" href="$class_minecraft_server_service_1_1_bungee_cord_server.html#a471a30d5fd0c2dca57970aef99eaa2b7" title="MinecraftServerService\l::BungeeCordServer::restartServer" alt="" coords="513,71,736,112"/>
+<area shape="rect" id="node7" href="$class_minecraft_server_service_1_1_generic_server.html#a91d7fee4ca078709180084768e85149f" title="MinecraftServerService\l::GenericServer::restartServer" alt="" coords="527,136,723,177"/>
+<area shape="rect" id="node9" href="$class_minecraft_server_service_1_1_spigot_server.html#a8868ea31ed029270de60becebf36fc69" title="MinecraftServerService\l::SpigotServer::restartServer" alt="" coords="531,201,719,243"/>
+<area shape="rect" id="node11" href="$class_minecraft_server_service_1_1_vanilla_server.html#a99ac73bdf44e6d77933e95c769f4d95a" title="MinecraftServerService\l::VanillaServer::restartServer" alt="" coords="529,267,720,308"/>
+</map>

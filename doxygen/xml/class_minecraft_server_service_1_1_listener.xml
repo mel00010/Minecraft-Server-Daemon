@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="class_minecraft_server_service_1_1_listener" kind="class" language="C++" prot="public">
+    <compoundname>MinecraftServerService::Listener</compoundname>
+    <includes refid="listener_8h" local="no">listener.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_minecraft_server_service_1_1_listener_1a1bed886443746d8b4ac0660b3b8d5c80" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MinecraftServerService::Listener::lines</definition>
+        <argsstring></argsstring>
+        <name>lines</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/listener.h" line="11" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/listener.h" bodystart="11" bodyend="-1"/>
+        <referencedby refid="class_minecraft_server_service_1_1_listener_1abb978fa220cc8c28003a828f41a250aa" compoundref="listener_8h" startline="7" endline="10">Listener</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_minecraft_server_service_1_1_listener_1a07e00dca9f25dd4e56700da375b0b17b" prot="public" static="no" mutable="no">
+        <type>std::stringstream</type>
+        <definition>std::stringstream MinecraftServerService::Listener::output</definition>
+        <argsstring></argsstring>
+        <name>output</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/listener.h" line="12" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/listener.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_minecraft_server_service_1_1_listener_1abb978fa220cc8c28003a828f41a250aa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>MinecraftServerService::Listener::Listener</definition>
+        <argsstring>(int _lines)</argsstring>
+        <name>Listener</name>
+        <param>
+          <type>int</type>
+          <declname>_lines</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/listener.h" line="7" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/listener.h" bodystart="7" bodyend="10"/>
+        <references refid="class_minecraft_server_service_1_1_listener_1a1bed886443746d8b4ac0660b3b8d5c80" compoundref="listener_8h" startline="11">lines</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/mel/projects/Misc/Minecraft Server Service/src/listener.h" line="5" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/listener.h" bodystart="5" bodyend="13"/>
+    <listofallmembers>
+      <member refid="class_minecraft_server_service_1_1_listener_1a1bed886443746d8b4ac0660b3b8d5c80" prot="public" virt="non-virtual"><scope>MinecraftServerService::Listener</scope><name>lines</name></member>
+      <member refid="class_minecraft_server_service_1_1_listener_1abb978fa220cc8c28003a828f41a250aa" prot="public" virt="non-virtual"><scope>MinecraftServerService::Listener</scope><name>Listener</name></member>
+      <member refid="class_minecraft_server_service_1_1_listener_1a07e00dca9f25dd4e56700da375b0b17b" prot="public" virt="non-virtual"><scope>MinecraftServerService::Listener</scope><name>output</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

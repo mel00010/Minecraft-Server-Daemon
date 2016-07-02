@@ -1,0 +1,869 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="namespace_json" kind="namespace" language="C++">
+    <compoundname>Json</compoundname>
+    <innerclass refid="struct_json_1_1_built_styled_stream_writer" prot="public">Json::BuiltStyledStreamWriter</innerclass>
+    <innerclass refid="struct_json_1_1_comment_style" prot="public">Json::CommentStyle</innerclass>
+    <innerclass refid="class_json_1_1_our_char_reader" prot="public">Json::OurCharReader</innerclass>
+    <innerclass refid="class_json_1_1_our_features" prot="public">Json::OurFeatures</innerclass>
+    <innerclass refid="class_json_1_1_our_reader" prot="public">Json::OurReader</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespace_json_1a0c5f614b019f20b4598dcaec09d9e820" prot="public" static="no">
+        <name>@0</name>
+        <enumvalue id="namespace_json_1a0c5f614b019f20b4598dcaec09d9e820ae4f2008c7919f20d81286121d1374424" prot="public">
+          <name>uintToStringBufferSize</name>
+          <initializer>= 3 * sizeof(LargestUInt) + 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Constant that specify the size of the buffer that must be passed to uintToString. </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="135" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="135" bodyend="139"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespace_json_1a602bcf69c2042fb61c3b243cb16f04ca" prot="public" static="no">
+        <type>char</type>
+        <definition>typedef char Json::UIntToStringBuffer[uintToStringBufferSize]</definition>
+        <argsstring>[uintToStringBufferSize]</argsstring>
+        <name>UIntToStringBuffer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="142" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespace_json_1a4724efb8d41614b47036cb8b54233837" prot="public" static="no">
+        <type>std::auto_ptr&lt; CharReader &gt;</type>
+        <definition>typedef std::auto_ptr&lt;CharReader&gt; Json::CharReaderPtr</definition>
+        <argsstring></argsstring>
+        <name>CharReaderPtr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="242" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespace_json_1a7132404aeebfc96d7c6ad2c66260afb5" prot="public" static="no">
+        <type>std::auto_ptr&lt; StreamWriter &gt;</type>
+        <definition>typedef std::auto_ptr&lt;StreamWriter&gt; Json::StreamWriterPtr</definition>
+        <argsstring></argsstring>
+        <name>StreamWriterPtr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="4059" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="4059" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespace_json_1ab30055b4bbd82aecaca57ccecd63bbe6" prot="public" static="no" mutable="no">
+        <type>const unsigned char &amp;</type>
+        <definition>const unsigned char&amp; Json::kNullRef</definition>
+        <argsstring></argsstring>
+        <name>kNullRef</name>
+        <initializer>= kNull[0]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="2454" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="2454" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_json_1aecc0306aa526f25c5156f842182fb7fb" prot="public" static="yes" mutable="no">
+        <type>const double</type>
+        <definition>const double Json::maxUInt64AsDouble</definition>
+        <argsstring></argsstring>
+        <name>maxUInt64AsDouble</name>
+        <initializer>= 18446744073709551615.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="2468" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="2468" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespace_json_1adf0456e397a18cd7218a7b51dfc13c73" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string Json::codePointToUTF8</definition>
+        <argsstring>(unsigned int cp)</argsstring>
+        <name>codePointToUTF8</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>cp</declname>
+        </param>
+        <briefdescription>
+<para>Converts a unicode code-point to UTF-8. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="104" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="104" bodyend="130"/>
+        <referencedby refid="namespace_json_1a2e6b8616041876128cbef54b8c75da62" compoundref="jsoncpp_8cpp" startline="558" endline="575">normalizeEOL</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1a44b589a85f02f0e2de1b4ad6916be0c5" compoundref="jsoncpp_8cpp" startline="1833" endline="1884">Json::OurReader::decodeString</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1a0381e631737f51331065a388f4f59197" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Json::isControlCharacter</definition>
+        <argsstring>(char ch)</argsstring>
+        <name>isControlCharacter</name>
+        <param>
+          <type>char</type>
+          <declname>ch</declname>
+        </param>
+        <briefdescription>
+<para>Returns true if ch is a control character (in range [1,31]). </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="133" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="133" bodyend="133"/>
+        <referencedby refid="namespace_json_1aa11b210ff98a4f4dd4e2df19260f8c3a" compoundref="jsoncpp_8cpp" startline="4062" endline="4068">containsControlCharacter</referencedby>
+        <referencedby refid="namespace_json_1ae8a357381f264cf28f46449e79ab1dea" compoundref="jsoncpp_8cpp" startline="4070" endline="4078">containsControlCharacter0</referencedby>
+        <referencedby refid="namespace_json_1aa0c8235a4a5c6599da5d3332743db8ac" compoundref="jsoncpp_8cpp" startline="4150" endline="4210">valueToQuotedString</referencedby>
+        <referencedby refid="namespace_json_1a20d52b5a457ee5d833645d119451c2cd" compoundref="jsoncpp_8cpp" startline="4227" endline="4288">valueToQuotedStringN</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1ac1ffd21a9e55122014353c773ccc496e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Json::uintToString</definition>
+        <argsstring>(LargestUInt value, char *&amp;current)</argsstring>
+        <name>uintToString</name>
+        <param>
+          <type>LargestUInt</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>char *&amp;</type>
+          <declname>current</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Converts an unsigned integer to string. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Unsigned interger to convert to string </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>current</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input/Output string buffer. Must have at least uintToStringBufferSize chars free. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="149" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="149" bodyend="155"/>
+        <referencedby refid="namespace_json_1abd9c650f70d9434f98f9025e2e2faf2d" compoundref="jsoncpp_8cpp" startline="4080" endline="4094">valueToString</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1aa208904144dc7b11ccc28f47c9afab9a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Json::fixNumericLocale</definition>
+        <argsstring>(char *begin, char *end)</argsstring>
+        <name>fixNumericLocale</name>
+        <param>
+          <type>char *</type>
+          <declname>begin</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Change &apos;,&apos; to &apos;.&apos; everywhere in buffer.</para><para>We had a sophisticated way, but it did not work in WinCE. <simplesect kind="see"><para><ulink url="https://github.com/open-source-parsers/jsoncpp/pull/9">https://github.com/open-source-parsers/jsoncpp/pull/9</ulink> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="162" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="162" bodyend="169"/>
+        <referencedby refid="namespace_json_1a1c49ced79060a67638d7fa78a63b1813" compoundref="jsoncpp_8cpp" startline="4116" endline="4144">valueToString</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1a4d6ab0f651348832e5cc49b577a854d2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Json::containsNewLine</definition>
+        <argsstring>(Reader::Location begin, Reader::Location end)</argsstring>
+        <name>containsNewLine</name>
+        <param>
+          <type>Reader::Location</type>
+          <declname>begin</declname>
+        </param>
+        <param>
+          <type>Reader::Location</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="266" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="266" bodyend="271"/>
+        <references refid="jsoncpp_8cpp_1a53b45133c80814ea63d9f61966cfb831" compoundref="jsoncpp_8cpp" startline="235">stackDepth_g</references>
+        <references refid="jsoncpp_8cpp_1aa07a622879ae3a72facddfd839f459b9" compoundref="jsoncpp_8cpp" startline="234">stackLimit_g</references>
+        <references refid="namespace_json_1a97f039a107b3f6cf1c3edee50e978f76" compoundref="jsoncpp_8cpp" startline="2592" endline="2595">throwRuntimeError</references>
+        <referencedby refid="class_json_1_1_our_reader_1a90f6bb9e55b2bc3d6c1880809495c222" compoundref="jsoncpp_8cpp" startline="1514" endline="1535">Json::OurReader::readComment</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1a2e6b8616041876128cbef54b8c75da62" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string Json::normalizeEOL</definition>
+        <argsstring>(Reader::Location begin, Reader::Location end)</argsstring>
+        <name>normalizeEOL</name>
+        <param>
+          <type>Reader::Location</type>
+          <declname>begin</declname>
+        </param>
+        <param>
+          <type>Reader::Location</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="558" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="558" bodyend="575"/>
+        <references refid="namespace_json_1adf0456e397a18cd7218a7b51dfc13c73" compoundref="jsoncpp_8cpp" startline="104" endline="130">codePointToUTF8</references>
+        <referencedby refid="class_json_1_1_our_reader_1ad7318c37469a9106069a236fb4b10e1f" compoundref="jsoncpp_8cpp" startline="1538" endline="1547">Json::OurReader::addComment</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1a8fedd83f49c9a9109d503b2b1d4824aa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Json::getValidReaderKeys</definition>
+        <argsstring>(std::set&lt; std::string &gt; *valid_keys)</argsstring>
+        <name>getValidReaderKeys</name>
+        <param>
+          <type>std::set&lt; std::string &gt; *</type>
+          <declname>valid_keys</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="2126" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="2126" bodyend="2139"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1a7b90be78407a3a1f241b2a3048ef3d19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Json::parseFromStream</definition>
+        <argsstring>(CharReader::Factory const &amp;fact, std::istream &amp;sin, Value *root, std::string *errs)</argsstring>
+        <name>parseFromStream</name>
+        <param>
+          <type>CharReader::Factory const &amp;</type>
+          <declname>fact</declname>
+        </param>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>sin</declname>
+        </param>
+        <param>
+          <type>Value *</type>
+          <declname>root</declname>
+        </param>
+        <param>
+          <type>std::string *</type>
+          <declname>errs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="2196" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="2196" bodyend="2208"/>
+        <referencedby refid="namespace_json_1a2434499c0c7f057890b32787c05fc4a3" compoundref="jsoncpp_8cpp" startline="2210" endline="2222">operator&gt;&gt;</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1a2434499c0c7f057890b32787c05fc4a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::istream &amp;</type>
+        <definition>std::istream&amp; Json::operator&gt;&gt;</definition>
+        <argsstring>(std::istream &amp;sin, Value &amp;root)</argsstring>
+        <name>operator&gt;&gt;</name>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>sin</declname>
+        </param>
+        <param>
+          <type>Value &amp;</type>
+          <declname>root</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="2210" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="2210" bodyend="2222"/>
+        <references refid="namespace_json_1a7b90be78407a3a1f241b2a3048ef3d19" compoundref="jsoncpp_8cpp" startline="2196" endline="2208">parseFromStream</references>
+        <references refid="namespace_json_1a97f039a107b3f6cf1c3edee50e978f76" compoundref="jsoncpp_8cpp" startline="2592" endline="2595">throwRuntimeError</references>
+        <references refid="class_json_1_1_our_reader_1a5211fbbba94be80a22dd2317c621efcc" compoundref="jsoncpp_8cpp" startline="1213">Json::OurReader::current_</references>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1ad0638ab262fec34f995ca3d8a22c9cc4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const unsigned char</type>
+        <definition>static const unsigned char Json::ALIGNAS</definition>
+        <argsstring>(8) kNull[sizeof(Value)]</argsstring>
+        <name>ALIGNAS</name>
+        <param>
+          <type>8</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="2453" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1aff0180507262a244de61b961178d7443" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename U</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>static bool Json::InRange</definition>
+        <argsstring>(double d, T min, U max)</argsstring>
+        <name>InRange</name>
+        <param>
+          <type>double</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>min</declname>
+        </param>
+        <param>
+          <type>U</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="2476" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="2476" bodyend="2481"/>
+        <referencedby refid="namespace_json_1a27613326e9e36bbfe04a905ac90caa91" compoundref="jsoncpp_8cpp" startline="2596" endline="2599">throwLogicError</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1a678ac3a60cd70ec0fb4c9abfd40eb0c4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>char *</type>
+        <definition>static char* Json::duplicateStringValue</definition>
+        <argsstring>(const char *value, size_t length)</argsstring>
+        <name>duplicateStringValue</name>
+        <param>
+          <type>const char *</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Duplicates the specified string value. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the string to duplicate. Must be zero-terminated if length is &quot;unknown&quot;. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Length of the value. if equals to unknown, then it will be computed using strlen(value). </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pointer on the duplicate instance of string. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="2504" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="2504" bodyend="2520"/>
+        <references refid="namespace_json_1a97f039a107b3f6cf1c3edee50e978f76" compoundref="jsoncpp_8cpp" startline="2592" endline="2595">throwRuntimeError</references>
+        <referencedby refid="namespace_json_1a27613326e9e36bbfe04a905ac90caa91" compoundref="jsoncpp_8cpp" startline="2596" endline="2599">throwLogicError</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1a9795a09a0141d1f12d307c4386aeaee6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>char *</type>
+        <definition>static char* Json::duplicateAndPrefixStringValue</definition>
+        <argsstring>(const char *value, unsigned int length)</argsstring>
+        <name>duplicateAndPrefixStringValue</name>
+        <param>
+          <type>const char *</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="2524" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="2524" bodyend="2544"/>
+        <references refid="namespace_json_1a97f039a107b3f6cf1c3edee50e978f76" compoundref="jsoncpp_8cpp" startline="2592" endline="2595">throwRuntimeError</references>
+        <referencedby refid="namespace_json_1a27613326e9e36bbfe04a905ac90caa91" compoundref="jsoncpp_8cpp" startline="2596" endline="2599">throwLogicError</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1aad8b4982c1acd164f541fba396ac9fb1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Json::decodePrefixedString</definition>
+        <argsstring>(bool isPrefixed, char const *prefixed, unsigned *length, char const **value)</argsstring>
+        <name>decodePrefixedString</name>
+        <param>
+          <type>bool</type>
+          <declname>isPrefixed</declname>
+        </param>
+        <param>
+          <type>char const *</type>
+          <declname>prefixed</declname>
+        </param>
+        <param>
+          <type>unsigned *</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>char const **</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="2545" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="2545" bodyend="2556"/>
+        <referencedby refid="namespace_json_1a27613326e9e36bbfe04a905ac90caa91" compoundref="jsoncpp_8cpp" startline="2596" endline="2599">throwLogicError</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1acf8dd162c01e37846e129556c50e4037" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Json::releaseStringValue</definition>
+        <argsstring>(char *value)</argsstring>
+        <name>releaseStringValue</name>
+        <param>
+          <type>char *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Free the string duplicated by <ref refid="namespace_json_1a678ac3a60cd70ec0fb4c9abfd40eb0c4" kindref="member">duplicateStringValue()</ref>/duplicateAndPrefixStringValue(). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="2559" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="2559" bodyend="2559"/>
+        <referencedby refid="namespace_json_1a27613326e9e36bbfe04a905ac90caa91" compoundref="jsoncpp_8cpp" startline="2596" endline="2599">throwLogicError</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1a97f039a107b3f6cf1c3edee50e978f76" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Json::throwRuntimeError</definition>
+        <argsstring>(std::string const &amp;msg)</argsstring>
+        <name>throwRuntimeError</name>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="2592" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="2592" bodyend="2595"/>
+        <referencedby refid="namespace_json_1a4d6ab0f651348832e5cc49b577a854d2" compoundref="jsoncpp_8cpp" startline="266" endline="271">containsNewLine</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1a1765d9670d191c89a57a22ea5591d35f" compoundref="jsoncpp_8cpp" startline="1280" endline="1381">Json::OurReader::readValue</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1aea198f8101dba55099f4d8121a993530" compoundref="jsoncpp_8cpp" startline="1625" endline="1685">Json::OurReader::readObject</referencedby>
+        <referencedby refid="namespace_json_1a2434499c0c7f057890b32787c05fc4a3" compoundref="jsoncpp_8cpp" startline="2210" endline="2222">operator&gt;&gt;</referencedby>
+        <referencedby refid="namespace_json_1a678ac3a60cd70ec0fb4c9abfd40eb0c4" compoundref="jsoncpp_8cpp" startline="2504" endline="2520">duplicateStringValue</referencedby>
+        <referencedby refid="namespace_json_1a9795a09a0141d1f12d307c4386aeaee6" compoundref="jsoncpp_8cpp" startline="2524" endline="2544">duplicateAndPrefixStringValue</referencedby>
+        <referencedby refid="struct_json_1_1_built_styled_stream_writer_1a457c2f3c1e8c952caeb60e52477d0c9a" compoundref="jsoncpp_8cpp" startline="5080" endline="5084">Json::BuiltStyledStreamWriter::hasCommentForValue</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1a27613326e9e36bbfe04a905ac90caa91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Json::throwLogicError</definition>
+        <argsstring>(std::string const &amp;msg)</argsstring>
+        <name>throwLogicError</name>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="2596" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="2596" bodyend="2599"/>
+        <references refid="namespace_json_1acf8dd162c01e37846e129556c50e4037" compoundref="jsoncpp_8cpp" startline="2559" endline="2559">releaseStringValue</references>
+        <references refid="client_8cpp_1afed088663f8704004425cdae2120b9b3" compoundref="client_8cpp" startline="36">len</references>
+        <references refid="namespace_json_1a678ac3a60cd70ec0fb4c9abfd40eb0c4" compoundref="jsoncpp_8cpp" startline="2504" endline="2520">duplicateStringValue</references>
+        <references refid="jsoncpp_8cpp_1aa5e619e3e9388f6376a344dd8462c9cc" compoundref="jsoncpp_8cpp" startline="2441">JSON_ASSERT_UNREACHABLE</references>
+        <references refid="namespace_json_1a9795a09a0141d1f12d307c4386aeaee6" compoundref="jsoncpp_8cpp" startline="2524" endline="2544">duplicateAndPrefixStringValue</references>
+        <references refid="namespace_json_1aad8b4982c1acd164f541fba396ac9fb1" compoundref="jsoncpp_8cpp" startline="2545" endline="2556">decodePrefixedString</references>
+        <references refid="namespace_json_1abd9c650f70d9434f98f9025e2e2faf2d" compoundref="jsoncpp_8cpp" startline="4080" endline="4094">valueToString</references>
+        <references refid="namespace_json_1aff0180507262a244de61b961178d7443" compoundref="jsoncpp_8cpp" startline="2476" endline="2481">InRange</references>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1a1a04cc9d31e64b5912dade003c9b99b5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Json::IsIntegral</definition>
+        <argsstring>(double d)</argsstring>
+        <name>IsIntegral</name>
+        <param>
+          <type>double</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="3633" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="3633" bodyend="3636"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1aa11b210ff98a4f4dd4e2df19260f8c3a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Json::containsControlCharacter</definition>
+        <argsstring>(const char *str)</argsstring>
+        <name>containsControlCharacter</name>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="4062" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="4062" bodyend="4068"/>
+        <references refid="namespace_json_1a0381e631737f51331065a388f4f59197" compoundref="jsoncpp_8cpp" startline="133" endline="133">isControlCharacter</references>
+        <referencedby refid="namespace_json_1aa0c8235a4a5c6599da5d3332743db8ac" compoundref="jsoncpp_8cpp" startline="4150" endline="4210">valueToQuotedString</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1ae8a357381f264cf28f46449e79ab1dea" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Json::containsControlCharacter0</definition>
+        <argsstring>(const char *str, unsigned len)</argsstring>
+        <name>containsControlCharacter0</name>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="4070" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="4070" bodyend="4078"/>
+        <references refid="client_8cpp_1afed088663f8704004425cdae2120b9b3" compoundref="client_8cpp" startline="36">len</references>
+        <references refid="namespace_json_1a0381e631737f51331065a388f4f59197" compoundref="jsoncpp_8cpp" startline="133" endline="133">isControlCharacter</references>
+        <referencedby refid="namespace_json_1a20d52b5a457ee5d833645d119451c2cd" compoundref="jsoncpp_8cpp" startline="4227" endline="4288">valueToQuotedStringN</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1abd9c650f70d9434f98f9025e2e2faf2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string Json::valueToString</definition>
+        <argsstring>(LargestInt value)</argsstring>
+        <name>valueToString</name>
+        <param>
+          <type>LargestInt</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="4080" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="4080" bodyend="4094"/>
+        <references refid="namespace_json_1ac1ffd21a9e55122014353c773ccc496e" compoundref="jsoncpp_8cpp" startline="149" endline="155">uintToString</references>
+        <referencedby refid="namespace_json_1a27613326e9e36bbfe04a905ac90caa91" compoundref="jsoncpp_8cpp" startline="2596" endline="2599">throwLogicError</referencedby>
+        <referencedby refid="namespace_json_1a5d3eba6789f9a9c1ab563ff8b4a5090f" compoundref="jsoncpp_8cpp" startline="4106" endline="4108">valueToString</referencedby>
+        <referencedby refid="namespace_json_1a20d52b5a457ee5d833645d119451c2cd" compoundref="jsoncpp_8cpp" startline="4227" endline="4288">valueToQuotedStringN</referencedby>
+        <referencedby refid="struct_json_1_1_built_styled_stream_writer_1a7c9da861861e570a51b45f270c9ff150" compoundref="jsoncpp_8cpp" startline="4884" endline="4941">Json::BuiltStyledStreamWriter::writeValue</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1a3f46b0bc62b95a9426a2da0117bdf9f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string Json::valueToString</definition>
+        <argsstring>(LargestUInt value)</argsstring>
+        <name>valueToString</name>
+        <param>
+          <type>LargestUInt</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="4096" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="4096" bodyend="4102"/>
+        <references refid="namespace_json_1ac1ffd21a9e55122014353c773ccc496e" compoundref="jsoncpp_8cpp" startline="149" endline="155">uintToString</references>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1a5d3eba6789f9a9c1ab563ff8b4a5090f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string Json::valueToString</definition>
+        <argsstring>(Int value)</argsstring>
+        <name>valueToString</name>
+        <param>
+          <type>Int</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="4106" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="4106" bodyend="4108"/>
+        <references refid="namespace_json_1abd9c650f70d9434f98f9025e2e2faf2d" compoundref="jsoncpp_8cpp" startline="4080" endline="4094">valueToString</references>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1a4d43b0ff222bd3975bcf1babca0b978f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string Json::valueToString</definition>
+        <argsstring>(UInt value)</argsstring>
+        <name>valueToString</name>
+        <param>
+          <type>UInt</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="4110" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="4110" bodyend="4112"/>
+        <references refid="namespace_json_1abd9c650f70d9434f98f9025e2e2faf2d" compoundref="jsoncpp_8cpp" startline="4080" endline="4094">valueToString</references>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1a1c49ced79060a67638d7fa78a63b1813" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string Json::valueToString</definition>
+        <argsstring>(double value, bool useSpecialFloats, unsigned int precision)</argsstring>
+        <name>valueToString</name>
+        <param>
+          <type>double</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>useSpecialFloats</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>precision</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="4116" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="4116" bodyend="4144"/>
+        <references refid="client_8cpp_1afed088663f8704004425cdae2120b9b3" compoundref="client_8cpp" startline="36">len</references>
+        <references refid="jsoncpp_8cpp_1aab49fbe39624f083e45ef2d85e7e0705" compoundref="jsoncpp_8cpp" startline="4023">isfinite</references>
+        <references refid="namespace_json_1aa208904144dc7b11ccc28f47c9afab9a" compoundref="jsoncpp_8cpp" startline="162" endline="169">fixNumericLocale</references>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1a99995d7dafa4f4970b349d7d3c8d1d99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string Json::valueToString</definition>
+        <argsstring>(double value)</argsstring>
+        <name>valueToString</name>
+        <param>
+          <type>double</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="4146" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="4146" bodyend="4146"/>
+        <references refid="namespace_json_1abd9c650f70d9434f98f9025e2e2faf2d" compoundref="jsoncpp_8cpp" startline="4080" endline="4094">valueToString</references>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1a979ed531f091985e22f0051cd2a8e341" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string Json::valueToString</definition>
+        <argsstring>(bool value)</argsstring>
+        <name>valueToString</name>
+        <param>
+          <type>bool</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="4148" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="4148" bodyend="4148"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1aa0c8235a4a5c6599da5d3332743db8ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string Json::valueToQuotedString</definition>
+        <argsstring>(const char *value)</argsstring>
+        <name>valueToQuotedString</name>
+        <param>
+          <type>const char *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="4150" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="4150" bodyend="4210"/>
+        <references refid="namespace_json_1aa11b210ff98a4f4dd4e2df19260f8c3a" compoundref="jsoncpp_8cpp" startline="4062" endline="4068">containsControlCharacter</references>
+        <references refid="namespace_json_1a0381e631737f51331065a388f4f59197" compoundref="jsoncpp_8cpp" startline="133" endline="133">isControlCharacter</references>
+        <referencedby refid="namespace_json_1a20d52b5a457ee5d833645d119451c2cd" compoundref="jsoncpp_8cpp" startline="4227" endline="4288">valueToQuotedStringN</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1a7492156d0c7d2dd2f672acacfb240320" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char const *</type>
+        <definition>static char const* Json::strnpbrk</definition>
+        <argsstring>(char const *s, char const *accept, size_t n)</argsstring>
+        <name>strnpbrk</name>
+        <param>
+          <type>char const *</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>char const *</type>
+          <declname>accept</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="4213" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="4213" bodyend="4226"/>
+        <referencedby refid="namespace_json_1a20d52b5a457ee5d833645d119451c2cd" compoundref="jsoncpp_8cpp" startline="4227" endline="4288">valueToQuotedStringN</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1a20d52b5a457ee5d833645d119451c2cd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string Json::valueToQuotedStringN</definition>
+        <argsstring>(const char *value, unsigned length)</argsstring>
+        <name>valueToQuotedStringN</name>
+        <param>
+          <type>const char *</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="4227" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="4227" bodyend="4288"/>
+        <references refid="namespace_json_1a7492156d0c7d2dd2f672acacfb240320" compoundref="jsoncpp_8cpp" startline="4213" endline="4226">strnpbrk</references>
+        <references refid="namespace_json_1ae8a357381f264cf28f46449e79ab1dea" compoundref="jsoncpp_8cpp" startline="4070" endline="4078">containsControlCharacter0</references>
+        <references refid="namespace_json_1a0381e631737f51331065a388f4f59197" compoundref="jsoncpp_8cpp" startline="133" endline="133">isControlCharacter</references>
+        <references refid="class_json_1_1_our_reader_1aeb9b8bb85fa8a4dd72e546bb3104c597" compoundref="jsoncpp_8cpp" startline="1210">Json::OurReader::document_</references>
+        <references refid="namespace_json_1abd9c650f70d9434f98f9025e2e2faf2d" compoundref="jsoncpp_8cpp" startline="4080" endline="4094">valueToString</references>
+        <references refid="namespace_json_1aa0c8235a4a5c6599da5d3332743db8ac" compoundref="jsoncpp_8cpp" startline="4150" endline="4210">valueToQuotedString</references>
+        <referencedby refid="struct_json_1_1_built_styled_stream_writer_1a7c9da861861e570a51b45f270c9ff150" compoundref="jsoncpp_8cpp" startline="4884" endline="4941">Json::BuiltStyledStreamWriter::writeValue</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1a45c3c8847f03b09cd61035e615d1d820" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Json::getValidWriterKeys</definition>
+        <argsstring>(std::set&lt; std::string &gt; *valid_keys)</argsstring>
+        <name>getValidWriterKeys</name>
+        <param>
+          <type>std::set&lt; std::string &gt; *</type>
+          <declname>valid_keys</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="5136" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="5136" bodyend="5145"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1a220ff8b67bdeac754a87ecd979ddc020" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string Json::writeString</definition>
+        <argsstring>(StreamWriter::Factory const &amp;builder, Value const &amp;root)</argsstring>
+        <name>writeString</name>
+        <param>
+          <type>StreamWriter::Factory const &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <param>
+          <type>Value const &amp;</type>
+          <declname>root</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="5180" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="5180" bodyend="5185"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_json_1af64fba09a9679b8b8cb50dd3e85f6fd5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; Json::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;sout, Value const &amp;root)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>sout</declname>
+        </param>
+        <param>
+          <type>Value const &amp;</type>
+          <declname>root</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="5187" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="5187" bodyend="5192"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="101" column="1"/>
+  </compounddef>
+</doxygen>

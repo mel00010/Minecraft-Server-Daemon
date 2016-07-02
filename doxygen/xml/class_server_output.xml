@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="class_server_output" kind="class" language="C++" prot="public">
+    <compoundname>ServerOutput</compoundname>
+    <includes refid="server_output_8h" local="no">serverOutput.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_server_output_1ac861fbacca3246e4d03defba5ffdd9f3" prot="public" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex ServerOutput::mutex</definition>
+        <argsstring></argsstring>
+        <name>mutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/serverOutput.h" line="8" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/serverOutput.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_server_output_1a549f942f866ba6c132306a732d9c568f" prot="public" static="no" mutable="no">
+        <type>std::stringstream</type>
+        <definition>std::stringstream ServerOutput::output</definition>
+        <argsstring></argsstring>
+        <name>output</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/serverOutput.h" line="9" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/serverOutput.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/mel/projects/Misc/Minecraft Server Service/src/serverOutput.h" line="6" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/serverOutput.h" bodystart="6" bodyend="10"/>
+    <listofallmembers>
+      <member refid="class_server_output_1ac861fbacca3246e4d03defba5ffdd9f3" prot="public" virt="non-virtual"><scope>ServerOutput</scope><name>mutex</name></member>
+      <member refid="class_server_output_1a549f942f866ba6c132306a732d9c568f" prot="public" virt="non-virtual"><scope>ServerOutput</scope><name>output</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

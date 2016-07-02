@@ -1,0 +1,453 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="class_minecraft_server_service_1_1_server">
+<title>MinecraftServerService::Server class Reference</title>
+<para>
+    <programlisting>#include <link linkend="server_8h">&lt;server.h&gt;</link></programlisting>
+</para>
+<para>Inheritance diagram for MinecraftServerService::Server</para>
+<para>
+    <figure>
+        <title>Inheritance graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="class_minecraft_server_service_1_1_server__inherit__graph.svg"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+<para>Collaboration diagram for MinecraftServerService::Server</para>
+<para>
+    <figure>
+        <title>Collaboration graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="class_minecraft_server_service_1_1_server__coll__graph.svg"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+        <section>
+            <title> Classes </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="struct_minecraft_server_service_1_1_server_1_1_listener">MinecraftServerService::Server::Listener</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="struct_minecraft_server_service_1_1_server_1_1_server_output_event_data">MinecraftServerService::Server::ServerOutputEventData</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="struct_minecraft_server_service_1_1_server_1_1token__t">MinecraftServerService::Server::token_t</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para><literallayout>enum <link linkend="class_minecraft_server_service_1_1_server_1a7b9b73779645007e9f9c33dac1436d47">PIPE_OPS</link> {
+<link linkend="class_minecraft_server_service_1_1_server_1a7b9b73779645007e9f9c33dac1436d47ae4f50d706aa789aa79b1815ea83ca96a">PIPE_READ</link>= 0,
+<link linkend="class_minecraft_server_service_1_1_server_1a7b9b73779645007e9f9c33dac1436d47a57f3281db4e9bfe3825337d696eb24a4">PIPE_WRITE</link>= 1
+}</literallayout>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef <link linkend="class_minecraft_server_service_1_1_server">Server</link> &amp;(*  <link linkend="class_minecraft_server_service_1_1_server_1af07a3457e3239d898b8f84809b0703e4">ServerManipulator</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef std::basic_ostream&lt; char, std::char_traits&lt; char &gt; &gt;  <link linkend="class_minecraft_server_service_1_1_server_1a9a78d018fb71e9aa0a054ff39cba5083">CoutType</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef <link linkend="class_minecraft_server_service_1_1_server_1a9a78d018fb71e9aa0a054ff39cba5083">CoutType</link> &amp;(*  <link linkend="class_minecraft_server_service_1_1_server_1aabd71f679656f27eec9b0d66be40f5a1">StandardEndLine</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Public Attributes</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::string serverName</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Protected Attributes</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int serverPID</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int childProcessUID</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int childProcessGID</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int childProcessStdin[2]</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int childProcessStdout[2]</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>log4cpp::Category * log</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct event_base * base</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::vector&lt; Listener * &gt; * listeners</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>virtual void <link linkend="class_minecraft_server_service_1_1_server_1a0715bfc451f5abbd2f47d0895e5a2355">updateServer</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>virtual void <link linkend="class_minecraft_server_service_1_1_server_1a58373fb195d9546e4a843ba83d741f36">backupServer</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>virtual void <link linkend="class_minecraft_server_service_1_1_server_1a3045f178ed407b157a21da66a245e61f">backupServer</link> (
+std::string backupPath)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>virtual void <link linkend="class_minecraft_server_service_1_1_server_1af972c950277b436d85513ff5e8003df2">serverStatus</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>virtual void <link linkend="class_minecraft_server_service_1_1_server_1ac84f4a395d9680ba4d7405996dcb445c">startServer</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>virtual void <link linkend="class_minecraft_server_service_1_1_server_1a45fb906a041e3f6c59128a0e9c4cd289">stopServer</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>virtual void <link linkend="class_minecraft_server_service_1_1_server_1a9cfcad805db7ffd3f5ad10ef7a726cf9">restartServer</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>virtual void <link linkend="class_minecraft_server_service_1_1_server_1a68757647a604e935d365672b53c82d98">reloadServer</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>virtual std::string <link linkend="class_minecraft_server_service_1_1_server_1a86455e8351ecc7af502e681daf023eb3">listOnlinePlayers</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>virtual bool <link linkend="class_minecraft_server_service_1_1_server_1adf8951b2a9337983e8ced4b148e1ed5e">listOnlinePlayers</link> (
+std::string playerName)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>virtual void <link linkend="class_minecraft_server_service_1_1_server_1a9c2d6b9b94d490405bf74109e7794cb1">sendCommand</link> (
+std::string command)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="class_minecraft_server_service_1_1_server_1a1954e7c7756cd956e7282887ffca73e4">isRunning</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="class_minecraft_server_service_1_1_server">Server</link> &amp; <link linkend="class_minecraft_server_service_1_1_server_1a21a2533f4998ccc209c53a48cdb58718">operator&lt;&lt;</link> (
+const T &amp; x)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="class_minecraft_server_service_1_1_server">Server</link> &amp; <link linkend="class_minecraft_server_service_1_1_server_1a885bdc0a0267d25168bf6d35086d6090">operator&lt;&lt;</link> (
+const std::string &amp; x)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::istream &amp; <link linkend="class_minecraft_server_service_1_1_server_1a2b2cca8ee2e09c7236bc668e8522cb6a">operator&gt;&gt;</link> (
+std::istream &amp; in)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="class_minecraft_server_service_1_1_server">Server</link> &amp; <link linkend="class_minecraft_server_service_1_1_server_1aad73f651ba11cfc4815f8763edd6b914">operator&lt;&lt;</link> (
+<link linkend="class_minecraft_server_service_1_1_server_1aabd71f679656f27eec9b0d66be40f5a1">StandardEndLine</link> manip)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static void <link linkend="class_minecraft_server_service_1_1_server_1a3040817c744456263f8ba36bdb72bf20">outputListenerThread</link> (
+int serverPID, int childProcessStdout, struct event_base * base, log4cpp::Category * log, std::vector&lt; <link linkend="struct_minecraft_server_service_1_1_server_1_1_listener">Listener</link> * &gt; * listeners)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static void <link linkend="class_minecraft_server_service_1_1_server_1a4ecf103c62bd8f1e54b2ff436fa1645a">serverOutputEvent</link> (
+evutil_socket_t fd, short event, void * arg)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_minecraft_server_service_1_1_server_1a085f201bd563ce47e2b41778ef72d20d">getUIDAndGIDFromUsername</link> (
+const char * user)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_minecraft_server_service_1_1_server_1a16a19b4cfd94f23c20442cea9b46f678">launchServerProcess</link> (
+std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc, int gcThreadCount, std::vector&lt; std::string &gt; javaArgs, std::vector&lt; std::string &gt; serverOptions)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1a7b9b73779645007e9f9c33dac1436d47">
+               <title>enum PIPE_OPS </title>
+               
+               <formalpara>
+                    <title>Enumerator:</title>
+                    <variablelist>
+                        <varlistentry xml:id="class_minecraft_server_service_1_1_server_1a7b9b73779645007e9f9c33dac1436d47ae4f50d706aa789aa79b1815ea83ca96a">
+                            <term>PIPE_READ</term>
+                            <listitem>
+                                <para></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry xml:id="class_minecraft_server_service_1_1_server_1a7b9b73779645007e9f9c33dac1436d47a57f3281db4e9bfe3825337d696eb24a4">
+                            <term>PIPE_WRITE</term>
+                            <listitem>
+                                <para></para>
+                            </listitem>
+                        </varlistentry>
+                     </variablelist>
+                </formalpara>
+                <para>Definition at line 64 of file server.h
+                    <computeroutput><literallayout>
+{
+PIPE_READ= 0, 
+PIPE_WRITE= 1, 
+}PIPE_OPS;
+                    </literallayout></computeroutput>
+                </para>
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1af07a3457e3239d898b8f84809b0703e4">
+                <title>typedef Server&amp;(* MinecraftServerService::Server::ServerManipulator) (Server &amp;)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1a9a78d018fb71e9aa0a054ff39cba5083">
+                <title>typedef std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt; MinecraftServerService::Server::CoutType</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1aabd71f679656f27eec9b0d66be40f5a1">
+                <title>typedef CoutType&amp;(* MinecraftServerService::Server::StandardEndLine) (CoutType &amp;)</title> <emphasis></emphasis>
+                
+            </section>
+        <section>
+            <title>Member Data Documentation</title>
+        </section>
+        <section>
+            <title>Member Data Documentation</title>
+        </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1a0715bfc451f5abbd2f47d0895e5a2355">
+                <title>virtual void MinecraftServerService::Server::updateServer ()=0</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1a58373fb195d9546e4a843ba83d741f36">
+                <title>virtual void MinecraftServerService::Server::backupServer ()=0</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1a3045f178ed407b157a21da66a245e61f">
+                <title>virtual void MinecraftServerService::Server::backupServer (std::string backupPath)=0</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1af972c950277b436d85513ff5e8003df2">
+                <title>virtual void MinecraftServerService::Server::serverStatus ()=0</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1ac84f4a395d9680ba4d7405996dcb445c">
+                <title>virtual void MinecraftServerService::Server::startServer ()=0</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1a45fb906a041e3f6c59128a0e9c4cd289">
+                <title>virtual void MinecraftServerService::Server::stopServer ()=0</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1a9cfcad805db7ffd3f5ad10ef7a726cf9">
+                <title>virtual void MinecraftServerService::Server::restartServer ()=0</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1a68757647a604e935d365672b53c82d98">
+                <title>virtual void MinecraftServerService::Server::reloadServer ()=0</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1a86455e8351ecc7af502e681daf023eb3">
+                <title>virtual std::string MinecraftServerService::Server::listOnlinePlayers ()=0</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1adf8951b2a9337983e8ced4b148e1ed5e">
+                <title>virtual bool MinecraftServerService::Server::listOnlinePlayers (std::string playerName)=0</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1a9c2d6b9b94d490405bf74109e7794cb1">
+                <title>virtual void MinecraftServerService::Server::sendCommand (std::string command)=0</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1a1954e7c7756cd956e7282887ffca73e4">
+                <title>bool MinecraftServerService::Server::isRunning ()</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1a21a2533f4998ccc209c53a48cdb58718">
+                <title>Server&amp; MinecraftServerService::Server::operator&lt;&lt; (const T &amp;x)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1a885bdc0a0267d25168bf6d35086d6090">
+                <title>Server&amp; MinecraftServerService::Server::operator&lt;&lt; (const std::string &amp;x)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1a2b2cca8ee2e09c7236bc668e8522cb6a">
+                <title>std::istream&amp; MinecraftServerService::Server::operator&gt;&gt; (std::istream &amp;in)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1aad73f651ba11cfc4815f8763edd6b914">
+                <title>Server&amp; MinecraftServerService::Server::operator&lt;&lt; (StandardEndLine manip)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1a3040817c744456263f8ba36bdb72bf20">
+                <title>void MinecraftServerService::Server::outputListenerThread (int serverPID, int childProcessStdout, struct event_base *base, log4cpp::Category *log, std::vector&lt; Listener * &gt; *listeners)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1a4ecf103c62bd8f1e54b2ff436fa1645a">
+                <title>void MinecraftServerService::Server::serverOutputEvent (evutil_socket_t fd, short event, void *arg)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1a085f201bd563ce47e2b41778ef72d20d">
+                <title>void MinecraftServerService::Server::getUIDAndGIDFromUsername (const char *user)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_1a16a19b4cfd94f23c20442cea9b46f678">
+                <title>void MinecraftServerService::Server::launchServerProcess (std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc, int gcThreadCount, std::vector&lt; std::string &gt; javaArgs, std::vector&lt; std::string &gt; serverOptions)</title> <emphasis></emphasis>
+                
+            </section>
+</section>

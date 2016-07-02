@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="listener_8h" kind="file" language="C++">
+    <compoundname>listener.h</compoundname>
+    <includes local="no">sstream</includes>
+    <includedby refid="server_output_8h" local="yes">/home/mel/projects/Misc/Minecraft Server Service/src/serverOutput.h</includedby>
+    <includedby refid="_server_stream_8cpp" local="yes">/home/mel/projects/Misc/Minecraft Server Service/src/ServerStream.cpp</includedby>
+    <incdepgraph>
+      <node id="62">
+        <label>sstream</label>
+      </node>
+      <node id="61">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/listener.h</label>
+        <link refid="listener.h"/>
+        <childnode refid="62" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="66">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/ServerStream.cpp</label>
+        <link refid="_server_stream_8cpp"/>
+      </node>
+      <node id="65">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/serverOutput.cpp</label>
+        <link refid="server_output_8cpp"/>
+      </node>
+      <node id="64">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/serverOutput.h</label>
+        <link refid="server_output_8h"/>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/listener.h</label>
+        <link refid="listener.h"/>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_minecraft_server_service_1_1_listener" prot="public">MinecraftServerService::Listener</innerclass>
+    <innernamespace refid="namespace_minecraft_server_service">MinecraftServerService</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>LISTENER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LISTENER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_minecraft_server_service" kindref="compound">MinecraftServerService</ref><sp/>{</highlight></codeline>
+<codeline lineno="5" refid="class_minecraft_server_service_1_1_listener" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_minecraft_server_service_1_1_listener" kindref="compound">Listener</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="7" refid="class_minecraft_server_service_1_1_listener_1abb978fa220cc8c28003a828f41a250aa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_listener_1abb978fa220cc8c28003a828f41a250aa" kindref="member">Listener</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>_lines)</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_listener_1a1bed886443746d8b4ac0660b3b8d5c80" kindref="member">lines</ref><sp/>=<sp/>_lines;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="11" refid="class_minecraft_server_service_1_1_listener_1a1bed886443746d8b4ac0660b3b8d5c80" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_listener_1a1bed886443746d8b4ac0660b3b8d5c80" kindref="member">lines</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="12" refid="class_minecraft_server_service_1_1_listener_1a07e00dca9f25dd4e56700da375b0b17b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::stringstream<sp/><ref refid="class_minecraft_server_service_1_1_listener_1a07e00dca9f25dd4e56700da375b0b17b" kindref="member">output</ref>;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>LISTENER_H<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/mel/projects/Misc/Minecraft Server Service/src/listener.h"/>
+  </compounddef>
+</doxygen>

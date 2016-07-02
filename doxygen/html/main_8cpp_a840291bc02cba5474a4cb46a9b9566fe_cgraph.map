@@ -1,0 +1,10 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$main_loop_8cpp.html#a258e3b580e688a0cf46e4258525aeaf1" title="sigint_handler" alt="" coords="104,5,207,32"/>
+<area shape="rect" id="node3" href="$class_parser.html#a9ee227e9602693296fa201ebf86d2166" title="Parser::parse" alt="" coords="105,56,205,83"/>
+<area shape="rect" id="node5" href="$create_socket_8cpp.html#a0300be853ca0519cc094d30a0c18be20" title="createSocket" alt="" coords="106,107,205,133"/>
+<area shape="rect" id="node6" href="$setup_servers_8cpp.html#a094482a2850da71d05a99a1a56e6650d" title="setupServers" alt="" coords="106,157,205,184"/>
+<area shape="rect" id="node7" href="$main_loop_8cpp.html#a5b8ae8d09b7249084a22620e375fd5e5" title="mainLoop" alt="" coords="116,208,195,235"/>
+<area shape="rect" id="node4" href="$class_parser.html#ae0115d243f4729f798bb632050ff692a" title="Parser::getFileContents" alt="" coords="255,56,415,83"/>
+<area shape="rect" id="node8" href="$main_loop_8cpp.html#a016c2c474e0f9f1d97700898a33615e4" title="recieveCommand" alt="" coords="273,208,397,235"/>
+<area shape="rect" id="node9" href="$main_loop_8cpp.html#ae78f03fb04ce6bc07ec81b0f6648e0b4" title="writeToSocket" alt="" coords="463,208,569,235"/>
+</map>

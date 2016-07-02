@@ -1,0 +1,149 @@
+\hypertarget{class_server_stream}{}\section{Server\+Stream Class Reference}
+\label{class_server_stream}\index{Server\+Stream@{Server\+Stream}}
+
+
+{\ttfamily \#include $<$Server\+Stream.\+h$>$}
+
+
+
+Inheritance diagram for Server\+Stream\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{class_server_stream__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Server\+Stream\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{class_server_stream__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_server_stream_a8797caa637e9637df8b272d32b60b12f}{Server\+Stream} (std\+::string \+\_\+server\+Name)
+\item 
+virtual \hyperlink{class_server_stream_a8c4904411d6e0f2dc9fc3bdcad9ef154}{$\sim$\+Server\+Stream} ()
+\item 
+std\+::string \hyperlink{class_server_stream_a191679d705aaa58155e9466d7268ae2a}{send\+Command} (std\+::string command)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_server_stream_a4acf31ab9b7487bdba0bc40bb4dad1cd}{output\+Listener} ()
+\item 
+void \hyperlink{class_server_stream_a3f578d952e89183ddaae5792d8b675b3}{logger} ()
+\item 
+std\+::string \hyperlink{class_server_stream_ab2acfe03b3e1031314d128d7837c4d16}{get\+Output} (int timeout=1, int lines=20)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_server_process_buf}{Server\+Process\+Buf} \hyperlink{class_server_stream_a410bab9c65dbdab2e861a47a7b8ade72}{server\+Process}
+\item 
+log4cpp\+::\+Category $\ast$ \hyperlink{class_server_stream_a64e6e1395393de338fca801345bd6f73}{log} = nullptr
+\item 
+std\+::string \hyperlink{class_server_stream_a7eb3c97f5d635f11a2082081383de04d}{server\+Name}
+\item 
+volatile bool \hyperlink{class_server_stream_af4b051030db4f09ecfb432d1f797b745}{running} = false
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Server\+Stream@{Server\+Stream}!Server\+Stream@{Server\+Stream}}
+\index{Server\+Stream@{Server\+Stream}!Server\+Stream@{Server\+Stream}}
+\subsubsection[{\texorpdfstring{Server\+Stream(std\+::string \+\_\+server\+Name)}{ServerStream(std::string _serverName)}}]{\setlength{\rightskip}{0pt plus 5cm}Server\+Stream\+::\+Server\+Stream (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{\+\_\+server\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{class_server_stream_a8797caa637e9637df8b272d32b60b12f}{}\label{class_server_stream_a8797caa637e9637df8b272d32b60b12f}
+\index{Server\+Stream@{Server\+Stream}!````~Server\+Stream@{$\sim$\+Server\+Stream}}
+\index{````~Server\+Stream@{$\sim$\+Server\+Stream}!Server\+Stream@{Server\+Stream}}
+\subsubsection[{\texorpdfstring{$\sim$\+Server\+Stream()}{~ServerStream()}}]{\setlength{\rightskip}{0pt plus 5cm}Server\+Stream\+::$\sim$\+Server\+Stream (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_server_stream_a8c4904411d6e0f2dc9fc3bdcad9ef154}{}\label{class_server_stream_a8c4904411d6e0f2dc9fc3bdcad9ef154}
+
+
+\subsection{Member Function Documentation}
+\index{Server\+Stream@{Server\+Stream}!get\+Output@{get\+Output}}
+\index{get\+Output@{get\+Output}!Server\+Stream@{Server\+Stream}}
+\subsubsection[{\texorpdfstring{get\+Output(int timeout=1, int lines=20)}{getOutput(int timeout=1, int lines=20)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Server\+Stream\+::get\+Output (
+\begin{DoxyParamCaption}
+\item[{int}]{timeout = {\ttfamily 1}, }
+\item[{int}]{lines = {\ttfamily 20}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_server_stream_ab2acfe03b3e1031314d128d7837c4d16}{}\label{class_server_stream_ab2acfe03b3e1031314d128d7837c4d16}
+\index{Server\+Stream@{Server\+Stream}!logger@{logger}}
+\index{logger@{logger}!Server\+Stream@{Server\+Stream}}
+\subsubsection[{\texorpdfstring{logger()}{logger()}}]{\setlength{\rightskip}{0pt plus 5cm}void Server\+Stream\+::logger (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_server_stream_a3f578d952e89183ddaae5792d8b675b3}{}\label{class_server_stream_a3f578d952e89183ddaae5792d8b675b3}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_server_stream_a3f578d952e89183ddaae5792d8b675b3_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Server\+Stream@{Server\+Stream}!output\+Listener@{output\+Listener}}
+\index{output\+Listener@{output\+Listener}!Server\+Stream@{Server\+Stream}}
+\subsubsection[{\texorpdfstring{output\+Listener()}{outputListener()}}]{\setlength{\rightskip}{0pt plus 5cm}void Server\+Stream\+::output\+Listener (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_server_stream_a4acf31ab9b7487bdba0bc40bb4dad1cd}{}\label{class_server_stream_a4acf31ab9b7487bdba0bc40bb4dad1cd}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_server_stream_a4acf31ab9b7487bdba0bc40bb4dad1cd_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Server\+Stream@{Server\+Stream}!send\+Command@{send\+Command}}
+\index{send\+Command@{send\+Command}!Server\+Stream@{Server\+Stream}}
+\subsubsection[{\texorpdfstring{send\+Command(std\+::string command)}{sendCommand(std::string command)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Server\+Stream\+::send\+Command (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{command}
+\end{DoxyParamCaption}
+)}\hypertarget{class_server_stream_a191679d705aaa58155e9466d7268ae2a}{}\label{class_server_stream_a191679d705aaa58155e9466d7268ae2a}
+
+
+\subsection{Member Data Documentation}
+\index{Server\+Stream@{Server\+Stream}!log@{log}}
+\index{log@{log}!Server\+Stream@{Server\+Stream}}
+\subsubsection[{\texorpdfstring{log}{log}}]{\setlength{\rightskip}{0pt plus 5cm}log4cpp\+::\+Category$\ast$ Server\+Stream\+::log = nullptr\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_server_stream_a64e6e1395393de338fca801345bd6f73}{}\label{class_server_stream_a64e6e1395393de338fca801345bd6f73}
+\index{Server\+Stream@{Server\+Stream}!running@{running}}
+\index{running@{running}!Server\+Stream@{Server\+Stream}}
+\subsubsection[{\texorpdfstring{running}{running}}]{\setlength{\rightskip}{0pt plus 5cm}volatile bool Server\+Stream\+::running = false\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_server_stream_af4b051030db4f09ecfb432d1f797b745}{}\label{class_server_stream_af4b051030db4f09ecfb432d1f797b745}
+\index{Server\+Stream@{Server\+Stream}!server\+Name@{server\+Name}}
+\index{server\+Name@{server\+Name}!Server\+Stream@{Server\+Stream}}
+\subsubsection[{\texorpdfstring{server\+Name}{serverName}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Server\+Stream\+::server\+Name\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_server_stream_a7eb3c97f5d635f11a2082081383de04d}{}\label{class_server_stream_a7eb3c97f5d635f11a2082081383de04d}
+\index{Server\+Stream@{Server\+Stream}!server\+Process@{server\+Process}}
+\index{server\+Process@{server\+Process}!Server\+Stream@{Server\+Stream}}
+\subsubsection[{\texorpdfstring{server\+Process}{serverProcess}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Server\+Process\+Buf} Server\+Stream\+::server\+Process\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_server_stream_a410bab9c65dbdab2e861a47a7b8ade72}{}\label{class_server_stream_a410bab9c65dbdab2e861a47a7b8ade72}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/mel/projects/\+Misc/\+Minecraft Server Service/src/\hyperlink{_server_stream_8h}{Server\+Stream.\+h}\item 
+/home/mel/projects/\+Misc/\+Minecraft Server Service/src/\hyperlink{_server_stream_8cpp}{Server\+Stream.\+cpp}\end{DoxyCompactItemize}

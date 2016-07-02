@@ -1044,15 +1044,23 @@ m4trace:configure.ac:3: -1- m4_pattern_allow([^am__fastdepCXX_TRUE$])
 m4trace:configure.ac:3: -1- m4_pattern_allow([^am__fastdepCXX_FALSE$])
 m4trace:configure.ac:3: -1- _AM_SUBST_NOTMAKE([am__fastdepCXX_TRUE])
 m4trace:configure.ac:3: -1- _AM_SUBST_NOTMAKE([am__fastdepCXX_FALSE])
+m4trace:configure.ac:12: -1- PKG_CHECK_MODULES([libevent], [libevent])
+m4trace:configure.ac:12: -1- PKG_PROG_PKG_CONFIG
+m4trace:configure.ac:12: -1- m4_pattern_forbid([^_?PKG_[A-Z_]+$])
+m4trace:configure.ac:12: -1- m4_pattern_allow([^PKG_CONFIG(_(PATH|LIBDIR|SYSROOT_DIR|ALLOW_SYSTEM_(CFLAGS|LIBS)))?$])
+m4trace:configure.ac:12: -1- m4_pattern_allow([^PKG_CONFIG_(DISABLE_UNINSTALLED|TOP_BUILD_DIR|DEBUG_SPEW)$])
+m4trace:configure.ac:12: -1- m4_pattern_allow([^PKG_CONFIG$])
+m4trace:configure.ac:12: -1- m4_pattern_allow([^PKG_CONFIG_PATH$])
+m4trace:configure.ac:12: -1- m4_pattern_allow([^PKG_CONFIG_LIBDIR$])
+m4trace:configure.ac:12: -1- m4_pattern_allow([^PKG_CONFIG$])
+m4trace:configure.ac:12: -1- m4_pattern_allow([^libevent_CFLAGS$])
+m4trace:configure.ac:12: -1- m4_pattern_allow([^libevent_LIBS$])
+m4trace:configure.ac:12: -1- PKG_CHECK_EXISTS([libevent], [pkg_cv_[]libevent_CFLAGS=`$PKG_CONFIG --[]cflags "libevent" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes ], [pkg_failed=yes])
+m4trace:configure.ac:12: -1- PKG_CHECK_EXISTS([libevent], [pkg_cv_[]libevent_LIBS=`$PKG_CONFIG --[]libs "libevent" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes ], [pkg_failed=yes])
+m4trace:configure.ac:12: -1- _PKG_SHORT_ERRORS_SUPPORTED
 m4trace:configure.ac:13: -1- PKG_CHECK_MODULES([log4cpp], [log4cpp])
-m4trace:configure.ac:13: -1- PKG_PROG_PKG_CONFIG
-m4trace:configure.ac:13: -1- m4_pattern_forbid([^_?PKG_[A-Z_]+$])
-m4trace:configure.ac:13: -1- m4_pattern_allow([^PKG_CONFIG(_(PATH|LIBDIR|SYSROOT_DIR|ALLOW_SYSTEM_(CFLAGS|LIBS)))?$])
-m4trace:configure.ac:13: -1- m4_pattern_allow([^PKG_CONFIG_(DISABLE_UNINSTALLED|TOP_BUILD_DIR|DEBUG_SPEW)$])
-m4trace:configure.ac:13: -1- m4_pattern_allow([^PKG_CONFIG$])
-m4trace:configure.ac:13: -1- m4_pattern_allow([^PKG_CONFIG_PATH$])
-m4trace:configure.ac:13: -1- m4_pattern_allow([^PKG_CONFIG_LIBDIR$])
-m4trace:configure.ac:13: -1- m4_pattern_allow([^PKG_CONFIG$])
 m4trace:configure.ac:13: -1- m4_pattern_allow([^log4cpp_CFLAGS$])
 m4trace:configure.ac:13: -1- m4_pattern_allow([^log4cpp_LIBS$])
 m4trace:configure.ac:13: -1- PKG_CHECK_EXISTS([log4cpp], [pkg_cv_[]log4cpp_CFLAGS=`$PKG_CONFIG --[]cflags "log4cpp" 2>/dev/null`

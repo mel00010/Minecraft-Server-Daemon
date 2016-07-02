@@ -1,0 +1,430 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="setup_servers_8cpp" kind="file" language="C++">
+    <compoundname>setupServers.cpp</compoundname>
+    <includes refid="setup_servers_8h" local="yes">setupServers.h</includes>
+    <includes refid="server_8h" local="yes">server.h</includes>
+    <includes refid="vanilla_server_8h" local="yes">vanillaServer.h</includes>
+    <includes refid="spigot_server_8h" local="yes">spigotServer.h</includes>
+    <includes refid="bukkit_server_8h" local="yes">bukkitServer.h</includes>
+    <includes refid="bungeecord_server_8h" local="yes">bungeecordServer.h</includes>
+    <includes refid="generic_server_8h" local="yes">genericServer.h</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">json/json.h</includes>
+    <includes local="no">string</includes>
+    <includes local="yes">log4cpp/Category.hh</includes>
+    <includes local="no">log4cpp/PropertyConfigurator.hh</includes>
+    <incdepgraph>
+      <node id="429">
+        <label>functional</label>
+      </node>
+      <node id="434">
+        <label>iterator</label>
+      </node>
+      <node id="414">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/setupServers.cpp</label>
+        <link refid="setupServers.cpp"/>
+        <childnode refid="415" relation="include">
+        </childnode>
+        <childnode refid="416" relation="include">
+        </childnode>
+        <childnode refid="444" relation="include">
+        </childnode>
+        <childnode refid="445" relation="include">
+        </childnode>
+        <childnode refid="446" relation="include">
+        </childnode>
+        <childnode refid="447" relation="include">
+        </childnode>
+        <childnode refid="448" relation="include">
+        </childnode>
+        <childnode refid="426" relation="include">
+        </childnode>
+        <childnode refid="443" relation="include">
+        </childnode>
+        <childnode refid="424" relation="include">
+        </childnode>
+        <childnode refid="418" relation="include">
+        </childnode>
+        <childnode refid="449" relation="include">
+        </childnode>
+      </node>
+      <node id="443">
+        <label>json/json.h</label>
+      </node>
+      <node id="420">
+        <label>event2/event.h</label>
+      </node>
+      <node id="418">
+        <label>log4cpp/Category.hh</label>
+      </node>
+      <node id="440">
+        <label>stdlib.h</label>
+      </node>
+      <node id="437">
+        <label>cassert</label>
+      </node>
+      <node id="424">
+        <label>string</label>
+      </node>
+      <node id="436">
+        <label>ostream</label>
+      </node>
+      <node id="444">
+        <label>vanillaServer.h</label>
+        <link refid="vanilla_server_8h"/>
+        <childnode refid="416" relation="include">
+        </childnode>
+        <childnode refid="418" relation="include">
+        </childnode>
+        <childnode refid="424" relation="include">
+        </childnode>
+        <childnode refid="425" relation="include">
+        </childnode>
+        <childnode refid="426" relation="include">
+        </childnode>
+        <childnode refid="427" relation="include">
+        </childnode>
+        <childnode refid="442" relation="include">
+        </childnode>
+      </node>
+      <node id="416">
+        <label>server.h</label>
+        <link refid="server_8h"/>
+        <childnode refid="417" relation="include">
+        </childnode>
+        <childnode refid="418" relation="include">
+        </childnode>
+        <childnode refid="419" relation="include">
+        </childnode>
+        <childnode refid="420" relation="include">
+        </childnode>
+        <childnode refid="421" relation="include">
+        </childnode>
+        <childnode refid="422" relation="include">
+        </childnode>
+        <childnode refid="423" relation="include">
+        </childnode>
+        <childnode refid="424" relation="include">
+        </childnode>
+        <childnode refid="425" relation="include">
+        </childnode>
+        <childnode refid="426" relation="include">
+        </childnode>
+        <childnode refid="427" relation="include">
+        </childnode>
+        <childnode refid="428" relation="include">
+        </childnode>
+        <childnode refid="429" relation="include">
+        </childnode>
+        <childnode refid="430" relation="include">
+        </childnode>
+        <childnode refid="431" relation="include">
+        </childnode>
+        <childnode refid="432" relation="include">
+        </childnode>
+        <childnode refid="433" relation="include">
+        </childnode>
+        <childnode refid="434" relation="include">
+        </childnode>
+        <childnode refid="435" relation="include">
+        </childnode>
+        <childnode refid="436" relation="include">
+        </childnode>
+        <childnode refid="437" relation="include">
+        </childnode>
+        <childnode refid="438" relation="include">
+        </childnode>
+        <childnode refid="439" relation="include">
+        </childnode>
+        <childnode refid="440" relation="include">
+        </childnode>
+        <childnode refid="441" relation="include">
+        </childnode>
+        <childnode refid="442" relation="include">
+        </childnode>
+      </node>
+      <node id="423">
+        <label>unistd.h</label>
+      </node>
+      <node id="426">
+        <label>vector</label>
+      </node>
+      <node id="421">
+        <label>event2/util.h</label>
+      </node>
+      <node id="449">
+        <label>log4cpp/PropertyConfigurator.hh</label>
+      </node>
+      <node id="425">
+        <label>sstream</label>
+      </node>
+      <node id="417">
+        <label>outputListener.h</label>
+      </node>
+      <node id="442">
+        <label>time.h</label>
+      </node>
+      <node id="448">
+        <label>genericServer.h</label>
+        <link refid="generic_server_8h"/>
+        <childnode refid="416" relation="include">
+        </childnode>
+        <childnode refid="418" relation="include">
+        </childnode>
+        <childnode refid="424" relation="include">
+        </childnode>
+        <childnode refid="425" relation="include">
+        </childnode>
+        <childnode refid="426" relation="include">
+        </childnode>
+        <childnode refid="427" relation="include">
+        </childnode>
+        <childnode refid="442" relation="include">
+        </childnode>
+      </node>
+      <node id="431">
+        <label>iosfwd</label>
+      </node>
+      <node id="422">
+        <label>sys/wait.h</label>
+      </node>
+      <node id="430">
+        <label>cstdlib</label>
+      </node>
+      <node id="432">
+        <label>cctype</label>
+      </node>
+      <node id="439">
+        <label>iostream</label>
+      </node>
+      <node id="435">
+        <label>cstddef</label>
+      </node>
+      <node id="415">
+        <label>setupServers.h</label>
+        <link refid="setup_servers_8h"/>
+        <childnode refid="416" relation="include">
+        </childnode>
+        <childnode refid="426" relation="include">
+        </childnode>
+        <childnode refid="443" relation="include">
+        </childnode>
+      </node>
+      <node id="428">
+        <label>mutex</label>
+      </node>
+      <node id="441">
+        <label>pwd.h</label>
+      </node>
+      <node id="447">
+        <label>bungeecordServer.h</label>
+        <link refid="bungeecord_server_8h"/>
+        <childnode refid="416" relation="include">
+        </childnode>
+        <childnode refid="418" relation="include">
+        </childnode>
+        <childnode refid="424" relation="include">
+        </childnode>
+        <childnode refid="425" relation="include">
+        </childnode>
+        <childnode refid="426" relation="include">
+        </childnode>
+        <childnode refid="427" relation="include">
+        </childnode>
+        <childnode refid="442" relation="include">
+        </childnode>
+      </node>
+      <node id="427">
+        <label>thread</label>
+      </node>
+      <node id="433">
+        <label>algorithm</label>
+      </node>
+      <node id="438">
+        <label>cstring</label>
+      </node>
+      <node id="445">
+        <label>spigotServer.h</label>
+        <link refid="spigot_server_8h"/>
+        <childnode refid="416" relation="include">
+        </childnode>
+        <childnode refid="418" relation="include">
+        </childnode>
+        <childnode refid="424" relation="include">
+        </childnode>
+        <childnode refid="425" relation="include">
+        </childnode>
+        <childnode refid="426" relation="include">
+        </childnode>
+        <childnode refid="427" relation="include">
+        </childnode>
+        <childnode refid="442" relation="include">
+        </childnode>
+      </node>
+      <node id="419">
+        <label>event2/event-config.h</label>
+      </node>
+      <node id="446">
+        <label>bukkitServer.h</label>
+        <link refid="bukkit_server_8h"/>
+        <childnode refid="416" relation="include">
+        </childnode>
+        <childnode refid="418" relation="include">
+        </childnode>
+        <childnode refid="424" relation="include">
+        </childnode>
+        <childnode refid="425" relation="include">
+        </childnode>
+        <childnode refid="426" relation="include">
+        </childnode>
+        <childnode refid="427" relation="include">
+        </childnode>
+        <childnode refid="442" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="setup_servers_8cpp_1a094482a2850da71d05a99a1a56e6650d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="class_minecraft_server_service_1_1_server" kindref="compound">MinecraftServerService::Server</ref> * &gt; *</type>
+        <definition>std::vector&lt;MinecraftServerService::Server*&gt;* setupServers</definition>
+        <argsstring>(Json::Value *_config, log4cpp::Category &amp;log)</argsstring>
+        <name>setupServers</name>
+        <param>
+          <type>Json::Value *</type>
+          <declname>_config</declname>
+        </param>
+        <param>
+          <type>log4cpp::Category &amp;</type>
+          <declname>log</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/setupServers.cpp" line="35" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/setupServers.cpp" bodystart="35" bodyend="111"/>
+        <referencedby refid="main_8cpp_1a840291bc02cba5474a4cb46a9b9566fe" compoundref="main_8cpp" startline="38" endline="108">main</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>setupServers.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2016<sp/>Mel<sp/>McCalla<sp/>&lt;melmccalla@gmail.com&gt;</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>This<sp/>program<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>it<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>(at<sp/>your<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>This<sp/>program<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>but<sp/>WITHOUT<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>MERCHANTABILITY<sp/>or<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>along<sp/>with<sp/>this<sp/>program;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>Foundation,<sp/>Inc.,<sp/>51<sp/>Franklin<sp/>Street,<sp/>Fifth<sp/>Floor,<sp/>Boston,</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>MA<sp/>02110-1301,<sp/>USA.</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="setup_servers_8h" kindref="compound">setupServers.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="server_8h" kindref="compound">server.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="vanilla_server_8h" kindref="compound">vanillaServer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="spigot_server_8h" kindref="compound">spigotServer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bukkit_server_8h" kindref="compound">bukkitServer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bungeecord_server_8h" kindref="compound">bungeecordServer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="generic_server_8h" kindref="compound">genericServer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;json/json.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;log4cpp/Category.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;log4cpp/PropertyConfigurator.hh&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="setup_servers_8h_1a094482a2850da71d05a99a1a56e6650d" refkind="member"><highlight class="normal">std::vector&lt;MinecraftServerService::Server*&gt;*<sp/><ref refid="setup_servers_8cpp_1a094482a2850da71d05a99a1a56e6650d" kindref="member">setupServers</ref>(Json::Value*<sp/>_config,<sp/>log4cpp::Category&amp;<sp/>log)<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>Json::Value<sp/>config<sp/>=<sp/>*_config;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;MinecraftServerService::Server*&gt;*<sp/>servers<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>std::vector&lt;MinecraftServerService::Server*&gt;;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(Json::Value::iterator<sp/>itr<sp/>=<sp/>config[</highlight><highlight class="stringliteral">&quot;servers&quot;</highlight><highlight class="normal">].begin();<sp/>itr<sp/>!=<sp/>config[</highlight><highlight class="stringliteral">&quot;servers&quot;</highlight><highlight class="normal">].end();<sp/>itr++)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Json::Value<sp/>server<sp/>=<sp/>(*itr);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>serverName<sp/>=<sp/>server[</highlight><highlight class="stringliteral">&quot;serverName&quot;</highlight><highlight class="normal">].asString();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>serverPath<sp/>=<sp/>server[</highlight><highlight class="stringliteral">&quot;serverPath&quot;</highlight><highlight class="normal">].asString();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>serverJarName<sp/>=<sp/>server[</highlight><highlight class="stringliteral">&quot;serverJarName&quot;</highlight><highlight class="normal">].asString();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>serverAccount<sp/>=<sp/>server[</highlight><highlight class="stringliteral">&quot;serverAccount&quot;</highlight><highlight class="normal">].asString();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>maxHeapAlloc<sp/>=<sp/>server[</highlight><highlight class="stringliteral">&quot;maxHeapAlloc&quot;</highlight><highlight class="normal">].asInt();</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>minHeapAlloc<sp/>=<sp/>server[</highlight><highlight class="stringliteral">&quot;minHeapAlloc&quot;</highlight><highlight class="normal">].asInt();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>gcThreadCount<sp/>=<sp/>server[</highlight><highlight class="stringliteral">&quot;gcThreadCount&quot;</highlight><highlight class="normal">].asInt();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>javaArgs;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(Json::Value::iterator<sp/>itr<sp/>=<sp/>server[</highlight><highlight class="stringliteral">&quot;javaArgs&quot;</highlight><highlight class="normal">].begin();<sp/>itr<sp/>!=<sp/>server[</highlight><highlight class="stringliteral">&quot;javaArgs&quot;</highlight><highlight class="normal">].end();<sp/>itr++)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Json::Value<sp/>arg<sp/>=<sp/>(*itr);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>javaArgs.push_back(arg.asString());</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>serverOptions;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(Json::Value::iterator<sp/>itr<sp/>=<sp/>server[</highlight><highlight class="stringliteral">&quot;serverOptions&quot;</highlight><highlight class="normal">].begin();<sp/>itr<sp/>!=<sp/>server[</highlight><highlight class="stringliteral">&quot;serverOptions&quot;</highlight><highlight class="normal">].end();<sp/>itr++)</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Json::Value<sp/>option<sp/>=<sp/>(*itr);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>serverOptions.push_back(option.asString());</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>serverType<sp/>=<sp/>server[</highlight><highlight class="stringliteral">&quot;serverType&quot;</highlight><highlight class="normal">].asString();</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(serverType<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;vanilla&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>backupPath<sp/>=<sp/>server[</highlight><highlight class="stringliteral">&quot;backupPath&quot;</highlight><highlight class="normal">].asString();</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>worldsToBackup;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(Json::Value::iterator<sp/>itr<sp/>=<sp/>server[</highlight><highlight class="stringliteral">&quot;worldsToBackup&quot;</highlight><highlight class="normal">].begin();<sp/>itr<sp/>!=<sp/>server[</highlight><highlight class="stringliteral">&quot;worldsToBackup&quot;</highlight><highlight class="normal">].end();<sp/>itr++)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Json::Value<sp/>world<sp/>=<sp/>(*itr);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>worldsToBackup.push_back(world.asString());</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>servers-&gt;push_back(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_vanilla_server" kindref="compound">MinecraftServerService::VanillaServer</ref>(serverName<sp/>,serverPath,<sp/>serverJarName,<sp/>serverAccount,<sp/>maxHeapAlloc,<sp/>minHeapAlloc,<sp/>gcThreadCount,<sp/>backupPath,<sp/>worldsToBackup,<sp/>javaArgs,<sp/>serverOptions));</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>servers-&gt;back()-&gt;startServer();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(serverType<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;spigot&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>backupPath<sp/>=<sp/>server[</highlight><highlight class="stringliteral">&quot;backupPath&quot;</highlight><highlight class="normal">].asString();</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>worldsToBackup;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(Json::Value::iterator<sp/>itr<sp/>=<sp/>server[</highlight><highlight class="stringliteral">&quot;worldsToBackup&quot;</highlight><highlight class="normal">].begin();<sp/>itr<sp/>!=<sp/>server[</highlight><highlight class="stringliteral">&quot;worldsToBackup&quot;</highlight><highlight class="normal">].end();<sp/>itr++)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Json::Value<sp/>world<sp/>=<sp/>(*itr);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>worldsToBackup.push_back(world.asString());</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>servers-&gt;push_back(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_spigot_server" kindref="compound">MinecraftServerService::SpigotServer</ref>(serverName<sp/>,serverPath,<sp/>serverJarName,<sp/>serverAccount,<sp/>maxHeapAlloc,<sp/>minHeapAlloc,<sp/>gcThreadCount,<sp/>backupPath,<sp/>worldsToBackup,<sp/>javaArgs,<sp/>serverOptions));</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>servers-&gt;back()-&gt;startServer();</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(serverType<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;bukkit&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>backupPath<sp/>=<sp/>server[</highlight><highlight class="stringliteral">&quot;backupPath&quot;</highlight><highlight class="normal">].asString();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>worldsToBackup;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(Json::Value::iterator<sp/>itr<sp/>=<sp/>server[</highlight><highlight class="stringliteral">&quot;worldsToBackup&quot;</highlight><highlight class="normal">].begin();<sp/>itr<sp/>!=<sp/>server[</highlight><highlight class="stringliteral">&quot;worldsToBackup&quot;</highlight><highlight class="normal">].end();<sp/>itr++)</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Json::Value<sp/>world<sp/>=<sp/>(*itr);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>worldsToBackup.push_back(world.asString());</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>servers-&gt;push_back(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_bukkit_server" kindref="compound">MinecraftServerService::BukkitServer</ref>(serverName<sp/>,serverPath,<sp/>serverJarName,<sp/>serverAccount,<sp/>maxHeapAlloc,<sp/>minHeapAlloc,<sp/>gcThreadCount,<sp/>backupPath,<sp/>worldsToBackup,<sp/>javaArgs,<sp/>serverOptions));</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>servers-&gt;back()-&gt;startServer();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(serverType<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;bungeecord&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>backupPath<sp/>=<sp/>server[</highlight><highlight class="stringliteral">&quot;backupPath&quot;</highlight><highlight class="normal">].asString();</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>servers-&gt;push_back(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server" kindref="compound">MinecraftServerService::BungeeCordServer</ref>(serverName<sp/>,serverPath,<sp/>serverJarName,<sp/>serverAccount,<sp/>maxHeapAlloc,<sp/>minHeapAlloc,<sp/>gcThreadCount,<sp/>backupPath,<sp/>javaArgs,<sp/>serverOptions));</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>servers-&gt;back()-&gt;startServer();</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(serverType<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;other&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>backupPath<sp/>=<sp/>server[</highlight><highlight class="stringliteral">&quot;backupPath&quot;</highlight><highlight class="normal">].asString();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>worldsToBackup;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(Json::Value::iterator<sp/>itr<sp/>=<sp/>server[</highlight><highlight class="stringliteral">&quot;worldsToBackup&quot;</highlight><highlight class="normal">].begin();<sp/>itr<sp/>!=<sp/>server[</highlight><highlight class="stringliteral">&quot;worldsToBackup&quot;</highlight><highlight class="normal">].end();<sp/>itr++)</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Json::Value<sp/>world<sp/>=<sp/>(*itr);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>worldsToBackup.push_back(world.asString());</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>servers-&gt;push_back(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_generic_server" kindref="compound">MinecraftServerService::GenericServer</ref>(serverName<sp/>,serverPath,<sp/>serverJarName,<sp/>serverAccount,<sp/>maxHeapAlloc,<sp/>minHeapAlloc,<sp/>gcThreadCount,<sp/>backupPath,<sp/>worldsToBackup,<sp/>javaArgs,<sp/>serverOptions));</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>servers-&gt;back()-&gt;startServer();</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log.fatal(</highlight><highlight class="stringliteral">&quot;No<sp/>such<sp/>server<sp/>type<sp/>&quot;</highlight><highlight class="normal">+serverType);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit(-1);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>servers;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/mel/projects/Misc/Minecraft Server Service/src/setupServers.cpp"/>
+  </compounddef>
+</doxygen>

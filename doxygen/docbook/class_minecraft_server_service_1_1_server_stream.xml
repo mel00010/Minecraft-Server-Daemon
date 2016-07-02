@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="class_minecraft_server_service_1_1_server_stream">
+<title>MinecraftServerService::ServerStream class Reference</title>
+<para>
+    <programlisting>#include <link linkend="_server_stream_8h">&lt;ServerStream.h&gt;</link></programlisting>
+</para>
+<para>Inheritance diagram for MinecraftServerService::ServerStream</para>
+<para>
+    <figure>
+        <title>Inheritance graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="class_minecraft_server_service_1_1_server_stream__inherit__graph.svg"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+<para>Collaboration diagram for MinecraftServerService::ServerStream</para>
+<para>
+    <figure>
+        <title>Collaboration graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="class_minecraft_server_service_1_1_server_stream__coll__graph.svg"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+        <section>
+            <title>Protected Attributes</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>ServerProcessBuf * serverProcess</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>log4cpp::Category * log</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::string serverName</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="class_minecraft_server_service_1_1_server_stream_1a18567f4d5f6752325172e3fb5efb0f6c">ServerStream</link> (
+std::string _serverName, std::string _serverPath, std::string _serverJarName, std::string _serverAccount, int _maxHeapAlloc, int _minHeapAlloc, int _gcThreadCount, std::vector&lt; std::string &gt; _javaArgs, std::vector&lt; std::string &gt; _serverOptions)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>virtual <link linkend="class_minecraft_server_service_1_1_server_stream_1a8cb55e6e481c6d4338d446a7b92df3d3">~ServerStream</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="class_minecraft_server_service_1_1_server_process_buf">ServerProcessBuf</link> * <link linkend="class_minecraft_server_service_1_1_server_stream_1acfaf50ff9b711062de3bb8a650ba11dd">rdbuf</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_minecraft_server_service_1_1_server_stream_1af8529e03480497e12e171cf93709e757">stopServer</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_minecraft_server_service_1_1_server_stream_1a194212956c6eb928a2db1b25e70dc565">sendCommand</link> (
+std::string command)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Member Data Documentation</title>
+        </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_stream_1a18567f4d5f6752325172e3fb5efb0f6c">
+                <title>MinecraftServerService::ServerStream::ServerStream (std::string _serverName, std::string _serverPath, std::string _serverJarName, std::string _serverAccount, int _maxHeapAlloc, int _minHeapAlloc, int _gcThreadCount, std::vector&lt; std::string &gt; _javaArgs, std::vector&lt; std::string &gt; _serverOptions)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_stream_1a8cb55e6e481c6d4338d446a7b92df3d3">
+                <title>MinecraftServerService::ServerStream::~ServerStream ()</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_stream_1acfaf50ff9b711062de3bb8a650ba11dd">
+                <title>ServerProcessBuf * MinecraftServerService::ServerStream::rdbuf ()</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_stream_1af8529e03480497e12e171cf93709e757">
+                <title>void MinecraftServerService::ServerStream::stopServer ()</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_minecraft_server_service_1_1_server_stream_1a194212956c6eb928a2db1b25e70dc565">
+                <title>void MinecraftServerService::ServerStream::sendCommand (std::string command)</title> <emphasis></emphasis>
+                
+            </section>
+</section>

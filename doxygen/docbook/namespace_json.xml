@@ -1,0 +1,366 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="namespace_json">
+<title>Json</title>
+        <section>
+            <title> Classes </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="struct_json_1_1_built_styled_stream_writer">Json::BuiltStyledStreamWriter</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="struct_json_1_1_comment_style">Json::CommentStyle</link></para>
+<para><emphasis>Scoped enums are not available until C++11.</emphasis></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="class_json_1_1_our_char_reader">Json::OurCharReader</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="class_json_1_1_our_features">Json::OurFeatures</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="class_json_1_1_our_reader">Json::OurReader</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Enumerations</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para><literallayout>enum <link linkend="namespace_json_1a0c5f614b019f20b4598dcaec09d9e820">@0</link> {
+<link linkend="namespace_json_1a0c5f614b019f20b4598dcaec09d9e820ae4f2008c7919f20d81286121d1374424">uintToStringBufferSize</link>= 3 * sizeof(LargestUInt) + 1
+}</literallayout>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Typedefs</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef char  <link linkend="namespace_json_1a602bcf69c2042fb61c3b243cb16f04ca">UIntToStringBuffer</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef std::auto_ptr&lt; CharReader &gt;  <link linkend="namespace_json_1a4724efb8d41614b47036cb8b54233837">CharReaderPtr</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef std::auto_ptr&lt; StreamWriter &gt;  <link linkend="namespace_json_1a7132404aeebfc96d7c6ad2c66260afb5">StreamWriterPtr</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>const unsigned char &amp; <link linkend="namespace_json_1ab30055b4bbd82aecaca57ccecd63bbe6">kNullRef</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static const double <link linkend="namespace_json_1aecc0306aa526f25c5156f842182fb7fb">maxUInt64AsDouble</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static std::string <link linkend="namespace_json_1adf0456e397a18cd7218a7b51dfc13c73">codePointToUTF8</link> (
+unsigned int cp)<para><emphasis>Converts a unicode code-point to UTF-8.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static bool <link linkend="namespace_json_1a0381e631737f51331065a388f4f59197">isControlCharacter</link> (
+char ch)<para><emphasis>Returns true if ch is a control character (in range [1,31]).</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static void <link linkend="namespace_json_1ac1ffd21a9e55122014353c773ccc496e">uintToString</link> (
+LargestUInt value, char *&amp; current)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static void <link linkend="namespace_json_1aa208904144dc7b11ccc28f47c9afab9a">fixNumericLocale</link> (
+char * begin, char * end)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static bool <link linkend="namespace_json_1a4d6ab0f651348832e5cc49b577a854d2">containsNewLine</link> (
+Reader::Location begin, Reader::Location end)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static std::string <link linkend="namespace_json_1a2e6b8616041876128cbef54b8c75da62">normalizeEOL</link> (
+Reader::Location begin, Reader::Location end)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static void <link linkend="namespace_json_1a8fedd83f49c9a9109d503b2b1d4824aa">getValidReaderKeys</link> (
+std::set&lt; std::string &gt; * valid_keys)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="namespace_json_1a7b90be78407a3a1f241b2a3048ef3d19">parseFromStream</link> (
+CharReader::Factory const &amp; fact, std::istream &amp; sin, Value * root, std::string * errs)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::istream &amp; <link linkend="namespace_json_1a2434499c0c7f057890b32787c05fc4a3">operator&gt;&gt;</link> (
+std::istream &amp; sin, Value &amp; root)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static const unsigned char <link linkend="namespace_json_1ad0638ab262fec34f995ca3d8a22c9cc4">ALIGNAS</link> (
+8 )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static bool <link linkend="namespace_json_1aff0180507262a244de61b961178d7443">InRange</link> (
+double d, T min, U max)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static char * <link linkend="namespace_json_1a678ac3a60cd70ec0fb4c9abfd40eb0c4">duplicateStringValue</link> (
+const char * value, size_t length)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static char * <link linkend="namespace_json_1a9795a09a0141d1f12d307c4386aeaee6">duplicateAndPrefixStringValue</link> (
+const char * value, unsigned int length)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static void <link linkend="namespace_json_1aad8b4982c1acd164f541fba396ac9fb1">decodePrefixedString</link> (
+bool isPrefixed, char const * prefixed, unsigned * length, char const ** value)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static void <link linkend="namespace_json_1acf8dd162c01e37846e129556c50e4037">releaseStringValue</link> (
+char * value)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="namespace_json_1a97f039a107b3f6cf1c3edee50e978f76">throwRuntimeError</link> (
+std::string const &amp; msg)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="namespace_json_1a27613326e9e36bbfe04a905ac90caa91">throwLogicError</link> (
+std::string const &amp; msg)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static bool <link linkend="namespace_json_1a1a04cc9d31e64b5912dade003c9b99b5">IsIntegral</link> (
+double d)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static bool <link linkend="namespace_json_1aa11b210ff98a4f4dd4e2df19260f8c3a">containsControlCharacter</link> (
+const char * str)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static bool <link linkend="namespace_json_1ae8a357381f264cf28f46449e79ab1dea">containsControlCharacter0</link> (
+const char * str, unsigned len)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::string <link linkend="namespace_json_1abd9c650f70d9434f98f9025e2e2faf2d">valueToString</link> (
+LargestInt value)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::string <link linkend="namespace_json_1a3f46b0bc62b95a9426a2da0117bdf9f0">valueToString</link> (
+LargestUInt value)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::string <link linkend="namespace_json_1a5d3eba6789f9a9c1ab563ff8b4a5090f">valueToString</link> (
+Int value)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::string <link linkend="namespace_json_1a4d43b0ff222bd3975bcf1babca0b978f">valueToString</link> (
+UInt value)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::string <link linkend="namespace_json_1a1c49ced79060a67638d7fa78a63b1813">valueToString</link> (
+double value, bool useSpecialFloats, unsigned int precision)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::string <link linkend="namespace_json_1a99995d7dafa4f4970b349d7d3c8d1d99">valueToString</link> (
+double value)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::string <link linkend="namespace_json_1a979ed531f091985e22f0051cd2a8e341">valueToString</link> (
+bool value)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::string <link linkend="namespace_json_1aa0c8235a4a5c6599da5d3332743db8ac">valueToQuotedString</link> (
+const char * value)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static char const * <link linkend="namespace_json_1a7492156d0c7d2dd2f672acacfb240320">strnpbrk</link> (
+char const * s, char const * accept, size_t n)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static std::string <link linkend="namespace_json_1a20d52b5a457ee5d833645d119451c2cd">valueToQuotedStringN</link> (
+const char * value, unsigned length)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static void <link linkend="namespace_json_1a45c3c8847f03b09cd61035e615d1d820">getValidWriterKeys</link> (
+std::set&lt; std::string &gt; * valid_keys)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::string <link linkend="namespace_json_1a220ff8b67bdeac754a87ecd979ddc020">writeString</link> (
+StreamWriter::Factory const &amp; builder, Value const &amp; root)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::ostream &amp; <link linkend="namespace_json_1af64fba09a9679b8b8cb50dd3e85f6fd5">operator&lt;&lt;</link> (
+std::ostream &amp; sout, Value const &amp; root)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+</section>

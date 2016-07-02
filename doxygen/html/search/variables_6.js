@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['gcthreadcount',['gcThreadCount',['../class_minecraft_server_service_1_1_bukkit_server.html#a4ed7ed606547e75eee8b442e54bcf46d',1,'MinecraftServerService::BukkitServer::gcThreadCount()'],['../class_minecraft_server_service_1_1_bungee_cord_server.html#a993736356331c55b759b8af235c547de',1,'MinecraftServerService::BungeeCordServer::gcThreadCount()'],['../class_minecraft_server_service_1_1_generic_server.html#ad3e3e744983ef46efed8f5d2189e353f',1,'MinecraftServerService::GenericServer::gcThreadCount()'],['../class_minecraft_server_service_1_1_spigot_server.html#a057e5d3f9de3877edc7de6f3e5c40a6c',1,'MinecraftServerService::SpigotServer::gcThreadCount()'],['../class_minecraft_server_service_1_1_vanilla_server.html#ad1097ba0b31d2f9f48fdbaf095b0e473',1,'MinecraftServerService::VanillaServer::gcThreadCount()']]]
+];

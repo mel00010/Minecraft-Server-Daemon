@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="server_output_8cpp" kind="file" language="C++">
+    <compoundname>serverOutput.cpp</compoundname>
+    <includes refid="server_output_8h" local="yes">serverOutput.h</includes>
+    <incdepgraph>
+      <node id="148">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/serverOutput.cpp</label>
+        <link refid="serverOutput.cpp"/>
+        <childnode refid="149" relation="include">
+        </childnode>
+      </node>
+      <node id="153">
+        <label>vector</label>
+      </node>
+      <node id="149">
+        <label>serverOutput.h</label>
+        <link refid="server_output_8h"/>
+        <childnode refid="150" relation="include">
+        </childnode>
+        <childnode refid="152" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+      </node>
+      <node id="151">
+        <label>sstream</label>
+      </node>
+      <node id="152">
+        <label>mutex</label>
+      </node>
+      <node id="150">
+        <label>listener.h</label>
+        <link refid="listener_8h"/>
+        <childnode refid="151" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespace_minecraft_server_service">MinecraftServerService</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="server_output_8h" kindref="compound">serverOutput.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_minecraft_server_service" kindref="compound">MinecraftServerService</ref><sp/>{</highlight></codeline>
+<codeline lineno="3"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/mel/projects/Misc/Minecraft Server Service/src/serverOutput.cpp"/>
+  </compounddef>
+</doxygen>

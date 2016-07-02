@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="namespace_minecraft_server_service">
+<title>MinecraftServerService</title>
+        <section>
+            <title> Classes </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="class_minecraft_server_service_1_1_bukkit_server">MinecraftServerService::BukkitServer</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="class_minecraft_server_service_1_1_bungee_cord_server">MinecraftServerService::BungeeCordServer</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="class_minecraft_server_service_1_1_generic_server">MinecraftServerService::GenericServer</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="class_minecraft_server_service_1_1_server">MinecraftServerService::Server</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="class_minecraft_server_service_1_1_spigot_server">MinecraftServerService::SpigotServer</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="class_minecraft_server_service_1_1_vanilla_server">MinecraftServerService::VanillaServer</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+</section>

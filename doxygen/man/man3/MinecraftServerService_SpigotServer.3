@@ -1,0 +1,237 @@
+.TH "MinecraftServerService::SpigotServer" 3 "Fri Jul 1 2016" "Minecraft Server Daemon" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MinecraftServerService::SpigotServer \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <spigotServer\&.h>\fP
+.PP
+Inherits \fBMinecraftServerService::Server\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSpigotServer\fP (std::string \fBserverName\fP, std::string \fBserverPath\fP, std::string \fBserverJarName\fP, std::string \fBserverAccount\fP, int \fBmaxHeapAlloc\fP, int \fBminHeapAlloc\fP, int \fBgcThreadCount\fP, std::string \fBbackupPath\fP, std::vector< std::string > \fBworldsToBackup\fP, std::vector< std::string > \fBjavaArgs\fP, std::vector< std::string > \fBserverOptions\fP)"
+.br
+.ti -1c
+.RI "virtual \fB~SpigotServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBupdateServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBbackupServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBbackupServer\fP (std::string \fBbackupPath\fP)"
+.br
+.ti -1c
+.RI "void \fBserverStatus\fP ()"
+.br
+.ti -1c
+.RI "void \fBstartServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBstopServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBrestartServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBreloadServer\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBlistOnlinePlayers\fP ()"
+.br
+.ti -1c
+.RI "bool \fBlistOnlinePlayers\fP (std::string playerName)"
+.br
+.ti -1c
+.RI "void \fBsendCommand\fP (std::string command)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBserverName\fP"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBlogger\fP (size_t linesRequested, std::stringstream *output, log4cpp::Category *\fBlog\fP)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBserverPath\fP"
+.br
+.ti -1c
+.RI "std::string \fBserverJarName\fP"
+.br
+.ti -1c
+.RI "std::string \fBserverAccount\fP"
+.br
+.ti -1c
+.RI "int \fBmaxHeapAlloc\fP"
+.br
+.ti -1c
+.RI "int \fBminHeapAlloc\fP"
+.br
+.ti -1c
+.RI "int \fBgcThreadCount\fP"
+.br
+.ti -1c
+.RI "std::string \fBbackupPath\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBworldsToBackup\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBjavaArgs\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBserverOptions\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 33 of file spigotServer\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "MinecraftServerService::SpigotServer::SpigotServer (std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc, int gcThreadCount, std::string backupPath, std::vector< std::string > worldsToBackup, std::vector< std::string > javaArgs, std::vector< std::string > serverOptions)"
+
+.PP
+Definition at line 33 of file spigotServer\&.cpp\&.
+.SS "MinecraftServerService::SpigotServer::~SpigotServer ()\fC [virtual]\fP"
+
+.PP
+Definition at line 45 of file spigotServer\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void MinecraftServerService::SpigotServer::backupServer ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 53 of file spigotServer\&.cpp\&.
+.SS "void MinecraftServerService::SpigotServer::backupServer (std::string backupPath)\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 84 of file spigotServer\&.cpp\&.
+.SS "std::string MinecraftServerService::SpigotServer::listOnlinePlayers ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 178 of file spigotServer\&.cpp\&.
+.SS "bool MinecraftServerService::SpigotServer::listOnlinePlayers (std::string playerName)\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 202 of file spigotServer\&.cpp\&.
+.SS "void MinecraftServerService::SpigotServer::logger (size_t linesRequested, std::stringstream * output, log4cpp::Category * log)\fC [protected]\fP"
+
+.SS "void MinecraftServerService::SpigotServer::reloadServer ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 116 of file spigotServer\&.cpp\&.
+.SS "void MinecraftServerService::SpigotServer::restartServer ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 158 of file spigotServer\&.cpp\&.
+.SS "void MinecraftServerService::SpigotServer::sendCommand (std::string command)\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 168 of file spigotServer\&.cpp\&.
+.SS "void MinecraftServerService::SpigotServer::serverStatus ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 154 of file spigotServer\&.cpp\&.
+.SS "void MinecraftServerService::SpigotServer::startServer ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 120 of file spigotServer\&.cpp\&.
+.SS "void MinecraftServerService::SpigotServer::stopServer ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 132 of file spigotServer\&.cpp\&.
+.SS "void MinecraftServerService::SpigotServer::updateServer ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 49 of file spigotServer\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "std::string MinecraftServerService::SpigotServer::backupPath\fC [protected]\fP"
+
+.PP
+Definition at line 69 of file spigotServer\&.h\&.
+.SS "int MinecraftServerService::SpigotServer::gcThreadCount\fC [protected]\fP"
+
+.PP
+Definition at line 68 of file spigotServer\&.h\&.
+.SS "std::vector<std::string> MinecraftServerService::SpigotServer::javaArgs\fC [protected]\fP"
+
+.PP
+Definition at line 71 of file spigotServer\&.h\&.
+.SS "int MinecraftServerService::SpigotServer::maxHeapAlloc\fC [protected]\fP"
+
+.PP
+Definition at line 66 of file spigotServer\&.h\&.
+.SS "int MinecraftServerService::SpigotServer::minHeapAlloc\fC [protected]\fP"
+
+.PP
+Definition at line 67 of file spigotServer\&.h\&.
+.SS "std::string MinecraftServerService::SpigotServer::serverAccount\fC [protected]\fP"
+
+.PP
+Definition at line 65 of file spigotServer\&.h\&.
+.SS "std::string MinecraftServerService::SpigotServer::serverJarName\fC [protected]\fP"
+
+.PP
+Definition at line 64 of file spigotServer\&.h\&.
+.SS "std::string MinecraftServerService::SpigotServer::serverName"
+
+.PP
+Definition at line 59 of file spigotServer\&.h\&.
+.SS "std::vector<std::string> MinecraftServerService::SpigotServer::serverOptions\fC [protected]\fP"
+
+.PP
+Definition at line 72 of file spigotServer\&.h\&.
+.SS "std::string MinecraftServerService::SpigotServer::serverPath\fC [protected]\fP"
+
+.PP
+Definition at line 63 of file spigotServer\&.h\&.
+.SS "std::vector<std::string> MinecraftServerService::SpigotServer::worldsToBackup\fC [protected]\fP"
+
+.PP
+Definition at line 70 of file spigotServer\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Minecraft Server Daemon from the source code\&.

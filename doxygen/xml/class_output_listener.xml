@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="class_output_listener" kind="class" language="C++" prot="public">
+    <compoundname>OutputListener</compoundname>
+    <includes refid="output_listener_8h" local="no">outputListener.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_output_listener_1af6b1a417d85bbd263c9de3aa9f522874" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string OutputListener::listenerName</definition>
+        <argsstring></argsstring>
+        <name>listenerName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/outputListener.h" line="36" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/outputListener.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_output_listener_1abb8ce2026a4a754052ab9eef9948bc1e" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t OutputListener::linesRequested</definition>
+        <argsstring></argsstring>
+        <name>linesRequested</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/outputListener.h" line="37" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/outputListener.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_output_listener_1a83775110ce744596cb13189417d5485d" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t OutputListener::currentLine</definition>
+        <argsstring></argsstring>
+        <name>currentLine</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/outputListener.h" line="38" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/outputListener.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_output_listener_1a51c65d7914c84d10a26cbf49534b449a" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool OutputListener::persistent</definition>
+        <argsstring></argsstring>
+        <name>persistent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/outputListener.h" line="39" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/outputListener.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_output_listener_1adaba1b44274920c6763bf479db77b7db" prot="public" static="no" mutable="no">
+        <type>std::stringstream *</type>
+        <definition>std::stringstream* OutputListener::lines</definition>
+        <argsstring></argsstring>
+        <name>lines</name>
+        <initializer>= new std::stringstream</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/outputListener.h" line="40" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/outputListener.h" bodystart="40" bodyend="-1"/>
+        <referencedby refid="class_output_listener_1a17a01b02f6874e4181871df2d1f61f35" compoundref="output_listener_8h" startline="32" endline="35">~OutputListener</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_output_listener_1a1749d1674b76f5bd22100ee16cfc1d9c" prot="public" static="no" mutable="no">
+        <type>std::function&lt; void(size_t, std::stringstream *, log4cpp::Category *)&gt;</type>
+        <definition>std::function&lt;void(size_t, std::stringstream*, log4cpp::Category*)&gt; OutputListener::callback</definition>
+        <argsstring></argsstring>
+        <name>callback</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/outputListener.h" line="41" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/outputListener.h" bodystart="41" bodyend="-1"/>
+        <referencedby refid="class_output_listener_1afaee1906fcbf0c1d9505422c4d4884d2" compoundref="output_listener_8h" startline="31" endline="31">OutputListener</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_output_listener_1afaee1906fcbf0c1d9505422c4d4884d2" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>OutputListener::OutputListener</definition>
+        <argsstring>(size_t linesRequested, std::string listenerName, bool persistent, std::function&lt; void(size_t, std::stringstream *, log4cpp::Category *)&gt; callback)</argsstring>
+        <name>OutputListener</name>
+        <param>
+          <type>size_t</type>
+          <declname>linesRequested</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>listenerName</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>persistent</declname>
+        </param>
+        <param>
+          <type>std::function&lt; void(size_t, std::stringstream *, log4cpp::Category *)&gt;</type>
+          <declname>callback</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/outputListener.h" line="31" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/outputListener.h" bodystart="31" bodyend="31"/>
+        <references refid="class_output_listener_1a1749d1674b76f5bd22100ee16cfc1d9c" compoundref="output_listener_8h" startline="41">callback</references>
+      </memberdef>
+      <memberdef kind="function" id="class_output_listener_1a17a01b02f6874e4181871df2d1f61f35" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual OutputListener::~OutputListener</definition>
+        <argsstring>()</argsstring>
+        <name>~OutputListener</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/outputListener.h" line="32" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/outputListener.h" bodystart="32" bodyend="35"/>
+        <references refid="class_output_listener_1adaba1b44274920c6763bf479db77b7db" compoundref="output_listener_8h" startline="40">lines</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/mel/projects/Misc/Minecraft Server Service/src/outputListener.h" line="29" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/outputListener.h" bodystart="29" bodyend="42"/>
+    <listofallmembers>
+      <member refid="class_output_listener_1a1749d1674b76f5bd22100ee16cfc1d9c" prot="public" virt="non-virtual"><scope>OutputListener</scope><name>callback</name></member>
+      <member refid="class_output_listener_1a83775110ce744596cb13189417d5485d" prot="public" virt="non-virtual"><scope>OutputListener</scope><name>currentLine</name></member>
+      <member refid="class_output_listener_1adaba1b44274920c6763bf479db77b7db" prot="public" virt="non-virtual"><scope>OutputListener</scope><name>lines</name></member>
+      <member refid="class_output_listener_1abb8ce2026a4a754052ab9eef9948bc1e" prot="public" virt="non-virtual"><scope>OutputListener</scope><name>linesRequested</name></member>
+      <member refid="class_output_listener_1af6b1a417d85bbd263c9de3aa9f522874" prot="public" virt="non-virtual"><scope>OutputListener</scope><name>listenerName</name></member>
+      <member refid="class_output_listener_1afaee1906fcbf0c1d9505422c4d4884d2" prot="public" virt="non-virtual"><scope>OutputListener</scope><name>OutputListener</name></member>
+      <member refid="class_output_listener_1a51c65d7914c84d10a26cbf49534b449a" prot="public" virt="non-virtual"><scope>OutputListener</scope><name>persistent</name></member>
+      <member refid="class_output_listener_1a17a01b02f6874e4181871df2d1f61f35" prot="public" virt="virtual"><scope>OutputListener</scope><name>~OutputListener</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

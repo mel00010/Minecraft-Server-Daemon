@@ -1,0 +1,259 @@
+.TH "/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" 3 "Fri Jul 1 2016" "Minecraft Server Daemon" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'json/json\&.h'\fP
+.br
+\fC#include <utility>\fP
+.br
+\fC#include <cstdio>\fP
+.br
+\fC#include <cassert>\fP
+.br
+\fC#include <cstring>\fP
+.br
+\fC#include <memory>\fP
+.br
+\fC#include <set>\fP
+.br
+\fC#include <limits>\fP
+.br
+\fC#include <math\&.h>\fP
+.br
+\fC#include <cstddef>\fP
+.br
+\fC#include <algorithm>\fP
+.br
+\fC#include <iomanip>\fP
+.br
+\fC#include <cmath>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBJson::OurFeatures\fP"
+.br
+.ti -1c
+.RI "class \fBJson::OurReader\fP"
+.br
+.ti -1c
+.RI "struct \fBJson::OurReader::StructuredError\fP"
+.br
+.ti -1c
+.RI "class \fBJson::OurReader::Token\fP"
+.br
+.ti -1c
+.RI "class \fBJson::OurReader::ErrorInfo\fP"
+.br
+.ti -1c
+.RI "class \fBJson::OurCharReader\fP"
+.br
+.ti -1c
+.RI "struct \fBJson::CommentStyle\fP"
+.br
+.RI "\fIScoped enums are not available until C++11\&. \fP"
+.ti -1c
+.RI "struct \fBJson::BuiltStyledStreamWriter\fP"
+.br
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBJson\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBLIB_JSONCPP_JSON_TOOL_H_INCLUDED\fP"
+.br
+.ti -1c
+.RI "#define \fBJSON_ASSERT_UNREACHABLE\fP   assert(false)"
+.br
+.ti -1c
+.RI "#define \fBALIGNAS\fP(byte_alignment)"
+.br
+.ti -1c
+.RI "#define \fBisfinite\fP   std::isfinite"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef char \fBJson::UIntToStringBuffer\fP[uintToStringBufferSize]"
+.br
+.ti -1c
+.RI "typedef std::auto_ptr< CharReader > \fBJson::CharReaderPtr\fP"
+.br
+.ti -1c
+.RI "typedef std::auto_ptr< StreamWriter > \fBJson::StreamWriterPtr\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBJson::uintToStringBufferSize\fP = 3 * sizeof(LargestUInt) + 1 }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "static std::string \fBJson::codePointToUTF8\fP (unsigned int cp)"
+.br
+.RI "\fIConverts a unicode code-point to UTF-8\&. \fP"
+.ti -1c
+.RI "static bool \fBJson::isControlCharacter\fP (char ch)"
+.br
+.RI "\fIReturns true if ch is a control character (in range [1,31])\&. \fP"
+.ti -1c
+.RI "static void \fBJson::uintToString\fP (LargestUInt value, char *&current)"
+.br
+.ti -1c
+.RI "static void \fBJson::fixNumericLocale\fP (char *begin, char *end)"
+.br
+.ti -1c
+.RI "static bool \fBJson::containsNewLine\fP (Reader::Location begin, Reader::Location end)"
+.br
+.ti -1c
+.RI "static std::string \fBJson::normalizeEOL\fP (Reader::Location begin, Reader::Location end)"
+.br
+.ti -1c
+.RI "static void \fBJson::getValidReaderKeys\fP (std::set< std::string > *valid_keys)"
+.br
+.ti -1c
+.RI "bool \fBJson::parseFromStream\fP (CharReader::Factory const &fact, std::istream &sin, Value *root, std::string *errs)"
+.br
+.ti -1c
+.RI "std::istream & \fBJson::operator>>\fP (std::istream &sin, Value &root)"
+.br
+.ti -1c
+.RI "static const unsigned char \fBJson::ALIGNAS\fP (8) kNull[sizeof(Value)]"
+.br
+.ti -1c
+.RI "template<typename T , typename U > static bool \fBJson::InRange\fP (double d, T min, U max)"
+.br
+.ti -1c
+.RI "static char * \fBJson::duplicateStringValue\fP (const char *value, size_t length)"
+.br
+.ti -1c
+.RI "static char * \fBJson::duplicateAndPrefixStringValue\fP (const char *value, unsigned int length)"
+.br
+.ti -1c
+.RI "static void \fBJson::decodePrefixedString\fP (bool isPrefixed, char const *prefixed, unsigned *length, char const **value)"
+.br
+.ti -1c
+.RI "static void \fBJson::releaseStringValue\fP (char *value)"
+.br
+.ti -1c
+.RI "void \fBJson::throwRuntimeError\fP (std::string const &msg)"
+.br
+.ti -1c
+.RI "void \fBJson::throwLogicError\fP (std::string const &msg)"
+.br
+.ti -1c
+.RI "static bool \fBJson::IsIntegral\fP (double d)"
+.br
+.ti -1c
+.RI "static bool \fBJson::containsControlCharacter\fP (const char *str)"
+.br
+.ti -1c
+.RI "static bool \fBJson::containsControlCharacter0\fP (const char *str, unsigned \fBlen\fP)"
+.br
+.ti -1c
+.RI "std::string \fBJson::valueToString\fP (LargestInt value)"
+.br
+.ti -1c
+.RI "std::string \fBJson::valueToString\fP (LargestUInt value)"
+.br
+.ti -1c
+.RI "std::string \fBJson::valueToString\fP (Int value)"
+.br
+.ti -1c
+.RI "std::string \fBJson::valueToString\fP (UInt value)"
+.br
+.ti -1c
+.RI "std::string \fBJson::valueToString\fP (double value, bool useSpecialFloats, unsigned int precision)"
+.br
+.ti -1c
+.RI "std::string \fBJson::valueToString\fP (double value)"
+.br
+.ti -1c
+.RI "std::string \fBJson::valueToString\fP (bool value)"
+.br
+.ti -1c
+.RI "std::string \fBJson::valueToQuotedString\fP (const char *value)"
+.br
+.ti -1c
+.RI "static char const * \fBJson::strnpbrk\fP (char const *s, char const *accept, size_t n)"
+.br
+.ti -1c
+.RI "static std::string \fBJson::valueToQuotedStringN\fP (const char *value, unsigned length)"
+.br
+.ti -1c
+.RI "static void \fBJson::getValidWriterKeys\fP (std::set< std::string > *valid_keys)"
+.br
+.ti -1c
+.RI "std::string \fBJson::writeString\fP (StreamWriter::Factory const &builder, Value const &root)"
+.br
+.ti -1c
+.RI "std::ostream & \fBJson::operator<<\fP (std::ostream &sout, Value const &root)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "static int const \fBstackLimit_g\fP = 1000"
+.br
+.ti -1c
+.RI "static int \fBstackDepth_g\fP = 0"
+.br
+.ti -1c
+.RI "const unsigned char & \fBJson::kNullRef\fP = kNull[0]"
+.br
+.ti -1c
+.RI "static const double \fBJson::maxUInt64AsDouble\fP = 18446744073709551615\&.0"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ALIGNAS(byte_alignment)"
+
+.PP
+Definition at line 2451 of file jsoncpp\&.cpp\&.
+.SS "#define isfinite   std::isfinite"
+
+.PP
+Definition at line 4023 of file jsoncpp\&.cpp\&.
+.SS "#define JSON_ASSERT_UNREACHABLE   assert(false)"
+
+.PP
+Definition at line 2441 of file jsoncpp\&.cpp\&.
+.SS "#define LIB_JSONCPP_JSON_TOOL_H_INCLUDED"
+Json-cpp amalgated source (http://jsoncpp.sourceforge.net/)\&. It is intended to be used with #include 'json/json\&.h' 
+.PP
+Definition at line 93 of file jsoncpp\&.cpp\&.
+.SH "Variable Documentation"
+.PP 
+.SS "int stackDepth_g = 0\fC [static]\fP"
+
+.PP
+Definition at line 235 of file jsoncpp\&.cpp\&.
+.SS "int const stackLimit_g = 1000\fC [static]\fP"
+
+.PP
+Definition at line 234 of file jsoncpp\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Minecraft Server Daemon from the source code\&.

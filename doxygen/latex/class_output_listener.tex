@@ -1,0 +1,113 @@
+\hypertarget{class_output_listener}{}\section{Output\+Listener Class Reference}
+\label{class_output_listener}\index{Output\+Listener@{Output\+Listener}}
+
+
+{\ttfamily \#include $<$output\+Listener.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_output_listener_afaee1906fcbf0c1d9505422c4d4884d2}{Output\+Listener} (size\+\_\+t \hyperlink{class_output_listener_abb8ce2026a4a754052ab9eef9948bc1e}{lines\+Requested}, std\+::string \hyperlink{class_output_listener_af6b1a417d85bbd263c9de3aa9f522874}{listener\+Name}, bool \hyperlink{class_output_listener_a51c65d7914c84d10a26cbf49534b449a}{persistent}, std\+::function$<$ void(size\+\_\+t, std\+::stringstream $\ast$, log4cpp\+::\+Category $\ast$)$>$ \hyperlink{class_output_listener_a1749d1674b76f5bd22100ee16cfc1d9c}{callback})
+\item 
+virtual \hyperlink{class_output_listener_a17a01b02f6874e4181871df2d1f61f35}{$\sim$\+Output\+Listener} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{class_output_listener_af6b1a417d85bbd263c9de3aa9f522874}{listener\+Name}
+\item 
+size\+\_\+t \hyperlink{class_output_listener_abb8ce2026a4a754052ab9eef9948bc1e}{lines\+Requested}
+\item 
+size\+\_\+t \hyperlink{class_output_listener_a83775110ce744596cb13189417d5485d}{current\+Line} = 0
+\item 
+bool \hyperlink{class_output_listener_a51c65d7914c84d10a26cbf49534b449a}{persistent}
+\item 
+std\+::stringstream $\ast$ \hyperlink{class_output_listener_adaba1b44274920c6763bf479db77b7db}{lines} = new std\+::stringstream
+\item 
+std\+::function$<$ void(size\+\_\+t, std\+::stringstream $\ast$, log4cpp\+::\+Category $\ast$)$>$ \hyperlink{class_output_listener_a1749d1674b76f5bd22100ee16cfc1d9c}{callback}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 29 of file output\+Listener.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Output\+Listener@{Output\+Listener}!Output\+Listener@{Output\+Listener}}
+\index{Output\+Listener@{Output\+Listener}!Output\+Listener@{Output\+Listener}}
+\subsubsection[{\texorpdfstring{Output\+Listener(size\+\_\+t lines\+Requested, std\+::string listener\+Name, bool persistent, std\+::function$<$ void(size\+\_\+t, std\+::stringstream $\ast$, log4cpp\+::\+Category $\ast$)$>$ callback)}{OutputListener(size_t linesRequested, std::string listenerName, bool persistent, std::function< void(size_t, std::stringstream *, log4cpp::Category *)> callback)}}]{\setlength{\rightskip}{0pt plus 5cm}Output\+Listener\+::\+Output\+Listener (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+t}]{lines\+Requested, }
+\item[{std\+::string}]{listener\+Name, }
+\item[{bool}]{persistent, }
+\item[{std\+::function$<$ void(size\+\_\+t, std\+::stringstream $\ast$, log4cpp\+::\+Category $\ast$)$>$}]{callback}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}\hypertarget{class_output_listener_afaee1906fcbf0c1d9505422c4d4884d2}{}\label{class_output_listener_afaee1906fcbf0c1d9505422c4d4884d2}
+
+
+Definition at line 31 of file output\+Listener.\+h.
+
+\index{Output\+Listener@{Output\+Listener}!````~Output\+Listener@{$\sim$\+Output\+Listener}}
+\index{````~Output\+Listener@{$\sim$\+Output\+Listener}!Output\+Listener@{Output\+Listener}}
+\subsubsection[{\texorpdfstring{$\sim$\+Output\+Listener()}{~OutputListener()}}]{\setlength{\rightskip}{0pt plus 5cm}virtual Output\+Listener\+::$\sim$\+Output\+Listener (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_output_listener_a17a01b02f6874e4181871df2d1f61f35}{}\label{class_output_listener_a17a01b02f6874e4181871df2d1f61f35}
+
+
+Definition at line 32 of file output\+Listener.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\index{Output\+Listener@{Output\+Listener}!callback@{callback}}
+\index{callback@{callback}!Output\+Listener@{Output\+Listener}}
+\subsubsection[{\texorpdfstring{callback}{callback}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::function$<$void(size\+\_\+t, std\+::stringstream$\ast$, log4cpp\+::\+Category$\ast$)$>$ Output\+Listener\+::callback}\hypertarget{class_output_listener_a1749d1674b76f5bd22100ee16cfc1d9c}{}\label{class_output_listener_a1749d1674b76f5bd22100ee16cfc1d9c}
+
+
+Definition at line 41 of file output\+Listener.\+h.
+
+\index{Output\+Listener@{Output\+Listener}!current\+Line@{current\+Line}}
+\index{current\+Line@{current\+Line}!Output\+Listener@{Output\+Listener}}
+\subsubsection[{\texorpdfstring{current\+Line}{currentLine}}]{\setlength{\rightskip}{0pt plus 5cm}size\+\_\+t Output\+Listener\+::current\+Line = 0}\hypertarget{class_output_listener_a83775110ce744596cb13189417d5485d}{}\label{class_output_listener_a83775110ce744596cb13189417d5485d}
+
+
+Definition at line 38 of file output\+Listener.\+h.
+
+\index{Output\+Listener@{Output\+Listener}!lines@{lines}}
+\index{lines@{lines}!Output\+Listener@{Output\+Listener}}
+\subsubsection[{\texorpdfstring{lines}{lines}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::stringstream$\ast$ Output\+Listener\+::lines = new std\+::stringstream}\hypertarget{class_output_listener_adaba1b44274920c6763bf479db77b7db}{}\label{class_output_listener_adaba1b44274920c6763bf479db77b7db}
+
+
+Definition at line 40 of file output\+Listener.\+h.
+
+\index{Output\+Listener@{Output\+Listener}!lines\+Requested@{lines\+Requested}}
+\index{lines\+Requested@{lines\+Requested}!Output\+Listener@{Output\+Listener}}
+\subsubsection[{\texorpdfstring{lines\+Requested}{linesRequested}}]{\setlength{\rightskip}{0pt plus 5cm}size\+\_\+t Output\+Listener\+::lines\+Requested}\hypertarget{class_output_listener_abb8ce2026a4a754052ab9eef9948bc1e}{}\label{class_output_listener_abb8ce2026a4a754052ab9eef9948bc1e}
+
+
+Definition at line 37 of file output\+Listener.\+h.
+
+\index{Output\+Listener@{Output\+Listener}!listener\+Name@{listener\+Name}}
+\index{listener\+Name@{listener\+Name}!Output\+Listener@{Output\+Listener}}
+\subsubsection[{\texorpdfstring{listener\+Name}{listenerName}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Output\+Listener\+::listener\+Name}\hypertarget{class_output_listener_af6b1a417d85bbd263c9de3aa9f522874}{}\label{class_output_listener_af6b1a417d85bbd263c9de3aa9f522874}
+
+
+Definition at line 35 of file output\+Listener.\+h.
+
+\index{Output\+Listener@{Output\+Listener}!persistent@{persistent}}
+\index{persistent@{persistent}!Output\+Listener@{Output\+Listener}}
+\subsubsection[{\texorpdfstring{persistent}{persistent}}]{\setlength{\rightskip}{0pt plus 5cm}bool Output\+Listener\+::persistent}\hypertarget{class_output_listener_a51c65d7914c84d10a26cbf49534b449a}{}\label{class_output_listener_a51c65d7914c84d10a26cbf49534b449a}
+
+
+Definition at line 39 of file output\+Listener.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/mel/projects/\+Misc/\+Minecraft Server Service/src/\hyperlink{output_listener_8h}{output\+Listener.\+h}\end{DoxyCompactItemize}

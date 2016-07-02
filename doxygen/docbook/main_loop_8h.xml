@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="main_loop_8h">
+    <title>mainLoop.h File Reference</title>
+    <programlisting>#include &quot;log4cpp/Category.hh&quot;</programlisting>
+    <programlisting>#include &lt;event2/event.h&gt;</programlisting>
+<para>Include dependency diagram for mainLoop.h</para>
+<para>
+    <figure>
+        <title>Dependency diagram</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="main_loop_8h__incl.svg"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+<para>Included by dependency diagram for mainLoop.h</para>
+<para>
+    <figure>
+        <title>Dependency diagram</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="main_loop_8h__dep__incl.svg"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="main_loop_8h_1a258e3b580e688a0cf46e4258525aeaf1">sigint_handler</link> (
+int sig)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="main_loop_8h_1a3550c14c4b6d5f25ba3d1d0a61053935">mainLoop</link> (
+std::vector&lt; <link linkend="class_minecraft_server_service_1_1_server">MinecraftServerService::Server</link> * &gt; * servers, log4cpp::Category &amp; root, evutil_socket_t controlSocket, struct event_base * base)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="main_loop_8h_1ae78f03fb04ce6bc07ec81b0f6648e0b4">writeToSocket</link> (
+std::string message, int controlSocket, log4cpp::Category &amp; root)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::string <link linkend="main_loop_8h_1ad0da4a96a5d394bf523fe3c744156d15">readFromSocket</link> (
+int controlSocket, log4cpp::Category &amp; root)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="main_loop_8h_1a49d60dd7e88e6b6c879c9465bebaed5e">recieveCommand</link> (
+int controlSocket, short what, void * arg)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/mel/projects/Misc/Minecraft Server Service/src/mainLoop.h</para>
+    </simplesect>
+</section>

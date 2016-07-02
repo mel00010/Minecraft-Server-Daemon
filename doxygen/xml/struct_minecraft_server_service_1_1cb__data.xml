@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="struct_minecraft_server_service_1_1cb__data" kind="struct" language="C++" prot="public">
+    <compoundname>MinecraftServerService::cb_data</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_minecraft_server_service_1_1cb__data_1a87619170d590538cb5be1c9c9b40fc4c" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_minecraft_server_service_1_1_server" kindref="compound">Server</ref> * &gt; *</type>
+        <definition>std::vector&lt;Server*&gt;* MinecraftServerService::cb_data::servers</definition>
+        <argsstring></argsstring>
+        <name>servers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/mainLoop.cpp" line="15" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/mainLoop.cpp" bodystart="15" bodyend="-1"/>
+        <referencedby refid="namespace_minecraft_server_service_1abb6ce84acaf8bf48db098c714eb54447" compoundref="main_loop_8cpp" startline="18" endline="32">MinecraftServerService::mainLoop</referencedby>
+        <referencedby refid="namespace_minecraft_server_service_1a9e930ea5104432030a2a4af3f337ca2a" compoundref="main_loop_8cpp" startline="51" endline="319">MinecraftServerService::recieveCommand</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="struct_minecraft_server_service_1_1cb__data_1a4aecabcb3cf59c471f8e19f66797cb5d" prot="public" static="no" mutable="no">
+        <type>log4cpp::Category &amp;</type>
+        <definition>log4cpp::Category&amp; MinecraftServerService::cb_data::root</definition>
+        <argsstring></argsstring>
+        <name>root</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/mainLoop.cpp" line="16" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/mainLoop.cpp" bodystart="16" bodyend="-1"/>
+        <referencedby refid="namespace_minecraft_server_service_1a9e930ea5104432030a2a4af3f337ca2a" compoundref="main_loop_8cpp" startline="51" endline="319">MinecraftServerService::recieveCommand</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/mel/projects/Misc/Minecraft Server Service/src/mainLoop.cpp" line="14" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/mainLoop.cpp" bodystart="13" bodyend="17"/>
+    <listofallmembers>
+      <member refid="struct_minecraft_server_service_1_1cb__data_1a4aecabcb3cf59c471f8e19f66797cb5d" prot="public" virt="non-virtual"><scope>MinecraftServerService::cb_data</scope><name>root</name></member>
+      <member refid="struct_minecraft_server_service_1_1cb__data_1a87619170d590538cb5be1c9c9b40fc4c" prot="public" virt="non-virtual"><scope>MinecraftServerService::cb_data</scope><name>servers</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

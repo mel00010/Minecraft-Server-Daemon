@@ -1,0 +1,237 @@
+.TH "MinecraftServerService::GenericServer" 3 "Fri Jul 1 2016" "Minecraft Server Daemon" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MinecraftServerService::GenericServer \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <genericServer\&.h>\fP
+.PP
+Inherits \fBMinecraftServerService::Server\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGenericServer\fP (std::string \fBserverName\fP, std::string \fBserverPath\fP, std::string \fBserverJarName\fP, std::string \fBserverAccount\fP, int \fBmaxHeapAlloc\fP, int \fBminHeapAlloc\fP, int \fBgcThreadCount\fP, std::string \fBbackupPath\fP, std::vector< std::string > \fBworldsToBackup\fP, std::vector< std::string > \fBjavaArgs\fP, std::vector< std::string > \fBserverOptions\fP)"
+.br
+.ti -1c
+.RI "virtual \fB~GenericServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBupdateServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBbackupServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBbackupServer\fP (std::string \fBbackupPath\fP)"
+.br
+.ti -1c
+.RI "void \fBserverStatus\fP ()"
+.br
+.ti -1c
+.RI "void \fBstartServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBstopServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBrestartServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBreloadServer\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBlistOnlinePlayers\fP ()"
+.br
+.ti -1c
+.RI "bool \fBlistOnlinePlayers\fP (std::string playerName)"
+.br
+.ti -1c
+.RI "void \fBsendCommand\fP (std::string command)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBserverName\fP"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBlogger\fP (size_t linesRequested, std::stringstream *output, log4cpp::Category *\fBlog\fP)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBserverPath\fP"
+.br
+.ti -1c
+.RI "std::string \fBserverJarName\fP"
+.br
+.ti -1c
+.RI "std::string \fBserverAccount\fP"
+.br
+.ti -1c
+.RI "int \fBmaxHeapAlloc\fP"
+.br
+.ti -1c
+.RI "int \fBminHeapAlloc\fP"
+.br
+.ti -1c
+.RI "int \fBgcThreadCount\fP"
+.br
+.ti -1c
+.RI "std::string \fBbackupPath\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBworldsToBackup\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBjavaArgs\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBserverOptions\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 33 of file genericServer\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "MinecraftServerService::GenericServer::GenericServer (std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc, int gcThreadCount, std::string backupPath, std::vector< std::string > worldsToBackup, std::vector< std::string > javaArgs, std::vector< std::string > serverOptions)"
+
+.PP
+Definition at line 33 of file genericServer\&.cpp\&.
+.SS "MinecraftServerService::GenericServer::~GenericServer ()\fC [virtual]\fP"
+
+.PP
+Definition at line 45 of file genericServer\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void MinecraftServerService::GenericServer::backupServer ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 53 of file genericServer\&.cpp\&.
+.SS "void MinecraftServerService::GenericServer::backupServer (std::string backupPath)\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 84 of file genericServer\&.cpp\&.
+.SS "std::string MinecraftServerService::GenericServer::listOnlinePlayers ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 54 of file genericServer\&.h\&.
+.SS "bool MinecraftServerService::GenericServer::listOnlinePlayers (std::string playerName)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 55 of file genericServer\&.h\&.
+.SS "void MinecraftServerService::GenericServer::logger (size_t linesRequested, std::stringstream * output, log4cpp::Category * log)\fC [protected]\fP"
+
+.SS "void MinecraftServerService::GenericServer::reloadServer ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 53 of file genericServer\&.h\&.
+.SS "void MinecraftServerService::GenericServer::restartServer ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 154 of file genericServer\&.cpp\&.
+.SS "void MinecraftServerService::GenericServer::sendCommand (std::string command)\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 164 of file genericServer\&.cpp\&.
+.SS "void MinecraftServerService::GenericServer::serverStatus ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 150 of file genericServer\&.cpp\&.
+.SS "void MinecraftServerService::GenericServer::startServer ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 116 of file genericServer\&.cpp\&.
+.SS "void MinecraftServerService::GenericServer::stopServer ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 128 of file genericServer\&.cpp\&.
+.SS "void MinecraftServerService::GenericServer::updateServer ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 49 of file genericServer\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "std::string MinecraftServerService::GenericServer::backupPath\fC [protected]\fP"
+
+.PP
+Definition at line 69 of file genericServer\&.h\&.
+.SS "int MinecraftServerService::GenericServer::gcThreadCount\fC [protected]\fP"
+
+.PP
+Definition at line 68 of file genericServer\&.h\&.
+.SS "std::vector<std::string> MinecraftServerService::GenericServer::javaArgs\fC [protected]\fP"
+
+.PP
+Definition at line 71 of file genericServer\&.h\&.
+.SS "int MinecraftServerService::GenericServer::maxHeapAlloc\fC [protected]\fP"
+
+.PP
+Definition at line 66 of file genericServer\&.h\&.
+.SS "int MinecraftServerService::GenericServer::minHeapAlloc\fC [protected]\fP"
+
+.PP
+Definition at line 67 of file genericServer\&.h\&.
+.SS "std::string MinecraftServerService::GenericServer::serverAccount\fC [protected]\fP"
+
+.PP
+Definition at line 65 of file genericServer\&.h\&.
+.SS "std::string MinecraftServerService::GenericServer::serverJarName\fC [protected]\fP"
+
+.PP
+Definition at line 64 of file genericServer\&.h\&.
+.SS "std::string MinecraftServerService::GenericServer::serverName"
+
+.PP
+Definition at line 59 of file genericServer\&.h\&.
+.SS "std::vector<std::string> MinecraftServerService::GenericServer::serverOptions\fC [protected]\fP"
+
+.PP
+Definition at line 72 of file genericServer\&.h\&.
+.SS "std::string MinecraftServerService::GenericServer::serverPath\fC [protected]\fP"
+
+.PP
+Definition at line 63 of file genericServer\&.h\&.
+.SS "std::vector<std::string> MinecraftServerService::GenericServer::worldsToBackup\fC [protected]\fP"
+
+.PP
+Definition at line 70 of file genericServer\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Minecraft Server Daemon from the source code\&.

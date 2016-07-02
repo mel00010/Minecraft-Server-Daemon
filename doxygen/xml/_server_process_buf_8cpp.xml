@@ -1,0 +1,307 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="_server_process_buf_8cpp" kind="file" language="C++">
+    <compoundname>ServerProcessBuf.cpp</compoundname>
+    <includes refid="_server_process_buf_8h" local="yes">ServerProcessBuf.h</includes>
+    <includes local="yes">log4cpp/Category.hh</includes>
+    <includes local="yes">log4cpp/Appender.hh</includes>
+    <includes local="yes">log4cpp/FileAppender.hh</includes>
+    <includes local="yes">log4cpp/Layout.hh</includes>
+    <includes local="yes">log4cpp/PatternLayout.hh</includes>
+    <includes local="yes">log4cpp/Priority.hh</includes>
+    <includes local="no">cctype</includes>
+    <includes local="no">algorithm</includes>
+    <includes local="no">iterator</includes>
+    <includes local="no">streambuf</includes>
+    <includes local="no">cstddef</includes>
+    <includes local="no">unistd.h</includes>
+    <includes local="no">ostream</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">cassert</includes>
+    <includes local="no">cstring</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">sys/types.h</includes>
+    <includes local="no">sys/wait.h</includes>
+    <includes local="no">sys/ioctl.h</includes>
+    <includes local="no">pwd.h</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">errno.h</includes>
+    <incdepgraph>
+      <node id="472">
+        <label>functional</label>
+      </node>
+      <node id="461">
+        <label>log4cpp/Appender.hh</label>
+      </node>
+      <node id="468">
+        <label>iterator</label>
+      </node>
+      <node id="455">
+        <label>ServerProcessBuf.h</label>
+        <link refid="_server_process_buf_8h"/>
+        <childnode refid="456" relation="include">
+        </childnode>
+        <childnode refid="457" relation="include">
+        </childnode>
+        <childnode refid="458" relation="include">
+        </childnode>
+        <childnode refid="459" relation="include">
+        </childnode>
+        <childnode refid="460" relation="include">
+        </childnode>
+      </node>
+      <node id="460">
+        <label>log4cpp/Category.hh</label>
+      </node>
+      <node id="476">
+        <label>stdlib.h</label>
+      </node>
+      <node id="481">
+        <label>errno.h</label>
+      </node>
+      <node id="473">
+        <label>cassert</label>
+      </node>
+      <node id="479">
+        <label>sys/ioctl.h</label>
+      </node>
+      <node id="454">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.cpp</label>
+        <link refid="ServerProcessBuf.cpp"/>
+        <childnode refid="455" relation="include">
+        </childnode>
+        <childnode refid="460" relation="include">
+        </childnode>
+        <childnode refid="461" relation="include">
+        </childnode>
+        <childnode refid="462" relation="include">
+        </childnode>
+        <childnode refid="463" relation="include">
+        </childnode>
+        <childnode refid="464" relation="include">
+        </childnode>
+        <childnode refid="465" relation="include">
+        </childnode>
+        <childnode refid="466" relation="include">
+        </childnode>
+        <childnode refid="467" relation="include">
+        </childnode>
+        <childnode refid="468" relation="include">
+        </childnode>
+        <childnode refid="456" relation="include">
+        </childnode>
+        <childnode refid="469" relation="include">
+        </childnode>
+        <childnode refid="470" relation="include">
+        </childnode>
+        <childnode refid="471" relation="include">
+        </childnode>
+        <childnode refid="472" relation="include">
+        </childnode>
+        <childnode refid="473" relation="include">
+        </childnode>
+        <childnode refid="474" relation="include">
+        </childnode>
+        <childnode refid="475" relation="include">
+        </childnode>
+        <childnode refid="476" relation="include">
+        </childnode>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="478" relation="include">
+        </childnode>
+        <childnode refid="479" relation="include">
+        </childnode>
+        <childnode refid="480" relation="include">
+        </childnode>
+        <childnode refid="459" relation="include">
+        </childnode>
+        <childnode refid="481" relation="include">
+        </childnode>
+      </node>
+      <node id="471">
+        <label>ostream</label>
+      </node>
+      <node id="465">
+        <label>log4cpp/Priority.hh</label>
+      </node>
+      <node id="463">
+        <label>log4cpp/Layout.hh</label>
+      </node>
+      <node id="477">
+        <label>sys/types.h</label>
+      </node>
+      <node id="462">
+        <label>log4cpp/FileAppender.hh</label>
+      </node>
+      <node id="470">
+        <label>unistd.h</label>
+      </node>
+      <node id="459">
+        <label>vector</label>
+      </node>
+      <node id="456">
+        <label>streambuf</label>
+      </node>
+      <node id="464">
+        <label>log4cpp/PatternLayout.hh</label>
+      </node>
+      <node id="478">
+        <label>sys/wait.h</label>
+      </node>
+      <node id="457">
+        <label>iosfwd</label>
+      </node>
+      <node id="458">
+        <label>cstdlib</label>
+      </node>
+      <node id="466">
+        <label>cctype</label>
+      </node>
+      <node id="475">
+        <label>iostream</label>
+      </node>
+      <node id="469">
+        <label>cstddef</label>
+      </node>
+      <node id="480">
+        <label>pwd.h</label>
+      </node>
+      <node id="467">
+        <label>algorithm</label>
+      </node>
+      <node id="474">
+        <label>cstring</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespace_minecraft_server_service">MinecraftServerService</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>ServerProcessBuf.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2016<sp/>Mel<sp/>McCalla<sp/>&lt;melmccalla@gmail.com&gt;</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>This<sp/>program<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>it<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>(at<sp/>your<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>This<sp/>program<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>but<sp/>WITHOUT<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>MERCHANTABILITY<sp/>or<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>along<sp/>with<sp/>this<sp/>program;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>Foundation,<sp/>Inc.,<sp/>51<sp/>Franklin<sp/>Street,<sp/>Fifth<sp/>Floor,<sp/>Boston,</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>MA<sp/>02110-1301,<sp/>USA.</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_server_process_buf_8h" kindref="compound">ServerProcessBuf.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;log4cpp/Category.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;log4cpp/Appender.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;log4cpp/FileAppender.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;log4cpp/Layout.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;log4cpp/PatternLayout.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;log4cpp/Priority.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cctype&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iterator&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;streambuf&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstddef&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unistd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cassert&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unistd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/types.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/wait.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/ioctl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;pwd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;errno.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_minecraft_server_service" kindref="compound">MinecraftServerService</ref><sp/>{</highlight></codeline>
+<codeline lineno="52" refid="class_minecraft_server_service_1_1_server_process_buf_1a85dc6fa4e2d6a14cfed883b1fc7fec00" refkind="member"><highlight class="normal"><ref refid="class_minecraft_server_service_1_1_server_process_buf_1a85dc6fa4e2d6a14cfed883b1fc7fec00" kindref="member">ServerProcessBuf::ServerProcessBuf</ref>(std::string<sp/>serverName,<sp/>std::string<sp/>serverPath,<sp/>std::string<sp/>serverJarName,<sp/>std::string<sp/>serverAccount,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>maxHeapAlloc,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>minHeapAlloc,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>gcThreadCount,</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>javaArgs,<sp/>std::vector&lt;std::string&gt;<sp/>serverOptions)</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>log4cpp::Appender<sp/>*appender<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>log4cpp::FileAppender(serverName,<sp/></highlight><highlight class="stringliteral">&quot;/var/log/minecraft/servers/&quot;</highlight><highlight class="normal">+serverName+</highlight><highlight class="stringliteral">&quot;.log&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>log4cpp::PatternLayout*<sp/>pattern<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>log4cpp::PatternLayout();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>pattern-&gt;setConversionPattern(</highlight><highlight class="stringliteral">&quot;%d<sp/>%c<sp/>[%p]<sp/>%m%n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>appender-&gt;setLayout(pattern);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_process_buf_1a56d2de15cde0e925e8bed6880a5025d5" kindref="member">log</ref><sp/>=<sp/>&amp;log4cpp::Category::getInstance(serverName);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_process_buf_1a56d2de15cde0e925e8bed6880a5025d5" kindref="member">log</ref>-&gt;addAppender(appender);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;setg(this-&gt;<ref refid="class_minecraft_server_service_1_1_server_process_buf_1a7be8394c7d17d452ee61d87e8c807256" kindref="member">inbuf_</ref>,<sp/>this-&gt;<ref refid="class_minecraft_server_service_1_1_server_process_buf_1a7be8394c7d17d452ee61d87e8c807256" kindref="member">inbuf_</ref>,<sp/>this-&gt;<ref refid="class_minecraft_server_service_1_1_server_process_buf_1a7be8394c7d17d452ee61d87e8c807256" kindref="member">inbuf_</ref>);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;setp(this-&gt;<ref refid="class_minecraft_server_service_1_1_server_process_buf_1a820751b906ffa5a37c0482f6fcd5f48d" kindref="member">outbuf_</ref>,<sp/>this-&gt;<ref refid="class_minecraft_server_service_1_1_server_process_buf_1a820751b906ffa5a37c0482f6fcd5f48d" kindref="member">outbuf_</ref><sp/>+<sp/><ref refid="class_minecraft_server_service_1_1_server_process_buf_1a087f8bf390860bf7d926a92c809e7c50a11482eda7e1eb693c1ed0f5548a8a2b0" kindref="member">bufsize</ref><sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_process_buf_1a53c4f3c1837c2d1f5ce2a3388f8eaecf" kindref="member">startServer</ref>(serverPath,<sp/>serverJarName,<sp/>serverAccount,<sp/>maxHeapAlloc,<sp/>minHeapAlloc,<sp/>gcThreadCount,<sp/>javaArgs,<sp/>serverOptions);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="class_minecraft_server_service_1_1_server_process_buf_1ae448f15f461884715dbbbd70ce917b5e" refkind="member"><highlight class="normal">ServerProcessBuf::int_type<sp/><ref refid="class_minecraft_server_service_1_1_server_process_buf_1ae448f15f461884715dbbbd70ce917b5e" kindref="member">ServerProcessBuf::overflow</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>c)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!traits_type::eq_int_type(c,<sp/>traits_type::eof()))<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*this-&gt;pptr()<sp/>=<sp/>traits_type::to_char_type(c);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;pbump(1);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="class_minecraft_server_service_1_1_server_process_buf_1a9b9ade40c919e07111d3ca76579bbaed" kindref="member">sync</ref>()<sp/>==<sp/>-1</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>?<sp/>traits_type::eof()</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>traits_type::not_eof(c);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="77" refid="class_minecraft_server_service_1_1_server_process_buf_1a468e3dbe9766a721b9fa88fed5b5a05c" refkind="member"><highlight class="normal"><ref refid="class_minecraft_server_service_1_1_server_process_buf_1a468e3dbe9766a721b9fa88fed5b5a05c" kindref="member">ServerProcessBuf::~ServerProcessBuf</ref>(){</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_process_buf_1af423d2111395bb308c6ac079e299ea40" kindref="member">stopServer</ref>();</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>close(<ref refid="class_minecraft_server_service_1_1_server_process_buf_1a41c2c016c722f040450e4825c70c5302" kindref="member">childProcessStdin</ref>[<ref refid="class_minecraft_server_service_1_1_server_process_buf_1a0eed8de4b7fde1d89e832c958570ee5aa167b881efc832298de7aa37a1d77c001" kindref="member">PIPE_WRITE</ref>]);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>close(<ref refid="class_minecraft_server_service_1_1_server_process_buf_1a921657ec0367eaf98d4eb997b279731d" kindref="member">childProcessStdout</ref>[<ref refid="class_minecraft_server_service_1_1_server_process_buf_1a0eed8de4b7fde1d89e832c958570ee5aa92978ad715088b2f9b66604eb9d020e6" kindref="member">PIPE_READ</ref>]);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment">//~<sp/>int<sp/>ServerProcessBuf::sync()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//~<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//~<sp/>std::ptrdiff_t<sp/>n<sp/>=<sp/>pptr()<sp/>-<sp/>pbase();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//~<sp/>pbump(-n);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//~<sp/>return<sp/>sink_.write(pbase(),<sp/>n)<sp/>?<sp/>0<sp/>:<sp/>-1;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="comment">//~<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="class_minecraft_server_service_1_1_server_process_buf_1a25f72094cc3cbe3f70a639bce627988a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_server_process_buf_1a25f72094cc3cbe3f70a639bce627988a" kindref="member">ServerProcessBuf::underflow</ref>()</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;gptr()<sp/>==<sp/>this-&gt;egptr())<sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::streamsize<sp/>pback(std::min(this-&gt;gptr()<sp/>-<sp/>this-&gt;eback(),</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::ptrdiff_t(16<sp/>-<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">))));</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::copy(this-&gt;egptr()<sp/>-<sp/>pback,<sp/>this-&gt;egptr(),<sp/>this-&gt;eback());</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>done(::read(this-&gt;<ref refid="class_minecraft_server_service_1_1_server_process_buf_1a921657ec0367eaf98d4eb997b279731d" kindref="member">childProcessStdout</ref>[<ref refid="class_minecraft_server_service_1_1_server_process_buf_1a0eed8de4b7fde1d89e832c958570ee5aa92978ad715088b2f9b66604eb9d020e6" kindref="member">PIPE_READ</ref>],<sp/>this-&gt;eback()<sp/>+<sp/>pback,<sp/><ref refid="class_minecraft_server_service_1_1_server_process_buf_1a087f8bf390860bf7d926a92c809e7c50a11482eda7e1eb693c1ed0f5548a8a2b0" kindref="member">bufsize</ref>));</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;setg(this-&gt;eback(),</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;eback()<sp/>+<sp/>pback,</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;eback()<sp/>+<sp/>pback<sp/>+<sp/>std::max(0,<sp/>done));</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;gptr()<sp/>==<sp/>this-&gt;egptr()</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>?<sp/>traits_type::eof()</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>traits_type::to_int_type(*this-&gt;gptr());</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="103" refid="class_minecraft_server_service_1_1_server_process_buf_1a9b9ade40c919e07111d3ca76579bbaed" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_server_process_buf_1a9b9ade40c919e07111d3ca76579bbaed" kindref="member">ServerProcessBuf::sync</ref>(){</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;pbase()<sp/>!=<sp/>this-&gt;pptr())<sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::streamsize<sp/>size(this-&gt;pptr()<sp/>-<sp/>this-&gt;pbase());</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::streamsize<sp/>done(::write(this-&gt;<ref refid="class_minecraft_server_service_1_1_server_process_buf_1a41c2c016c722f040450e4825c70c5302" kindref="member">childProcessStdin</ref>[<ref refid="class_minecraft_server_service_1_1_server_process_buf_1a0eed8de4b7fde1d89e832c958570ee5aa167b881efc832298de7aa37a1d77c001" kindref="member">PIPE_WRITE</ref>],<sp/>this-&gt;<ref refid="class_minecraft_server_service_1_1_server_process_buf_1a820751b906ffa5a37c0482f6fcd5f48d" kindref="member">outbuf_</ref>,<sp/>size));</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>code<sp/>below<sp/>assumes<sp/>that<sp/>it<sp/>is<sp/>success<sp/>if<sp/>the<sp/>stream<sp/>made</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>some<sp/>progress.<sp/>Depending<sp/>on<sp/>the<sp/>needs<sp/>it<sp/>may<sp/>be<sp/>more</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>reasonable<sp/>to<sp/>consider<sp/>it<sp/>a<sp/>success<sp/>only<sp/>if<sp/>it<sp/>managed<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>write<sp/>the<sp/>entire<sp/>buffer<sp/>and,<sp/>e.g.,<sp/>loop<sp/>a<sp/>couple<sp/>of<sp/>times</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>to<sp/>try<sp/>achieving<sp/>this<sp/>success.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(0<sp/>&lt;<sp/>done)<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::copy(this-&gt;pbase()<sp/>+<sp/>done,<sp/>this-&gt;pptr(),<sp/>this-&gt;pbase());</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;setp(this-&gt;pbase(),<sp/>this-&gt;epptr());</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;pbump(size<sp/>-<sp/>done);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;pptr()<sp/>!=<sp/>this-&gt;epptr()?<sp/>0:<sp/>-1;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/mel/projects/Misc/Minecraft Server Service/src/ServerProcessBuf.cpp"/>
+  </compounddef>
+</doxygen>

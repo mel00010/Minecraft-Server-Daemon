@@ -1,0 +1,270 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="bungeecord_server_8h" kind="file" language="C++">
+    <compoundname>bungeecordServer.h</compoundname>
+    <includes refid="server_8h" local="yes">server.h</includes>
+    <includes local="yes">log4cpp/Category.hh</includes>
+    <includes local="no">string</includes>
+    <includes local="no">sstream</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">thread</includes>
+    <includes local="no">time.h</includes>
+    <includedby refid="bungeecord_server_8cpp" local="yes">/home/mel/projects/Misc/Minecraft Server Service/src/bungeecordServer.cpp</includedby>
+    <includedby refid="setup_servers_8cpp" local="yes">/home/mel/projects/Misc/Minecraft Server Service/src/setupServers.cpp</includedby>
+    <incdepgraph>
+      <node id="105">
+        <label>functional</label>
+      </node>
+      <node id="110">
+        <label>iterator</label>
+      </node>
+      <node id="96">
+        <label>event2/event.h</label>
+      </node>
+      <node id="94">
+        <label>log4cpp/Category.hh</label>
+      </node>
+      <node id="116">
+        <label>stdlib.h</label>
+      </node>
+      <node id="113">
+        <label>cassert</label>
+      </node>
+      <node id="100">
+        <label>string</label>
+      </node>
+      <node id="112">
+        <label>ostream</label>
+      </node>
+      <node id="92">
+        <label>server.h</label>
+        <link refid="server_8h"/>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="103" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="105" relation="include">
+        </childnode>
+        <childnode refid="106" relation="include">
+        </childnode>
+        <childnode refid="107" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="109" relation="include">
+        </childnode>
+        <childnode refid="110" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="113" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="115" relation="include">
+        </childnode>
+        <childnode refid="116" relation="include">
+        </childnode>
+        <childnode refid="117" relation="include">
+        </childnode>
+        <childnode refid="118" relation="include">
+        </childnode>
+      </node>
+      <node id="99">
+        <label>unistd.h</label>
+      </node>
+      <node id="102">
+        <label>vector</label>
+      </node>
+      <node id="97">
+        <label>event2/util.h</label>
+      </node>
+      <node id="101">
+        <label>sstream</label>
+      </node>
+      <node id="93">
+        <label>outputListener.h</label>
+      </node>
+      <node id="118">
+        <label>time.h</label>
+      </node>
+      <node id="107">
+        <label>iosfwd</label>
+      </node>
+      <node id="98">
+        <label>sys/wait.h</label>
+      </node>
+      <node id="106">
+        <label>cstdlib</label>
+      </node>
+      <node id="108">
+        <label>cctype</label>
+      </node>
+      <node id="115">
+        <label>iostream</label>
+      </node>
+      <node id="111">
+        <label>cstddef</label>
+      </node>
+      <node id="104">
+        <label>mutex</label>
+      </node>
+      <node id="117">
+        <label>pwd.h</label>
+      </node>
+      <node id="91">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/bungeecordServer.h</label>
+        <link refid="bungeecordServer.h"/>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="103" relation="include">
+        </childnode>
+        <childnode refid="118" relation="include">
+        </childnode>
+      </node>
+      <node id="103">
+        <label>thread</label>
+      </node>
+      <node id="109">
+        <label>algorithm</label>
+      </node>
+      <node id="114">
+        <label>cstring</label>
+      </node>
+      <node id="95">
+        <label>event2/event-config.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="121">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/setupServers.cpp</label>
+        <link refid="setup_servers_8cpp"/>
+      </node>
+      <node id="120">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/bungeecordServer.cpp</label>
+        <link refid="bungeecord_server_8cpp"/>
+      </node>
+      <node id="119">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/bungeecordServer.h</label>
+        <link refid="bungeecordServer.h"/>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_minecraft_server_service_1_1_bungee_cord_server" prot="public">MinecraftServerService::BungeeCordServer</innerclass>
+    <innernamespace refid="namespace_minecraft_server_service">MinecraftServerService</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>bungeecordServer.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2016<sp/>Mel<sp/>McCalla<sp/>&lt;melmccalla@gmail.com&gt;</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>This<sp/>program<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>it<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>(at<sp/>your<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>This<sp/>program<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>but<sp/>WITHOUT<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>MERCHANTABILITY<sp/>or<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>along<sp/>with<sp/>this<sp/>program;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>Foundation,<sp/>Inc.,<sp/>51<sp/>Franklin<sp/>Street,<sp/>Fifth<sp/>Floor,<sp/>Boston,</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>MA<sp/>02110-1301,<sp/>USA.</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BUNGEECORD_SERVER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BUNGEECORD_SERVER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="server_8h" kindref="compound">server.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;log4cpp/Category.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;thread&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;time.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_minecraft_server_service" kindref="compound">MinecraftServerService</ref><sp/>{</highlight></codeline>
+<codeline lineno="33" refid="class_minecraft_server_service_1_1_bungee_cord_server" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_minecraft_server_service_1_1_bungee_cord_server" kindref="compound">BungeeCordServer</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_server" kindref="compound">Server</ref></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a1b99966f745f910715dcf7c52839850b" kindref="member">BungeeCordServer</ref>(</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1affe74246ec8e01cadd21fb8ffe613934" kindref="member">serverName</ref>,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a6d51d89bb1978039381a04af2f7b5880" kindref="member">serverPath</ref>,<sp/>std::string<sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a68a7e4caf06617af4713dd905ec3ce52" kindref="member">serverJarName</ref>,<sp/>std::string<sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a962f4683af0dcd67eadb62875d926142" kindref="member">serverAccount</ref>,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1acefb624eabfc4d7516329e28ccb2acde" kindref="member">maxHeapAlloc</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a9a888b11ba14938f093957e4108bd22b" kindref="member">minHeapAlloc</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a993736356331c55b759b8af235c547de" kindref="member">gcThreadCount</ref>,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1aa087aafe4137b677f19f1757e088ea08" kindref="member">backupPath</ref>,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a23dbf0f91c62b61730c643f93f9e1927" kindref="member">javaArgs</ref>,<sp/></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a3fc820aa9d0a5620f10c59e585690aa5" kindref="member">serverOptions</ref></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a6b01c6e4f7ee0544d27d8f09fa21f426" kindref="member">~BungeeCordServer</ref>();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a9b52175a0cd65b4ee1298c6b8f88a9a3" kindref="member">updateServer</ref>();</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a775734dcde149377ccc8f83d206b7bf0" kindref="member">backupServer</ref>();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a775734dcde149377ccc8f83d206b7bf0" kindref="member">backupServer</ref>(std::string<sp/>backupPath);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a7282786d28d234f51cb7c3803ed548df" kindref="member">serverStatus</ref>();</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a5f03992324f892fa1cedcef5153a7d3f" kindref="member">startServer</ref>();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a20602e6aa9b12c5f7c1c61e0a3341ab7" kindref="member">stopServer</ref>();</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a471a30d5fd0c2dca57970aef99eaa2b7" kindref="member">restartServer</ref>();</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a4fc15adfabbab2c3d1008af5c5b33114" kindref="member">reloadServer</ref>();</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a23b4c91d8c1461c0505d9276f0c42f73" kindref="member">listOnlinePlayers</ref>();</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a23b4c91d8c1461c0505d9276f0c42f73" kindref="member">listOnlinePlayers</ref>(std::string<sp/>playerName);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a4c398b65df83fe47cdaf8c4e5de66dff" kindref="member">sendCommand</ref>(std::string<sp/>command);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="58" refid="class_minecraft_server_service_1_1_bungee_cord_server_1affe74246ec8e01cadd21fb8ffe613934" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1affe74246ec8e01cadd21fb8ffe613934" kindref="member">serverName</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1af3bdb081f45df9ffe6bcef267c4d19f3" kindref="member">logger</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>linesRequested,<sp/>std::stringstream*<sp/>output,<sp/>log4cpp::Category*<sp/><ref refid="class_minecraft_server_service_1_1_server_1aea87340c35422279f868ecf8edc4a9f6" kindref="member">log</ref>);</highlight></codeline>
+<codeline lineno="62" refid="class_minecraft_server_service_1_1_bungee_cord_server_1a6d51d89bb1978039381a04af2f7b5880" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a6d51d89bb1978039381a04af2f7b5880" kindref="member">serverPath</ref>;</highlight></codeline>
+<codeline lineno="63" refid="class_minecraft_server_service_1_1_bungee_cord_server_1a68a7e4caf06617af4713dd905ec3ce52" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a68a7e4caf06617af4713dd905ec3ce52" kindref="member">serverJarName</ref>;</highlight></codeline>
+<codeline lineno="64" refid="class_minecraft_server_service_1_1_bungee_cord_server_1a962f4683af0dcd67eadb62875d926142" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a962f4683af0dcd67eadb62875d926142" kindref="member">serverAccount</ref>;</highlight></codeline>
+<codeline lineno="65" refid="class_minecraft_server_service_1_1_bungee_cord_server_1acefb624eabfc4d7516329e28ccb2acde" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1acefb624eabfc4d7516329e28ccb2acde" kindref="member">maxHeapAlloc</ref>;</highlight></codeline>
+<codeline lineno="66" refid="class_minecraft_server_service_1_1_bungee_cord_server_1a9a888b11ba14938f093957e4108bd22b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a9a888b11ba14938f093957e4108bd22b" kindref="member">minHeapAlloc</ref>;</highlight></codeline>
+<codeline lineno="67" refid="class_minecraft_server_service_1_1_bungee_cord_server_1a993736356331c55b759b8af235c547de" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a993736356331c55b759b8af235c547de" kindref="member">gcThreadCount</ref>;</highlight></codeline>
+<codeline lineno="68" refid="class_minecraft_server_service_1_1_bungee_cord_server_1aa087aafe4137b677f19f1757e088ea08" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1aa087aafe4137b677f19f1757e088ea08" kindref="member">backupPath</ref>;</highlight></codeline>
+<codeline lineno="69" refid="class_minecraft_server_service_1_1_bungee_cord_server_1a9cdff082e45d4ef5ffc6c4fd7143e8b7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a9cdff082e45d4ef5ffc6c4fd7143e8b7" kindref="member">worldsToBackup</ref>;</highlight></codeline>
+<codeline lineno="70" refid="class_minecraft_server_service_1_1_bungee_cord_server_1a23dbf0f91c62b61730c643f93f9e1927" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a23dbf0f91c62b61730c643f93f9e1927" kindref="member">javaArgs</ref>;</highlight></codeline>
+<codeline lineno="71" refid="class_minecraft_server_service_1_1_bungee_cord_server_1a3fc820aa9d0a5620f10c59e585690aa5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="class_minecraft_server_service_1_1_bungee_cord_server_1a3fc820aa9d0a5620f10c59e585690aa5" kindref="member">serverOptions</ref>;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>BUNGEECORD_SERVER_H<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/mel/projects/Misc/Minecraft Server Service/src/bungeecordServer.h"/>
+  </compounddef>
+</doxygen>

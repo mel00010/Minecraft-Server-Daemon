@@ -1,0 +1,481 @@
+.TH "Json::OurReader" 3 "Fri Jul 1 2016" "Minecraft Server Daemon" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Json::OurReader \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBErrorInfo\fP"
+.br
+.ti -1c
+.RI "struct \fBStructuredError\fP"
+.br
+.ti -1c
+.RI "class \fBToken\fP"
+.br
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef char \fBChar\fP"
+.br
+.ti -1c
+.RI "typedef const \fBChar\fP * \fBLocation\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOurReader\fP (\fBOurFeatures\fP const &features)"
+.br
+.ti -1c
+.RI "bool \fBparse\fP (const char *beginDoc, const char *endDoc, Value &root, bool collectComments=true)"
+.br
+.ti -1c
+.RI "std::string \fBgetFormattedErrorMessages\fP () const "
+.br
+.ti -1c
+.RI "std::vector< \fBStructuredError\fP > \fBgetStructuredErrors\fP () const "
+.br
+.ti -1c
+.RI "bool \fBpushError\fP (const Value &value, const std::string &message)"
+.br
+.ti -1c
+.RI "bool \fBpushError\fP (const Value &value, const std::string &message, const Value &extra)"
+.br
+.ti -1c
+.RI "bool \fBgood\fP () const "
+.br
+.in -1c
+.SS "Private Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBTokenType\fP { \fBtokenEndOfStream\fP = 0, \fBtokenObjectBegin\fP, \fBtokenObjectEnd\fP, \fBtokenArrayBegin\fP, \fBtokenArrayEnd\fP, \fBtokenString\fP, \fBtokenNumber\fP, \fBtokenTrue\fP, \fBtokenFalse\fP, \fBtokenNull\fP, \fBtokenNaN\fP, \fBtokenPosInf\fP, \fBtokenNegInf\fP, \fBtokenArraySeparator\fP, \fBtokenMemberSeparator\fP, \fBtokenComment\fP, \fBtokenError\fP }"
+.br
+.ti -1c
+.RI "typedef std::deque< \fBErrorInfo\fP > \fBErrors\fP"
+.br
+.ti -1c
+.RI "typedef std::stack< Value * > \fBNodes\fP"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOurReader\fP (\fBOurReader\fP const &)"
+.br
+.ti -1c
+.RI "void \fBoperator=\fP (\fBOurReader\fP const &)"
+.br
+.ti -1c
+.RI "bool \fBreadToken\fP (\fBToken\fP &token)"
+.br
+.ti -1c
+.RI "void \fBskipSpaces\fP ()"
+.br
+.ti -1c
+.RI "bool \fBmatch\fP (\fBLocation\fP pattern, int patternLength)"
+.br
+.ti -1c
+.RI "bool \fBreadComment\fP ()"
+.br
+.ti -1c
+.RI "bool \fBreadCStyleComment\fP ()"
+.br
+.ti -1c
+.RI "bool \fBreadCppStyleComment\fP ()"
+.br
+.ti -1c
+.RI "bool \fBreadString\fP ()"
+.br
+.ti -1c
+.RI "bool \fBreadStringSingleQuote\fP ()"
+.br
+.ti -1c
+.RI "bool \fBreadNumber\fP (bool checkInf)"
+.br
+.ti -1c
+.RI "bool \fBreadValue\fP ()"
+.br
+.ti -1c
+.RI "bool \fBreadObject\fP (\fBToken\fP &token)"
+.br
+.ti -1c
+.RI "bool \fBreadArray\fP (\fBToken\fP &token)"
+.br
+.ti -1c
+.RI "bool \fBdecodeNumber\fP (\fBToken\fP &token)"
+.br
+.ti -1c
+.RI "bool \fBdecodeNumber\fP (\fBToken\fP &token, Value &decoded)"
+.br
+.ti -1c
+.RI "bool \fBdecodeString\fP (\fBToken\fP &token)"
+.br
+.ti -1c
+.RI "bool \fBdecodeString\fP (\fBToken\fP &token, std::string &decoded)"
+.br
+.ti -1c
+.RI "bool \fBdecodeDouble\fP (\fBToken\fP &token)"
+.br
+.ti -1c
+.RI "bool \fBdecodeDouble\fP (\fBToken\fP &token, Value &decoded)"
+.br
+.ti -1c
+.RI "bool \fBdecodeUnicodeCodePoint\fP (\fBToken\fP &token, \fBLocation\fP &current, \fBLocation\fP end, unsigned int &unicode)"
+.br
+.ti -1c
+.RI "bool \fBdecodeUnicodeEscapeSequence\fP (\fBToken\fP &token, \fBLocation\fP &current, \fBLocation\fP end, unsigned int &unicode)"
+.br
+.ti -1c
+.RI "bool \fBaddError\fP (const std::string &message, \fBToken\fP &token, \fBLocation\fP extra=0)"
+.br
+.ti -1c
+.RI "bool \fBrecoverFromError\fP (\fBTokenType\fP skipUntilToken)"
+.br
+.ti -1c
+.RI "bool \fBaddErrorAndRecover\fP (const std::string &message, \fBToken\fP &token, \fBTokenType\fP skipUntilToken)"
+.br
+.ti -1c
+.RI "void \fBskipUntilSpace\fP ()"
+.br
+.ti -1c
+.RI "Value & \fBcurrentValue\fP ()"
+.br
+.ti -1c
+.RI "\fBChar\fP \fBgetNextChar\fP ()"
+.br
+.ti -1c
+.RI "void \fBgetLocationLineAndColumn\fP (\fBLocation\fP location, int &line, int &column) const "
+.br
+.ti -1c
+.RI "std::string \fBgetLocationLineAndColumn\fP (\fBLocation\fP location) const "
+.br
+.ti -1c
+.RI "void \fBaddComment\fP (\fBLocation\fP begin, \fBLocation\fP end, CommentPlacement placement)"
+.br
+.ti -1c
+.RI "void \fBskipCommentTokens\fP (\fBToken\fP &token)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBNodes\fP \fBnodes_\fP"
+.br
+.ti -1c
+.RI "\fBErrors\fP \fBerrors_\fP"
+.br
+.ti -1c
+.RI "std::string \fBdocument_\fP"
+.br
+.ti -1c
+.RI "\fBLocation\fP \fBbegin_\fP"
+.br
+.ti -1c
+.RI "\fBLocation\fP \fBend_\fP"
+.br
+.ti -1c
+.RI "\fBLocation\fP \fBcurrent_\fP"
+.br
+.ti -1c
+.RI "\fBLocation\fP \fBlastValueEnd_\fP"
+.br
+.ti -1c
+.RI "Value * \fBlastValue_\fP"
+.br
+.ti -1c
+.RI "std::string \fBcommentsBefore_\fP"
+.br
+.ti -1c
+.RI "int \fBstackDepth_\fP"
+.br
+.ti -1c
+.RI "\fBOurFeatures\fP const \fBfeatures_\fP"
+.br
+.ti -1c
+.RI "bool \fBcollectComments_\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 1106 of file jsoncpp\&.cpp\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef char \fBJson::OurReader::Char\fP"
+
+.PP
+Definition at line 1108 of file jsoncpp\&.cpp\&.
+.SS "typedef std::deque<\fBErrorInfo\fP> \fBJson::OurReader::Errors\fP\fC [private]\fP"
+
+.PP
+Definition at line 1165 of file jsoncpp\&.cpp\&.
+.SS "typedef const \fBChar\fP* \fBJson::OurReader::Location\fP"
+
+.PP
+Definition at line 1109 of file jsoncpp\&.cpp\&.
+.SS "typedef std::stack<Value*> \fBJson::OurReader::Nodes\fP\fC [private]\fP"
+
+.PP
+Definition at line 1207 of file jsoncpp\&.cpp\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBJson::OurReader::TokenType\fP\fC [private]\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fItokenEndOfStream \fP\fP
+.TP
+\fB\fItokenObjectBegin \fP\fP
+.TP
+\fB\fItokenObjectEnd \fP\fP
+.TP
+\fB\fItokenArrayBegin \fP\fP
+.TP
+\fB\fItokenArrayEnd \fP\fP
+.TP
+\fB\fItokenString \fP\fP
+.TP
+\fB\fItokenNumber \fP\fP
+.TP
+\fB\fItokenTrue \fP\fP
+.TP
+\fB\fItokenFalse \fP\fP
+.TP
+\fB\fItokenNull \fP\fP
+.TP
+\fB\fItokenNaN \fP\fP
+.TP
+\fB\fItokenPosInf \fP\fP
+.TP
+\fB\fItokenNegInf \fP\fP
+.TP
+\fB\fItokenArraySeparator \fP\fP
+.TP
+\fB\fItokenMemberSeparator \fP\fP
+.TP
+\fB\fItokenComment \fP\fP
+.TP
+\fB\fItokenError \fP\fP
+.PP
+Definition at line 1131 of file jsoncpp\&.cpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Json::OurReader::OurReader (\fBOurFeatures\fP const & features)"
+
+.PP
+Definition at line 1225 of file jsoncpp\&.cpp\&.
+.SS "Json::OurReader::OurReader (\fBOurReader\fP const &)\fC [private]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Json::OurReader::addComment (\fBLocation\fP begin, \fBLocation\fP end, CommentPlacement placement)\fC [private]\fP"
+
+.PP
+Definition at line 1538 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::addError (const std::string & message, \fBToken\fP & token, \fBLocation\fP extra = \fC0\fP)\fC [private]\fP"
+
+.PP
+Definition at line 1945 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::addErrorAndRecover (const std::string & message, \fBToken\fP & token, \fBTokenType\fP skipUntilToken)\fC [private]\fP"
+
+.PP
+Definition at line 1967 of file jsoncpp\&.cpp\&.
+.SS "Value & Json::OurReader::currentValue ()\fC [private]\fP"
+
+.PP
+Definition at line 1974 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::decodeDouble (\fBToken\fP & token)\fC [private]\fP"
+
+.PP
+Definition at line 1775 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::decodeDouble (\fBToken\fP & token, Value & decoded)\fC [private]\fP"
+
+.PP
+Definition at line 1785 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::decodeNumber (\fBToken\fP & token)\fC [private]\fP"
+
+.PP
+Definition at line 1725 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::decodeNumber (\fBToken\fP & token, Value & decoded)\fC [private]\fP"
+
+.PP
+Definition at line 1735 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::decodeString (\fBToken\fP & token)\fC [private]\fP"
+
+.PP
+Definition at line 1822 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::decodeString (\fBToken\fP & token, std::string & decoded)\fC [private]\fP"
+
+.PP
+Definition at line 1833 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::decodeUnicodeCodePoint (\fBToken\fP & token, \fBLocation\fP & current, \fBLocation\fP end, unsigned int & unicode)\fC [private]\fP"
+
+.PP
+Definition at line 1886 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::decodeUnicodeEscapeSequence (\fBToken\fP & token, \fBLocation\fP & current, \fBLocation\fP end, unsigned int & unicode)\fC [private]\fP"
+
+.PP
+Definition at line 1915 of file jsoncpp\&.cpp\&.
+.SS "std::string Json::OurReader::getFormattedErrorMessages () const"
+
+.PP
+Definition at line 2013 of file jsoncpp\&.cpp\&.
+.SS "void Json::OurReader::getLocationLineAndColumn (\fBLocation\fP location, int & line, int & column) const\fC [private]\fP"
+
+.PP
+Definition at line 1982 of file jsoncpp\&.cpp\&.
+.SS "std::string Json::OurReader::getLocationLineAndColumn (\fBLocation\fP location) const\fC [private]\fP"
+
+.PP
+Definition at line 2005 of file jsoncpp\&.cpp\&.
+.SS "\fBOurReader::Char\fP Json::OurReader::getNextChar ()\fC [private]\fP"
+
+.PP
+Definition at line 1976 of file jsoncpp\&.cpp\&.
+.SS "std::vector< \fBOurReader::StructuredError\fP > Json::OurReader::getStructuredErrors () const"
+
+.PP
+Definition at line 2029 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::good () const"
+
+.PP
+Definition at line 2079 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::match (\fBLocation\fP pattern, int patternLength)\fC [private]\fP"
+
+.PP
+Definition at line 1503 of file jsoncpp\&.cpp\&.
+.SS "void Json::OurReader::operator= (\fBOurReader\fP const &)\fC [private]\fP"
+
+.SS "bool Json::OurReader::parse (const char * beginDoc, const char * endDoc, Value & root, bool collectComments = \fCtrue\fP)"
+
+.PP
+Definition at line 1232 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::pushError (const Value & value, const std::string & message)"
+
+.PP
+Definition at line 2044 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::pushError (const Value & value, const std::string & message, const Value & extra)"
+
+.PP
+Definition at line 2061 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::readArray (\fBToken\fP & token)\fC [private]\fP"
+
+.PP
+Definition at line 1687 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::readComment ()\fC [private]\fP"
+
+.PP
+Definition at line 1514 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::readCppStyleComment ()\fC [private]\fP"
+
+.PP
+Definition at line 1558 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::readCStyleComment ()\fC [private]\fP"
+
+.PP
+Definition at line 1549 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::readNumber (bool checkInf)\fC [private]\fP"
+
+.PP
+Definition at line 1574 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::readObject (\fBToken\fP & token)\fC [private]\fP"
+
+.PP
+Definition at line 1625 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::readString ()\fC [private]\fP"
+
+.PP
+Definition at line 1600 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::readStringSingleQuote ()\fC [private]\fP"
+
+.PP
+Definition at line 1613 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::readToken (\fBToken\fP & token)\fC [private]\fP"
+
+.PP
+Definition at line 1393 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::readValue ()\fC [private]\fP"
+
+.PP
+Definition at line 1280 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::recoverFromError (\fBTokenType\fP skipUntilToken)\fC [private]\fP"
+
+.PP
+Definition at line 1954 of file jsoncpp\&.cpp\&.
+.SS "void Json::OurReader::skipCommentTokens (\fBToken\fP & token)\fC [private]\fP"
+
+.PP
+Definition at line 1383 of file jsoncpp\&.cpp\&.
+.SS "void Json::OurReader::skipSpaces ()\fC [private]\fP"
+
+.PP
+Definition at line 1493 of file jsoncpp\&.cpp\&.
+.SS "void Json::OurReader::skipUntilSpace ()\fC [private]\fP"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBLocation\fP Json::OurReader::begin_\fC [private]\fP"
+
+.PP
+Definition at line 1211 of file jsoncpp\&.cpp\&.
+.SS "bool Json::OurReader::collectComments_\fC [private]\fP"
+
+.PP
+Definition at line 1220 of file jsoncpp\&.cpp\&.
+.SS "std::string Json::OurReader::commentsBefore_\fC [private]\fP"
+
+.PP
+Definition at line 1216 of file jsoncpp\&.cpp\&.
+.SS "\fBLocation\fP Json::OurReader::current_\fC [private]\fP"
+
+.PP
+Definition at line 1213 of file jsoncpp\&.cpp\&.
+.SS "std::string Json::OurReader::document_\fC [private]\fP"
+
+.PP
+Definition at line 1210 of file jsoncpp\&.cpp\&.
+.SS "\fBLocation\fP Json::OurReader::end_\fC [private]\fP"
+
+.PP
+Definition at line 1212 of file jsoncpp\&.cpp\&.
+.SS "\fBErrors\fP Json::OurReader::errors_\fC [private]\fP"
+
+.PP
+Definition at line 1209 of file jsoncpp\&.cpp\&.
+.SS "\fBOurFeatures\fP const Json::OurReader::features_\fC [private]\fP"
+
+.PP
+Definition at line 1219 of file jsoncpp\&.cpp\&.
+.SS "Value* Json::OurReader::lastValue_\fC [private]\fP"
+
+.PP
+Definition at line 1215 of file jsoncpp\&.cpp\&.
+.SS "\fBLocation\fP Json::OurReader::lastValueEnd_\fC [private]\fP"
+
+.PP
+Definition at line 1214 of file jsoncpp\&.cpp\&.
+.SS "\fBNodes\fP Json::OurReader::nodes_\fC [private]\fP"
+
+.PP
+Definition at line 1208 of file jsoncpp\&.cpp\&.
+.SS "int Json::OurReader::stackDepth_\fC [private]\fP"
+
+.PP
+Definition at line 1217 of file jsoncpp\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Minecraft Server Daemon from the source code\&.

@@ -1,0 +1,242 @@
+.TH "MinecraftServerService::BukkitServer" 3 "Fri Jul 1 2016" "Minecraft Server Daemon" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MinecraftServerService::BukkitServer \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <bukkitServer\&.h>\fP
+.PP
+Inherits \fBMinecraftServerService::Server\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBukkitServer\fP (std::string \fBserverName\fP, std::string \fBserverPath\fP, std::string \fBserverJarName\fP, std::string \fBserverAccount\fP, int \fBmaxHeapAlloc\fP, int \fBminHeapAlloc\fP, int \fBgcThreadCount\fP, std::string \fBbackupPath\fP, std::vector< std::string > \fBworldsToBackup\fP, std::vector< std::string > \fBjavaArgs\fP, std::vector< std::string > \fBserverOptions\fP)"
+.br
+.ti -1c
+.RI "virtual \fB~BukkitServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBupdateServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBbackupServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBbackupServer\fP (std::string \fBbackupPath\fP)"
+.br
+.ti -1c
+.RI "void \fBserverStatus\fP ()"
+.br
+.ti -1c
+.RI "void \fBstartServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBstopServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBrestartServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBreloadServer\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBlistOnlinePlayers\fP ()"
+.br
+.ti -1c
+.RI "bool \fBlistOnlinePlayers\fP (std::string playerName)"
+.br
+.ti -1c
+.RI "void \fBsendCommand\fP (std::string command)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBserverName\fP"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBlogger\fP (size_t linesRequested, std::stringstream *output, log4cpp::Category *\fBlog\fP)"
+.br
+.ti -1c
+.RI "void \fBlistOnlinePlayersCallback\fP (size_t linesRequested, std::stringstream *output, log4cpp::Category *\fBlog\fP)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBserverPath\fP"
+.br
+.ti -1c
+.RI "std::string \fBserverJarName\fP"
+.br
+.ti -1c
+.RI "std::string \fBserverAccount\fP"
+.br
+.ti -1c
+.RI "int \fBmaxHeapAlloc\fP"
+.br
+.ti -1c
+.RI "int \fBminHeapAlloc\fP"
+.br
+.ti -1c
+.RI "int \fBgcThreadCount\fP"
+.br
+.ti -1c
+.RI "std::string \fBbackupPath\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBworldsToBackup\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBjavaArgs\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBserverOptions\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 33 of file bukkitServer\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "MinecraftServerService::BukkitServer::BukkitServer (std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc, int gcThreadCount, std::string backupPath, std::vector< std::string > worldsToBackup, std::vector< std::string > javaArgs, std::vector< std::string > serverOptions)"
+
+.PP
+Definition at line 33 of file bukkitServer\&.cpp\&.
+.SS "MinecraftServerService::BukkitServer::~BukkitServer ()\fC [virtual]\fP"
+
+.PP
+Definition at line 45 of file bukkitServer\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void MinecraftServerService::BukkitServer::backupServer ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 53 of file bukkitServer\&.cpp\&.
+.SS "void MinecraftServerService::BukkitServer::backupServer (std::string backupPath)\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 84 of file bukkitServer\&.cpp\&.
+.SS "std::string MinecraftServerService::BukkitServer::listOnlinePlayers ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 178 of file bukkitServer\&.cpp\&.
+.SS "bool MinecraftServerService::BukkitServer::listOnlinePlayers (std::string playerName)\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 202 of file bukkitServer\&.cpp\&.
+.SS "void MinecraftServerService::BukkitServer::listOnlinePlayersCallback (size_t linesRequested, std::stringstream * output, log4cpp::Category * log)\fC [protected]\fP"
+
+.SS "void MinecraftServerService::BukkitServer::logger (size_t linesRequested, std::stringstream * output, log4cpp::Category * log)\fC [protected]\fP"
+
+.SS "void MinecraftServerService::BukkitServer::reloadServer ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 116 of file bukkitServer\&.cpp\&.
+.SS "void MinecraftServerService::BukkitServer::restartServer ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 158 of file bukkitServer\&.cpp\&.
+.SS "void MinecraftServerService::BukkitServer::sendCommand (std::string command)\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 168 of file bukkitServer\&.cpp\&.
+.SS "void MinecraftServerService::BukkitServer::serverStatus ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 154 of file bukkitServer\&.cpp\&.
+.SS "void MinecraftServerService::BukkitServer::startServer ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 120 of file bukkitServer\&.cpp\&.
+.SS "void MinecraftServerService::BukkitServer::stopServer ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 132 of file bukkitServer\&.cpp\&.
+.SS "void MinecraftServerService::BukkitServer::updateServer ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 49 of file bukkitServer\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "std::string MinecraftServerService::BukkitServer::backupPath\fC [protected]\fP"
+
+.PP
+Definition at line 70 of file bukkitServer\&.h\&.
+.SS "int MinecraftServerService::BukkitServer::gcThreadCount\fC [protected]\fP"
+
+.PP
+Definition at line 69 of file bukkitServer\&.h\&.
+.SS "std::vector<std::string> MinecraftServerService::BukkitServer::javaArgs\fC [protected]\fP"
+
+.PP
+Definition at line 72 of file bukkitServer\&.h\&.
+.SS "int MinecraftServerService::BukkitServer::maxHeapAlloc\fC [protected]\fP"
+
+.PP
+Definition at line 67 of file bukkitServer\&.h\&.
+.SS "int MinecraftServerService::BukkitServer::minHeapAlloc\fC [protected]\fP"
+
+.PP
+Definition at line 68 of file bukkitServer\&.h\&.
+.SS "std::string MinecraftServerService::BukkitServer::serverAccount\fC [protected]\fP"
+
+.PP
+Definition at line 66 of file bukkitServer\&.h\&.
+.SS "std::string MinecraftServerService::BukkitServer::serverJarName\fC [protected]\fP"
+
+.PP
+Definition at line 65 of file bukkitServer\&.h\&.
+.SS "std::string MinecraftServerService::BukkitServer::serverName"
+
+.PP
+Definition at line 59 of file bukkitServer\&.h\&.
+.SS "std::vector<std::string> MinecraftServerService::BukkitServer::serverOptions\fC [protected]\fP"
+
+.PP
+Definition at line 73 of file bukkitServer\&.h\&.
+.SS "std::string MinecraftServerService::BukkitServer::serverPath\fC [protected]\fP"
+
+.PP
+Definition at line 64 of file bukkitServer\&.h\&.
+.SS "std::vector<std::string> MinecraftServerService::BukkitServer::worldsToBackup\fC [protected]\fP"
+
+.PP
+Definition at line 71 of file bukkitServer\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Minecraft Server Daemon from the source code\&.

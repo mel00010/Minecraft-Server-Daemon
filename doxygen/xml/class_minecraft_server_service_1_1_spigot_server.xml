@@ -1,0 +1,578 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="class_minecraft_server_service_1_1_spigot_server" kind="class" language="C++" prot="public">
+    <compoundname>MinecraftServerService::SpigotServer</compoundname>
+    <basecompoundref refid="class_minecraft_server_service_1_1_server" prot="public" virt="non-virtual">MinecraftServerService::Server</basecompoundref>
+    <includes refid="spigot_server_8h" local="no">spigotServer.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_minecraft_server_service_1_1_spigot_server_1accad32ff846a3e4123749a83a2735a39" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string MinecraftServerService::SpigotServer::serverName</definition>
+        <argsstring></argsstring>
+        <name>serverName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="59" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" bodystart="59" bodyend="-1"/>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1aea28f0f9e617a15a29d4423844196d21" compoundref="spigot_server_8cpp" startline="33" endline="44">SpigotServer</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_minecraft_server_service_1_1_spigot_server_1a76f6b550b7fe37a3182e9bc72087a5dc" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string MinecraftServerService::SpigotServer::serverPath</definition>
+        <argsstring></argsstring>
+        <name>serverPath</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="63" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" bodystart="63" bodyend="-1"/>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1aea28f0f9e617a15a29d4423844196d21" compoundref="spigot_server_8cpp" startline="33" endline="44">SpigotServer</referencedby>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1ae210f6a553988cc2fa54cfa2f5740c49" compoundref="spigot_server_8cpp" startline="53" endline="83">backupServer</referencedby>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1a08bc3d74d604968034303efc7334dd08" compoundref="spigot_server_8cpp" startline="120" endline="131">startServer</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_minecraft_server_service_1_1_spigot_server_1a603128a2f6ce44b71ee74b601f1a24e0" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string MinecraftServerService::SpigotServer::serverJarName</definition>
+        <argsstring></argsstring>
+        <name>serverJarName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="64" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" bodystart="64" bodyend="-1"/>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1aea28f0f9e617a15a29d4423844196d21" compoundref="spigot_server_8cpp" startline="33" endline="44">SpigotServer</referencedby>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1ae210f6a553988cc2fa54cfa2f5740c49" compoundref="spigot_server_8cpp" startline="53" endline="83">backupServer</referencedby>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1a08bc3d74d604968034303efc7334dd08" compoundref="spigot_server_8cpp" startline="120" endline="131">startServer</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_minecraft_server_service_1_1_spigot_server_1a7d824cedf0faf1a5dcc6e4ab54d9443b" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string MinecraftServerService::SpigotServer::serverAccount</definition>
+        <argsstring></argsstring>
+        <name>serverAccount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="65" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" bodystart="65" bodyend="-1"/>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1aea28f0f9e617a15a29d4423844196d21" compoundref="spigot_server_8cpp" startline="33" endline="44">SpigotServer</referencedby>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1a08bc3d74d604968034303efc7334dd08" compoundref="spigot_server_8cpp" startline="120" endline="131">startServer</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_minecraft_server_service_1_1_spigot_server_1ad1d3f0158a2e3f2dd338837bccf25c6a" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MinecraftServerService::SpigotServer::maxHeapAlloc</definition>
+        <argsstring></argsstring>
+        <name>maxHeapAlloc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="66" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" bodystart="66" bodyend="-1"/>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1aea28f0f9e617a15a29d4423844196d21" compoundref="spigot_server_8cpp" startline="33" endline="44">SpigotServer</referencedby>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1a08bc3d74d604968034303efc7334dd08" compoundref="spigot_server_8cpp" startline="120" endline="131">startServer</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_minecraft_server_service_1_1_spigot_server_1a4ef50266a24dccd4f0d61d877567b55d" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MinecraftServerService::SpigotServer::minHeapAlloc</definition>
+        <argsstring></argsstring>
+        <name>minHeapAlloc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="67" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" bodystart="67" bodyend="-1"/>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1aea28f0f9e617a15a29d4423844196d21" compoundref="spigot_server_8cpp" startline="33" endline="44">SpigotServer</referencedby>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1a08bc3d74d604968034303efc7334dd08" compoundref="spigot_server_8cpp" startline="120" endline="131">startServer</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_minecraft_server_service_1_1_spigot_server_1a057e5d3f9de3877edc7de6f3e5c40a6c" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MinecraftServerService::SpigotServer::gcThreadCount</definition>
+        <argsstring></argsstring>
+        <name>gcThreadCount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="68" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" bodystart="68" bodyend="-1"/>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1aea28f0f9e617a15a29d4423844196d21" compoundref="spigot_server_8cpp" startline="33" endline="44">SpigotServer</referencedby>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1a08bc3d74d604968034303efc7334dd08" compoundref="spigot_server_8cpp" startline="120" endline="131">startServer</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_minecraft_server_service_1_1_spigot_server_1a833bf01d9d4a495eda1a8052fdb8ee08" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string MinecraftServerService::SpigotServer::backupPath</definition>
+        <argsstring></argsstring>
+        <name>backupPath</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="69" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" bodystart="69" bodyend="-1"/>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1aea28f0f9e617a15a29d4423844196d21" compoundref="spigot_server_8cpp" startline="33" endline="44">SpigotServer</referencedby>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1ae210f6a553988cc2fa54cfa2f5740c49" compoundref="spigot_server_8cpp" startline="53" endline="83">backupServer</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_minecraft_server_service_1_1_spigot_server_1a4596e7ae4d2e1a7d2325fb13434f122a" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; MinecraftServerService::SpigotServer::worldsToBackup</definition>
+        <argsstring></argsstring>
+        <name>worldsToBackup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="70" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" bodystart="70" bodyend="-1"/>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1aea28f0f9e617a15a29d4423844196d21" compoundref="spigot_server_8cpp" startline="33" endline="44">SpigotServer</referencedby>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1ae210f6a553988cc2fa54cfa2f5740c49" compoundref="spigot_server_8cpp" startline="53" endline="83">backupServer</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_minecraft_server_service_1_1_spigot_server_1a3175de67475bf37b44a80575d4b3edfe" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; MinecraftServerService::SpigotServer::javaArgs</definition>
+        <argsstring></argsstring>
+        <name>javaArgs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="71" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" bodystart="71" bodyend="-1"/>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1aea28f0f9e617a15a29d4423844196d21" compoundref="spigot_server_8cpp" startline="33" endline="44">SpigotServer</referencedby>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1a08bc3d74d604968034303efc7334dd08" compoundref="spigot_server_8cpp" startline="120" endline="131">startServer</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_minecraft_server_service_1_1_spigot_server_1a7a42f5a55caa07437cf121c2dfda60a0" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; MinecraftServerService::SpigotServer::serverOptions</definition>
+        <argsstring></argsstring>
+        <name>serverOptions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="72" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" bodystart="72" bodyend="-1"/>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1aea28f0f9e617a15a29d4423844196d21" compoundref="spigot_server_8cpp" startline="33" endline="44">SpigotServer</referencedby>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1a08bc3d74d604968034303efc7334dd08" compoundref="spigot_server_8cpp" startline="120" endline="131">startServer</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_minecraft_server_service_1_1_spigot_server_1aea28f0f9e617a15a29d4423844196d21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MinecraftServerService::SpigotServer::SpigotServer</definition>
+        <argsstring>(std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc, int gcThreadCount, std::string backupPath, std::vector&lt; std::string &gt; worldsToBackup, std::vector&lt; std::string &gt; javaArgs, std::vector&lt; std::string &gt; serverOptions)</argsstring>
+        <name>SpigotServer</name>
+        <param>
+          <type>std::string</type>
+          <declname>serverName</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>serverPath</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>serverJarName</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>serverAccount</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>maxHeapAlloc</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>minHeapAlloc</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>gcThreadCount</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>backupPath</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt;</type>
+          <declname>worldsToBackup</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt;</type>
+          <declname>javaArgs</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt;</type>
+          <declname>serverOptions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="36" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.cpp" bodystart="33" bodyend="44"/>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a76f6b550b7fe37a3182e9bc72087a5dc" compoundref="spigot_server_8h" startline="63">serverPath</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a603128a2f6ce44b71ee74b601f1a24e0" compoundref="spigot_server_8h" startline="64">serverJarName</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a7d824cedf0faf1a5dcc6e4ab54d9443b" compoundref="spigot_server_8h" startline="65">serverAccount</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1ad1d3f0158a2e3f2dd338837bccf25c6a" compoundref="spigot_server_8h" startline="66">maxHeapAlloc</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a4ef50266a24dccd4f0d61d877567b55d" compoundref="spigot_server_8h" startline="67">minHeapAlloc</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a057e5d3f9de3877edc7de6f3e5c40a6c" compoundref="spigot_server_8h" startline="68">gcThreadCount</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a833bf01d9d4a495eda1a8052fdb8ee08" compoundref="spigot_server_8h" startline="69">backupPath</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a4596e7ae4d2e1a7d2325fb13434f122a" compoundref="spigot_server_8h" startline="70">worldsToBackup</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a3175de67475bf37b44a80575d4b3edfe" compoundref="spigot_server_8h" startline="71">javaArgs</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a7a42f5a55caa07437cf121c2dfda60a0" compoundref="spigot_server_8h" startline="72">serverOptions</references>
+        <references refid="class_minecraft_server_service_1_1_server_1aea87340c35422279f868ecf8edc4a9f6" compoundref="server_8h" startline="114">MinecraftServerService::Server::log</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1accad32ff846a3e4123749a83a2735a39" compoundref="spigot_server_8h" startline="59">serverName</references>
+      </memberdef>
+      <memberdef kind="function" id="class_minecraft_server_service_1_1_spigot_server_1a54cecfac2a1b55f4f6044cb984359102" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>MinecraftServerService::SpigotServer::~SpigotServer</definition>
+        <argsstring>()</argsstring>
+        <name>~SpigotServer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="45" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.cpp" bodystart="45" bodyend="48"/>
+        <references refid="class_minecraft_server_service_1_1_server_1aea87340c35422279f868ecf8edc4a9f6" compoundref="server_8h" startline="114">MinecraftServerService::Server::log</references>
+      </memberdef>
+      <memberdef kind="function" id="class_minecraft_server_service_1_1_spigot_server_1a054ddb4477a413d22365ecae0321ae71" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MinecraftServerService::SpigotServer::updateServer</definition>
+        <argsstring>()</argsstring>
+        <name>updateServer</name>
+        <reimplements refid="class_minecraft_server_service_1_1_server_1a0715bfc451f5abbd2f47d0895e5a2355">updateServer</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="46" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.cpp" bodystart="49" bodyend="52"/>
+        <references refid="class_minecraft_server_service_1_1_server_1aea87340c35422279f868ecf8edc4a9f6" compoundref="server_8h" startline="114">MinecraftServerService::Server::log</references>
+      </memberdef>
+      <memberdef kind="function" id="class_minecraft_server_service_1_1_spigot_server_1ae210f6a553988cc2fa54cfa2f5740c49" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MinecraftServerService::SpigotServer::backupServer</definition>
+        <argsstring>()</argsstring>
+        <name>backupServer</name>
+        <reimplements refid="class_minecraft_server_service_1_1_server_1a58373fb195d9546e4a843ba83d741f36">backupServer</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="47" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.cpp" bodystart="53" bodyend="83"/>
+        <references refid="class_minecraft_server_service_1_1_server_1aea87340c35422279f868ecf8edc4a9f6" compoundref="server_8h" startline="114">MinecraftServerService::Server::log</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a4596e7ae4d2e1a7d2325fb13434f122a" compoundref="spigot_server_8h" startline="70">worldsToBackup</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a76f6b550b7fe37a3182e9bc72087a5dc" compoundref="spigot_server_8h" startline="63">serverPath</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a833bf01d9d4a495eda1a8052fdb8ee08" compoundref="spigot_server_8h" startline="69">backupPath</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a603128a2f6ce44b71ee74b601f1a24e0" compoundref="spigot_server_8h" startline="64">serverJarName</references>
+      </memberdef>
+      <memberdef kind="function" id="class_minecraft_server_service_1_1_spigot_server_1a48055f2ec0703f54ac853d829f1cc077" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MinecraftServerService::SpigotServer::backupServer</definition>
+        <argsstring>(std::string backupPath)</argsstring>
+        <name>backupServer</name>
+        <reimplements refid="class_minecraft_server_service_1_1_server_1a3045f178ed407b157a21da66a245e61f">backupServer</reimplements>
+        <param>
+          <type>std::string</type>
+          <declname>backupPath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="48" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.cpp" bodystart="84" bodyend="115"/>
+        <references refid="class_minecraft_server_service_1_1_server_1aea87340c35422279f868ecf8edc4a9f6" compoundref="server_8h" startline="114">MinecraftServerService::Server::log</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a4596e7ae4d2e1a7d2325fb13434f122a" compoundref="spigot_server_8h" startline="70">worldsToBackup</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a76f6b550b7fe37a3182e9bc72087a5dc" compoundref="spigot_server_8h" startline="63">serverPath</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a833bf01d9d4a495eda1a8052fdb8ee08" compoundref="spigot_server_8h" startline="69">backupPath</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a603128a2f6ce44b71ee74b601f1a24e0" compoundref="spigot_server_8h" startline="64">serverJarName</references>
+      </memberdef>
+      <memberdef kind="function" id="class_minecraft_server_service_1_1_spigot_server_1a0309d91a87890eaa0163c24b72508dfa" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MinecraftServerService::SpigotServer::serverStatus</definition>
+        <argsstring>()</argsstring>
+        <name>serverStatus</name>
+        <reimplements refid="class_minecraft_server_service_1_1_server_1af972c950277b436d85513ff5e8003df2">serverStatus</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="49" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.cpp" bodystart="154" bodyend="157"/>
+        <references refid="class_minecraft_server_service_1_1_server_1aea87340c35422279f868ecf8edc4a9f6" compoundref="server_8h" startline="114">MinecraftServerService::Server::log</references>
+      </memberdef>
+      <memberdef kind="function" id="class_minecraft_server_service_1_1_spigot_server_1a08bc3d74d604968034303efc7334dd08" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MinecraftServerService::SpigotServer::startServer</definition>
+        <argsstring>()</argsstring>
+        <name>startServer</name>
+        <reimplements refid="class_minecraft_server_service_1_1_server_1ac84f4a395d9680ba4d7405996dcb445c">startServer</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="50" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.cpp" bodystart="120" bodyend="131"/>
+        <references refid="class_minecraft_server_service_1_1_server_1aea87340c35422279f868ecf8edc4a9f6" compoundref="server_8h" startline="114">MinecraftServerService::Server::log</references>
+        <references refid="class_minecraft_server_service_1_1_server_1a1954e7c7756cd956e7282887ffca73e4" compoundref="server_8h" startline="118" endline="132">MinecraftServerService::Server::isRunning</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a76f6b550b7fe37a3182e9bc72087a5dc" compoundref="spigot_server_8h" startline="63">serverPath</references>
+        <references refid="class_minecraft_server_service_1_1_server_1a16a19b4cfd94f23c20442cea9b46f678" compoundref="server_8h" startline="258" endline="357">MinecraftServerService::Server::launchServerProcess</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a603128a2f6ce44b71ee74b601f1a24e0" compoundref="spigot_server_8h" startline="64">serverJarName</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a7d824cedf0faf1a5dcc6e4ab54d9443b" compoundref="spigot_server_8h" startline="65">serverAccount</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1ad1d3f0158a2e3f2dd338837bccf25c6a" compoundref="spigot_server_8h" startline="66">maxHeapAlloc</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a4ef50266a24dccd4f0d61d877567b55d" compoundref="spigot_server_8h" startline="67">minHeapAlloc</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a057e5d3f9de3877edc7de6f3e5c40a6c" compoundref="spigot_server_8h" startline="68">gcThreadCount</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a3175de67475bf37b44a80575d4b3edfe" compoundref="spigot_server_8h" startline="71">javaArgs</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a7a42f5a55caa07437cf121c2dfda60a0" compoundref="spigot_server_8h" startline="72">serverOptions</references>
+        <references refid="class_minecraft_server_service_1_1_server_1a3040817c744456263f8ba36bdb72bf20" compoundref="server_8h" startline="162" endline="169">MinecraftServerService::Server::outputListenerThread</references>
+        <references refid="class_minecraft_server_service_1_1_server_1abdb911338643b10beee5393851afb4c8" compoundref="server_8h" startline="109">MinecraftServerService::Server::serverPID</references>
+        <references refid="class_minecraft_server_service_1_1_server_1abb0ccd5070cc03476fc00e2e7674de6a" compoundref="server_8h" startline="113">MinecraftServerService::Server::childProcessStdout</references>
+        <references refid="class_minecraft_server_service_1_1_server_1a7b9b73779645007e9f9c33dac1436d47ae4f50d706aa789aa79b1815ea83ca96a" compoundref="server_8h" startline="65">MinecraftServerService::Server::PIPE_READ</references>
+        <references refid="class_minecraft_server_service_1_1_server_1a12dbc6c931c04754ef5600e8ad03cc4c" compoundref="server_8h" startline="115">MinecraftServerService::Server::base</references>
+        <references refid="class_minecraft_server_service_1_1_server_1a51c6dda2196eb9ee8ff671deacb66dae" compoundref="server_8h" startline="116">MinecraftServerService::Server::listeners</references>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1a8868ea31ed029270de60becebf36fc69" compoundref="spigot_server_8cpp" startline="158" endline="167">restartServer</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_minecraft_server_service_1_1_spigot_server_1a2b0c13a87da4d1766ee0cc645732865a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MinecraftServerService::SpigotServer::stopServer</definition>
+        <argsstring>()</argsstring>
+        <name>stopServer</name>
+        <reimplements refid="class_minecraft_server_service_1_1_server_1a45fb906a041e3f6c59128a0e9c4cd289">stopServer</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="51" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.cpp" bodystart="132" bodyend="153"/>
+        <references refid="class_minecraft_server_service_1_1_server_1aea87340c35422279f868ecf8edc4a9f6" compoundref="server_8h" startline="114">MinecraftServerService::Server::log</references>
+        <references refid="class_minecraft_server_service_1_1_server_1a1954e7c7756cd956e7282887ffca73e4" compoundref="server_8h" startline="118" endline="132">MinecraftServerService::Server::isRunning</references>
+        <referencedby refid="class_minecraft_server_service_1_1_spigot_server_1a8868ea31ed029270de60becebf36fc69" compoundref="spigot_server_8cpp" startline="158" endline="167">restartServer</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_minecraft_server_service_1_1_spigot_server_1a8868ea31ed029270de60becebf36fc69" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MinecraftServerService::SpigotServer::restartServer</definition>
+        <argsstring>()</argsstring>
+        <name>restartServer</name>
+        <reimplements refid="class_minecraft_server_service_1_1_server_1a9cfcad805db7ffd3f5ad10ef7a726cf9">restartServer</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="52" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.cpp" bodystart="158" bodyend="167"/>
+        <references refid="class_minecraft_server_service_1_1_server_1aea87340c35422279f868ecf8edc4a9f6" compoundref="server_8h" startline="114">MinecraftServerService::Server::log</references>
+        <references refid="class_minecraft_server_service_1_1_server_1a1954e7c7756cd956e7282887ffca73e4" compoundref="server_8h" startline="118" endline="132">MinecraftServerService::Server::isRunning</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a2b0c13a87da4d1766ee0cc645732865a" compoundref="spigot_server_8cpp" startline="132" endline="153">stopServer</references>
+        <references refid="class_minecraft_server_service_1_1_spigot_server_1a08bc3d74d604968034303efc7334dd08" compoundref="spigot_server_8cpp" startline="120" endline="131">startServer</references>
+      </memberdef>
+      <memberdef kind="function" id="class_minecraft_server_service_1_1_spigot_server_1a2cf305102eece78f29bae746459d650b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MinecraftServerService::SpigotServer::reloadServer</definition>
+        <argsstring>()</argsstring>
+        <name>reloadServer</name>
+        <reimplements refid="class_minecraft_server_service_1_1_server_1a68757647a604e935d365672b53c82d98">reloadServer</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="53" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.cpp" bodystart="116" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="class_minecraft_server_service_1_1_spigot_server_1a47e66899b9d4fd1a3fe4855f16e07afb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string MinecraftServerService::SpigotServer::listOnlinePlayers</definition>
+        <argsstring>()</argsstring>
+        <name>listOnlinePlayers</name>
+        <reimplements refid="class_minecraft_server_service_1_1_server_1a86455e8351ecc7af502e681daf023eb3">listOnlinePlayers</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="54" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.cpp" bodystart="178" bodyend="201"/>
+        <references refid="class_minecraft_server_service_1_1_server_1aea87340c35422279f868ecf8edc4a9f6" compoundref="server_8h" startline="114">MinecraftServerService::Server::log</references>
+        <references refid="class_minecraft_server_service_1_1_server_1a51c6dda2196eb9ee8ff671deacb66dae" compoundref="server_8h" startline="116">MinecraftServerService::Server::listeners</references>
+      </memberdef>
+      <memberdef kind="function" id="class_minecraft_server_service_1_1_spigot_server_1a44c1324092f2a45889f0935a77ed0a89" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool MinecraftServerService::SpigotServer::listOnlinePlayers</definition>
+        <argsstring>(std::string playerName)</argsstring>
+        <name>listOnlinePlayers</name>
+        <reimplements refid="class_minecraft_server_service_1_1_server_1adf8951b2a9337983e8ced4b148e1ed5e">listOnlinePlayers</reimplements>
+        <param>
+          <type>std::string</type>
+          <declname>playerName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="55" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.cpp" bodystart="202" bodyend="225"/>
+        <references refid="class_minecraft_server_service_1_1_server_1aea87340c35422279f868ecf8edc4a9f6" compoundref="server_8h" startline="114">MinecraftServerService::Server::log</references>
+        <references refid="class_minecraft_server_service_1_1_server_1a51c6dda2196eb9ee8ff671deacb66dae" compoundref="server_8h" startline="116">MinecraftServerService::Server::listeners</references>
+      </memberdef>
+      <memberdef kind="function" id="class_minecraft_server_service_1_1_spigot_server_1a3982946d2881f27cc95791214ab8da27" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MinecraftServerService::SpigotServer::sendCommand</definition>
+        <argsstring>(std::string command)</argsstring>
+        <name>sendCommand</name>
+        <reimplements refid="class_minecraft_server_service_1_1_server_1a9c2d6b9b94d490405bf74109e7794cb1">sendCommand</reimplements>
+        <param>
+          <type>std::string</type>
+          <declname>command</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="56" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.cpp" bodystart="168" bodyend="176"/>
+        <references refid="class_minecraft_server_service_1_1_server_1aea87340c35422279f868ecf8edc4a9f6" compoundref="server_8h" startline="114">MinecraftServerService::Server::log</references>
+        <references refid="class_minecraft_server_service_1_1_server_1a1954e7c7756cd956e7282887ffca73e4" compoundref="server_8h" startline="118" endline="132">MinecraftServerService::Server::isRunning</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_minecraft_server_service_1_1_spigot_server_1a022c6bfdb11fa362cf3279ccf7fbaa72" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MinecraftServerService::SpigotServer::logger</definition>
+        <argsstring>(size_t linesRequested, std::stringstream *output, log4cpp::Category *log)</argsstring>
+        <name>logger</name>
+        <param>
+          <type>size_t</type>
+          <declname>linesRequested</declname>
+        </param>
+        <param>
+          <type>std::stringstream *</type>
+          <declname>output</declname>
+        </param>
+        <param>
+          <type>log4cpp::Category *</type>
+          <declname>log</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="62" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="47">
+        <label>MinecraftServerService::SpigotServer</label>
+        <link refid="class_minecraft_server_service_1_1_spigot_server"/>
+        <childnode refid="48" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>MinecraftServerService::Server</label>
+        <link refid="class_minecraft_server_service_1_1_server"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="49">
+        <label>MinecraftServerService::SpigotServer</label>
+        <link refid="class_minecraft_server_service_1_1_spigot_server"/>
+        <childnode refid="50" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>MinecraftServerService::Server</label>
+        <link refid="class_minecraft_server_service_1_1_server"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" line="34" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/spigotServer.h" bodystart="33" bodyend="73"/>
+    <listofallmembers>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1a833bf01d9d4a495eda1a8052fdb8ee08" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>backupPath</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1ae210f6a553988cc2fa54cfa2f5740c49" prot="public" virt="virtual"><scope>MinecraftServerService::SpigotServer</scope><name>backupServer</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1a48055f2ec0703f54ac853d829f1cc077" prot="public" virt="virtual"><scope>MinecraftServerService::SpigotServer</scope><name>backupServer</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1a12dbc6c931c04754ef5600e8ad03cc4c" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>base</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1a116eb894b58076ec10c694d4acb11d48" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>childProcessGID</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1a6fa4025b32b4ff9aa2cce5c33c6a5eff" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>childProcessStdin</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1abb0ccd5070cc03476fc00e2e7674de6a" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>childProcessStdout</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1af2c725b65183545aee7228aae35b6967" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>childProcessUID</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1a9a78d018fb71e9aa0a054ff39cba5083" prot="public" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>CoutType</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1a057e5d3f9de3877edc7de6f3e5c40a6c" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>gcThreadCount</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1a085f201bd563ce47e2b41778ef72d20d" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>getUIDAndGIDFromUsername</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1a1954e7c7756cd956e7282887ffca73e4" prot="public" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>isRunning</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1a3175de67475bf37b44a80575d4b3edfe" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>javaArgs</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1a16a19b4cfd94f23c20442cea9b46f678" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>launchServerProcess</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1a51c6dda2196eb9ee8ff671deacb66dae" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>listeners</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1a47e66899b9d4fd1a3fe4855f16e07afb" prot="public" virt="virtual"><scope>MinecraftServerService::SpigotServer</scope><name>listOnlinePlayers</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1a44c1324092f2a45889f0935a77ed0a89" prot="public" virt="virtual"><scope>MinecraftServerService::SpigotServer</scope><name>listOnlinePlayers</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1aea87340c35422279f868ecf8edc4a9f6" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>log</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1a022c6bfdb11fa362cf3279ccf7fbaa72" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>logger</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1ad1d3f0158a2e3f2dd338837bccf25c6a" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>maxHeapAlloc</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1a4ef50266a24dccd4f0d61d877567b55d" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>minHeapAlloc</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1a21a2533f4998ccc209c53a48cdb58718" prot="public" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>operator&lt;&lt;</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1a885bdc0a0267d25168bf6d35086d6090" prot="public" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>operator&lt;&lt;</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1aad73f651ba11cfc4815f8763edd6b914" prot="public" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>operator&lt;&lt;</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1a2b2cca8ee2e09c7236bc668e8522cb6a" prot="public" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>operator&gt;&gt;</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1a3040817c744456263f8ba36bdb72bf20" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>outputListenerThread</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1a7b9b73779645007e9f9c33dac1436d47" prot="public" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>PIPE_OPS</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1a7b9b73779645007e9f9c33dac1436d47ae4f50d706aa789aa79b1815ea83ca96a" prot="public" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>PIPE_READ</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1a7b9b73779645007e9f9c33dac1436d47a57f3281db4e9bfe3825337d696eb24a4" prot="public" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>PIPE_WRITE</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1a2cf305102eece78f29bae746459d650b" prot="public" virt="virtual"><scope>MinecraftServerService::SpigotServer</scope><name>reloadServer</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1a8868ea31ed029270de60becebf36fc69" prot="public" virt="virtual"><scope>MinecraftServerService::SpigotServer</scope><name>restartServer</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1a3982946d2881f27cc95791214ab8da27" prot="public" virt="virtual"><scope>MinecraftServerService::SpigotServer</scope><name>sendCommand</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1a7d824cedf0faf1a5dcc6e4ab54d9443b" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>serverAccount</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1a603128a2f6ce44b71ee74b601f1a24e0" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>serverJarName</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1af07a3457e3239d898b8f84809b0703e4" prot="public" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>ServerManipulator</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1accad32ff846a3e4123749a83a2735a39" prot="public" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>serverName</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1a7a42f5a55caa07437cf121c2dfda60a0" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>serverOptions</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1a4ecf103c62bd8f1e54b2ff436fa1645a" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>serverOutputEvent</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1a76f6b550b7fe37a3182e9bc72087a5dc" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>serverPath</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1abdb911338643b10beee5393851afb4c8" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>serverPID</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1a0309d91a87890eaa0163c24b72508dfa" prot="public" virt="virtual"><scope>MinecraftServerService::SpigotServer</scope><name>serverStatus</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1aea28f0f9e617a15a29d4423844196d21" prot="public" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>SpigotServer</name></member>
+      <member refid="class_minecraft_server_service_1_1_server_1aabd71f679656f27eec9b0d66be40f5a1" prot="public" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>StandardEndLine</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1a08bc3d74d604968034303efc7334dd08" prot="public" virt="virtual"><scope>MinecraftServerService::SpigotServer</scope><name>startServer</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1a2b0c13a87da4d1766ee0cc645732865a" prot="public" virt="virtual"><scope>MinecraftServerService::SpigotServer</scope><name>stopServer</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1a054ddb4477a413d22365ecae0321ae71" prot="public" virt="virtual"><scope>MinecraftServerService::SpigotServer</scope><name>updateServer</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1a4596e7ae4d2e1a7d2325fb13434f122a" prot="protected" virt="non-virtual"><scope>MinecraftServerService::SpigotServer</scope><name>worldsToBackup</name></member>
+      <member refid="class_minecraft_server_service_1_1_spigot_server_1a54cecfac2a1b55f4f6044cb984359102" prot="public" virt="virtual"><scope>MinecraftServerService::SpigotServer</scope><name>~SpigotServer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

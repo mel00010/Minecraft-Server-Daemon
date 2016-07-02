@@ -1,4 +1,4 @@
-AC_INIT([minecraft-server-service], [1.0], [bug-automake@gnu.org])
+AC_INIT([minecraft-server-daemon], [1.0], [bug-automake@gnu.org])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_PROG_CXX
 AC_CONFIG_HEADERS([config.h])
@@ -9,7 +9,7 @@ AC_CONFIG_FILES([
 AC_LANG_PUSH([C++])
 
 #~ PKG_PROG_PKG_CONFIG
-#~ PKG_CHECK_MODULES([pstreams],[libpstreams-dev])
+PKG_CHECK_MODULES([libevent],[libevent])
 PKG_CHECK_MODULES([log4cpp],[log4cpp])
 AC_ARG_ENABLE([debug],
 [  --enable-debug    Turn on debugging],

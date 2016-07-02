@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="main_loop_8h" kind="file" language="C++">
+    <compoundname>mainLoop.h</compoundname>
+    <includes local="yes">log4cpp/Category.hh</includes>
+    <includes local="no">event2/event.h</includes>
+    <includedby refid="main_8cpp" local="yes">/home/mel/projects/Misc/Minecraft Server Service/src/main.cpp</includedby>
+    <includedby refid="main_loop_8cpp" local="yes">/home/mel/projects/Misc/Minecraft Server Service/src/mainLoop.cpp</includedby>
+    <incdepgraph>
+      <node id="318">
+        <label>event2/event.h</label>
+      </node>
+      <node id="317">
+        <label>log4cpp/Category.hh</label>
+      </node>
+      <node id="316">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/mainLoop.h</label>
+        <link refid="mainLoop.h"/>
+        <childnode refid="317" relation="include">
+        </childnode>
+        <childnode refid="318" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="319">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/mainLoop.h</label>
+        <link refid="mainLoop.h"/>
+        <childnode refid="320" relation="include">
+        </childnode>
+        <childnode refid="321" relation="include">
+        </childnode>
+      </node>
+      <node id="320">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="321">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/mainLoop.cpp</label>
+        <link refid="main_loop_8cpp"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="main_loop_8h_1a258e3b580e688a0cf46e4258525aeaf1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sigint_handler</definition>
+        <argsstring>(int sig)</argsstring>
+        <name>sigint_handler</name>
+        <param>
+          <type>int</type>
+          <declname>sig</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/mainLoop.h" line="27" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/mainLoop.cpp" bodystart="38" bodyend="43"/>
+        <referencedby refid="main_8cpp_1a840291bc02cba5474a4cb46a9b9566fe" compoundref="main_8cpp" startline="38" endline="108">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="main_loop_8h_1a3550c14c4b6d5f25ba3d1d0a61053935" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mainLoop</definition>
+        <argsstring>(std::vector&lt; MinecraftServerService::Server * &gt; *servers, log4cpp::Category &amp;root, evutil_socket_t controlSocket, struct event_base *base)</argsstring>
+        <name>mainLoop</name>
+        <param>
+          <type>std::vector&lt; <ref refid="class_minecraft_server_service_1_1_server" kindref="compound">MinecraftServerService::Server</ref> * &gt; *</type>
+          <declname>servers</declname>
+        </param>
+        <param>
+          <type>log4cpp::Category &amp;</type>
+          <declname>root</declname>
+        </param>
+        <param>
+          <type>evutil_socket_t</type>
+          <declname>controlSocket</declname>
+        </param>
+        <param>
+          <type>struct event_base *</type>
+          <declname>base</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/mainLoop.h" line="28" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="main_loop_8h_1ae78f03fb04ce6bc07ec81b0f6648e0b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void writeToSocket</definition>
+        <argsstring>(std::string message, int controlSocket, log4cpp::Category &amp;root)</argsstring>
+        <name>writeToSocket</name>
+        <param>
+          <type>std::string</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>controlSocket</declname>
+        </param>
+        <param>
+          <type>log4cpp::Category &amp;</type>
+          <declname>root</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/mainLoop.h" line="29" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/mainLoop.cpp" bodystart="59" bodyend="65"/>
+        <referencedby refid="main_loop_8h_1a49d60dd7e88e6b6c879c9465bebaed5e" compoundref="main_loop_8cpp" startline="77" endline="345">recieveCommand</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="main_loop_8h_1ad0da4a96a5d394bf523fe3c744156d15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string readFromSocket</definition>
+        <argsstring>(int controlSocket, log4cpp::Category &amp;root)</argsstring>
+        <name>readFromSocket</name>
+        <param>
+          <type>int</type>
+          <declname>controlSocket</declname>
+        </param>
+        <param>
+          <type>log4cpp::Category &amp;</type>
+          <declname>root</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/mainLoop.h" line="30" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/mainLoop.cpp" bodystart="66" bodyend="76"/>
+        <references refid="client_8cpp_1ac6509c6fe4cbf7bde170597172f8a288" compoundref="client_8cpp" startline="36">rc</references>
+        <references refid="client_8cpp_1a506c6262716ea30b93c4848f0f791286" compoundref="client_8cpp" startline="37">buff</references>
+      </memberdef>
+      <memberdef kind="function" id="main_loop_8h_1a49d60dd7e88e6b6c879c9465bebaed5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void recieveCommand</definition>
+        <argsstring>(int controlSocket, short what, void *arg)</argsstring>
+        <name>recieveCommand</name>
+        <param>
+          <type>int</type>
+          <declname>controlSocket</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>what</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/mainLoop.h" line="31" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/mainLoop.cpp" bodystart="77" bodyend="345"/>
+        <references refid="client_8cpp_1afa475efa26483438fd5d03a09ced884b" compoundref="client_8cpp" startline="36">controlSocket</references>
+        <references refid="structcb__data_1a021c92f78fbef47a018c0423606ce946" compoundref="main_loop_8cpp" startline="46">cb_data::servers</references>
+        <references refid="structcb__data_1a7dfb2fb06414483cd5b24e47c774165f" compoundref="main_loop_8cpp" startline="47">cb_data::root</references>
+        <references refid="client_8cpp_1ac6509c6fe4cbf7bde170597172f8a288" compoundref="client_8cpp" startline="36">rc</references>
+        <references refid="main_loop_8cpp_1ae78f03fb04ce6bc07ec81b0f6648e0b4" compoundref="main_loop_8cpp" startline="59" endline="65">writeToSocket</references>
+        <references refid="client_8cpp_1a506c6262716ea30b93c4848f0f791286" compoundref="client_8cpp" startline="37">buff</references>
+        <referencedby refid="main_loop_8cpp_1a5b8ae8d09b7249084a22620e375fd5e5" compoundref="main_loop_8cpp" startline="49" endline="58">mainLoop</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>mainLoop.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2016<sp/>Mel<sp/>McCalla<sp/>&lt;melmccalla@gmail.com&gt;</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>This<sp/>program<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>it<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>(at<sp/>your<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>This<sp/>program<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>but<sp/>WITHOUT<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>MERCHANTABILITY<sp/>or<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>along<sp/>with<sp/>this<sp/>program;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>Foundation,<sp/>Inc.,<sp/>51<sp/>Franklin<sp/>Street,<sp/>Fifth<sp/>Floor,<sp/>Boston,</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>MA<sp/>02110-1301,<sp/>USA.</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MAINLOOP_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAINLOOP_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;log4cpp/Category.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;event2/event.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_loop_8h_1a258e3b580e688a0cf46e4258525aeaf1" kindref="member">sigint_handler</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sig);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_loop_8h_1a3550c14c4b6d5f25ba3d1d0a61053935" kindref="member">mainLoop</ref><sp/>(std::vector&lt;MinecraftServerService::Server*&gt;*<sp/><ref refid="structcb__data_1a021c92f78fbef47a018c0423606ce946" kindref="member">servers</ref>,<sp/>log4cpp::Category&amp;<sp/><ref refid="structcb__data_1a7dfb2fb06414483cd5b24e47c774165f" kindref="member">root</ref>,<sp/>evutil_socket_t<sp/><ref refid="client_8cpp_1afa475efa26483438fd5d03a09ced884b" kindref="member">controlSocket</ref>,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>event_base*base);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_loop_8h_1ae78f03fb04ce6bc07ec81b0f6648e0b4" kindref="member">writeToSocket</ref>(std::string<sp/>message,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="client_8cpp_1afa475efa26483438fd5d03a09ced884b" kindref="member">controlSocket</ref>,<sp/>log4cpp::Category&amp;<sp/><ref refid="structcb__data_1a7dfb2fb06414483cd5b24e47c774165f" kindref="member">root</ref>);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">std::string<sp/><ref refid="main_loop_8h_1ad0da4a96a5d394bf523fe3c744156d15" kindref="member">readFromSocket</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="client_8cpp_1afa475efa26483438fd5d03a09ced884b" kindref="member">controlSocket</ref>,<sp/>log4cpp::Category&amp;<sp/><ref refid="structcb__data_1a7dfb2fb06414483cd5b24e47c774165f" kindref="member">root</ref>);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_loop_8h_1a49d60dd7e88e6b6c879c9465bebaed5e" kindref="member">recieveCommand</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="client_8cpp_1afa475efa26483438fd5d03a09ced884b" kindref="member">controlSocket</ref>,<sp/></highlight><highlight class="keywordtype">short</highlight><highlight class="normal"><sp/>what,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*arg);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>MAINLOOP_H<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/mel/projects/Misc/Minecraft Server Service/src/mainLoop.h"/>
+  </compounddef>
+</doxygen>

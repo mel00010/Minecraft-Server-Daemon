@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="struct_json_1_1_our_reader_1_1_structured_error" kind="struct" language="C++" prot="public">
+    <compoundname>Json::OurReader::StructuredError</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_json_1_1_our_reader_1_1_structured_error_1a102677698afb8177c985e72dafe72b15" prot="public" static="no" mutable="no">
+        <type>ptrdiff_t</type>
+        <definition>ptrdiff_t Json::OurReader::StructuredError::offset_start</definition>
+        <argsstring></argsstring>
+        <name>offset_start</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="1111" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="1111" bodyend="-1"/>
+        <referencedby refid="class_json_1_1_our_reader_1a02ef7871af3706754a233c36e6d489e9" compoundref="jsoncpp_8cpp" startline="2029" endline="2042">Json::OurReader::getStructuredErrors</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="struct_json_1_1_our_reader_1_1_structured_error_1a15491a751a39c5153af04e68b1d0abb9" prot="public" static="no" mutable="no">
+        <type>ptrdiff_t</type>
+        <definition>ptrdiff_t Json::OurReader::StructuredError::offset_limit</definition>
+        <argsstring></argsstring>
+        <name>offset_limit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="1112" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="1112" bodyend="-1"/>
+        <referencedby refid="class_json_1_1_our_reader_1a02ef7871af3706754a233c36e6d489e9" compoundref="jsoncpp_8cpp" startline="2029" endline="2042">Json::OurReader::getStructuredErrors</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="struct_json_1_1_our_reader_1_1_structured_error_1adc8a757b6452cc6ab14fb90b933b3414" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Json::OurReader::StructuredError::message</definition>
+        <argsstring></argsstring>
+        <name>message</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="1113" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="1113" bodyend="-1"/>
+        <referencedby refid="class_json_1_1_our_reader_1a02ef7871af3706754a233c36e6d489e9" compoundref="jsoncpp_8cpp" startline="2029" endline="2042">Json::OurReader::getStructuredErrors</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="1110" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="1110" bodyend="1114"/>
+    <listofallmembers>
+      <member refid="struct_json_1_1_our_reader_1_1_structured_error_1adc8a757b6452cc6ab14fb90b933b3414" prot="public" virt="non-virtual"><scope>Json::OurReader::StructuredError</scope><name>message</name></member>
+      <member refid="struct_json_1_1_our_reader_1_1_structured_error_1a15491a751a39c5153af04e68b1d0abb9" prot="public" virt="non-virtual"><scope>Json::OurReader::StructuredError</scope><name>offset_limit</name></member>
+      <member refid="struct_json_1_1_our_reader_1_1_structured_error_1a102677698afb8177c985e72dafe72b15" prot="public" virt="non-virtual"><scope>Json::OurReader::StructuredError</scope><name>offset_start</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

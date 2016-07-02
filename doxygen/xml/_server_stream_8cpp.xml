@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="_server_stream_8cpp" kind="file" language="C++">
+    <compoundname>ServerStream.cpp</compoundname>
+    <includes refid="_server_stream_8h" local="yes">ServerStream.h</includes>
+    <includes refid="server_8h" local="yes">server.h</includes>
+    <includes local="yes">log4cpp/Category.hh</includes>
+    <includes local="yes">log4cpp/Appender.hh</includes>
+    <includes local="yes">log4cpp/FileAppender.hh</includes>
+    <includes local="yes">log4cpp/Layout.hh</includes>
+    <includes local="yes">log4cpp/PatternLayout.hh</includes>
+    <includes local="yes">log4cpp/Priority.hh</includes>
+    <includes local="no">string</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">sstream</includes>
+    <includes local="no">thread</includes>
+    <includes local="no">time.h</includes>
+    <includes local="no">pstreams/pstream.h</includes>
+    <includes local="no">event2/event.h</includes>
+    <includes local="no">event2/buffer.h</includes>
+    <includes local="no">mutex</includes>
+    <includes local="no">future</includes>
+    <incdepgraph>
+      <node id="218">
+        <label>log4cpp/Appender.hh</label>
+      </node>
+      <node id="206">
+        <label>/home/mel/projects/Misc/Minecraft Server Service/src/ServerStream.cpp</label>
+        <link refid="ServerStream.cpp"/>
+        <childnode refid="207" relation="include">
+        </childnode>
+        <childnode refid="216" relation="include">
+        </childnode>
+        <childnode refid="208" relation="include">
+        </childnode>
+        <childnode refid="218" relation="include">
+        </childnode>
+        <childnode refid="219" relation="include">
+        </childnode>
+        <childnode refid="220" relation="include">
+        </childnode>
+        <childnode refid="221" relation="include">
+        </childnode>
+        <childnode refid="222" relation="include">
+        </childnode>
+        <childnode refid="214" relation="include">
+        </childnode>
+        <childnode refid="213" relation="include">
+        </childnode>
+        <childnode refid="223" relation="include">
+        </childnode>
+        <childnode refid="224" relation="include">
+        </childnode>
+        <childnode refid="217" relation="include">
+        </childnode>
+        <childnode refid="225" relation="include">
+        </childnode>
+        <childnode refid="226" relation="include">
+        </childnode>
+        <childnode refid="227" relation="include">
+        </childnode>
+        <childnode refid="228" relation="include">
+        </childnode>
+        <childnode refid="229" relation="include">
+        </childnode>
+      </node>
+      <node id="209">
+        <label>ServerProcessBuf.h</label>
+        <link refid="_server_process_buf_8h"/>
+        <childnode refid="210" relation="include">
+        </childnode>
+        <childnode refid="211" relation="include">
+        </childnode>
+        <childnode refid="212" relation="include">
+        </childnode>
+        <childnode refid="213" relation="include">
+        </childnode>
+        <childnode refid="208" relation="include">
+        </childnode>
+      </node>
+      <node id="226">
+        <label>event2/event.h</label>
+      </node>
+      <node id="208">
+        <label>log4cpp/Category.hh</label>
+      </node>
+      <node id="214">
+        <label>string</label>
+      </node>
+      <node id="222">
+        <label>log4cpp/Priority.hh</label>
+      </node>
+      <node id="220">
+        <label>log4cpp/Layout.hh</label>
+      </node>
+      <node id="207">
+        <label>ServerStream.h</label>
+        <link refid="_server_stream_8h"/>
+        <childnode refid="208" relation="include">
+        </childnode>
+        <childnode refid="209" relation="include">
+        </childnode>
+        <childnode refid="214" relation="include">
+        </childnode>
+        <childnode refid="213" relation="include">
+        </childnode>
+        <childnode refid="215" relation="include">
+        </childnode>
+      </node>
+      <node id="216">
+        <label>server.h</label>
+        <link refid="server_8h"/>
+        <childnode refid="207" relation="include">
+        </childnode>
+        <childnode refid="208" relation="include">
+        </childnode>
+        <childnode refid="214" relation="include">
+        </childnode>
+        <childnode refid="217" relation="include">
+        </childnode>
+      </node>
+      <node id="229">
+        <label>future</label>
+      </node>
+      <node id="219">
+        <label>log4cpp/FileAppender.hh</label>
+      </node>
+      <node id="213">
+        <label>vector</label>
+      </node>
+      <node id="210">
+        <label>streambuf</label>
+      </node>
+      <node id="221">
+        <label>log4cpp/PatternLayout.hh</label>
+      </node>
+      <node id="223">
+        <label>sstream</label>
+      </node>
+      <node id="217">
+        <label>time.h</label>
+      </node>
+      <node id="211">
+        <label>iosfwd</label>
+      </node>
+      <node id="212">
+        <label>cstdlib</label>
+      </node>
+      <node id="225">
+        <label>pstreams/pstream.h</label>
+      </node>
+      <node id="228">
+        <label>mutex</label>
+      </node>
+      <node id="224">
+        <label>thread</label>
+      </node>
+      <node id="227">
+        <label>event2/buffer.h</label>
+      </node>
+      <node id="215">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespace_minecraft_server_service">MinecraftServerService</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_server_stream_8h" kindref="compound">ServerStream.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="server_8h" kindref="compound">server.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;log4cpp/Category.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;log4cpp/Appender.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;log4cpp/FileAppender.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;log4cpp/Layout.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;log4cpp/PatternLayout.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;log4cpp/Priority.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;thread&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;time.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;pstreams/pstream.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;event2/event.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;event2/buffer.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;future&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_minecraft_server_service" kindref="compound">MinecraftServerService</ref><sp/>{</highlight></codeline>
+<codeline lineno="20" refid="class_minecraft_server_service_1_1_server_stream_1a18567f4d5f6752325172e3fb5efb0f6c" refkind="member"><highlight class="normal"><ref refid="class_minecraft_server_service_1_1_server_stream_1a18567f4d5f6752325172e3fb5efb0f6c" kindref="member">ServerStream::ServerStream</ref>(std::string<sp/>_serverName,<sp/>std::string<sp/>_serverPath,<sp/>std::string<sp/>_serverJarName,<sp/>std::string<sp/>_serverAccount,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>_maxHeapAlloc,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>_minHeapAlloc,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>_gcThreadCount,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>_javaArgs,<sp/></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>_serverOptions)</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1aa6aeeef202bcbaf6b6668a03f7682efb" kindref="member">serverName</ref><sp/>=<sp/>_serverName;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>log4cpp::Appender<sp/>*appender<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>log4cpp::FileAppender(<ref refid="class_minecraft_server_service_1_1_server_stream_1aa6aeeef202bcbaf6b6668a03f7682efb" kindref="member">serverName</ref>,<sp/></highlight><highlight class="stringliteral">&quot;/var/log/minecraft/servers/&quot;</highlight><highlight class="normal">+<ref refid="class_minecraft_server_service_1_1_server_stream_1aa6aeeef202bcbaf6b6668a03f7682efb" kindref="member">serverName</ref>+</highlight><highlight class="stringliteral">&quot;.log&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>log4cpp::PatternLayout*<sp/>pattern<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>log4cpp::PatternLayout();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>pattern-&gt;setConversionPattern(</highlight><highlight class="stringliteral">&quot;%d<sp/>%c<sp/>[%p]<sp/>%m%n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>appender-&gt;setLayout(pattern);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a698b7dfef7f76adc005d81eb6a11dd28" kindref="member">log</ref><sp/>=<sp/>&amp;log4cpp::Category::getInstance(<ref refid="class_minecraft_server_service_1_1_server_stream_1aa6aeeef202bcbaf6b6668a03f7682efb" kindref="member">serverName</ref>);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a698b7dfef7f76adc005d81eb6a11dd28" kindref="member">log</ref>-&gt;addAppender(appender);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a698b7dfef7f76adc005d81eb6a11dd28" kindref="member">log</ref>-&gt;debug(</highlight><highlight class="stringliteral">&quot;ServerStream::ServerStream&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a974b8007a5c437d221f482543044acb4" kindref="member">serverProcess</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_server_process_buf" kindref="compound">ServerProcessBuf</ref>(_serverName,<sp/>_serverPath,<sp/>_serverJarName,<sp/>_serverAccount,<sp/>_maxHeapAlloc,<sp/>_minHeapAlloc,<sp/>_gcThreadCount,<sp/>_javaArgs,<sp/>_serverOptions);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35" refid="class_minecraft_server_service_1_1_server_stream_1a8cb55e6e481c6d4338d446a7b92df3d3" refkind="member"><highlight class="normal"><ref refid="class_minecraft_server_service_1_1_server_stream_1a8cb55e6e481c6d4338d446a7b92df3d3" kindref="member">ServerStream::~ServerStream</ref>()</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a698b7dfef7f76adc005d81eb6a11dd28" kindref="member">log</ref>-&gt;debug(</highlight><highlight class="stringliteral">&quot;ServerStream::~ServerStream&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1af8529e03480497e12e171cf93709e757" kindref="member">stopServer</ref>();</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">(<ref refid="class_minecraft_server_service_1_1_server_stream_1a974b8007a5c437d221f482543044acb4" kindref="member">serverProcess</ref>);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a698b7dfef7f76adc005d81eb6a11dd28" kindref="member">log</ref>-&gt;getAppender()-&gt;close();</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//~<sp/>delete(log);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43" refid="class_minecraft_server_service_1_1_server_stream_1af8529e03480497e12e171cf93709e757" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1af8529e03480497e12e171cf93709e757" kindref="member">ServerStream::stopServer</ref>()</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a698b7dfef7f76adc005d81eb6a11dd28" kindref="member">log</ref>-&gt;debug(</highlight><highlight class="stringliteral">&quot;Connection::stopServer&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!<ref refid="class_minecraft_server_service_1_1_server_stream_1a974b8007a5c437d221f482543044acb4" kindref="member">serverProcess</ref>-&gt;<ref refid="class_minecraft_server_service_1_1_server_process_buf_1aea2e874a9ba6aa6558201008d9b909f0" kindref="member">exited</ref>())</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a698b7dfef7f76adc005d81eb6a11dd28" kindref="member">log</ref>-&gt;notice(</highlight><highlight class="stringliteral">&quot;Server<sp/>shutting<sp/>down&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a194212956c6eb928a2db1b25e70dc565" kindref="member">sendCommand</ref>(</highlight><highlight class="stringliteral">&quot;say<sp/>SERVER<sp/>SHUTTING<sp/>DOWN<sp/>IN<sp/>10<sp/>SECONDS.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=10;<sp/>i&gt;0;<sp/>--i)<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a194212956c6eb928a2db1b25e70dc565" kindref="member">sendCommand</ref>(</highlight><highlight class="stringliteral">&quot;say<sp/>&quot;</highlight><highlight class="normal">+std::to_string(i));</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sleep(1);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a194212956c6eb928a2db1b25e70dc565" kindref="member">sendCommand</ref>(</highlight><highlight class="stringliteral">&quot;say<sp/>Saving<sp/>map...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a194212956c6eb928a2db1b25e70dc565" kindref="member">sendCommand</ref>(</highlight><highlight class="stringliteral">&quot;save-all&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a194212956c6eb928a2db1b25e70dc565" kindref="member">sendCommand</ref>(</highlight><highlight class="stringliteral">&quot;stop&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(!<ref refid="class_minecraft_server_service_1_1_server_stream_1a974b8007a5c437d221f482543044acb4" kindref="member">serverProcess</ref>-&gt;<ref refid="class_minecraft_server_service_1_1_server_process_buf_1aea2e874a9ba6aa6558201008d9b909f0" kindref="member">exited</ref>())<sp/>{}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a698b7dfef7f76adc005d81eb6a11dd28" kindref="member">log</ref>-&gt;info(</highlight><highlight class="stringliteral">&quot;Server<sp/>stopped&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a698b7dfef7f76adc005d81eb6a11dd28" kindref="member">log</ref>-&gt;info(</highlight><highlight class="stringliteral">&quot;Server<sp/>not<sp/>running&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63" refid="class_minecraft_server_service_1_1_server_stream_1a194212956c6eb928a2db1b25e70dc565" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a194212956c6eb928a2db1b25e70dc565" kindref="member">ServerStream::sendCommand</ref>(std::string<sp/>command)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a698b7dfef7f76adc005d81eb6a11dd28" kindref="member">log</ref>-&gt;debug(</highlight><highlight class="stringliteral">&quot;Connection::sendCommand&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!<ref refid="class_minecraft_server_service_1_1_server_stream_1a974b8007a5c437d221f482543044acb4" kindref="member">serverProcess</ref>-&gt;<ref refid="class_minecraft_server_service_1_1_server_process_buf_1aea2e874a9ba6aa6558201008d9b909f0" kindref="member">exited</ref>())</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a698b7dfef7f76adc005d81eb6a11dd28" kindref="member">log</ref>-&gt;info(</highlight><highlight class="stringliteral">&quot;Sending<sp/>command<sp/>\&quot;&quot;</highlight><highlight class="normal"><sp/>+<sp/>command<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;\&quot;<sp/>to<sp/>&quot;</highlight><highlight class="normal">+<sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1aa6aeeef202bcbaf6b6668a03f7682efb" kindref="member">serverName</ref>);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>command<sp/>=<sp/>command<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a974b8007a5c437d221f482543044acb4" kindref="member">serverProcess</ref>-&gt;sputn(command.c_str(),<sp/>command.size());</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a698b7dfef7f76adc005d81eb6a11dd28" kindref="member">log</ref>-&gt;info(</highlight><highlight class="stringliteral">&quot;Server<sp/>not<sp/>running&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="75" refid="class_minecraft_server_service_1_1_server_stream_1acfaf50ff9b711062de3bb8a650ba11dd" refkind="member"><highlight class="normal"><ref refid="class_minecraft_server_service_1_1_server_process_buf" kindref="compound">ServerProcessBuf</ref>*<sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1acfaf50ff9b711062de3bb8a650ba11dd" kindref="member">ServerStream::rdbuf</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_minecraft_server_service_1_1_server_stream_1a974b8007a5c437d221f482543044acb4" kindref="member">serverProcess</ref>;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment">//~<sp/>void<sp/>ServerStream::outputListener()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">//~<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//~<sp/>log-&gt;debug(&quot;ServerStream::outputListener&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//~<sp/>std::weak_ptr&lt;redi::pstream&gt;<sp/>_server<sp/>=<sp/>server;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//~<sp/>std::string<sp/>_output;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//~<sp/>auto<sp/>__server<sp/>=<sp/>_server.lock();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//~<sp/>while<sp/>(running)<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//~<sp/>std::getline(*__server,<sp/>_output);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//~<sp/>if<sp/>(_output.size()<sp/>&gt;<sp/>0)<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//~<sp/>*output<sp/>&lt;&lt;<sp/>_output<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//~<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//~<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//~<sp/>__server.reset();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment">//~<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/mel/projects/Misc/Minecraft Server Service/src/ServerStream.cpp"/>
+  </compounddef>
+</doxygen>

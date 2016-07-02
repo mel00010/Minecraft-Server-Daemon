@@ -1,0 +1,237 @@
+.TH "MinecraftServerService::VanillaServer" 3 "Fri Jul 1 2016" "Minecraft Server Daemon" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MinecraftServerService::VanillaServer \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <vanillaServer\&.h>\fP
+.PP
+Inherits \fBMinecraftServerService::Server\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBVanillaServer\fP (std::string \fBserverName\fP, std::string \fBserverPath\fP, std::string \fBserverJarName\fP, std::string \fBserverAccount\fP, int \fBmaxHeapAlloc\fP, int \fBminHeapAlloc\fP, int \fBgcThreadCount\fP, std::string \fBbackupPath\fP, std::vector< std::string > \fBworldsToBackup\fP, std::vector< std::string > \fBjavaArgs\fP, std::vector< std::string > \fBserverOptions\fP)"
+.br
+.ti -1c
+.RI "virtual \fB~VanillaServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBupdateServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBbackupServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBbackupServer\fP (std::string \fBbackupPath\fP)"
+.br
+.ti -1c
+.RI "void \fBserverStatus\fP ()"
+.br
+.ti -1c
+.RI "void \fBstartServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBstopServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBrestartServer\fP ()"
+.br
+.ti -1c
+.RI "void \fBreloadServer\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBlistOnlinePlayers\fP ()"
+.br
+.ti -1c
+.RI "bool \fBlistOnlinePlayers\fP (std::string playerName)"
+.br
+.ti -1c
+.RI "void \fBsendCommand\fP (std::string command)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBserverName\fP"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBlogger\fP (size_t linesRequested, std::stringstream *output, log4cpp::Category *\fBlog\fP)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBserverPath\fP"
+.br
+.ti -1c
+.RI "std::string \fBserverJarName\fP"
+.br
+.ti -1c
+.RI "std::string \fBserverAccount\fP"
+.br
+.ti -1c
+.RI "int \fBmaxHeapAlloc\fP"
+.br
+.ti -1c
+.RI "int \fBminHeapAlloc\fP"
+.br
+.ti -1c
+.RI "int \fBgcThreadCount\fP"
+.br
+.ti -1c
+.RI "std::string \fBbackupPath\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBworldsToBackup\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBjavaArgs\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBserverOptions\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 33 of file vanillaServer\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "MinecraftServerService::VanillaServer::VanillaServer (std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc, int gcThreadCount, std::string backupPath, std::vector< std::string > worldsToBackup, std::vector< std::string > javaArgs, std::vector< std::string > serverOptions)"
+
+.PP
+Definition at line 33 of file vanillaServer\&.cpp\&.
+.SS "MinecraftServerService::VanillaServer::~VanillaServer ()\fC [virtual]\fP"
+
+.PP
+Definition at line 45 of file vanillaServer\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void MinecraftServerService::VanillaServer::backupServer ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 53 of file vanillaServer\&.cpp\&.
+.SS "void MinecraftServerService::VanillaServer::backupServer (std::string backupPath)\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 84 of file vanillaServer\&.cpp\&.
+.SS "std::string MinecraftServerService::VanillaServer::listOnlinePlayers ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 171 of file vanillaServer\&.cpp\&.
+.SS "bool MinecraftServerService::VanillaServer::listOnlinePlayers (std::string playerName)\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 195 of file vanillaServer\&.cpp\&.
+.SS "void MinecraftServerService::VanillaServer::logger (size_t linesRequested, std::stringstream * output, log4cpp::Category * log)\fC [protected]\fP"
+
+.SS "void MinecraftServerService::VanillaServer::reloadServer ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 53 of file vanillaServer\&.h\&.
+.SS "void MinecraftServerService::VanillaServer::restartServer ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 153 of file vanillaServer\&.cpp\&.
+.SS "void MinecraftServerService::VanillaServer::sendCommand (std::string command)\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 162 of file vanillaServer\&.cpp\&.
+.SS "void MinecraftServerService::VanillaServer::serverStatus ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 149 of file vanillaServer\&.cpp\&.
+.SS "void MinecraftServerService::VanillaServer::startServer ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 116 of file vanillaServer\&.cpp\&.
+.SS "void MinecraftServerService::VanillaServer::stopServer ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 128 of file vanillaServer\&.cpp\&.
+.SS "void MinecraftServerService::VanillaServer::updateServer ()\fC [virtual]\fP"
+
+.PP
+Implements \fBMinecraftServerService::Server\fP\&.
+.PP
+Definition at line 49 of file vanillaServer\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "std::string MinecraftServerService::VanillaServer::backupPath\fC [protected]\fP"
+
+.PP
+Definition at line 66 of file vanillaServer\&.h\&.
+.SS "int MinecraftServerService::VanillaServer::gcThreadCount\fC [protected]\fP"
+
+.PP
+Definition at line 65 of file vanillaServer\&.h\&.
+.SS "std::vector<std::string> MinecraftServerService::VanillaServer::javaArgs\fC [protected]\fP"
+
+.PP
+Definition at line 68 of file vanillaServer\&.h\&.
+.SS "int MinecraftServerService::VanillaServer::maxHeapAlloc\fC [protected]\fP"
+
+.PP
+Definition at line 63 of file vanillaServer\&.h\&.
+.SS "int MinecraftServerService::VanillaServer::minHeapAlloc\fC [protected]\fP"
+
+.PP
+Definition at line 64 of file vanillaServer\&.h\&.
+.SS "std::string MinecraftServerService::VanillaServer::serverAccount\fC [protected]\fP"
+
+.PP
+Definition at line 62 of file vanillaServer\&.h\&.
+.SS "std::string MinecraftServerService::VanillaServer::serverJarName\fC [protected]\fP"
+
+.PP
+Definition at line 61 of file vanillaServer\&.h\&.
+.SS "std::string MinecraftServerService::VanillaServer::serverName"
+
+.PP
+Definition at line 57 of file vanillaServer\&.h\&.
+.SS "std::vector<std::string> MinecraftServerService::VanillaServer::serverOptions\fC [protected]\fP"
+
+.PP
+Definition at line 69 of file vanillaServer\&.h\&.
+.SS "std::string MinecraftServerService::VanillaServer::serverPath\fC [protected]\fP"
+
+.PP
+Definition at line 60 of file vanillaServer\&.h\&.
+.SS "std::vector<std::string> MinecraftServerService::VanillaServer::worldsToBackup\fC [protected]\fP"
+
+.PP
+Definition at line 67 of file vanillaServer\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Minecraft Server Daemon from the source code\&.

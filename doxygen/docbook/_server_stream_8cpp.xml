@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_server_stream_8cpp">
+    <title>ServerStream.cpp File Reference</title>
+    <programlisting>#include &quot;ServerStream.h&quot;</programlisting>
+    <programlisting>#include &quot;server.h&quot;</programlisting>
+    <programlisting>#include &quot;log4cpp/Category.hh&quot;</programlisting>
+    <programlisting>#include &quot;log4cpp/Appender.hh&quot;</programlisting>
+    <programlisting>#include &quot;log4cpp/FileAppender.hh&quot;</programlisting>
+    <programlisting>#include &quot;log4cpp/Layout.hh&quot;</programlisting>
+    <programlisting>#include &quot;log4cpp/PatternLayout.hh&quot;</programlisting>
+    <programlisting>#include &quot;log4cpp/Priority.hh&quot;</programlisting>
+    <programlisting>#include &lt;string&gt;</programlisting>
+    <programlisting>#include &lt;vector&gt;</programlisting>
+    <programlisting>#include &lt;sstream&gt;</programlisting>
+    <programlisting>#include &lt;thread&gt;</programlisting>
+    <programlisting>#include &lt;time.h&gt;</programlisting>
+    <programlisting>#include &lt;pstreams/pstream.h&gt;</programlisting>
+    <programlisting>#include &lt;event2/event.h&gt;</programlisting>
+    <programlisting>#include &lt;event2/buffer.h&gt;</programlisting>
+    <programlisting>#include &lt;mutex&gt;</programlisting>
+    <programlisting>#include &lt;future&gt;</programlisting>
+<para>Include dependency diagram for ServerStream.cpp</para>
+<para>
+    <figure>
+        <title>Dependency diagram</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="_server_stream_8cpp__incl.svg"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+<para>Included by dependency diagram for ServerStream.cpp</para>
+<para>
+    <figure>
+        <title>Dependency diagram</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="_server_stream_8cpp__dep__incl.svg"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+        <simplesect>
+            <title> Namespaces </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="namespace_minecraft_server_service">MinecraftServerService</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/mel/projects/Misc/Minecraft Server Service/src/ServerStream.cpp</para>
+    </simplesect>
+</section>

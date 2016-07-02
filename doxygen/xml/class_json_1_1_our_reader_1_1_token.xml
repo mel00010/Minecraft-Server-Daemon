@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="class_json_1_1_our_reader_1_1_token" kind="class" language="C++" prot="private">
+    <compoundname>Json::OurReader::Token</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_json_1_1_our_reader_1_1_token_1abe7d858530396fa7e1293f7a579880ed" prot="public" static="no" mutable="no">
+        <type><ref refid="class_json_1_1_our_reader_1a15116f7276ddf1e7a2cc3cbefa884dcc" kindref="member">TokenType</ref></type>
+        <definition>TokenType Json::OurReader::Token::type_</definition>
+        <argsstring></argsstring>
+        <name>type_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="1153" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="1153" bodyend="-1"/>
+        <referencedby refid="class_json_1_1_our_reader_1aba4f8749aab7f02ec17f107e392caf80" compoundref="jsoncpp_8cpp" startline="1232" endline="1278">Json::OurReader::parse</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1a1765d9670d191c89a57a22ea5591d35f" compoundref="jsoncpp_8cpp" startline="1280" endline="1381">Json::OurReader::readValue</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1a856dea44d92578c276856d7a65a4ebdc" compoundref="jsoncpp_8cpp" startline="1383" endline="1391">Json::OurReader::skipCommentTokens</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1a0d1e66da47fe2e85f5033c59326dfdc3" compoundref="jsoncpp_8cpp" startline="1393" endline="1491">Json::OurReader::readToken</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1aea198f8101dba55099f4d8121a993530" compoundref="jsoncpp_8cpp" startline="1625" endline="1685">Json::OurReader::readObject</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1a0b9f58faf4212c6ecb5d8e2a1ac10257" compoundref="jsoncpp_8cpp" startline="1687" endline="1723">Json::OurReader::readArray</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1a035651f0700a76a815e5f904c63ebb1c" compoundref="jsoncpp_8cpp" startline="1954" endline="1965">Json::OurReader::recoverFromError</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1aef7aa4ca22ffaa38c401b16951d20e1e" compoundref="jsoncpp_8cpp" startline="2044" endline="2059">Json::OurReader::pushError</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_json_1_1_our_reader_1_1_token_1aedf68bb00eaaa9d3c22b9825999602ac" prot="public" static="no" mutable="no">
+        <type><ref refid="class_json_1_1_our_reader_1a1bdc7bbc52ba87cae6b19746f2ee0189" kindref="member">Location</ref></type>
+        <definition>Location Json::OurReader::Token::start_</definition>
+        <argsstring></argsstring>
+        <name>start_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="1154" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="1154" bodyend="-1"/>
+        <referencedby refid="class_json_1_1_our_reader_1aba4f8749aab7f02ec17f107e392caf80" compoundref="jsoncpp_8cpp" startline="1232" endline="1278">Json::OurReader::parse</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1a1765d9670d191c89a57a22ea5591d35f" compoundref="jsoncpp_8cpp" startline="1280" endline="1381">Json::OurReader::readValue</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1a0d1e66da47fe2e85f5033c59326dfdc3" compoundref="jsoncpp_8cpp" startline="1393" endline="1491">Json::OurReader::readToken</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1aea198f8101dba55099f4d8121a993530" compoundref="jsoncpp_8cpp" startline="1625" endline="1685">Json::OurReader::readObject</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1a0b9f58faf4212c6ecb5d8e2a1ac10257" compoundref="jsoncpp_8cpp" startline="1687" endline="1723">Json::OurReader::readArray</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1a272d271290933a89abfd5096dd69c9e9" compoundref="jsoncpp_8cpp" startline="1725" endline="1733">Json::OurReader::decodeNumber</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1a1d1c3b44f6720a0e7c39b5ae8de3981c" compoundref="jsoncpp_8cpp" startline="1775" endline="1783">Json::OurReader::decodeDouble</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1a34e31d8b8399b7ad493359702b6de6c9" compoundref="jsoncpp_8cpp" startline="1822" endline="1831">Json::OurReader::decodeString</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1ae9cbb7dbd9c6c96be37432e8dfa1afcb" compoundref="jsoncpp_8cpp" startline="2013" endline="2027">Json::OurReader::getFormattedErrorMessages</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1a02ef7871af3706754a233c36e6d489e9" compoundref="jsoncpp_8cpp" startline="2029" endline="2042">Json::OurReader::getStructuredErrors</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1aef7aa4ca22ffaa38c401b16951d20e1e" compoundref="jsoncpp_8cpp" startline="2044" endline="2059">Json::OurReader::pushError</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_json_1_1_our_reader_1_1_token_1a67d2071638add857528579ae3791eccc" prot="public" static="no" mutable="no">
+        <type><ref refid="class_json_1_1_our_reader_1a1bdc7bbc52ba87cae6b19746f2ee0189" kindref="member">Location</ref></type>
+        <definition>Location Json::OurReader::Token::end_</definition>
+        <argsstring></argsstring>
+        <name>end_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="1155" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="1155" bodyend="-1"/>
+        <referencedby refid="class_json_1_1_our_reader_1aba4f8749aab7f02ec17f107e392caf80" compoundref="jsoncpp_8cpp" startline="1232" endline="1278">Json::OurReader::parse</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1a1765d9670d191c89a57a22ea5591d35f" compoundref="jsoncpp_8cpp" startline="1280" endline="1381">Json::OurReader::readValue</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1a0d1e66da47fe2e85f5033c59326dfdc3" compoundref="jsoncpp_8cpp" startline="1393" endline="1491">Json::OurReader::readToken</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1a272d271290933a89abfd5096dd69c9e9" compoundref="jsoncpp_8cpp" startline="1725" endline="1733">Json::OurReader::decodeNumber</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1a1d1c3b44f6720a0e7c39b5ae8de3981c" compoundref="jsoncpp_8cpp" startline="1775" endline="1783">Json::OurReader::decodeDouble</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1a34e31d8b8399b7ad493359702b6de6c9" compoundref="jsoncpp_8cpp" startline="1822" endline="1831">Json::OurReader::decodeString</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1a02ef7871af3706754a233c36e6d489e9" compoundref="jsoncpp_8cpp" startline="2029" endline="2042">Json::OurReader::getStructuredErrors</referencedby>
+        <referencedby refid="class_json_1_1_our_reader_1aef7aa4ca22ffaa38c401b16951d20e1e" compoundref="jsoncpp_8cpp" startline="2044" endline="2059">Json::OurReader::pushError</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" line="1151" column="1" bodyfile="/home/mel/projects/Misc/Minecraft Server Service/src/jsoncpp.cpp" bodystart="1151" bodyend="1156"/>
+    <listofallmembers>
+      <member refid="class_json_1_1_our_reader_1_1_token_1a67d2071638add857528579ae3791eccc" prot="public" virt="non-virtual"><scope>Json::OurReader::Token</scope><name>end_</name></member>
+      <member refid="class_json_1_1_our_reader_1_1_token_1aedf68bb00eaaa9d3c22b9825999602ac" prot="public" virt="non-virtual"><scope>Json::OurReader::Token</scope><name>start_</name></member>
+      <member refid="class_json_1_1_our_reader_1_1_token_1abe7d858530396fa7e1293f7a579880ed" prot="public" virt="non-virtual"><scope>Json::OurReader::Token</scope><name>type_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

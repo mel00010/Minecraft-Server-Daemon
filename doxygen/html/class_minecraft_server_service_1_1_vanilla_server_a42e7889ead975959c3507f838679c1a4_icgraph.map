@@ -1,0 +1,5 @@
+<map id="MinecraftServerService::VanillaServer::logger" name="MinecraftServerService::VanillaServer::logger">
+<area shape="rect" id="node2" href="$class_minecraft_server_service_1_1_vanilla_server.html#a9f1ea90c5bcd4f183303d169d0427b46" title="MinecraftServerService\l::VanillaServer::startServer" alt="" coords="217,5,395,47"/>
+<area shape="rect" id="node4" href="$class_minecraft_server_service_1_1_vanilla_server.html#a64fb96ddf16973c340ba04416787340e" title="MinecraftServerService\l::VanillaServer::reloadServer" alt="" coords="212,71,400,112"/>
+<area shape="rect" id="node3" href="$class_minecraft_server_service_1_1_vanilla_server.html#a99ac73bdf44e6d77933e95c769f4d95a" title="MinecraftServerService\l::VanillaServer::restartServer" alt="" coords="448,5,639,47"/>
+</map>

@@ -1,0 +1,458 @@
+\hypertarget{class_minecraft_server_service_1_1_spigot_server}{}\section{Minecraft\+Server\+Service\+:\+:Spigot\+Server Class Reference}
+\label{class_minecraft_server_service_1_1_spigot_server}\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+
+
+{\ttfamily \#include $<$spigot\+Server.\+h$>$}
+
+
+
+Inheritance diagram for Minecraft\+Server\+Service\+:\+:Spigot\+Server\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{class_minecraft_server_service_1_1_spigot_server__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Minecraft\+Server\+Service\+:\+:Spigot\+Server\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{class_minecraft_server_service_1_1_spigot_server__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_minecraft_server_service_1_1_spigot_server_aea28f0f9e617a15a29d4423844196d21}{Spigot\+Server} (std\+::string \hyperlink{class_minecraft_server_service_1_1_spigot_server_accad32ff846a3e4123749a83a2735a39}{server\+Name}, std\+::string \hyperlink{class_minecraft_server_service_1_1_spigot_server_a76f6b550b7fe37a3182e9bc72087a5dc}{server\+Path}, std\+::string \hyperlink{class_minecraft_server_service_1_1_spigot_server_a603128a2f6ce44b71ee74b601f1a24e0}{server\+Jar\+Name}, std\+::string \hyperlink{class_minecraft_server_service_1_1_spigot_server_a7d824cedf0faf1a5dcc6e4ab54d9443b}{server\+Account}, int \hyperlink{class_minecraft_server_service_1_1_spigot_server_ad1d3f0158a2e3f2dd338837bccf25c6a}{max\+Heap\+Alloc}, int \hyperlink{class_minecraft_server_service_1_1_spigot_server_a4ef50266a24dccd4f0d61d877567b55d}{min\+Heap\+Alloc}, int \hyperlink{class_minecraft_server_service_1_1_spigot_server_a057e5d3f9de3877edc7de6f3e5c40a6c}{gc\+Thread\+Count}, std\+::string \hyperlink{class_minecraft_server_service_1_1_spigot_server_a833bf01d9d4a495eda1a8052fdb8ee08}{backup\+Path}, std\+::vector$<$ std\+::string $>$ \hyperlink{class_minecraft_server_service_1_1_spigot_server_a4596e7ae4d2e1a7d2325fb13434f122a}{worlds\+To\+Backup}, std\+::vector$<$ std\+::string $>$ \hyperlink{class_minecraft_server_service_1_1_spigot_server_a3175de67475bf37b44a80575d4b3edfe}{java\+Args}, std\+::vector$<$ std\+::string $>$ \hyperlink{class_minecraft_server_service_1_1_spigot_server_a7a42f5a55caa07437cf121c2dfda60a0}{server\+Options})
+\item 
+virtual \hyperlink{class_minecraft_server_service_1_1_spigot_server_a54cecfac2a1b55f4f6044cb984359102}{$\sim$\+Spigot\+Server} ()
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_spigot_server_a054ddb4477a413d22365ecae0321ae71}{update\+Server} ()
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_spigot_server_ae210f6a553988cc2fa54cfa2f5740c49}{backup\+Server} ()
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_spigot_server_a48055f2ec0703f54ac853d829f1cc077}{backup\+Server} (std\+::string \hyperlink{class_minecraft_server_service_1_1_spigot_server_a833bf01d9d4a495eda1a8052fdb8ee08}{backup\+Path})
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_spigot_server_a0309d91a87890eaa0163c24b72508dfa}{server\+Status} ()
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_spigot_server_a08bc3d74d604968034303efc7334dd08}{start\+Server} ()
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_spigot_server_a2b0c13a87da4d1766ee0cc645732865a}{stop\+Server} ()
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_spigot_server_a8868ea31ed029270de60becebf36fc69}{restart\+Server} ()
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_spigot_server_a2cf305102eece78f29bae746459d650b}{reload\+Server} ()
+\item 
+std\+::string \hyperlink{class_minecraft_server_service_1_1_spigot_server_a47e66899b9d4fd1a3fe4855f16e07afb}{list\+Online\+Players} ()
+\item 
+bool \hyperlink{class_minecraft_server_service_1_1_spigot_server_a44c1324092f2a45889f0935a77ed0a89}{list\+Online\+Players} (std\+::string player\+Name)
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_spigot_server_a3982946d2881f27cc95791214ab8da27}{send\+Command} (std\+::string command)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{class_minecraft_server_service_1_1_spigot_server_accad32ff846a3e4123749a83a2735a39}{server\+Name}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_minecraft_server_service_1_1_spigot_server_a022c6bfdb11fa362cf3279ccf7fbaa72}{logger} (size\+\_\+t lines\+Requested, std\+::stringstream $\ast$output, log4cpp\+::\+Category $\ast$\hyperlink{class_minecraft_server_service_1_1_server_aea87340c35422279f868ecf8edc4a9f6}{log})
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{class_minecraft_server_service_1_1_spigot_server_a76f6b550b7fe37a3182e9bc72087a5dc}{server\+Path}
+\item 
+std\+::string \hyperlink{class_minecraft_server_service_1_1_spigot_server_a603128a2f6ce44b71ee74b601f1a24e0}{server\+Jar\+Name}
+\item 
+std\+::string \hyperlink{class_minecraft_server_service_1_1_spigot_server_a7d824cedf0faf1a5dcc6e4ab54d9443b}{server\+Account}
+\item 
+int \hyperlink{class_minecraft_server_service_1_1_spigot_server_ad1d3f0158a2e3f2dd338837bccf25c6a}{max\+Heap\+Alloc}
+\item 
+int \hyperlink{class_minecraft_server_service_1_1_spigot_server_a4ef50266a24dccd4f0d61d877567b55d}{min\+Heap\+Alloc}
+\item 
+int \hyperlink{class_minecraft_server_service_1_1_spigot_server_a057e5d3f9de3877edc7de6f3e5c40a6c}{gc\+Thread\+Count}
+\item 
+std\+::string \hyperlink{class_minecraft_server_service_1_1_spigot_server_a833bf01d9d4a495eda1a8052fdb8ee08}{backup\+Path}
+\item 
+std\+::vector$<$ std\+::string $>$ \hyperlink{class_minecraft_server_service_1_1_spigot_server_a4596e7ae4d2e1a7d2325fb13434f122a}{worlds\+To\+Backup}
+\item 
+std\+::vector$<$ std\+::string $>$ \hyperlink{class_minecraft_server_service_1_1_spigot_server_a3175de67475bf37b44a80575d4b3edfe}{java\+Args}
+\item 
+std\+::vector$<$ std\+::string $>$ \hyperlink{class_minecraft_server_service_1_1_spigot_server_a7a42f5a55caa07437cf121c2dfda60a0}{server\+Options}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 33 of file spigot\+Server.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!Spigot\+Server@{Spigot\+Server}}
+\index{Spigot\+Server@{Spigot\+Server}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{Spigot\+Server(std\+::string server\+Name, std\+::string server\+Path, std\+::string server\+Jar\+Name, std\+::string server\+Account, int max\+Heap\+Alloc, int min\+Heap\+Alloc, int gc\+Thread\+Count, std\+::string backup\+Path, std\+::vector$<$ std\+::string $>$ worlds\+To\+Backup, std\+::vector$<$ std\+::string $>$ java\+Args, std\+::vector$<$ std\+::string $>$ server\+Options)}{SpigotServer(std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc, int gcThreadCount, std::string backupPath, std::vector< std::string > worldsToBackup, std::vector< std::string > javaArgs, std::vector< std::string > serverOptions)}}]{\setlength{\rightskip}{0pt plus 5cm}Minecraft\+Server\+Service\+::\+Spigot\+Server\+::\+Spigot\+Server (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{server\+Name, }
+\item[{std\+::string}]{server\+Path, }
+\item[{std\+::string}]{server\+Jar\+Name, }
+\item[{std\+::string}]{server\+Account, }
+\item[{int}]{max\+Heap\+Alloc, }
+\item[{int}]{min\+Heap\+Alloc, }
+\item[{int}]{gc\+Thread\+Count, }
+\item[{std\+::string}]{backup\+Path, }
+\item[{std\+::vector$<$ std\+::string $>$}]{worlds\+To\+Backup, }
+\item[{std\+::vector$<$ std\+::string $>$}]{java\+Args, }
+\item[{std\+::vector$<$ std\+::string $>$}]{server\+Options}
+\end{DoxyParamCaption}
+)}\hypertarget{class_minecraft_server_service_1_1_spigot_server_aea28f0f9e617a15a29d4423844196d21}{}\label{class_minecraft_server_service_1_1_spigot_server_aea28f0f9e617a15a29d4423844196d21}
+
+
+Definition at line 33 of file spigot\+Server.\+cpp.
+
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!````~Spigot\+Server@{$\sim$\+Spigot\+Server}}
+\index{````~Spigot\+Server@{$\sim$\+Spigot\+Server}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{$\sim$\+Spigot\+Server()}{~SpigotServer()}}]{\setlength{\rightskip}{0pt plus 5cm}Minecraft\+Server\+Service\+::\+Spigot\+Server\+::$\sim$\+Spigot\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_a54cecfac2a1b55f4f6044cb984359102}{}\label{class_minecraft_server_service_1_1_spigot_server_a54cecfac2a1b55f4f6044cb984359102}
+
+
+Definition at line 45 of file spigot\+Server.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!backup\+Server@{backup\+Server}}
+\index{backup\+Server@{backup\+Server}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{backup\+Server()}{backupServer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Spigot\+Server\+::backup\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_ae210f6a553988cc2fa54cfa2f5740c49}{}\label{class_minecraft_server_service_1_1_spigot_server_ae210f6a553988cc2fa54cfa2f5740c49}
+
+
+Implements \hyperlink{class_minecraft_server_service_1_1_server_a58373fb195d9546e4a843ba83d741f36}{Minecraft\+Server\+Service\+::\+Server}.
+
+
+
+Definition at line 53 of file spigot\+Server.\+cpp.
+
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!backup\+Server@{backup\+Server}}
+\index{backup\+Server@{backup\+Server}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{backup\+Server(std\+::string backup\+Path)}{backupServer(std::string backupPath)}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Spigot\+Server\+::backup\+Server (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{backup\+Path}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_a48055f2ec0703f54ac853d829f1cc077}{}\label{class_minecraft_server_service_1_1_spigot_server_a48055f2ec0703f54ac853d829f1cc077}
+
+
+Implements \hyperlink{class_minecraft_server_service_1_1_server_a3045f178ed407b157a21da66a245e61f}{Minecraft\+Server\+Service\+::\+Server}.
+
+
+
+Definition at line 84 of file spigot\+Server.\+cpp.
+
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!list\+Online\+Players@{list\+Online\+Players}}
+\index{list\+Online\+Players@{list\+Online\+Players}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{list\+Online\+Players()}{listOnlinePlayers()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Minecraft\+Server\+Service\+::\+Spigot\+Server\+::list\+Online\+Players (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_a47e66899b9d4fd1a3fe4855f16e07afb}{}\label{class_minecraft_server_service_1_1_spigot_server_a47e66899b9d4fd1a3fe4855f16e07afb}
+
+
+Implements \hyperlink{class_minecraft_server_service_1_1_server_a86455e8351ecc7af502e681daf023eb3}{Minecraft\+Server\+Service\+::\+Server}.
+
+
+
+Definition at line 178 of file spigot\+Server.\+cpp.
+
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!list\+Online\+Players@{list\+Online\+Players}}
+\index{list\+Online\+Players@{list\+Online\+Players}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{list\+Online\+Players(std\+::string player\+Name)}{listOnlinePlayers(std::string playerName)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Minecraft\+Server\+Service\+::\+Spigot\+Server\+::list\+Online\+Players (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{player\+Name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_a44c1324092f2a45889f0935a77ed0a89}{}\label{class_minecraft_server_service_1_1_spigot_server_a44c1324092f2a45889f0935a77ed0a89}
+
+
+Implements \hyperlink{class_minecraft_server_service_1_1_server_adf8951b2a9337983e8ced4b148e1ed5e}{Minecraft\+Server\+Service\+::\+Server}.
+
+
+
+Definition at line 202 of file spigot\+Server.\+cpp.
+
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!logger@{logger}}
+\index{logger@{logger}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{logger(size\+\_\+t lines\+Requested, std\+::stringstream $\ast$output, log4cpp\+::\+Category $\ast$log)}{logger(size_t linesRequested, std::stringstream *output, log4cpp::Category *log)}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Spigot\+Server\+::logger (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+t}]{lines\+Requested, }
+\item[{std\+::stringstream $\ast$}]{output, }
+\item[{log4cpp\+::\+Category $\ast$}]{log}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_a022c6bfdb11fa362cf3279ccf7fbaa72}{}\label{class_minecraft_server_service_1_1_spigot_server_a022c6bfdb11fa362cf3279ccf7fbaa72}
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!reload\+Server@{reload\+Server}}
+\index{reload\+Server@{reload\+Server}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{reload\+Server()}{reloadServer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Spigot\+Server\+::reload\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_a2cf305102eece78f29bae746459d650b}{}\label{class_minecraft_server_service_1_1_spigot_server_a2cf305102eece78f29bae746459d650b}
+
+
+Implements \hyperlink{class_minecraft_server_service_1_1_server_a68757647a604e935d365672b53c82d98}{Minecraft\+Server\+Service\+::\+Server}.
+
+
+
+Definition at line 116 of file spigot\+Server.\+cpp.
+
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!restart\+Server@{restart\+Server}}
+\index{restart\+Server@{restart\+Server}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{restart\+Server()}{restartServer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Spigot\+Server\+::restart\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_a8868ea31ed029270de60becebf36fc69}{}\label{class_minecraft_server_service_1_1_spigot_server_a8868ea31ed029270de60becebf36fc69}
+
+
+Implements \hyperlink{class_minecraft_server_service_1_1_server_a9cfcad805db7ffd3f5ad10ef7a726cf9}{Minecraft\+Server\+Service\+::\+Server}.
+
+
+
+Definition at line 158 of file spigot\+Server.\+cpp.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_spigot_server_a8868ea31ed029270de60becebf36fc69_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!send\+Command@{send\+Command}}
+\index{send\+Command@{send\+Command}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{send\+Command(std\+::string command)}{sendCommand(std::string command)}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Spigot\+Server\+::send\+Command (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{command}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_a3982946d2881f27cc95791214ab8da27}{}\label{class_minecraft_server_service_1_1_spigot_server_a3982946d2881f27cc95791214ab8da27}
+
+
+Implements \hyperlink{class_minecraft_server_service_1_1_server_a9c2d6b9b94d490405bf74109e7794cb1}{Minecraft\+Server\+Service\+::\+Server}.
+
+
+
+Definition at line 168 of file spigot\+Server.\+cpp.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_spigot_server_a3982946d2881f27cc95791214ab8da27_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!server\+Status@{server\+Status}}
+\index{server\+Status@{server\+Status}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{server\+Status()}{serverStatus()}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Spigot\+Server\+::server\+Status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_a0309d91a87890eaa0163c24b72508dfa}{}\label{class_minecraft_server_service_1_1_spigot_server_a0309d91a87890eaa0163c24b72508dfa}
+
+
+Implements \hyperlink{class_minecraft_server_service_1_1_server_af972c950277b436d85513ff5e8003df2}{Minecraft\+Server\+Service\+::\+Server}.
+
+
+
+Definition at line 154 of file spigot\+Server.\+cpp.
+
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!start\+Server@{start\+Server}}
+\index{start\+Server@{start\+Server}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{start\+Server()}{startServer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Spigot\+Server\+::start\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_a08bc3d74d604968034303efc7334dd08}{}\label{class_minecraft_server_service_1_1_spigot_server_a08bc3d74d604968034303efc7334dd08}
+
+
+Implements \hyperlink{class_minecraft_server_service_1_1_server_ac84f4a395d9680ba4d7405996dcb445c}{Minecraft\+Server\+Service\+::\+Server}.
+
+
+
+Definition at line 120 of file spigot\+Server.\+cpp.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_spigot_server_a08bc3d74d604968034303efc7334dd08_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_spigot_server_a08bc3d74d604968034303efc7334dd08_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!stop\+Server@{stop\+Server}}
+\index{stop\+Server@{stop\+Server}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{stop\+Server()}{stopServer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Spigot\+Server\+::stop\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_a2b0c13a87da4d1766ee0cc645732865a}{}\label{class_minecraft_server_service_1_1_spigot_server_a2b0c13a87da4d1766ee0cc645732865a}
+
+
+Implements \hyperlink{class_minecraft_server_service_1_1_server_a45fb906a041e3f6c59128a0e9c4cd289}{Minecraft\+Server\+Service\+::\+Server}.
+
+
+
+Definition at line 132 of file spigot\+Server.\+cpp.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_spigot_server_a2b0c13a87da4d1766ee0cc645732865a_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_minecraft_server_service_1_1_spigot_server_a2b0c13a87da4d1766ee0cc645732865a_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!update\+Server@{update\+Server}}
+\index{update\+Server@{update\+Server}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{update\+Server()}{updateServer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Minecraft\+Server\+Service\+::\+Spigot\+Server\+::update\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_a054ddb4477a413d22365ecae0321ae71}{}\label{class_minecraft_server_service_1_1_spigot_server_a054ddb4477a413d22365ecae0321ae71}
+
+
+Implements \hyperlink{class_minecraft_server_service_1_1_server_a0715bfc451f5abbd2f47d0895e5a2355}{Minecraft\+Server\+Service\+::\+Server}.
+
+
+
+Definition at line 49 of file spigot\+Server.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!backup\+Path@{backup\+Path}}
+\index{backup\+Path@{backup\+Path}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{backup\+Path}{backupPath}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Minecraft\+Server\+Service\+::\+Spigot\+Server\+::backup\+Path\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_a833bf01d9d4a495eda1a8052fdb8ee08}{}\label{class_minecraft_server_service_1_1_spigot_server_a833bf01d9d4a495eda1a8052fdb8ee08}
+
+
+Definition at line 69 of file spigot\+Server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!gc\+Thread\+Count@{gc\+Thread\+Count}}
+\index{gc\+Thread\+Count@{gc\+Thread\+Count}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{gc\+Thread\+Count}{gcThreadCount}}]{\setlength{\rightskip}{0pt plus 5cm}int Minecraft\+Server\+Service\+::\+Spigot\+Server\+::gc\+Thread\+Count\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_a057e5d3f9de3877edc7de6f3e5c40a6c}{}\label{class_minecraft_server_service_1_1_spigot_server_a057e5d3f9de3877edc7de6f3e5c40a6c}
+
+
+Definition at line 68 of file spigot\+Server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!java\+Args@{java\+Args}}
+\index{java\+Args@{java\+Args}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{java\+Args}{javaArgs}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::string$>$ Minecraft\+Server\+Service\+::\+Spigot\+Server\+::java\+Args\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_a3175de67475bf37b44a80575d4b3edfe}{}\label{class_minecraft_server_service_1_1_spigot_server_a3175de67475bf37b44a80575d4b3edfe}
+
+
+Definition at line 71 of file spigot\+Server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!max\+Heap\+Alloc@{max\+Heap\+Alloc}}
+\index{max\+Heap\+Alloc@{max\+Heap\+Alloc}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{max\+Heap\+Alloc}{maxHeapAlloc}}]{\setlength{\rightskip}{0pt plus 5cm}int Minecraft\+Server\+Service\+::\+Spigot\+Server\+::max\+Heap\+Alloc\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_ad1d3f0158a2e3f2dd338837bccf25c6a}{}\label{class_minecraft_server_service_1_1_spigot_server_ad1d3f0158a2e3f2dd338837bccf25c6a}
+
+
+Definition at line 66 of file spigot\+Server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!min\+Heap\+Alloc@{min\+Heap\+Alloc}}
+\index{min\+Heap\+Alloc@{min\+Heap\+Alloc}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{min\+Heap\+Alloc}{minHeapAlloc}}]{\setlength{\rightskip}{0pt plus 5cm}int Minecraft\+Server\+Service\+::\+Spigot\+Server\+::min\+Heap\+Alloc\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_a4ef50266a24dccd4f0d61d877567b55d}{}\label{class_minecraft_server_service_1_1_spigot_server_a4ef50266a24dccd4f0d61d877567b55d}
+
+
+Definition at line 67 of file spigot\+Server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!server\+Account@{server\+Account}}
+\index{server\+Account@{server\+Account}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{server\+Account}{serverAccount}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Minecraft\+Server\+Service\+::\+Spigot\+Server\+::server\+Account\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_a7d824cedf0faf1a5dcc6e4ab54d9443b}{}\label{class_minecraft_server_service_1_1_spigot_server_a7d824cedf0faf1a5dcc6e4ab54d9443b}
+
+
+Definition at line 65 of file spigot\+Server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!server\+Jar\+Name@{server\+Jar\+Name}}
+\index{server\+Jar\+Name@{server\+Jar\+Name}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{server\+Jar\+Name}{serverJarName}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Minecraft\+Server\+Service\+::\+Spigot\+Server\+::server\+Jar\+Name\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_a603128a2f6ce44b71ee74b601f1a24e0}{}\label{class_minecraft_server_service_1_1_spigot_server_a603128a2f6ce44b71ee74b601f1a24e0}
+
+
+Definition at line 64 of file spigot\+Server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!server\+Name@{server\+Name}}
+\index{server\+Name@{server\+Name}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{server\+Name}{serverName}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Minecraft\+Server\+Service\+::\+Spigot\+Server\+::server\+Name}\hypertarget{class_minecraft_server_service_1_1_spigot_server_accad32ff846a3e4123749a83a2735a39}{}\label{class_minecraft_server_service_1_1_spigot_server_accad32ff846a3e4123749a83a2735a39}
+
+
+Definition at line 59 of file spigot\+Server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!server\+Options@{server\+Options}}
+\index{server\+Options@{server\+Options}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{server\+Options}{serverOptions}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::string$>$ Minecraft\+Server\+Service\+::\+Spigot\+Server\+::server\+Options\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_a7a42f5a55caa07437cf121c2dfda60a0}{}\label{class_minecraft_server_service_1_1_spigot_server_a7a42f5a55caa07437cf121c2dfda60a0}
+
+
+Definition at line 72 of file spigot\+Server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!server\+Path@{server\+Path}}
+\index{server\+Path@{server\+Path}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{server\+Path}{serverPath}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Minecraft\+Server\+Service\+::\+Spigot\+Server\+::server\+Path\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_a76f6b550b7fe37a3182e9bc72087a5dc}{}\label{class_minecraft_server_service_1_1_spigot_server_a76f6b550b7fe37a3182e9bc72087a5dc}
+
+
+Definition at line 63 of file spigot\+Server.\+h.
+
+\index{Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}!worlds\+To\+Backup@{worlds\+To\+Backup}}
+\index{worlds\+To\+Backup@{worlds\+To\+Backup}!Minecraft\+Server\+Service\+::\+Spigot\+Server@{Minecraft\+Server\+Service\+::\+Spigot\+Server}}
+\subsubsection[{\texorpdfstring{worlds\+To\+Backup}{worldsToBackup}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::string$>$ Minecraft\+Server\+Service\+::\+Spigot\+Server\+::worlds\+To\+Backup\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_minecraft_server_service_1_1_spigot_server_a4596e7ae4d2e1a7d2325fb13434f122a}{}\label{class_minecraft_server_service_1_1_spigot_server_a4596e7ae4d2e1a7d2325fb13434f122a}
+
+
+Definition at line 70 of file spigot\+Server.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/mel/projects/\+Misc/\+Minecraft Server Service/src/\hyperlink{spigot_server_8h}{spigot\+Server.\+h}\item 
+/home/mel/projects/\+Misc/\+Minecraft Server Service/src/\hyperlink{spigot_server_8cpp}{spigot\+Server.\+cpp}\end{DoxyCompactItemize}

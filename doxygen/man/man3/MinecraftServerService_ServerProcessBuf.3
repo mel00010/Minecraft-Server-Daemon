@@ -1,0 +1,219 @@
+.TH "MinecraftServerService::ServerProcessBuf" 3 "Fri Jul 1 2016" "Minecraft Server Daemon" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MinecraftServerService::ServerProcessBuf \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ServerProcessBuf\&.h>\fP
+.PP
+Inherits streambuf\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBPIPE_OPS\fP { \fBPIPE_READ\fP = 0, \fBPIPE_WRITE\fP = 1 }"
+.br
+.ti -1c
+.RI "typedef std::streambuf::traits_type \fBtraits_type\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBServerProcessBuf\fP (std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc, int gcThreadCount, std::vector< std::string > javaArgs, std::vector< std::string > serverOptions)"
+.br
+.ti -1c
+.RI "virtual \fB~ServerProcessBuf\fP ()"
+.br
+.ti -1c
+.RI "bool \fBexited\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBoverflow\fP (int c)"
+.br
+.ti -1c
+.RI "int \fBunderflow\fP ()"
+.br
+.ti -1c
+.RI "int \fBsync\fP ()"
+.br
+.in -1c
+.SS "Private Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBbufsize\fP = 1024 }"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBstartServer\fP (std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc, int gcThreadCount, std::vector< std::string > javaArgs, std::vector< std::string > serverOptions)"
+.br
+.ti -1c
+.RI "void \fBlaunchServerProcess\fP (std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc, int gcThreadCount, std::vector< std::string > javaArgs, std::vector< std::string > serverOptions)"
+.br
+.ti -1c
+.RI "void \fBgetUIDAndGIDFromUsername\fP (const char *user)"
+.br
+.ti -1c
+.RI "void \fBstopServer\fP ()"
+.br
+.ti -1c
+.RI "\fBServerProcessBuf\fP (const \fBServerProcessBuf\fP &)"
+.br
+.ti -1c
+.RI "\fBServerProcessBuf\fP & \fBoperator=\fP (const \fBServerProcessBuf\fP &)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "char \fBoutbuf_\fP [\fBbufsize\fP]"
+.br
+.ti -1c
+.RI "char \fBinbuf_\fP [\fBbufsize\fP+16\-sizeof(int)]"
+.br
+.ti -1c
+.RI "log4cpp::Category * \fBlog\fP = nullptr"
+.br
+.ti -1c
+.RI "char \fBcurrentCharacter\fP"
+.br
+.ti -1c
+.RI "int \fBserver\fP"
+.br
+.ti -1c
+.RI "int \fBchildProcessUID\fP"
+.br
+.ti -1c
+.RI "int \fBchildProcessGID\fP"
+.br
+.ti -1c
+.RI "int \fBchildProcessStdin\fP [2]"
+.br
+.ti -1c
+.RI "int \fBchildProcessStdout\fP [2]"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 32 of file ServerProcessBuf\&.h\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef std::streambuf::traits_type \fBMinecraftServerService::ServerProcessBuf::traits_type\fP"
+
+.PP
+Definition at line 39 of file ServerProcessBuf\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum\fC [private]\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIbufsize \fP\fP
+.PP
+Definition at line 51 of file ServerProcessBuf\&.h\&.
+.SS "enum \fBMinecraftServerService::ServerProcessBuf::PIPE_OPS\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIPIPE_READ \fP\fP
+.TP
+\fB\fIPIPE_WRITE \fP\fP
+.PP
+Definition at line 40 of file ServerProcessBuf\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "MinecraftServerService::ServerProcessBuf::ServerProcessBuf (std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc, int gcThreadCount, std::vector< std::string > javaArgs, std::vector< std::string > serverOptions)\fC [explicit]\fP"
+
+.PP
+Definition at line 52 of file ServerProcessBuf\&.cpp\&.
+.SS "MinecraftServerService::ServerProcessBuf::~ServerProcessBuf ()\fC [virtual]\fP"
+
+.PP
+Definition at line 77 of file ServerProcessBuf\&.cpp\&.
+.SS "MinecraftServerService::ServerProcessBuf::ServerProcessBuf (const \fBServerProcessBuf\fP &)\fC [private]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "bool MinecraftServerService::ServerProcessBuf::exited ()"
+
+.SS "void MinecraftServerService::ServerProcessBuf::getUIDAndGIDFromUsername (const char * user)\fC [private]\fP"
+
+.SS "void MinecraftServerService::ServerProcessBuf::launchServerProcess (std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc, int gcThreadCount, std::vector< std::string > javaArgs, std::vector< std::string > serverOptions)\fC [private]\fP"
+
+.SS "\fBServerProcessBuf\fP& MinecraftServerService::ServerProcessBuf::operator= (const \fBServerProcessBuf\fP &)\fC [private]\fP"
+
+.SS "ServerProcessBuf::int_type MinecraftServerService::ServerProcessBuf::overflow (int c)\fC [protected]\fP"
+
+.PP
+Definition at line 67 of file ServerProcessBuf\&.cpp\&.
+.SS "void MinecraftServerService::ServerProcessBuf::startServer (std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc, int gcThreadCount, std::vector< std::string > javaArgs, std::vector< std::string > serverOptions)\fC [private]\fP"
+
+.SS "void MinecraftServerService::ServerProcessBuf::stopServer ()\fC [private]\fP"
+
+.SS "int MinecraftServerService::ServerProcessBuf::sync ()\fC [protected]\fP"
+
+.PP
+Definition at line 103 of file ServerProcessBuf\&.cpp\&.
+.SS "int MinecraftServerService::ServerProcessBuf::underflow ()\fC [protected]\fP"
+
+.PP
+Definition at line 88 of file ServerProcessBuf\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int MinecraftServerService::ServerProcessBuf::childProcessGID\fC [private]\fP"
+
+.PP
+Definition at line 73 of file ServerProcessBuf\&.h\&.
+.SS "int MinecraftServerService::ServerProcessBuf::childProcessStdin[2]\fC [private]\fP"
+
+.PP
+Definition at line 74 of file ServerProcessBuf\&.h\&.
+.SS "int MinecraftServerService::ServerProcessBuf::childProcessStdout[2]\fC [private]\fP"
+
+.PP
+Definition at line 75 of file ServerProcessBuf\&.h\&.
+.SS "int MinecraftServerService::ServerProcessBuf::childProcessUID\fC [private]\fP"
+
+.PP
+Definition at line 72 of file ServerProcessBuf\&.h\&.
+.SS "char MinecraftServerService::ServerProcessBuf::currentCharacter\fC [private]\fP"
+
+.PP
+Definition at line 70 of file ServerProcessBuf\&.h\&.
+.SS "char MinecraftServerService::ServerProcessBuf::inbuf_[\fBbufsize\fP+16\-sizeof(int)]\fC [private]\fP"
+
+.PP
+Definition at line 53 of file ServerProcessBuf\&.h\&.
+.SS "log4cpp::Category* MinecraftServerService::ServerProcessBuf::log = nullptr\fC [private]\fP"
+
+.PP
+Definition at line 69 of file ServerProcessBuf\&.h\&.
+.SS "char MinecraftServerService::ServerProcessBuf::outbuf_[\fBbufsize\fP]\fC [private]\fP"
+
+.PP
+Definition at line 52 of file ServerProcessBuf\&.h\&.
+.SS "int MinecraftServerService::ServerProcessBuf::server\fC [private]\fP"
+
+.PP
+Definition at line 71 of file ServerProcessBuf\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Minecraft Server Daemon from the source code\&.
