@@ -22,7 +22,6 @@
  */
 #ifndef SERVER_H
 #define SERVER_H
-#include "outputListener.h"
 #include "log4cpp/Category.hh"
 #include <event2/event-config.h>
 #include <event2/event.h>
