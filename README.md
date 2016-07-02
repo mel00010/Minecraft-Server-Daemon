@@ -2,18 +2,20 @@
 
 About
 -----
-This is a pure C++ program designed to manage one or more Minecraft servers using the command line.  
+This is a pure C++ program designed to manage one or more Minecraft servers using the command line.  It supports logging server output, backup, starting stopping and restarting server processes, and can list players on the server.  The servers it manages are configured through a json file.  
 
 Dependencies
 ------------
 This program depends on these packages:
 * GCC
-* libpstreams-dev
 * liblog4cpp-dev
 * liblog4cpp5v5
+* libevent-core-2.0-5
+* libevent-2.0-5
+* libevent-dev
 
-Installing
---------
+Building and installing
+-----------------------
 
 Installing the daemon is relatively standard procedure.  Just run these commands in a terminal:
 
@@ -45,5 +47,12 @@ The possible options for <COMMAND> are as follows:
 * backupall:  Backs up all servers
 * listplayers \<SERVER\> [PLAYER]:  Lists players on a server \<SERVER\>.  
 * stopdaemon:  Stops the server daemon
+Licensing
+---------
+This code is protected under the GPL version 2.
 
-    
+Contributing
+------------
+If you wish to contribute to this project, you can fork the project and send me a pull request for your changes.  
+This project uses automake and autoconf for building.  To build a debug version (where the daemon is attached to the console), simply add --enable-debug to the end of your configure command.  
+This project is not very well commented, however, commenting my code is on my to-do list.  
