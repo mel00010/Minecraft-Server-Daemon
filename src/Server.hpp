@@ -1,60 +1,52 @@
-/*
- * AbstractServerBase.hpp
- * 
- * Copyright 2016 Mel McCalla <melmccalla@gmail.com>
- * 
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
+/*******************************************************************************
+ *
+ * Minecraft Server Daemon
+ * Copyright (C) 2016  Mel McCalla <melmccalla@gmail.com>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- * 
- * 
- */
- 
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *
+ *
+ *******************************************************************************/
+
 #ifndef SERVER_H
 #define SERVER_H
 
 #include <event2/event.h>
-#include <event2/event-config.h>
 #include <event2/util.h>
+#include <fcntl.h>
+#include <log4cpp/Category.hh>
 #include <pwd.h>
-#include <stdlib.h>
+#include <string.h>
 #include <sys/wait.h>
-#include <time.h>
 #include <unistd.h>
-#include <algorithm>
-#include <cassert>
-#include <cctype>
+#include <csignal>
 #include <cstddef>
 #include <cstdlib>
-#include <cstring>
-#include <functional>
-#include <iosfwd>
 #include <iostream>
 #include <iterator>
-#include <mutex>
-#include <ostream>
-#include <sstream>
 #include <string>
-#include <thread>
 #include <vector>
-
-#include "log4cpp/Category.hh"
-#include "ServerPropertyFileParser.hpp"
+#include <thread>
 
 struct event;
+namespace MinecraftServerDaemon {
+class ServerPropertyFileParser;
+} /* namespace MinecraftServerDaemon */
 
-namespace MinecraftServerService {
+
+namespace MinecraftServerDaemon {
 class Server
 {
 	public:
@@ -103,7 +95,7 @@ class Server
 		virtual void sendCommand(std::string command) = 0;
 		virtual std::string getServerName() = 0;
 		virtual ServerType getServerType() = 0;
-		virtual ServerPropertiesParser getServerPropertiesParser() = 0;
+		virtual ServerPropertyFileParser getServerPropertiesParser() = 0;
 	protected:
 		int serverPID = -1;
 		int childProcessUID;

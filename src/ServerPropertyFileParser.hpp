@@ -1,11 +1,36 @@
-#ifndef SERVER_PROPERTIES_PARSER_H
-#define SERVER_PROPERTIES_PARSER_H
-#include <string>
-#include <map>
+/*******************************************************************************
+ *
+ * Minecraft Server Daemon
+ * Copyright (C) 2016  Mel McCalla <melmccalla@gmail.com>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *
+ *
+ *******************************************************************************/
+
+#ifndef SERVERPROPERTYFILEPARSER_H
+#define SERVERPROPERTYFILEPARSER_H
+
+#include <stddef.h>
 #include <fstream>
-#include <iostream>
-namespace MinecraftServerService {
-class ServerPropertiesParser {
+#include <map>
+#include <string>
+#include <utility>
+
+namespace MinecraftServerDaemon {
+class ServerPropertyFileParser {
 	public:
 		struct Property {
 			std::string property;
@@ -20,16 +45,16 @@ class ServerPropertiesParser {
 			inline friend bool operator!=(const Property& lhs, const std::string& rhs){ return !(lhs == rhs); };
 		};
 	public:
-		ServerPropertiesParser(const MinecraftServerService::ServerPropertiesParser& parser) : filename(parser.filename) {
+		ServerPropertyFileParser(const MinecraftServerDaemon::ServerPropertyFileParser& parser) : filename(parser.filename) {
 			readProperties();
 		};
-		ServerPropertiesParser(std::string file) : file(file.c_str(), std::ios::in|std::ios::out), filename(file) {
+		ServerPropertyFileParser(std::string file) : file(file.c_str(), std::ios::in|std::ios::out), filename(file) {
 			readProperties();
 		};
-		ServerPropertiesParser(char* file) : file(file, std::ios::in|std::ios::out), filename(file) {
+		ServerPropertyFileParser(char* file) : file(file, std::ios::in|std::ios::out), filename(file) {
 			readProperties();
 		};
-		~ServerPropertiesParser() {
+		~ServerPropertyFileParser() {
 			flush();
 			file.close();
 		};
@@ -113,4 +138,4 @@ class ServerPropertiesParser {
 		std::map<std::string,Property> properties;
 };
 }
-#endif /* SERVER_PROPERTIES_PARSER_H */
+#endif /* SERVERPROPERTYFILEPARSER_H */

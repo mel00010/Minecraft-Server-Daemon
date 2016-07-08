@@ -1,40 +1,41 @@
-/*
- * main.cpp
- * 
- * Copyright 2016 Mel McCalla <melmccalla@gmail.com>
- * 
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
+/*******************************************************************************
+ *
+ * Minecraft Server Daemon
+ * Copyright (C) 2016  Mel McCalla <melmccalla@gmail.com>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- * 
- * 
- */
-#include "server.h"
-#include "parser.h"
-#include "mainLoop.h"
-#include "createSocket.h"
-#include "setupServers.h"
-#include <unistd.h>
-#include <signal.h>
-#include <unistd.h>
-#include <json/json.h>
-#include "log4cpp/Category.hh"
-#include <log4cpp/PropertyConfigurator.hh>
-#if DEBUGGING == 1
-	#include <iostream>
-#endif /* DEBUGGING == 1 */
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *
+ *
+ *******************************************************************************/
+
+#include <CreateSocket.hpp>
 #include <event2/event.h>
+#include <json/json.h>
+#include <log4cpp/Category.hh>
+#include <log4cpp/PropertyConfigurator.hh>
+#include <MainLoop.hpp>
+#include <ConfigFileParser.hpp>
+#include <Server.hpp>
+#include <signal.h>
+#include <sys/stat.h>
+#include <SetupServers.hpp>
+#include <unistd.h>
+#include <cstdlib>
+#include <iostream>
+#include <vector>
+
 int main(void) {
 	#if DEBUGGING == 0
 	/* Our process ID and Session ID */
@@ -65,8 +66,8 @@ int main(void) {
 	umask(0);
 	/* Open any logs here */        
 	//Logging
-	Parser parser;
-	Json::Value config = parser.parse("/etc/minecraft/config.json");
+	ConfigFileParser parser;
+	Json::Value config = parser.parseConfigFile("/etc/minecraft/config.json");
 	//~ std::string initFileName = "/etc/minecraft/log4cpp.properties";
 	log4cpp::PropertyConfigurator::configure("/etc/minecraft/log4cpp.properties");
 
@@ -98,8 +99,8 @@ int main(void) {
 	
 	// Read from config file and set up servers
 	struct event_base* base = event_base_new();
-	int controlSocket = createSocket(rootLog);
-	std::vector<MinecraftServerService::Server*>* servers;
+	int controlSocket = CreateSocket(rootLog);
+	std::vector<MinecraftServerDaemon::Server*>* servers;
 	servers = setupServers(&config, rootLog);
 	/* The Big Loop */
 	mainLoop(servers, rootLog, controlSocket, base);

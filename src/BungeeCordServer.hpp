@@ -1,37 +1,37 @@
-/*
- * BungeeCordServer.h
- * 
- * Copyright 2016 Mel McCalla <melmccalla@gmail.com>
- * 
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
+/*******************************************************************************
+ *
+ * Minecraft Server Daemon
+ * Copyright (C) 2016  Mel McCalla <melmccalla@gmail.com>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- * 
- * 
- */
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *
+ *
+ *******************************************************************************/
  
-#ifndef BUNGEECORD_SERVER_H
-#define BUNGEECORD_SERVER_H
-#include "AbstractServerBase.hpp"
-#include "ServerPropertyFileParser.hpp"
-#include "log4cpp/Category.hh"
-#include <string>
+#ifndef BUNGEECORDSERVER_H
+#define BUNGEECORDSERVER_H
+
+#include <stddef.h>
 #include <sstream>
+#include <string>
 #include <vector>
-#include <thread>
-#include <time.h>
-namespace MinecraftServerService {
+
+#include "Server.hpp"
+#include "ServerPropertyFileParser.hpp"
+
+namespace MinecraftServerDaemon {
 class BungeeCordServer : public Server
 {
 	public:
@@ -63,7 +63,7 @@ class BungeeCordServer : public Server
 		{
 			return serverType;
 		};
-		ServerPropertiesParser getServerPropertiesParser() {};
+		ServerPropertyFileParser getServerPropertiesParser() {};
 	protected:
 		std::string serverName;
 		ServerType serverType = BUNGEECORD;
@@ -80,4 +80,4 @@ class BungeeCordServer : public Server
 		std::vector<std::string> serverOptions;
 };
 }
-#endif /* BUNGEECORD_SERVER_H */
+#endif /* BUNGEECORDSERVER_H */

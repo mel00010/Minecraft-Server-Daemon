@@ -1,41 +1,39 @@
-/*
- * MainLoop.cpp
- * 
- * Copyright 2016 Mel McCalla <melmccalla@gmail.com>
- * 
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
+/*******************************************************************************
+ *
+ * Minecraft Server Daemon
+ * Copyright (C) 2016  Mel McCalla <melmccalla@gmail.com>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- * 
- * 
- */
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *
+ *
+ *******************************************************************************/
  
-#include "AbstractServerBase.hpp"
-#include "ConfigFileParser.hpp"
-#include "MainLoop.hpp"
-#include "SetupServers.hpp"
-#include <json/json.h>
-#include "log4cpp/Category.hh"
-#include <string>
-#include <iomanip>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <sys/socket.h>
-#include <signal.h>
-#include <unistd.h>
-#include <sys/un.h>
+
+
+
 #include <event2/event.h>
+#include <log4cpp/Category.hh>
+#include <signal.h>
+#include <sys/socket.h>
+#include <sys/un.h>
+#include <unistd.h>
+#include "MainLoop.hpp"
+#include <iomanip>
+#include <iterator>
+#include <sstream>
+
 void sigint_handler(int sig)
 {
 	wait(NULL);
@@ -44,10 +42,10 @@ void sigint_handler(int sig)
 }
 struct cb_data
 {
-	std::vector<MinecraftServerService::Server*>* servers;
+	std::vector<MinecraftServerDaemon::Server*>* servers;
 	log4cpp::Category& root;
 };
-void mainLoop (std::vector<MinecraftServerService::Server*>* servers, log4cpp::Category& root, int controlSocket, struct event_base* base) 
+void mainLoop (std::vector<MinecraftServerDaemon::Server*>* servers, log4cpp::Category& root, int controlSocket, struct event_base* base) 
 {
 	root.info("Starting main loop");
 	struct event *event;
@@ -82,7 +80,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 	int controlSocket = accept(_controlSocket, (struct sockaddr *) &peer_addr,
                  &peer_addr_size);
 	//~ struct cb_data *data = (cb_data *)arg;
-	std::vector<MinecraftServerService::Server*>* servers = ((cb_data *)arg)->servers;
+	std::vector<MinecraftServerDaemon::Server*>* servers = ((cb_data *)arg)->servers;
 	log4cpp::Category& root = ((cb_data *)arg)->root;
 	int rc;
 	char buf[4];
@@ -112,7 +110,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			line[rc] = '\0';
 			std::string serverRequested(line);
 			root.debug("Server name recieved");
-			for( std::vector<MinecraftServerService::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
+			for( std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
 				root.debug((*i)->getServerName());
 				if ((*i)->getServerName() == serverRequested) {
 					(*i)->startServer();
@@ -123,7 +121,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			}
 		} else if (command == "startAll") {
 			root.debug("Command recieved:  startAll");
-			for( std::vector<MinecraftServerService::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
+			for( std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
 				(*i)->startServer();
 			}
 			writeToSocket("success", controlSocket, root);
@@ -137,7 +135,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			line[rc] = '\0';
 			std::string serverRequested(line);
 			root.debug("Server name recieved");
-			for( std::vector<MinecraftServerService::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
+			for( std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
 				root.debug((*i)->getServerName());
 				if ((*i)->getServerName() == serverRequested) {
 					root.debug("Found server");
@@ -158,7 +156,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			}
 		} else if (command == "stopAll") {
 			root.debug("Command recieved:  stopAll");
-			for( std::vector<MinecraftServerService::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
+			for( std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
 				(*i)->stopServer();
 			}
 			writeToSocket("success", controlSocket, root);
@@ -172,7 +170,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			line[rc] = '\0';
 			std::string serverRequested(line);
 			root.debug("Server name recieved");
-			for( std::vector<MinecraftServerService::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
+			for( std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
 				root.debug((*i)->getServerName());
 				if ((*i)->getServerName() == serverRequested) {
 					(*i)->restartServer();
@@ -182,7 +180,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			}
 		} else if (command == "restartAll") {
 			root.debug("Command recieved:  restartAll");
-			for( std::vector<MinecraftServerService::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
+			for( std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
 				(*i)->restartServer();
 			}
 			writeToSocket("success", controlSocket, root);
@@ -195,7 +193,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			line[rc] = '\0';
 			std::string serverRequested(line);
 			root.debug("Server name recieved");
-			for( std::vector<MinecraftServerService::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
+			for( std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
 				root.debug((*i)->getServerName());
 				if ((*i)->getServerName() == serverRequested) {
 					root.warn("Status not implemented yet");
@@ -205,7 +203,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 		} else if (command == "listServers") {
 			root.debug("Command recieved:  listServers");
 			std::string serverList;
-			for( std::vector<MinecraftServerService::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
+			for( std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
 				root.debug((*i)->getServerName());
 				serverList = serverList+(*i)->getServerName() + "\n";
 			}
@@ -221,7 +219,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			std::string serverRequested(line);
 			root.debug(serverRequested);
 			root.debug("Server name recieved");
-			for( std::vector<MinecraftServerService::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
+			for( std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
 				root.debug((*i)->getServerName());
 				if ((*i)->getServerName() == serverRequested) {
 					root.debug("Found server");
@@ -249,7 +247,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			line[rc] = '\0';
 			std::string serverRequested(line);
 			root.debug("Server name recieved");
-			for( std::vector<MinecraftServerService::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
+			for( std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
 				root.debug((*i)->getServerName());
 				if ((*i)->getServerName() == serverRequested) {
 					(*i)->listOnlinePlayers();
@@ -266,7 +264,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			line[rc] = '\0';
 			std::string serverRequested(line);
 			root.debug("Server name recieved");
-			for( std::vector<MinecraftServerService::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
+			for( std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
 				root.debug((*i)->getServerName());
 				if ((*i)->getServerName() == serverRequested) {
 					rc=recv(controlSocket,buf,4,0);
@@ -299,10 +297,10 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			rc = recv(controlSocket,line,size,0);
 			line[rc] = '\0';
 			std::string versionRequested(line);
-			for( std::vector<MinecraftServerService::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
+			for( std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
 				root.debug((*i)->getServerName());
 				if ((*i)->getServerName() == serverRequested) {
-					if((*i)->getServerType() == MinecraftServerService::Server::ServerType::VANILLA) {
+					if((*i)->getServerType() == MinecraftServerDaemon::Server::ServerType::VANILLA) {
 						(*i)->updateServer(versionRequested);
 						writeToSocket("success", controlSocket, root);
 						break;
@@ -318,8 +316,8 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			rc = recv(controlSocket,line,size,0);
 			line[rc] = '\0';
 			std::string versionRequested(line);
-			for( std::vector<MinecraftServerService::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
-				if((*i)->getServerType() == MinecraftServerService::Server::ServerType::VANILLA) {
+			for( std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
+				if((*i)->getServerType() == MinecraftServerDaemon::Server::ServerType::VANILLA) {
 					(*i)->updateServer(versionRequested);
 					writeToSocket("success", controlSocket, root);
 					break;
@@ -336,7 +334,7 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			line[rc] = '\0';
 			std::string serverRequested(line);
 			root.debug("Server name recieved");
-			for( std::vector<MinecraftServerService::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
+			for( std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
 				if ((*i)->getServerName() == serverRequested) {
 					(*i)->backupServer();
 					writeToSocket("success", controlSocket, root);
@@ -345,14 +343,14 @@ void recieveCommand(int _controlSocket, short what, void *arg)
 			}
 		} else if (command == "backupAll") {
 			root.debug("Command recieved:  backupAll");
-			for( std::vector<MinecraftServerService::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
+			for( std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
 				(*i)->backupServer();
 			}
 			writeToSocket("success", controlSocket, root);
 		} else if (command == "stopDaemon") {
 			root.debug("Command recieved:  stopDaemon");
 			std::string serverList;
-			for( std::vector<MinecraftServerService::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
+			for( std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin() ; i != servers->end(); i++) {
 				root.debug((*i)->getServerName());
 				(*i)->stopServer();
 			}

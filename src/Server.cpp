@@ -1,57 +1,30 @@
-/*
- * AbstractServerBase.cpp
- * 
- * Copyright 2016 Mel McCalla <melmccalla@gmail.com>
- * 
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
+/*******************************************************************************
+ *
+ * Minecraft Server Daemon
+ * Copyright (C) 2016  Mel McCalla <melmccalla@gmail.com>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- * 
- * 
- */
- 
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *
+ *
+ *******************************************************************************/
 
-#include <event2/event.h>
-#include <event2/event-config.h>
-#include <event2/util.h>
-#include <pwd.h>
-#include <stdlib.h>
-#include <sys/ioctl.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <time.h>
-#include <unistd.h>
-#include <algorithm>
-#include <cassert>
-#include <cctype>
-#include <cstddef>
-#include <cstdlib>
-#include <cstring>
-#include <functional>
-#include <iosfwd>
-#include <iostream>
-#include <iterator>
-#include <mutex>
-#include <ostream>
-#include <sstream>
-#include <string>
-#include <thread>
-#include <vector>
+#include "Server.hpp"
 
-#include "AbstractServerBase.hpp"
 
-namespace MinecraftServerService {
+
+namespace MinecraftServerDaemon {
 void Server::outputListenerThread(int serverPID, int childProcessStdout, struct event_base* base, log4cpp::Category* log, std::vector<Listener*>* listeners) {
 	log->debug("Server::outputListenerThread");
 	struct event *outputListener;
