@@ -1,6 +1,7 @@
 /*******************************************************************************
  *
  * Minecraft Server Daemon
+ * SetupServers.hpp
  * Copyright (C) 2016  Mel McCalla <melmccalla@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -19,43 +20,17 @@
  *
  *
  *******************************************************************************/
- 
 
-#include <ConfigFileParser.hpp>
-#include <json/reader.h>
-#include <fstream>
-#include <new>
+#ifndef SETUPSERVERS_H
+#define SETUPSERVERS_H
 
+#include <vector>
 
-Json::Value ConfigFileParser::parseConfigFile(std::string configFile)
-{
-	Json::Value root;
-	Json::Reader reader;
-	try 
-	{
-		reader.parse(getFileContents(configFile.c_str()),root);	
-	}
-	catch (std::bad_alloc& e) 
-	{
-		exit(1);
-	}
-	return root;
-}
+#include "Server.hpp"
 
-std::string ConfigFileParser::getFileContents(const char *filename)
-{
-	std::ifstream in(filename, std::ios::in | std::ios::binary);	
-	if (in)
-	{
-		std::string contents;
-		in.seekg(0, std::ios::end);
-		contents.resize(in.tellg());
-		in.seekg(0, std::ios::beg);
-		in.read(&contents[0], contents.size());
-		in.close();
-		return(contents);
-	} else {
-		exit(1);
-	}
-}
+namespace Json {
+class Value;
+} /* namespace Json */
 
+std::vector<MinecraftServerDaemon::Server*>* setupServers(Json::Value* _config, log4cpp::Category& log);
+#endif /* SETUPSERVERS_H */

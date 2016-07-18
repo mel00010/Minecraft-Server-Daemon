@@ -1,6 +1,7 @@
 /*******************************************************************************
  *
  * Minecraft Server Daemon
+ * BukkitServer.hpp
  * Copyright (C) 2016  Mel McCalla <melmccalla@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -19,9 +20,9 @@
  *
  *
  *******************************************************************************/
-
-#ifndef VANILLASERVER_H
-#define VANILLASERVER_H
+ 
+#ifndef BUKKITSERVER_H
+#define BUKKITSERVER_H
 
 #include <stddef.h>
 #include <sstream>
@@ -32,11 +33,11 @@
 #include "ServerPropertyFileParser.hpp"
 
 namespace MinecraftServerDaemon {
-class VanillaServer : public Server
+class BukkitServer : public Server
 {
 	public:
-		VanillaServer(
-			std::string _serverName,
+		BukkitServer(
+			std::string serverName,
 			std::string serverPath, std::string serverJarName, std::string serverAccount,
 			int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
 			std::string backupPath,
@@ -44,7 +45,7 @@ class VanillaServer : public Server
 			std::vector<std::string> javaArgs, 
 			std::vector<std::string> serverOptions
 		);
-		virtual ~VanillaServer();
+		virtual ~BukkitServer();
 		void updateServer(std::string version);
 		void backupServer();
 		void backupServer(std::string backupPath);
@@ -52,7 +53,7 @@ class VanillaServer : public Server
 		void startServer();
 		void stopServer();
 		void restartServer();
-		void reloadServer() {};
+		void reloadServer();
 		std::string listOnlinePlayers();
 		bool listOnlinePlayers(std::string playerName);
 		void sendCommand(std::string command);
@@ -69,10 +70,11 @@ class VanillaServer : public Server
 			return serverPropertiesParser;
 		};
 	protected:
-        ServerPropertyFileParser serverPropertiesParser;
+		ServerPropertyFileParser serverPropertiesParser;
 		std::string serverName;
-		ServerType serverType = VANILLA;
+		ServerType serverType = BUKKIT;
 		void logger(size_t linesRequested, std::stringstream* output, log4cpp::Category* log);
+		void listOnlinePlayersCallback(size_t linesRequested, std::stringstream* output, log4cpp::Category* log);
 		std::string serverPath;
 		std::string serverJarName;
 		std::string serverAccount;
@@ -85,4 +87,4 @@ class VanillaServer : public Server
 		std::vector<std::string> serverOptions;
 };
 }
-#endif /* VANILLASERVER_H */
+#endif /* BUKKITSERVER_H */

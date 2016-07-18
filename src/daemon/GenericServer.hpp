@@ -1,6 +1,7 @@
 /*******************************************************************************
  *
  * Minecraft Server Daemon
+ * GenericServer.hpp
  * Copyright (C) 2016  Mel McCalla <melmccalla@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -19,9 +20,9 @@
  *
  *
  *******************************************************************************/
- 
-#ifndef BUKKITSERVER_H
-#define BUKKITSERVER_H
+
+#ifndef GENERICSERVER_H
+#define GENERICSERVER_H
 
 #include <stddef.h>
 #include <sstream>
@@ -32,10 +33,10 @@
 #include "ServerPropertyFileParser.hpp"
 
 namespace MinecraftServerDaemon {
-class BukkitServer : public Server
+class GenericServer : public Server
 {
 	public:
-		BukkitServer(
+		GenericServer(
 			std::string serverName,
 			std::string serverPath, std::string serverJarName, std::string serverAccount,
 			int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
@@ -44,7 +45,7 @@ class BukkitServer : public Server
 			std::vector<std::string> javaArgs, 
 			std::vector<std::string> serverOptions
 		);
-		virtual ~BukkitServer();
+		virtual ~GenericServer();
 		void updateServer(std::string version);
 		void backupServer();
 		void backupServer(std::string backupPath);
@@ -52,9 +53,9 @@ class BukkitServer : public Server
 		void startServer();
 		void stopServer();
 		void restartServer();
-		void reloadServer();
-		std::string listOnlinePlayers();
-		bool listOnlinePlayers(std::string playerName);
+		void reloadServer() {}
+		std::string listOnlinePlayers() {}
+		bool listOnlinePlayers(std::string playerName) {}
 		void sendCommand(std::string command);
 		std::string getServerName()
 		{
@@ -64,16 +65,11 @@ class BukkitServer : public Server
 		{
 			return serverType;
 		};
-		ServerPropertyFileParser getServerPropertiesParser()
-		{
-			return serverPropertiesParser;
-		};
+		ServerPropertyFileParser getServerPropertiesParser() {};
 	protected:
-		ServerPropertyFileParser serverPropertiesParser;
 		std::string serverName;
-		ServerType serverType = BUKKIT;
+		ServerType serverType = GENERIC;
 		void logger(size_t linesRequested, std::stringstream* output, log4cpp::Category* log);
-		void listOnlinePlayersCallback(size_t linesRequested, std::stringstream* output, log4cpp::Category* log);
 		std::string serverPath;
 		std::string serverJarName;
 		std::string serverAccount;
@@ -86,4 +82,4 @@ class BukkitServer : public Server
 		std::vector<std::string> serverOptions;
 };
 }
-#endif /* BUKKITSERVER_H */
+#endif /* GENERICSERVER_H */

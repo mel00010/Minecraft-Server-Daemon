@@ -1,6 +1,7 @@
 /*******************************************************************************
  *
  * Minecraft Server Daemon
+ * BungeeCordServer.hpp
  * Copyright (C) 2016  Mel McCalla <melmccalla@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -19,9 +20,9 @@
  *
  *
  *******************************************************************************/
-
-#ifndef GENERICSERVER_H
-#define GENERICSERVER_H
+ 
+#ifndef BUNGEECORDSERVER_H
+#define BUNGEECORDSERVER_H
 
 #include <stddef.h>
 #include <sstream>
@@ -32,19 +33,18 @@
 #include "ServerPropertyFileParser.hpp"
 
 namespace MinecraftServerDaemon {
-class GenericServer : public Server
+class BungeeCordServer : public Server
 {
 	public:
-		GenericServer(
+		BungeeCordServer(
 			std::string serverName,
 			std::string serverPath, std::string serverJarName, std::string serverAccount,
 			int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
 			std::string backupPath,
-			std::vector<std::string> worldsToBackup,
 			std::vector<std::string> javaArgs, 
 			std::vector<std::string> serverOptions
 		);
-		virtual ~GenericServer();
+		virtual ~BungeeCordServer();
 		void updateServer(std::string version);
 		void backupServer();
 		void backupServer(std::string backupPath);
@@ -52,9 +52,9 @@ class GenericServer : public Server
 		void startServer();
 		void stopServer();
 		void restartServer();
-		void reloadServer() {}
-		std::string listOnlinePlayers() {}
-		bool listOnlinePlayers(std::string playerName) {}
+		void reloadServer();
+		std::string listOnlinePlayers();
+		bool listOnlinePlayers(std::string playerName);
 		void sendCommand(std::string command);
 		std::string getServerName()
 		{
@@ -67,7 +67,7 @@ class GenericServer : public Server
 		ServerPropertyFileParser getServerPropertiesParser() {};
 	protected:
 		std::string serverName;
-		ServerType serverType = GENERIC;
+		ServerType serverType = BUNGEECORD;
 		void logger(size_t linesRequested, std::stringstream* output, log4cpp::Category* log);
 		std::string serverPath;
 		std::string serverJarName;
@@ -81,4 +81,4 @@ class GenericServer : public Server
 		std::vector<std::string> serverOptions;
 };
 }
-#endif /* GENERICSERVER_H */
+#endif /* BUNGEECORDSERVER_H */

@@ -1,6 +1,7 @@
 /*******************************************************************************
  *
  * Minecraft Server Daemon
+ * CreateSocket.hpp
  * Copyright (C) 2016  Mel McCalla <melmccalla@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -20,18 +21,8 @@
  *
  *******************************************************************************/
 
-#ifndef MAINLOOP_H
-#define MAINLOOP_H
-
-#include <event2/util.h>
-#include <string>
-#include <vector>
-
-#include "Server.hpp"
-
-void sigint_handler(int sig);
-void mainLoop (std::vector<MinecraftServerDaemon::Server*>* servers, log4cpp::Category& root, evutil_socket_t controlSocket, struct event_base*base);
-void writeToSocket(std::string message, int controlSocket, log4cpp::Category& root);
-std::string readFromSocket(int controlSocket, log4cpp::Category& root);
-void recieveCommand(int controlSocket, short what, void *arg);
-#endif /* MAINLOOP_H */
+#ifndef CREATESOCKET_H
+#define CREATESOCKET_H
+#include "log4cpp/Category.hh"
+int CreateSocket(log4cpp::Category& root);
+#endif /* CREATESOCKET_H */

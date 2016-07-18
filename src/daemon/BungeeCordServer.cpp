@@ -1,6 +1,7 @@
 /*******************************************************************************
  *
  * Minecraft Server Daemon
+ * BungeeCordServer.cpp
  * Copyright (C) 2016  Mel McCalla <melmccalla@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -20,39 +21,36 @@
  *
  *******************************************************************************/
  
-#include "GenericServer.hpp"
-#include "log4cpp/Category.hh"
-#include <sstream>
-#include <string>
-#include <vector>
-#include <thread>
-#include <time.h>
+
+#include "BungeeCordServer.hpp"
+
+#include <log4cpp/Category.hh>
 #include <unistd.h>
-#include <functional>
+#include <ctime>
+
+
 namespace MinecraftServerDaemon {
-GenericServer::GenericServer( std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount,
+BungeeCordServer::BungeeCordServer( std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount,
 				int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
-				std::string backupPath, std::vector<std::string> worldsToBackup, std::vector<std::string> javaArgs, 
-				std::vector<std::string> serverOptions) 
-:	serverName{serverName}, serverPath{serverPath}, serverJarName{serverJarName}, serverAccount{serverAccount},
-				maxHeapAlloc{maxHeapAlloc}, minHeapAlloc{minHeapAlloc}, gcThreadCount{gcThreadCount}, backupPath{backupPath},
-				worldsToBackup{worldsToBackup}, javaArgs{javaArgs}, serverOptions{serverOptions}
+				std::string backupPath, std::vector<std::string> javaArgs, std::vector<std::string> serverOptions)
+:	serverName{serverName}, serverPath{serverPath}, serverJarName{serverJarName}, serverAccount{serverAccount}, maxHeapAlloc{maxHeapAlloc},
+				minHeapAlloc{minHeapAlloc}, gcThreadCount{gcThreadCount}, backupPath{backupPath}, javaArgs{javaArgs}, serverOptions{serverOptions}
 {
 	log = &log4cpp::Category::getInstance(serverName);
 	log->info(serverJarName);
-	log->debug("GenericServer::GenericServer");
+	log->debug("BungeeCordServer::BungeeCordServer");
 }
-GenericServer::~GenericServer()
+BungeeCordServer::~BungeeCordServer()
 {
-	log->debug("GenericServer::~GenericServer");
+	log->debug("BungeeCordServer::~BungeeCordServer");
 }
-void GenericServer::updateServer(std::string version)
+void BungeeCordServer::updateServer(std::string version)
 {
-	log->debug("GenericServer::updateServer");
+	log->debug("BungeeCordServer::updateServer");
 }
-void GenericServer::backupServer()
+void BungeeCordServer::backupServer()
 {
-	log->debug("GenericServer::backupServer");
+	log->debug("BungeeCordServer::backupServer");
 	log->info("Starting backup");
 	*this << "say SERVER BACKUP STARTING. Server going readonly..." << std::endl;
 	*this << "save-off" << std::endl;
@@ -81,9 +79,9 @@ void GenericServer::backupServer()
 	*this << "say SERVER BACKUP ENDED. Server going read-write..." << std::endl;
 	log->info("Backup finished");
 }
-void GenericServer::backupServer(std::string _backupPath)
+void BungeeCordServer::backupServer(std::string _backupPath)
 {
-	log->debug("GenericServer::backupServer");
+	log->debug("BungeeCordServer::backupServer");
 	log->info("Starting backup");
 	*this << "say SERVER BACKUP STARTING. Server going readonly..." << std::endl;
 	*this << "save-off" << std::endl;
@@ -95,16 +93,6 @@ void GenericServer::backupServer(std::string _backupPath)
 	tstruct = *localtime(&now);
 	std::strftime(buf, sizeof(buf), "%Y-%m-%d_%Hh%M", &tstruct);
 	std::string time(buf);
-	for (std::string world : worldsToBackup)
-	{
-		log->info("Backing up "+world);
-		std::string tarCommand = "tar -C \""+serverPath+"\" -cf "+_backupPath+"/"+world+"_"+time+".tar\" "+world;
-		std::string gzipCommand = "gzip -f \""+backupPath+"/"+world+"_"+time+".tar\"";
-		log->info(tarCommand);
-		system(tarCommand.c_str());
-		log->info(gzipCommand);
-		system(gzipCommand.c_str());
-	}
 	log->info("Backing up "+serverJarName);
 	std::string copyJarCommand = "cp \""+serverPath+"/"+serverJarName+"\" \""+_backupPath+"/"+serverJarName.substr(0, serverJarName.size()-4)+"_"+time+".jar\"";
 	log->info(copyJarCommand);
@@ -113,9 +101,13 @@ void GenericServer::backupServer(std::string _backupPath)
 	*this << "say SERVER BACKUP ENDED. Server going read-write..." << std::endl;
 	log->info("Backup finished");
 }
-void GenericServer::startServer()
+void BungeeCordServer::reloadServer()
 {
-	log->debug("GenericServer::startServer");
+	*this << "reload" << std::endl;
+}
+void BungeeCordServer::startServer()
+{
+	log->debug("BungeeCordServer::startServer");
 	if (!isRunning())
 	{
 		chdir(serverPath.c_str());
@@ -125,20 +117,12 @@ void GenericServer::startServer()
 		outputListenerThread.detach();
 	}
 }
-void GenericServer::stopServer()
+void BungeeCordServer::stopServer()
 {
-	log->debug("GenericServer::stopServer");
+	log->debug("BungeeCordServer::stopServer");
 	if (isRunning())
 	{
-		*this << "say SERVER SHUTTING DOWN IN 10 SECONDS." << std::endl;
-		for (int i=10; i>0; --i) {
-			*this << "say "+std::to_string(i) << std::endl;
-			sleep(1);
-		}
-		*this << "say Saving map..." << std::endl;
-		*this << "save-all" << std::endl;
-		*this << "stop" << std::endl;
-		//~ sleep(10);
+		*this << "end" << std::endl;
 		while(isRunning()) {
 			sleep(0.5);
 		}
@@ -147,13 +131,13 @@ void GenericServer::stopServer()
 		log->info("Server already stopped");
 	}
 }
-void GenericServer::serverStatus()
+void BungeeCordServer::serverStatus()
 {
-	log->debug("GenericServer::serverStatus");
+	log->debug("BungeeCordServer::serverStatus");
 }
-void GenericServer::restartServer()
+void BungeeCordServer::restartServer()
 {
-	log->debug("GenericServer::restartServer");
+	log->debug("BungeeCordServer::restartServer");
 	//~ if (isRunning() && !serverProcess->rdbuf()->exited())
 	if (isRunning())
 	{
@@ -161,13 +145,62 @@ void GenericServer::restartServer()
 		startServer();
 	}
 }
-void GenericServer::sendCommand(std::string command)
+void BungeeCordServer::sendCommand(std::string command)
 {
-	log->debug("GenericServer::sendCommand");
+	log->debug("BungeeCordServer::sendCommand");
 	//~ if (isRunning() && !serverProcess->rdbuf()->exited())
 	if (isRunning())
 	{
 		*this << command << std::endl;
+	}
+}
+
+std::string BungeeCordServer::listOnlinePlayers()
+{
+	log->debug("BungeeCordServer::listOnlinePlayers");
+	struct event* event;
+	std::string* callbackOutput = new std::string;
+	*callbackOutput = '\0';
+	std::string output = '\0';
+	Listener* listener = new Listener{callbackOutput, 10, false, 0, output};
+	listeners->push_back(listener);
+	*this << "glist" << std::endl;
+	while(*callbackOutput == "\0") { sleep(0.1); }
+	if (callbackOutput->size() > 0) {
+		std::string returnValue(*callbackOutput);
+		delete callbackOutput;
+		callbackOutput = nullptr;
+		return returnValue;
+	} else {
+		log->info("No one is on the server");
+		std::string returnValue = "No one is on the server";
+		delete callbackOutput;
+		callbackOutput = nullptr;
+		return returnValue;
+	}
+}
+bool BungeeCordServer::listOnlinePlayers(std::string playerName)
+{
+	log->debug("BungeeCordServer::listOnlinePlayers");
+	struct event* event;
+	std::string* callbackOutput = new std::string;
+	*callbackOutput = '\0';
+	std::string output = '\0';
+	Listener* listener = new Listener{callbackOutput, 10, false, 0, output};
+	listeners->push_back(listener);
+	*this << "glist" << std::endl;
+	while(*callbackOutput == "\0") { sleep(0.1); }
+	if (callbackOutput->size() > 0) {
+		std::string returnValue(*callbackOutput);
+		delete callbackOutput;
+		callbackOutput = nullptr;
+		return true;
+	} else {
+		log->info("No one is on the server");
+		std::string returnValue = "No one is on the server";
+		delete callbackOutput;
+		callbackOutput = nullptr;
+		return false;
 	}
 }
 }

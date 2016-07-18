@@ -1,6 +1,7 @@
 /*******************************************************************************
  *
  * Minecraft Server Daemon
+ * VanillaServer.hpp
  * Copyright (C) 2016  Mel McCalla <melmccalla@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -19,9 +20,9 @@
  *
  *
  *******************************************************************************/
- 
-#ifndef BUNGEECORDSERVER_H
-#define BUNGEECORDSERVER_H
+
+#ifndef VANILLASERVER_H
+#define VANILLASERVER_H
 
 #include <stddef.h>
 #include <sstream>
@@ -32,18 +33,19 @@
 #include "ServerPropertyFileParser.hpp"
 
 namespace MinecraftServerDaemon {
-class BungeeCordServer : public Server
+class VanillaServer : public Server
 {
 	public:
-		BungeeCordServer(
-			std::string serverName,
+		VanillaServer(
+			std::string _serverName,
 			std::string serverPath, std::string serverJarName, std::string serverAccount,
 			int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
 			std::string backupPath,
+			std::vector<std::string> worldsToBackup,
 			std::vector<std::string> javaArgs, 
 			std::vector<std::string> serverOptions
 		);
-		virtual ~BungeeCordServer();
+		virtual ~VanillaServer();
 		void updateServer(std::string version);
 		void backupServer();
 		void backupServer(std::string backupPath);
@@ -51,7 +53,7 @@ class BungeeCordServer : public Server
 		void startServer();
 		void stopServer();
 		void restartServer();
-		void reloadServer();
+		void reloadServer() {};
 		std::string listOnlinePlayers();
 		bool listOnlinePlayers(std::string playerName);
 		void sendCommand(std::string command);
@@ -63,10 +65,14 @@ class BungeeCordServer : public Server
 		{
 			return serverType;
 		};
-		ServerPropertyFileParser getServerPropertiesParser() {};
+		ServerPropertyFileParser getServerPropertiesParser()
+		{
+			return serverPropertiesParser;
+		};
 	protected:
+        ServerPropertyFileParser serverPropertiesParser;
 		std::string serverName;
-		ServerType serverType = BUNGEECORD;
+		ServerType serverType = VANILLA;
 		void logger(size_t linesRequested, std::stringstream* output, log4cpp::Category* log);
 		std::string serverPath;
 		std::string serverJarName;
@@ -80,4 +86,4 @@ class BungeeCordServer : public Server
 		std::vector<std::string> serverOptions;
 };
 }
-#endif /* BUNGEECORDSERVER_H */
+#endif /* VANILLASERVER_H */

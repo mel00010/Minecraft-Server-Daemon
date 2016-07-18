@@ -1,6 +1,7 @@
 /*******************************************************************************
  *
  * Minecraft Server Daemon
+ * BukkitServer.cpp
  * Copyright (C) 2016  Mel McCalla <melmccalla@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -19,19 +20,15 @@
  *
  *
  *******************************************************************************/
- 
 
-
-#include "SpigotServer.hpp"
+#include "BukkitServer.hpp"
 
 #include <log4cpp/Category.hh>
 #include <unistd.h>
 #include <ctime>
 
-int system(const char *__command);
-
 namespace MinecraftServerDaemon {
-SpigotServer::SpigotServer( std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount,
+BukkitServer::BukkitServer( std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount,
 				int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
 				std::string backupPath, std::vector<std::string> worldsToBackup, std::vector<std::string> javaArgs, 
 				std::vector<std::string> serverOptions) 
@@ -41,19 +38,19 @@ SpigotServer::SpigotServer( std::string serverName, std::string serverPath, std:
 {
 	log = &log4cpp::Category::getInstance(serverName);
 	log->info(serverJarName);
-	log->debug("SpigotServer::SpigotServer");
+	log->debug("BukkitServer::BukkitServer");
 }
-SpigotServer::~SpigotServer()
+BukkitServer::~BukkitServer()
 {
-	log->debug("SpigotServer::~SpigotServer");
+	log->debug("BukkitServer::~BukkitServer");
 }
-void SpigotServer::updateServer(std::string version)
+void BukkitServer::updateServer(std::string version)
 {
-	log->debug("SpigotServer::updateServer");
+	log->debug("BukkitServer::updateServer");
 }
-void SpigotServer::backupServer()
+void BukkitServer::backupServer()
 {
-	log->debug("SpigotServer::backupServer");
+	log->debug("BukkitServer::backupServer");
 	log->info("Starting backup");
 	*this << "say SERVER BACKUP STARTING. Server going readonly..." << std::endl;
 	*this << "save-off" << std::endl;
@@ -82,9 +79,9 @@ void SpigotServer::backupServer()
 	*this << "say SERVER BACKUP ENDED. Server going read-write..." << std::endl;
 	log->info("Backup finished");
 }
-void SpigotServer::backupServer(std::string _backupPath)
+void BukkitServer::backupServer(std::string _backupPath)
 {
-	log->debug("SpigotServer::backupServer");
+	log->debug("BukkitServer::backupServer");
 	log->info("Starting backup");
 	*this << "say SERVER BACKUP STARTING. Server going readonly..." << std::endl;
 	*this << "save-off" << std::endl;
@@ -114,13 +111,13 @@ void SpigotServer::backupServer(std::string _backupPath)
 	*this << "say SERVER BACKUP ENDED. Server going read-write..." << std::endl;
 	log->info("Backup finished");
 }
-void SpigotServer::reloadServer()
+void BukkitServer::reloadServer()
 {
 	*this << "reload" << std::endl;
 }
-void SpigotServer::startServer()
+void BukkitServer::startServer()
 {
-	log->debug("SpigotServer::startServer");
+	log->debug("BukkitServer::startServer");
 	if (!isRunning())
 	{
 		chdir(serverPath.c_str());
@@ -130,9 +127,9 @@ void SpigotServer::startServer()
 		outputListenerThread.detach();
 	}
 }
-void SpigotServer::stopServer()
+void BukkitServer::stopServer()
 {
-	log->debug("SpigotServer::stopServer");
+	log->debug("BukkitServer::stopServer");
 	if (isRunning())
 	{
 		*this << "say SERVER SHUTTING DOWN IN 10 SECONDS." << std::endl;
@@ -152,13 +149,13 @@ void SpigotServer::stopServer()
 		log->info("Server already stopped");
 	}
 }
-void SpigotServer::serverStatus()
+void BukkitServer::serverStatus()
 {
-	log->debug("SpigotServer::serverStatus");
+	log->debug("BukkitServer::serverStatus");
 }
-void SpigotServer::restartServer()
+void BukkitServer::restartServer()
 {
-	log->debug("SpigotServer::restartServer");
+	log->debug("BukkitServer::restartServer");
 	//~ if (isRunning() && !serverProcess->rdbuf()->exited())
 	if (isRunning())
 	{
@@ -166,9 +163,9 @@ void SpigotServer::restartServer()
 		startServer();
 	}
 }
-void SpigotServer::sendCommand(std::string command)
+void BukkitServer::sendCommand(std::string command)
 {
-	log->debug("SpigotServer::sendCommand");
+	log->debug("BukkitServer::sendCommand");
 	//~ if (isRunning() && !serverProcess->rdbuf()->exited())
 	if (isRunning())
 	{
@@ -176,9 +173,9 @@ void SpigotServer::sendCommand(std::string command)
 	}
 }
 
-std::string SpigotServer::listOnlinePlayers()
+std::string BukkitServer::listOnlinePlayers()
 {
-	log->debug("SpigotServer::listOnlinePlayers");
+	log->debug("BukkitServer::listOnlinePlayers");
 	struct event* event;
 	std::string* callbackOutput = new std::string;
 	*callbackOutput = '\0';
@@ -200,9 +197,9 @@ std::string SpigotServer::listOnlinePlayers()
 		return returnValue;
 	}
 }
-bool SpigotServer::listOnlinePlayers(std::string playerName)
+bool BukkitServer::listOnlinePlayers(std::string playerName)
 {
-	log->debug("SpigotServer::listOnlinePlayers");
+	log->debug("BukkitServer::listOnlinePlayers");
 	struct event* event;
 	std::string* callbackOutput = new std::string;
 	*callbackOutput = '\0';
