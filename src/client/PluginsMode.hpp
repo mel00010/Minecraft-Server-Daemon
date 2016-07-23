@@ -1,7 +1,7 @@
 /*******************************************************************************
  *
  * Minecraft Server Daemon
- * CLICommon.hpp
+ * PluginMode.hpp
  * Copyright (C) 2016  Mel McCalla <melmccalla@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -21,24 +21,13 @@
  *
  *******************************************************************************/
 
-#ifndef CLIENT_CLICOMMON_HPP_
-#define CLIENT_CLICOMMON_HPP_
-
-#include "MasterLoop.hpp"
-
-#define KEY_TAB 9
-
-struct timespec;
+#ifndef CLIENT_PLUGINSMODE_HPP_
+#define CLIENT_PLUGINSMODE_HPP_
 
 namespace CLI {
-extern const timespec* sleeptime;
-extern WindowWrapper* MainWindow;
-extern int height;
-extern int width;
-extern MODE currentMode;
-extern bool insideWindow;
-extern bool bottomBarSelected;
+void pluginsMode();
+void createPluginsModeWindows();
+void writePluginsModeText();
 }
 
-
-#endif /* CLIENT_CLICOMMON_HPP_ */
+#endif /* CLIENT_PLUGINSMODE_HPP_ */

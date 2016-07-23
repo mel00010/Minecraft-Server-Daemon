@@ -1,7 +1,7 @@
 /*******************************************************************************
  *
  * Minecraft Server Daemon
- * CLICommon.hpp
+ * ConfigurationMode.hpp
  * Copyright (C) 2016  Mel McCalla <melmccalla@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -21,24 +21,16 @@
  *
  *******************************************************************************/
 
-#ifndef CLIENT_CLICOMMON_HPP_
-#define CLIENT_CLICOMMON_HPP_
-
-#include "MasterLoop.hpp"
-
-#define KEY_TAB 9
-
-struct timespec;
+#ifndef CLIENT_CONFIGURATIONMODE_HPP_
+#define CLIENT_CONFIGURATIONMODE_HPP_
 
 namespace CLI {
-extern const timespec* sleeptime;
-extern WindowWrapper* MainWindow;
-extern int height;
-extern int width;
-extern MODE currentMode;
-extern bool insideWindow;
-extern bool bottomBarSelected;
+void configurationMode();
+void createConfigurationModeWindows();
+void writeConfigurationModeText();
 }
 
 
-#endif /* CLIENT_CLICOMMON_HPP_ */
+
+
+#endif /* CLIENT_CONFIGURATIONMODE_HPP_ */

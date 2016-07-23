@@ -21,11 +21,12 @@
  *
  *******************************************************************************/
 
+#include <Help.hpp>
 #include <ParseOptions.hpp>
 #include <Socket.hpp>
-#include <Help.hpp>
-#include <string>
+#include <cstdlib>
 #include <iostream>
+#include <string>
 
 void parseOptions(int argc, char *argv[])
 {
