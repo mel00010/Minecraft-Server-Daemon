@@ -16,8 +16,10 @@ PKG_CHECK_MODULES([ncurses],[ncurses])
 AC_ARG_ENABLE([debug],
 [  --enable-debug    Turn on debugging],
 [case "${enableval}" in
-  yes) debug=true ;;
-  no)  debug=true ;;
+  yes)   debug=true  ;;
+  no)    debug=false ;;
+  true)  debug=true  ;;
+  false) debug=false ;;
   *) AC_MSG_ERROR([bad value ${enableval} for --enable-debug]) ;;
 esac],[debug=false])
 AM_CONDITIONAL([DEBUG], [test x$debug = xtrue])

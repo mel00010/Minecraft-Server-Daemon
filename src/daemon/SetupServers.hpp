@@ -21,16 +21,15 @@
  *
  *******************************************************************************/
 
-#ifndef SETUPSERVERS_H
-#define SETUPSERVERS_H
+#ifndef DAEMON_SETUPSERVERS_HPP
+#define DAEMON_SETUPSERVERS_HPP
 
+#include <json/value.h>
+#include <log4cpp/Category.hh>
 #include <vector>
 
 #include "Server.hpp"
 
-namespace Json {
-class Value;
-} /* namespace Json */
-
 std::vector<MinecraftServerDaemon::Server*>* setupServers(Json::Value* _config, log4cpp::Category& log);
-#endif /* SETUPSERVERS_H */
+
+#endif /* DAEMON_SETUPSERVERS_HPP_ */

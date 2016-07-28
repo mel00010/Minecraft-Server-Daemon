@@ -216,7 +216,7 @@ void mainMode() {
 								break;
 						}
 					} else {
-						quitPopup();
+						quitPrompt();
 					}
 					break;
 			}

@@ -21,18 +21,20 @@
  *
  *******************************************************************************/
 
-#ifndef MAINLOOP_H
-#define MAINLOOP_H
+#ifndef DAEMON_MAINLOOP_HPP_
+#define DAEMON_MAINLOOP_HPP_
 
 #include <event2/util.h>
+#include <log4cpp/Category.hh>
 #include <string>
 #include <vector>
 
 #include "Server.hpp"
 
 void sigint_handler(int sig);
-void mainLoop (std::vector<MinecraftServerDaemon::Server*>* servers, log4cpp::Category& root, evutil_socket_t controlSocket, struct event_base*base);
+void mainLoop(std::vector<MinecraftServerDaemon::Server*>* servers, log4cpp::Category& root, evutil_socket_t controlSocket, struct event_base*base);
 void writeToSocket(std::string message, int controlSocket, log4cpp::Category& root);
 std::string readFromSocket(int controlSocket, log4cpp::Category& root);
 void recieveCommand(int controlSocket, short what, void *arg);
-#endif /* MAINLOOP_H */
+
+#endif /* DAEMON_MAINLOOP_HPP_ */

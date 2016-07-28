@@ -20,10 +20,11 @@
  *
  *
  *******************************************************************************/
- 
-#ifndef BUNGEECORDSERVER_H
-#define BUNGEECORDSERVER_H
 
+#ifndef DAEMON_BUNGEECORDSERVER_HPP_
+#define DAEMON_BUNGEECORDSERVER_HPP_
+
+#include <log4cpp/Category.hh>
 #include <stddef.h>
 #include <sstream>
 #include <string>
@@ -33,17 +34,11 @@
 #include "ServerPropertyFileParser.hpp"
 
 namespace MinecraftServerDaemon {
-class BungeeCordServer : public Server
-{
+
+class BungeeCordServer: public Server {
 	public:
-		BungeeCordServer(
-			std::string serverName,
-			std::string serverPath, std::string serverJarName, std::string serverAccount,
-			int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
-			std::string backupPath,
-			std::vector<std::string> javaArgs, 
-			std::vector<std::string> serverOptions
-		);
+		BungeeCordServer(std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc,
+				int minHeapAlloc, int gcThreadCount, std::string backupPath, std::vector<std::string> javaArgs, std::vector<std::string> serverOptions);
 		virtual ~BungeeCordServer();
 		void updateServer(std::string version);
 		void backupServer();
@@ -56,15 +51,14 @@ class BungeeCordServer : public Server
 		std::string listOnlinePlayers();
 		bool listOnlinePlayers(std::string playerName);
 		void sendCommand(std::string command);
-		std::string getServerName()
-		{
+		std::string getServerName() {
 			return serverName;
-		};
-		ServerType getServerType()
-		{
+		}
+		ServerType getServerType() {
 			return serverType;
-		};
-		ServerPropertyFileParser getServerPropertiesParser() {};
+		}
+		ServerPropertyFileParser getServerPropertiesParser() {
+		}
 	protected:
 		std::string serverName;
 		ServerType serverType = BUNGEECORD;
@@ -80,5 +74,6 @@ class BungeeCordServer : public Server
 		std::vector<std::string> javaArgs;
 		std::vector<std::string> serverOptions;
 };
-}
-#endif /* BUNGEECORDSERVER_H */
+
+} /* namespace MinecraftServerDaemon */
+#endif /* DAEMON_BUNGEECORDSERVER_HPP_ */

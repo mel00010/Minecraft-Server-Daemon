@@ -21,9 +21,10 @@
  *
  *******************************************************************************/
 
-#ifndef GENERICSERVER_H
-#define GENERICSERVER_H
+#ifndef DAEMON_GENERICSERVER_HPP_
+#define DAEMON_GENERICSERVER_HPP_
 
+#include <log4cpp/Category.hh>
 #include <stddef.h>
 #include <sstream>
 #include <string>
@@ -33,18 +34,11 @@
 #include "ServerPropertyFileParser.hpp"
 
 namespace MinecraftServerDaemon {
-class GenericServer : public Server
-{
+class GenericServer: public Server {
 	public:
-		GenericServer(
-			std::string serverName,
-			std::string serverPath, std::string serverJarName, std::string serverAccount,
-			int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
-			std::string backupPath,
-			std::vector<std::string> worldsToBackup,
-			std::vector<std::string> javaArgs, 
-			std::vector<std::string> serverOptions
-		);
+		GenericServer(std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc,
+				int gcThreadCount, std::string backupPath, std::vector<std::string> worldsToBackup, std::vector<std::string> javaArgs,
+				std::vector<std::string> serverOptions);
 		virtual ~GenericServer();
 		void updateServer(std::string version);
 		void backupServer();
@@ -53,19 +47,21 @@ class GenericServer : public Server
 		void startServer();
 		void stopServer();
 		void restartServer();
-		void reloadServer() {}
-		std::string listOnlinePlayers() {}
-		bool listOnlinePlayers(std::string playerName) {}
+		void reloadServer() {
+		}
+		std::string listOnlinePlayers() {
+		}
+		bool listOnlinePlayers(__attribute__((unused))  std::string playerName) {
+		}
 		void sendCommand(std::string command);
-		std::string getServerName()
-		{
+		std::string getServerName() {
 			return serverName;
-		};
-		ServerType getServerType()
-		{
+		}
+		ServerType getServerType() {
 			return serverType;
-		};
-		ServerPropertyFileParser getServerPropertiesParser() {};
+		}
+		ServerPropertyFileParser getServerPropertiesParser() {
+		}
 	protected:
 		std::string serverName;
 		ServerType serverType = GENERIC;
@@ -82,4 +78,4 @@ class GenericServer : public Server
 		std::vector<std::string> serverOptions;
 };
 }
-#endif /* GENERICSERVER_H */
+#endif /* DAEMON_GENERICSERVER_HPP_ */

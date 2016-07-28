@@ -25,7 +25,7 @@
 #define CLIENT_QUITPROMPT_HPP_
 
 namespace CLI {
-void quitPopup();
+void quitPrompt();
 }
 
 

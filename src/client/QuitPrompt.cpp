@@ -28,7 +28,7 @@
 #include <ctime>
 
 namespace CLI {
-void quitPopup() {
+void quitPrompt() {
 	WINDOW* popupWin = newwin(5, 31, (LINES / 2) - 5, (COLS / 2) - 15);
 	werase(popupWin);
 	wmove(popupWin, 1, 2);

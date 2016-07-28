@@ -21,24 +21,23 @@
  *
  *******************************************************************************/
 
+#include <ConfigFileParser.hpp>
 #include <CreateSocket.hpp>
 #include <event2/event.h>
 #include <json/json.h>
 #include <log4cpp/Category.hh>
 #include <log4cpp/PropertyConfigurator.hh>
 #include <MainLoop.hpp>
-#include <ConfigFileParser.hpp>
-#include <Server.hpp>
 #include <signal.h>
 #include <sys/stat.h>
+#include <Server.hpp>
 #include <SetupServers.hpp>
 #include <unistd.h>
 #include <cstdlib>
-#include <iostream>
 #include <vector>
 
 int main(void) {
-	#if DEBUGGING == 0
+#if DEBUGGING == 0
 	/* Our process ID and Session ID */
 	pid_t pid, sid;
 
@@ -60,51 +59,49 @@ int main(void) {
 		exit(EXIT_SUCCESS);
 	}
 	/* If we got a good PID, then
-	   we can exit the parent process. */
-	#endif	/* DEBUGGING == 0 */
+	 we can exit the parent process. */
+#endif	/* DEBUGGING == 0 */
 	signal(SIGINT, sigint_handler);
 	/* Change the file mode mask */
 	umask(0);
-	/* Open any logs here */        
+	/* Open any logs here */
 	//Logging
 	ConfigFileParser parser;
 	Json::Value config = parser.parseConfigFile("/etc/minecraft/config.json");
-	//~ std::string initFileName = "/etc/minecraft/log4cpp.properties";
 	log4cpp::PropertyConfigurator::configure("/etc/minecraft/log4cpp.properties");
 
 	log4cpp::Category& rootLog = log4cpp::Category::getRoot();
-	
+
 	/* Create a new SID for the child process */
-	#if DEBUGGING == 0
+#if DEBUGGING == 0
 	sid = setsid();
 	if (sid < 0) {
-		//~ /* Log the failure */
+		/* Log the failure */
 		rootLog.fatal("Failure creating new sessionID for daemon");
 		exit(EXIT_FAILURE);
 	}
-	#endif /* DEBUGGING == 0 */
+#endif /* DEBUGGING == 0 */
 	/* Change the current working directory */
 	if ((chdir("/")) < 0) {
 		/* Log the failure */
 		rootLog.fatal("Failure changing working directory");
 		exit(EXIT_FAILURE);
 	}
-	#if DEBUGGING == 0
+#if DEBUGGING == 0
 	/* Close out the standard file descriptors */
 	close(STDIN_FILENO);
 	close(STDOUT_FILENO);
 	close(STDERR_FILENO);
-	#endif /* DEBUGGING == 0 */
+#endif /* DEBUGGING == 0 */
 	/* Daemon-specific initialization goes here */
 	//Create pipe to recieve commands from control program
-	
 	// Read from config file and set up servers
 	struct event_base* base = event_base_new();
-	int controlSocket = CreateSocket(rootLog);
+	int controlSocket = createSocket(rootLog);
 	std::vector<MinecraftServerDaemon::Server*>* servers;
 	servers = setupServers(&config, rootLog);
 	/* The Big Loop */
 	mainLoop(servers, rootLog, controlSocket, base);
-	
+
 	exit(EXIT_SUCCESS);
 }

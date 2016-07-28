@@ -21,8 +21,10 @@
  *
  *******************************************************************************/
 
-#ifndef CREATESOCKET_H
-#define CREATESOCKET_H
-#include "log4cpp/Category.hh"
-int CreateSocket(log4cpp::Category& root);
-#endif /* CREATESOCKET_H */
+#ifndef DAEMON_CREATESOCKET_HPP_
+#define DAEMON_CREATESOCKET_HPP_
+
+#include <log4cpp/Category.hh>
+
+int createSocket(log4cpp::Category& root);
+#endif /* DAEMON_CREATESOCKET_HPP_ */

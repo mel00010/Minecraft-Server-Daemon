@@ -108,7 +108,7 @@ void managementMode() {
 								break;
 						}
 					} else {
-						quitPopup();
+						quitPrompt();
 					}
 					break;
 				case '\n':

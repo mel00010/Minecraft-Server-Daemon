@@ -108,7 +108,7 @@ void configurationMode() {
 								break;
 						}
 					} else {
-						quitPopup();
+						quitPrompt();
 					}
 					break;
 				case '\n':

@@ -108,7 +108,7 @@ void pluginsMode() {
 								break;
 						}
 					} else {
-						quitPopup();
+						quitPrompt();
 					}
 					break;
 				case '\n':
@@ -161,4 +161,3 @@ void writePluginsModeText() {
 	MainWindow->sub("LeftPanel")->sub("ServerListTotal")->setAttributes(A_NORMAL, NORMAL);
 }
 }
-

@@ -20,41 +20,35 @@
  *
  *
  *******************************************************************************/
- 
 
 #include <ConfigFileParser.hpp>
 #include <json/reader.h>
+#include <json/value.h>
+#include <cstdlib>
 #include <fstream>
 #include <new>
 
-
-Json::Value ConfigFileParser::parseConfigFile(std::string configFile)
-{
+Json::Value ConfigFileParser::parseConfigFile(std::string configFile) {
 	Json::Value root;
 	Json::Reader reader;
-	try 
-	{
-		reader.parse(getFileContents(configFile.c_str()),root);	
-	}
-	catch (std::bad_alloc& e) 
-	{
+	try {
+		reader.parse(getFileContents(configFile.c_str()), root);
+	} catch (std::bad_alloc& e) {
 		exit(1);
 	}
 	return root;
 }
 
-std::string ConfigFileParser::getFileContents(const char *filename)
-{
-	std::ifstream in(filename, std::ios::in | std::ios::binary);	
-	if (in)
-	{
+std::string ConfigFileParser::getFileContents(const char *filename) {
+	std::ifstream in(filename, std::ios::in | std::ios::binary);
+	if (in) {
 		std::string contents;
 		in.seekg(0, std::ios::end);
 		contents.resize(in.tellg());
 		in.seekg(0, std::ios::beg);
 		in.read(&contents[0], contents.size());
 		in.close();
-		return(contents);
+		return (contents);
 	} else {
 		exit(1);
 	}

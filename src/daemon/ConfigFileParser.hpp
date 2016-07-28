@@ -20,23 +20,20 @@
  *
  *
  *******************************************************************************/
- 
-#ifndef CONFIGFILEPARSER_H
-#define CONFIGFILEPARSER_H
+
+#ifndef DAEMON_CONFIGFILEPARSER_HPP_
+#define DAEMON_CONFIGFILEPARSER_HPP_
 
 #include <string>
 
-namespace Json {
-class Value;
-} /* namespace Json */
+#include "json/json.h"
 
-class ConfigFileParser
-{
+class ConfigFileParser {
 	public:
 		Json::Value parseConfigFile(std::string configFile);
 	protected:
-		
+
 		std::string getFileContents(const char *filename);
 };
-#endif /* CONFIGFILEPARSER_H */
+#endif /* DAEMON_CONFIGFILEPARSER_HPP_ */
 

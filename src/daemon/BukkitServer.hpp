@@ -20,10 +20,11 @@
  *
  *
  *******************************************************************************/
- 
-#ifndef BUKKITSERVER_H
-#define BUKKITSERVER_H
 
+#ifndef DAEMON_BUKKITSERVER_HPP_
+#define DAEMON_BUKKITSERVER_HPP_
+
+#include <log4cpp/Category.hh>
 #include <stddef.h>
 #include <sstream>
 #include <string>
@@ -33,18 +34,12 @@
 #include "ServerPropertyFileParser.hpp"
 
 namespace MinecraftServerDaemon {
-class BukkitServer : public Server
-{
+
+class BukkitServer: public Server {
 	public:
-		BukkitServer(
-			std::string serverName,
-			std::string serverPath, std::string serverJarName, std::string serverAccount,
-			int maxHeapAlloc, int minHeapAlloc, int gcThreadCount,
-			std::string backupPath,
-			std::vector<std::string> worldsToBackup,
-			std::vector<std::string> javaArgs, 
-			std::vector<std::string> serverOptions
-		);
+		BukkitServer(std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc,
+				int gcThreadCount, std::string backupPath, std::vector<std::string> worldsToBackup, std::vector<std::string> javaArgs,
+				std::vector<std::string> serverOptions);
 		virtual ~BukkitServer();
 		void updateServer(std::string version);
 		void backupServer();
@@ -57,20 +52,16 @@ class BukkitServer : public Server
 		std::string listOnlinePlayers();
 		bool listOnlinePlayers(std::string playerName);
 		void sendCommand(std::string command);
-		std::string getServerName()
-		{
+		std::string getServerName() {
 			return serverName;
-		};
-		ServerType getServerType()
-		{
+		}
+		ServerType getServerType() {
 			return serverType;
-		};
-		ServerPropertyFileParser getServerPropertiesParser()
-		{
+		}
+		ServerPropertyFileParser getServerPropertiesParser() {
 			return serverPropertiesParser;
-		};
+		}
 	protected:
-		ServerPropertyFileParser serverPropertiesParser;
 		std::string serverName;
 		ServerType serverType = BUKKIT;
 		void logger(size_t linesRequested, std::stringstream* output, log4cpp::Category* log);
@@ -85,6 +76,8 @@ class BukkitServer : public Server
 		std::vector<std::string> worldsToBackup;
 		std::vector<std::string> javaArgs;
 		std::vector<std::string> serverOptions;
+		ServerPropertyFileParser serverPropertiesParser;
 };
-}
-#endif /* BUKKITSERVER_H */
+
+} /* namespace MinecraftServerDaemon */
+#endif /* DAEMON_BUKKITSERVER_HPP_ */

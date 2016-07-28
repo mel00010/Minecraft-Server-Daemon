@@ -1,7 +1,7 @@
 /*******************************************************************************
  *
  * Minecraft Server Daemon
- * VanillaServer.hpp
+ * ForgeServer.hpp
  * Copyright (C) 2016  Mel McCalla <melmccalla@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -21,12 +21,12 @@
  *
  *******************************************************************************/
 
-#ifndef DAEMON_VANILLASERVER_HPP_
-#define DAEMON_VANILLASERVER_HPP_
+#ifndef DAEMON_FORGESERVER_HPP_
+#define DAEMON_FORGESERVER_HPP_
 
 #include <log4cpp/Category.hh>
 #include <stddef.h>
-#include <sstream>
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -35,12 +35,12 @@
 
 namespace MinecraftServerDaemon {
 
-class VanillaServer: public Server {
+class ForgeServer: public Server {
 	public:
-		VanillaServer(std::string _serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc,
+		ForgeServer(std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc,
 				int gcThreadCount, std::string backupPath, std::vector<std::string> worldsToBackup, std::vector<std::string> javaArgs,
 				std::vector<std::string> serverOptions);
-		virtual ~VanillaServer();
+		virtual ~ForgeServer();
 		void updateServer(std::string version);
 		void backupServer();
 		void backupServer(std::string backupPath);
@@ -50,8 +50,10 @@ class VanillaServer: public Server {
 		void restartServer();
 		void reloadServer() {
 		}
-		std::string listOnlinePlayers();
-		bool listOnlinePlayers(std::string playerName);
+		std::string listOnlinePlayers() {
+		}
+		bool listOnlinePlayers(__attribute__((unused))  std::string playerName) {
+		}
 		void sendCommand(std::string command);
 		std::string getServerName() {
 			return serverName;
@@ -60,11 +62,10 @@ class VanillaServer: public Server {
 			return serverType;
 		}
 		ServerPropertyFileParser getServerPropertiesParser() {
-			return serverPropertiesParser;
 		}
 	protected:
 		std::string serverName;
-		ServerType serverType = VANILLA;
+		ServerType serverType = FORGE;
 		void logger(size_t linesRequested, std::stringstream* output, log4cpp::Category* log);
 		std::string serverPath;
 		std::string serverJarName;
@@ -76,8 +77,8 @@ class VanillaServer: public Server {
 		std::vector<std::string> worldsToBackup;
 		std::vector<std::string> javaArgs;
 		std::vector<std::string> serverOptions;
-		ServerPropertyFileParser serverPropertiesParser;
 };
 
 } /* namespace MinecraftServerDaemon */
-#endif /* VANILLASERVER_H */
+
+#endif /* DAEMON_FORGESERVER_HPP_ */

@@ -29,29 +29,28 @@
 #include <cstdlib>
 #include <cstring>
 
-int CreateSocket(log4cpp::Category& root)
+int createSocket(log4cpp::Category& root)
 {
-	int controlSocket;
-	int len;
+	int Socket;
 	struct sockaddr_un local;
-	if ((controlSocket = socket(AF_UNIX, SOCK_STREAM, 0)) == -1) {
+	if ((Socket = socket(AF_UNIX, SOCK_STREAM, 0)) == -1) {
 		root.fatal("Failure creating socket");
 		exit(1);
 	}
-	
 	local.sun_family = AF_UNIX;
 	strcpy(local.sun_path, "/etc/minecraft/control.socket");
 	unlink(local.sun_path);
+	int len;
 	len = strlen(local.sun_path) + sizeof(local.sun_family);
-	if (bind(controlSocket, (struct sockaddr *)&local, len) == -1) {
+	if (bind(Socket, (struct sockaddr *) &local, len) == -1) {
 		root.fatal("Failure binding socket to path");
 		exit(1);
 	}
-	
-	if (listen(controlSocket, 5) == -1) {
+
+	if (listen(Socket, 5) == -1) {
 		root.fatal("Failure listening on socket");
 		exit(1);
 	}
-	fcntl(controlSocket, F_SETFL, O_NONBLOCK);
-	return controlSocket;
+	fcntl(Socket, F_SETFL, O_NONBLOCK);
+	return Socket;
 }
