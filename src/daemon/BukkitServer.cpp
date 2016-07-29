@@ -29,7 +29,20 @@
 #include <thread>
 
 namespace MinecraftServerDaemon {
-
+/**
+ * Constructor.
+ * @param serverName
+ * @param serverPath
+ * @param serverJarName
+ * @param serverAccount
+ * @param maxHeapAlloc
+ * @param minHeapAlloc
+ * @param gcThreadCount
+ * @param backupPath
+ * @param worldsToBackup
+ * @param javaArgs
+ * @param serverOptions
+ */
 BukkitServer::BukkitServer(std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc,
 		int minHeapAlloc, int gcThreadCount, std::string backupPath, std::vector<std::string> worldsToBackup, std::vector<std::string> javaArgs,
 		std::vector<std::string> serverOptions) :
@@ -40,12 +53,22 @@ BukkitServer::BukkitServer(std::string serverName, std::string serverPath, std::
 	log->info(serverJarName);
 	log->debug("BukkitServer::BukkitServer");
 }
+/**
+ * Destructor.
+ */
 BukkitServer::~BukkitServer() {
 	log->debug("BukkitServer::~BukkitServer");
 }
-void BukkitServer::updateServer(__attribute__((unused))    std::string version) {
+/**
+ * Currently unimplemented.
+ * @param version
+ */
+void BukkitServer::updateServer(__attribute__((unused))     std::string version) {
 	log->debug("BukkitServer::updateServer");
 }
+/**
+ * Backs up the server.
+ */
 void BukkitServer::backupServer() {
 	log->debug("BukkitServer::backupServer");
 	log->info("Starting backup");
@@ -76,6 +99,10 @@ void BukkitServer::backupServer() {
 	*this << "say SERVER BACKUP ENDED. Server going read-write..." << std::endl;
 	log->info("Backup finished");
 }
+/**
+ * Backs up the server to a specified directory.
+ * @param _backupPath
+ */
 void BukkitServer::backupServer(std::string _backupPath) {
 	log->debug("BukkitServer::backupServer");
 	log->info("Starting backup");
@@ -107,9 +134,15 @@ void BukkitServer::backupServer(std::string _backupPath) {
 	*this << "say SERVER BACKUP ENDED. Server going read-write..." << std::endl;
 	log->info("Backup finished");
 }
+/**
+ * Reloads the server.
+ */
 void BukkitServer::reloadServer() {
 	*this << "reload" << std::endl;
 }
+/**
+ * Starts the server.
+ */
 void BukkitServer::startServer() {
 	log->debug("BukkitServer::startServer");
 	if (!isRunning()) {
@@ -120,6 +153,9 @@ void BukkitServer::startServer() {
 		outputListenerThread.detach();
 	}
 }
+/**
+ * Stops the server.
+ */
 void BukkitServer::stopServer() {
 	log->debug("BukkitServer::stopServer");
 	if (isRunning()) {
@@ -140,9 +176,15 @@ void BukkitServer::stopServer() {
 		log->info("Server already stopped");
 	}
 }
+/**
+ * Currently unimplemented.
+ */
 void BukkitServer::serverStatus() {
 	log->debug("BukkitServer::serverStatus");
 }
+/**
+ * Restarts the server.
+ */
 void BukkitServer::restartServer() {
 	log->debug("BukkitServer::restartServer");
 	//~ if (isRunning() && !serverProcess->rdbuf()->exited())
@@ -151,6 +193,10 @@ void BukkitServer::restartServer() {
 		startServer();
 	}
 }
+/**
+ * Sends the specified command to the server.
+ * @param command
+ */
 void BukkitServer::sendCommand(std::string command) {
 	log->debug("BukkitServer::sendCommand");
 	//~ if (isRunning() && !serverProcess->rdbuf()->exited())
@@ -158,7 +204,10 @@ void BukkitServer::sendCommand(std::string command) {
 		*this << command << std::endl;
 	}
 }
-
+/**
+ * Lists the players on the server.
+ * @return
+ */
 std::string BukkitServer::listOnlinePlayers() {
 	log->debug("BukkitServer::listOnlinePlayers");
 	std::string* callbackOutput = new std::string;
@@ -183,7 +232,12 @@ std::string BukkitServer::listOnlinePlayers() {
 		return returnValue;
 	}
 }
-bool BukkitServer::listOnlinePlayers(__attribute__((unused))    std::string playerName) {
+/**
+ * Tests if the specified player is on the server.  (Currently non functional)
+ * @param playerName
+ * @return
+ */
+bool BukkitServer::listOnlinePlayers(__attribute__((unused))     std::string playerName) {
 	log->debug("BukkitServer::listOnlinePlayers");
 	std::string* callbackOutput = new std::string;
 	*callbackOutput = '\0';

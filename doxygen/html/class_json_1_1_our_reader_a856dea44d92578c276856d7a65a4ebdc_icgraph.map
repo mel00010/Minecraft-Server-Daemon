@@ -1,7 +1,0 @@
-<map id="Json::OurReader::skipCommentTokens" name="Json::OurReader::skipCommentTokens">
-<area shape="rect" id="node2" href="$class_json_1_1_our_reader.html#aba4f8749aab7f02ec17f107e392caf80" title="Json::OurReader::parse" alt="" coords="514,13,675,39"/>
-<area shape="rect" id="node4" href="$class_json_1_1_our_reader.html#a1765d9670d191c89a57a22ea5591d35f" title="Json::OurReader::readValue" alt="" coords="264,63,451,90"/>
-<area shape="rect" id="node3" href="$class_json_1_1_our_char_reader.html#a52a1fb5fee88d9b63dd462f63b1c9570" title="Json::OurCharReader\l::parse" alt="" coords="739,5,888,47"/>
-<area shape="rect" id="node5" href="$class_json_1_1_our_reader.html#aea198f8101dba55099f4d8121a993530" title="Json::OurReader::readObject" alt="" coords="499,63,691,90"/>
-<area shape="rect" id="node6" href="$class_json_1_1_our_reader.html#a0b9f58faf4212c6ecb5d8e2a1ac10257" title="Json::OurReader::readArray" alt="" coords="502,114,687,141"/>
-</map>

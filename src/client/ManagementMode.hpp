@@ -30,6 +30,4 @@ void createManagementModeWindows();
 void writeManagementModeText();
 }
 
-
-
 #endif /* CLIENT_MANAGEMENTMODE_HPP_ */

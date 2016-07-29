@@ -55,7 +55,6 @@ void createWindows() {
 	int quarterScreen = (COLS - 1) / 4;
 	int colsRemaining = COLS - (4 * quarterScreen);
 
-
 	MainWindow->addSubWindow("TitleBar", 1, COLS, 0, 0);
 
 	MainWindow->addSubWindow("BottomBar", 1, COLS, LINES - 1, 0);

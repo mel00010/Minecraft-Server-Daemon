@@ -1,4 +1,0 @@
-<map id="MinecraftServerService::Server::logger" name="MinecraftServerService::Server::logger">
-<area shape="rect" id="node2" href="$class_minecraft_server_service_1_1_server_stream.html#acfaf50ff9b711062de3bb8a650ba11dd" title="MinecraftServerService\l::ServerStream::rdbuf" alt="" coords="222,5,381,47"/>
-<area shape="rect" id="node3" href="$class_minecraft_server_service_1_1_server_process_buf.html#aea2e874a9ba6aa6558201008d9b909f0" title="MinecraftServerService\l::ServerProcessBuf::exited" alt="" coords="212,71,391,112"/>
-</map>

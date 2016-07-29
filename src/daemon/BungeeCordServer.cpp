@@ -29,7 +29,19 @@
 #include <thread>
 
 namespace MinecraftServerDaemon {
-
+/**
+ * Constructor.
+ * @param serverName
+ * @param serverPath
+ * @param serverJarName
+ * @param serverAccount
+ * @param maxHeapAlloc
+ * @param minHeapAlloc
+ * @param gcThreadCount
+ * @param backupPath
+ * @param javaArgs
+ * @param serverOptions
+ */
 BungeeCordServer::BungeeCordServer(std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc,
 		int minHeapAlloc, int gcThreadCount, std::string backupPath, std::vector<std::string> javaArgs, std::vector<std::string> serverOptions) :
 		serverName { serverName }, serverPath { serverPath }, serverJarName { serverJarName }, serverAccount { serverAccount }, maxHeapAlloc { maxHeapAlloc }, minHeapAlloc {
@@ -38,12 +50,22 @@ BungeeCordServer::BungeeCordServer(std::string serverName, std::string serverPat
 	log->info(serverJarName);
 	log->debug("BungeeCordServer::BungeeCordServer");
 }
+/**
+ * Destructor.
+ */
 BungeeCordServer::~BungeeCordServer() {
 	log->debug("BungeeCordServer::~BungeeCordServer");
 }
-void BungeeCordServer::updateServer(__attribute__((unused))    std::string version) {
+/**
+ * Currently unimplemented.
+ * @param version
+ */
+void BungeeCordServer::updateServer(__attribute__((unused))     std::string version) {
 	log->debug("BungeeCordServer::updateServer");
 }
+/**
+ * Backs up the server.
+ */
 void BungeeCordServer::backupServer() {
 	log->debug("BungeeCordServer::backupServer");
 	log->info("Starting backup");
@@ -74,6 +96,10 @@ void BungeeCordServer::backupServer() {
 	*this << "say SERVER BACKUP ENDED. Server going read-write..." << std::endl;
 	log->info("Backup finished");
 }
+/**
+ * Backs up the server to a specified path.
+ * @param _backupPath
+ */
 void BungeeCordServer::backupServer(std::string _backupPath) {
 	log->debug("BungeeCordServer::backupServer");
 	log->info("Starting backup");
@@ -96,9 +122,15 @@ void BungeeCordServer::backupServer(std::string _backupPath) {
 	*this << "say SERVER BACKUP ENDED. Server going read-write..." << std::endl;
 	log->info("Backup finished");
 }
+/**
+ * Reloads the server.
+ */
 void BungeeCordServer::reloadServer() {
 	*this << "reload" << std::endl;
 }
+/**
+ * Starts the server.
+ */
 void BungeeCordServer::startServer() {
 	log->debug("BungeeCordServer::startServer");
 	if (!isRunning()) {
@@ -109,6 +141,9 @@ void BungeeCordServer::startServer() {
 		outputListenerThread.detach();
 	}
 }
+/**
+ * Stops the server.
+ */
 void BungeeCordServer::stopServer() {
 	log->debug("BungeeCordServer::stopServer");
 	if (isRunning()) {
@@ -121,9 +156,15 @@ void BungeeCordServer::stopServer() {
 		log->info("Server already stopped");
 	}
 }
+/**
+ * Currently unimplemented.
+ */
 void BungeeCordServer::serverStatus() {
 	log->debug("BungeeCordServer::serverStatus");
 }
+/**
+ * Restarts the server.
+ */
 void BungeeCordServer::restartServer() {
 	log->debug("BungeeCordServer::restartServer");
 	//~ if (isRunning() && !serverProcess->rdbuf()->exited())
@@ -132,6 +173,10 @@ void BungeeCordServer::restartServer() {
 		startServer();
 	}
 }
+/**
+ * Sends the specified command to the server.
+ * @param command
+ */
 void BungeeCordServer::sendCommand(std::string command) {
 	log->debug("BungeeCordServer::sendCommand");
 	//~ if (isRunning() && !serverProcess->rdbuf()->exited())
@@ -139,7 +184,10 @@ void BungeeCordServer::sendCommand(std::string command) {
 		*this << command << std::endl;
 	}
 }
-
+/**
+ * Lists the players on the server.
+ * @return
+ */
 std::string BungeeCordServer::listOnlinePlayers() {
 	log->debug("BungeeCordServer::listOnlinePlayers");
 	std::string* callbackOutput = new std::string;
@@ -164,7 +212,12 @@ std::string BungeeCordServer::listOnlinePlayers() {
 		return returnValue;
 	}
 }
-bool BungeeCordServer::listOnlinePlayers(__attribute__((unused))    std::string playerName) {
+/**
+ * Tests if the specified player is on the server.  (Currently non functional)
+ * @param playerName
+ * @return
+ */
+bool BungeeCordServer::listOnlinePlayers(__attribute__((unused))     std::string playerName) {
 	log->debug("BungeeCordServer::listOnlinePlayers");
 	std::string* callbackOutput = new std::string;
 	*callbackOutput = '\0';

@@ -35,7 +35,15 @@
 #include <unistd.h>
 #include <cstdlib>
 #include <vector>
-
+/**
+ * Main namespace for all daemon related functions, classes, structs, enums, and variables.
+ */
+namespace MinecraftServerDaemon {
+}
+/**
+ * The main function.
+ * @return
+ */
 int main(void) {
 #if DEBUGGING == 0
 	/* Our process ID and Session ID */

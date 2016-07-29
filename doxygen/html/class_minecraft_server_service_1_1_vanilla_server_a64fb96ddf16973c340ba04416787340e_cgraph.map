@@ -1,5 +1,0 @@
-<map id="MinecraftServerService::VanillaServer::reloadServer" name="MinecraftServerService::VanillaServer::reloadServer">
-<area shape="rect" id="node2" href="$class_minecraft_server_service_1_1_vanilla_server.html#a81e6f53665fb9a7a2956417174df44ca" title="MinecraftServerService\l::VanillaServer::listOnlinePlayers" alt="" coords="241,5,455,47"/>
-<area shape="rect" id="node3" href="$class_minecraft_server_service_1_1_vanilla_server.html#ad488208dfbf40e94a3c692a8fce9531a" title="MinecraftServerService\l::VanillaServer::sendCommand" alt="" coords="247,71,449,112"/>
-<area shape="rect" id="node4" href="$class_minecraft_server_service_1_1_server.html#a1954e7c7756cd956e7282887ffca73e4" title="MinecraftServerService\l::Server::isRunning" alt="" coords="503,71,661,112"/>
-</map>

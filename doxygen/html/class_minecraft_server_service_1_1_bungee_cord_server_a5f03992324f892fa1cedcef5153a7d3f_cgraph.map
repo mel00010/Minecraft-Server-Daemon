@@ -1,7 +1,0 @@
-<map id="MinecraftServerService::BungeeCordServer::startServer" name="MinecraftServerService::BungeeCordServer::startServer">
-<area shape="rect" id="node2" href="$class_minecraft_server_service_1_1_server.html#a1954e7c7756cd956e7282887ffca73e4" title="MinecraftServerService\l::Server::isRunning" alt="" coords="286,5,445,47"/>
-<area shape="rect" id="node3" href="$class_minecraft_server_service_1_1_server.html#a16a19b4cfd94f23c20442cea9b46f678" title="MinecraftServerService\l::Server::launchServerProcess" alt="" coords="265,71,465,112"/>
-<area shape="rect" id="node5" href="$class_minecraft_server_service_1_1_server.html#a3040817c744456263f8ba36bdb72bf20" title="MinecraftServerService\l::Server::outputListenerThread" alt="" coords="541,129,740,171"/>
-<area shape="rect" id="node4" href="$class_minecraft_server_service_1_1_server.html#a085f201bd563ce47e2b41778ef72d20d" title="MinecraftServerService\l::Server::getUIDAndGIDFromUsername" alt="" coords="513,12,768,53"/>
-<area shape="rect" id="node6" href="$class_minecraft_server_service_1_1_server.html#a4ecf103c62bd8f1e54b2ff436fa1645a" title="MinecraftServerService\l::Server::serverOutputEvent" alt="" coords="816,100,1001,141"/>
-</map>

@@ -1,8 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_minecraft_server_service_1_1_server.html" title="MinecraftServerService\l::Server" alt="" coords="5,136,164,177"/>
-<area shape="rect" id="node2" href="$class_minecraft_server_service_1_1_bukkit_server.html" title="MinecraftServerService\l::BukkitServer" alt="" coords="212,5,371,47"/>
-<area shape="rect" id="node3" href="$class_minecraft_server_service_1_1_bungee_cord_server.html" title="MinecraftServerService\l::BungeeCordServer" alt="" coords="212,71,371,112"/>
-<area shape="rect" id="node4" href="$class_minecraft_server_service_1_1_generic_server.html" title="MinecraftServerService\l::GenericServer" alt="" coords="212,136,371,177"/>
-<area shape="rect" id="node5" href="$class_minecraft_server_service_1_1_spigot_server.html" title="MinecraftServerService\l::SpigotServer" alt="" coords="212,201,371,243"/>
-<area shape="rect" id="node6" href="$class_minecraft_server_service_1_1_vanilla_server.html" title="MinecraftServerService\l::VanillaServer" alt="" coords="212,267,371,308"/>
-</map>

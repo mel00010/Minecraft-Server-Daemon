@@ -28,9 +28,12 @@
 #include <unistd.h>
 #include <cstdlib>
 #include <cstring>
-
-int createSocket(log4cpp::Category& root)
-{
+/**
+ * Creates the control socket used for IPC with the client.
+ * @param root
+ * @return
+ */
+int createSocket(log4cpp::Category& root) {
 	int Socket;
 	struct sockaddr_un local;
 	if ((Socket = socket(AF_UNIX, SOCK_STREAM, 0)) == -1) {

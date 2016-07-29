@@ -1,7 +1,0 @@
-<map id="MinecraftServerService::ServerStream::rdbuf" name="MinecraftServerService::ServerStream::rdbuf">
-<area shape="rect" id="node2" href="$class_minecraft_server_service_1_1_server.html#a602c9585f3f9f1352996a04eab14f497" title="MinecraftServerService\l::Server::startServer" alt="" coords="215,5,373,47"/>
-<area shape="rect" id="node3" href="$class_minecraft_server_service_1_1_server.html#abe2dd0647b2b549dee722f552e4c6a62" title="MinecraftServerService\l::Server::restartServer" alt="" coords="424,64,583,105"/>
-<area shape="rect" id="node4" href="$class_minecraft_server_service_1_1_server.html#a9061f08bdc394835afe2b42a495a3ab0" title="MinecraftServerService\l::Server::stopServer" alt="" coords="215,123,373,164"/>
-<area shape="rect" id="node5" href="$class_minecraft_server_service_1_1_server.html#af147174068ff1ead44c9df54e2eb4355" title="MinecraftServerService\l::Server::sendCommand" alt="" coords="212,188,376,229"/>
-<area shape="rect" id="node6" href="$class_minecraft_server_service_1_1_server.html#a8a32d4779953b2c52d796b348f0528e3" title="MinecraftServerService\l::Server::logger" alt="" coords="215,253,373,295"/>
-</map>

@@ -278,5 +278,3 @@ void writeMainModeText() {
 }
 }
 
-
-

@@ -25,6 +25,10 @@
 #define DAEMON_CREATESOCKET_HPP_
 
 #include <log4cpp/Category.hh>
-
+/**
+ * Creates the control socket used for IPC with the client.
+ * @param root
+ * @return
+ */
 int createSocket(log4cpp::Category& root);
 #endif /* DAEMON_CREATESOCKET_HPP_ */

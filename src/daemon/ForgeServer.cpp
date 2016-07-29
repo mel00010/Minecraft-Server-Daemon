@@ -28,7 +28,20 @@
 #include <thread>
 
 namespace MinecraftServerDaemon {
-
+/**
+ * Constructor.
+ * @param serverName
+ * @param serverPath
+ * @param serverJarName
+ * @param serverAccount
+ * @param maxHeapAlloc
+ * @param minHeapAlloc
+ * @param gcThreadCount
+ * @param backupPath
+ * @param worldsToBackup
+ * @param javaArgs
+ * @param serverOptions
+ */
 ForgeServer::ForgeServer(std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc,
 		int minHeapAlloc, int gcThreadCount, std::string backupPath, std::vector<std::string> worldsToBackup, std::vector<std::string> javaArgs,
 		std::vector<std::string> serverOptions) :
@@ -39,12 +52,22 @@ ForgeServer::ForgeServer(std::string serverName, std::string serverPath, std::st
 	log->info(serverJarName);
 	log->debug("ForgeServer::ForgeServer");
 }
+/**
+ * Destructor.
+ */
 ForgeServer::~ForgeServer() {
 	log->debug("ForgeServer::~ForgeServer");
 }
-void ForgeServer::updateServer(__attribute__((unused))  std::string version) {
+/**
+ * Currently unimplemented.
+ * @param version
+ */
+void ForgeServer::updateServer(__attribute__((unused))   std::string version) {
 	log->debug("ForgeServer::updateServer");
 }
+/**
+ * Backs up the server.
+ */
 void ForgeServer::backupServer() {
 	log->debug("ForgeServer::backupServer");
 	log->info("Starting backup");
@@ -75,6 +98,10 @@ void ForgeServer::backupServer() {
 	*this << "say SERVER BACKUP ENDED. Server going read-write..." << std::endl;
 	log->info("Backup finished");
 }
+/**
+ * Backs up the server to a specified path.
+ * @param _backupPath
+ */
 void ForgeServer::backupServer(std::string _backupPath) {
 	log->debug("ForgeServer::backupServer");
 	log->info("Starting backup");
@@ -106,6 +133,9 @@ void ForgeServer::backupServer(std::string _backupPath) {
 	*this << "say SERVER BACKUP ENDED. Server going read-write..." << std::endl;
 	log->info("Backup finished");
 }
+/**
+ * Starts the server.
+ */
 void ForgeServer::startServer() {
 	log->debug("ForgeServer::startServer");
 	if (!isRunning()) {
@@ -116,6 +146,9 @@ void ForgeServer::startServer() {
 		outputListenerThread.detach();
 	}
 }
+/**
+ * Stops the server.
+ */
 void ForgeServer::stopServer() {
 	log->debug("ForgeServer::stopServer");
 	if (isRunning()) {
@@ -136,9 +169,15 @@ void ForgeServer::stopServer() {
 		log->info("Server already stopped");
 	}
 }
+/**
+ * Currently unimplemented.
+ */
 void ForgeServer::serverStatus() {
 	log->debug("ForgeServer::serverStatus");
 }
+/**
+ * Restarts the server.
+ */
 void ForgeServer::restartServer() {
 	log->debug("ForgeServer::restartServer");
 	//~ if (isRunning() && !serverProcess->rdbuf()->exited())
@@ -147,6 +186,10 @@ void ForgeServer::restartServer() {
 		startServer();
 	}
 }
+/**
+ * Sends the specified command to the server.
+ * @param command
+ */
 void ForgeServer::sendCommand(std::string command) {
 	log->debug("ForgeServer::sendCommand");
 	//~ if (isRunning() && !serverProcess->rdbuf()->exited())

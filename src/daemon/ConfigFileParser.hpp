@@ -27,12 +27,23 @@
 #include <string>
 
 #include "json/json.h"
-
+/**
+ * Class responsible for reading and parsing the daemon config file.
+ */
 class ConfigFileParser {
 	public:
+		/**
+		 * Parses the daemon config file and returns a Json::Value object.
+		 * @param configFile
+		 * @return
+		 */
 		Json::Value parseConfigFile(std::string configFile);
 	protected:
-
+		/**
+		 * Gets the contents of the daemon config file.
+		 * @param filename
+		 * @return
+		 */
 		std::string getFileContents(const char *filename);
 };
 #endif /* DAEMON_CONFIGFILEPARSER_HPP_ */

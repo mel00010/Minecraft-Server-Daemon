@@ -32,7 +32,20 @@
 #include <thread>
 
 namespace MinecraftServerDaemon {
-
+/**
+ * Initializes the class members and sets up logging.
+ * @param serverName
+ * @param serverPath
+ * @param serverJarName
+ * @param serverAccount
+ * @param maxHeapAlloc
+ * @param minHeapAlloc
+ * @param gcThreadCount
+ * @param backupPath
+ * @param worldsToBackup
+ * @param javaArgs
+ * @param serverOptions
+ */
 VanillaServer::VanillaServer(std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc,
 		int minHeapAlloc, int gcThreadCount, std::string backupPath, std::vector<std::string> worldsToBackup, std::vector<std::string> javaArgs,
 		std::vector<std::string> serverOptions) :
@@ -46,6 +59,10 @@ VanillaServer::VanillaServer(std::string serverName, std::string serverPath, std
 VanillaServer::~VanillaServer() {
 	log->debug("VanillaServer::~VanillaServer");
 }
+/**
+ * Updates the server to the specified version.
+ * @param version
+ */
 void VanillaServer::updateServer(std::string version) {
 	log->debug("VanillaServer::updateServer");
 	stopServer();
@@ -65,6 +82,9 @@ void VanillaServer::updateServer(std::string version) {
 	}
 	startServer();
 }
+/**
+ * Backs up the server.
+ */
 void VanillaServer::backupServer() {
 	log->debug("VanillaServer::backupServer");
 	log->info("Starting backup");
@@ -95,6 +115,10 @@ void VanillaServer::backupServer() {
 	*this << "say SERVER BACKUP ENDED. Server going read-write..." << std::endl;
 	log->info("Backup finished");
 }
+/**
+ * Backs up the server to the specified path.
+ * @param _backupPath
+ */
 void VanillaServer::backupServer(std::string _backupPath) {
 	log->debug("VanillaServer::backupServer");
 	log->info("Starting backup");
@@ -126,6 +150,9 @@ void VanillaServer::backupServer(std::string _backupPath) {
 	*this << "say SERVER BACKUP ENDED. Server going read-write..." << std::endl;
 	log->info("Backup finished");
 }
+/**
+ * Starts the server.
+ */
 void VanillaServer::startServer() {
 	log->debug("VanillaServer::startServer");
 	if (!isRunning()) {
@@ -136,6 +163,9 @@ void VanillaServer::startServer() {
 		outputListenerThread.detach();
 	}
 }
+/**
+ * Stops the server.
+ */
 void VanillaServer::stopServer() {
 	log->debug("VanillaServer::stopServer");
 	if (isRunning()) {
@@ -155,9 +185,15 @@ void VanillaServer::stopServer() {
 		log->info("Server already stopped");
 	}
 }
+/**
+ * Currently unimplemented.
+ */
 void VanillaServer::serverStatus() {
 	log->debug("VanillaServer::serverStatus");
 }
+/**
+ * Restarts the server.
+ */
 void VanillaServer::restartServer() {
 	log->debug("VanillaServer::restartServer");
 	if (isRunning()) {
@@ -165,13 +201,20 @@ void VanillaServer::restartServer() {
 		startServer();
 	}
 }
+/**
+ * Sends the specified command to the server.
+ * @param command
+ */
 void VanillaServer::sendCommand(std::string command) {
 	log->debug("VanillaServer::sendCommand");
 	if (isRunning()) {
 		*this << command << std::endl;
 	}
 }
-
+/**
+ * Lists the players on the server.
+ * @return
+ */
 std::string VanillaServer::listOnlinePlayers() {
 	log->debug("VanillaServer::listOnlinePlayers");
 	std::string* callbackOutput = new std::string;
@@ -196,7 +239,12 @@ std::string VanillaServer::listOnlinePlayers() {
 		return returnValue;
 	}
 }
-bool VanillaServer::listOnlinePlayers(__attribute__((unused))    std::string playerName) {
+/**
+ * Tests if the specified player is on the server.  (Currently non functional)
+ * @param playerName
+ * @return
+ */
+bool VanillaServer::listOnlinePlayers(__attribute__((unused))     std::string playerName) {
 	log->debug("VanillaServer::listOnlinePlayers");
 	std::string* callbackOutput = new std::string;
 	*callbackOutput = '\0';

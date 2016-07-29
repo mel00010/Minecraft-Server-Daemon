@@ -1,5 +1,0 @@
-<map id="MinecraftServerService::GenericServer::reloadServer" name="MinecraftServerService::GenericServer::reloadServer">
-<area shape="rect" id="node2" href="$class_minecraft_server_service_1_1_generic_server.html#acf3ea010924f6c82540482a73c222c38" title="MinecraftServerService\l::GenericServer::listOnlinePlayers" alt="" coords="248,5,467,47"/>
-<area shape="rect" id="node3" href="$class_minecraft_server_service_1_1_generic_server.html#a42c34bc2e24173077e67c6b83a346b5d" title="MinecraftServerService\l::GenericServer::sendCommand" alt="" coords="253,71,462,112"/>
-<area shape="rect" id="node4" href="$class_minecraft_server_service_1_1_generic_server.html#a199a74d244fba2c026a0981ec49e06e4" title="MinecraftServerService\l::GenericServer::logger" alt="" coords="278,136,437,177"/>
-</map>

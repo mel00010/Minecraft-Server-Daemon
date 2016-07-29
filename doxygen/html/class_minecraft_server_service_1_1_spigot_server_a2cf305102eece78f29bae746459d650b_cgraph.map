@@ -1,5 +1,0 @@
-<map id="MinecraftServerService::SpigotServer::reloadServer" name="MinecraftServerService::SpigotServer::reloadServer">
-<area shape="rect" id="node2" href="$class_minecraft_server_service_1_1_spigot_server.html#a185f376f982ae59a73ea6ecd72b91652" title="MinecraftServerService\l::SpigotServer::listOnlinePlayers" alt="" coords="240,5,451,47"/>
-<area shape="rect" id="node3" href="$class_minecraft_server_service_1_1_spigot_server.html#a3982946d2881f27cc95791214ab8da27" title="MinecraftServerService\l::SpigotServer::sendCommand" alt="" coords="245,71,446,112"/>
-<area shape="rect" id="node4" href="$class_minecraft_server_service_1_1_spigot_server.html#a61e2fc66af6819ab8f803098d003dc82" title="MinecraftServerService\l::SpigotServer::logger" alt="" coords="266,136,425,177"/>
-</map>

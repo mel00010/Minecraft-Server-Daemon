@@ -31,8 +31,7 @@
 #include <iostream>
 #include <sstream>
 
-int openSocket()
-{
+int openSocket() {
 	int Socket;
 	struct sockaddr_un remote;
 	if ((Socket = socket(AF_UNIX, SOCK_STREAM, 0)) == -1) {
@@ -43,31 +42,28 @@ int openSocket()
 	remote.sun_family = AF_UNIX;
 	strcpy(remote.sun_path, "/etc/minecraft/control.socket");
 	int len = strlen(remote.sun_path) + sizeof(remote.sun_family);
-	if (connect(Socket, (struct sockaddr *)&remote, len) == -1) {
+	if (connect(Socket, (struct sockaddr *) &remote, len) == -1) {
 		std::cerr << "Failure connecting to socket" << std::endl;
 		exit(1);
 	}
 	return Socket;
 }
-void closeSocket(int Socket)
-{
+void closeSocket(int Socket) {
 	close(Socket);
 }
-void writeToSocket(std::string command, int Socket)
-{
+void writeToSocket(std::string command, int Socket) {
 	std::ostringstream ss;
 	ss << std::setw(4) << std::setfill('0') << command.size();
 	std::string buf = ss.str() + command;
 	send(Socket, buf.c_str(), buf.size(), 0);
 }
-std::string readFromSocket(int Socket)
-{
+std::string readFromSocket(int Socket) {
 	int rc;
 	char buff[4];
-	rc=recv(Socket,buff,4,0);
+	rc = recv(Socket, buff, 4, 0);
 	int size = atoi(buff);
 	char line[size];
-	rc = recv(Socket,line,size,0);
+	rc = recv(Socket, line, size, 0);
 	line[rc] = '\0';
 	return std::string(line);
 }

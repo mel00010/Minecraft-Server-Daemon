@@ -34,48 +34,153 @@
 #include "ServerPropertyFileParser.hpp"
 
 namespace MinecraftServerDaemon {
-
+/**
+ * Class handling Forge minecraft servers.
+ */
 class ForgeServer: public Server {
 	public:
+		/**
+		 * Constructor.
+		 * @param serverName
+		 * @param serverPath
+		 * @param serverJarName
+		 * @param serverAccount
+		 * @param maxHeapAlloc
+		 * @param minHeapAlloc
+		 * @param gcThreadCount
+		 * @param backupPath
+		 * @param worldsToBackup
+		 * @param javaArgs
+		 * @param serverOptions
+		 */
 		ForgeServer(std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc,
 				int gcThreadCount, std::string backupPath, std::vector<std::string> worldsToBackup, std::vector<std::string> javaArgs,
 				std::vector<std::string> serverOptions);
+		/**
+		 * Destructor.
+		 */
 		virtual ~ForgeServer();
+		/**
+		 * Currently unimplemented.
+		 * @param version
+		 */
 		void updateServer(std::string version);
+		/**
+		 * Backs up the server.
+		 */
 		void backupServer();
+		/**
+		 * Backs up the server to a specified path.
+		 * @param _backupPath
+		 */
 		void backupServer(std::string backupPath);
+		/**
+		 * Currently unimplemented.
+		 */
 		void serverStatus();
+		/**
+		 * Starts the server.
+		 */
 		void startServer();
+		/**
+		 * Stops the server.
+		 */
 		void stopServer();
+		/**
+		 * Stops the server.
+		 */
 		void restartServer();
+		/**
+		 * Currently unimplemented.
+		 */
 		void reloadServer() {
 		}
+		/**
+		 * Currently unimplemented.
+		 * @return
+		 */
 		std::string listOnlinePlayers() {
 		}
-		bool listOnlinePlayers(__attribute__((unused))  std::string playerName) {
+		/**
+		 * Currently unimplemented.
+		 * @param playerName
+		 * @return
+		 */
+		bool listOnlinePlayers(__attribute__((unused))   std::string playerName) {
 		}
+		/**
+		 * Sends the specified command to the server.
+		 * @param command
+		 */
 		void sendCommand(std::string command);
+		/**
+		 * Returns the server name.
+		 * @return
+		 */
 		std::string getServerName() {
 			return serverName;
 		}
+		/**
+		 * Returns the server type.
+		 * @return
+		 */
 		ServerType getServerType() {
 			return serverType;
 		}
+		/**
+		 * Currently unimplemented.
+		 * @return
+		 */
 		ServerPropertyFileParser getServerPropertiesParser() {
 		}
 	protected:
+		/**
+		 * Holds the server name.
+		 */
 		std::string serverName;
+		/**
+		 * Holds the server type.
+		 */
 		ServerType serverType = FORGE;
-		void logger(size_t linesRequested, std::stringstream* output, log4cpp::Category* log);
+		/**
+		 * Holds the path of the server directory.
+		 */
 		std::string serverPath;
+		/**
+		 * Holds the server jar name.
+		 */
 		std::string serverJarName;
+		/**
+		 * Holds the name of the user the server process is to be run as.
+		 */
 		std::string serverAccount;
+		/**
+		 * Holds the maximum value for heap memory the child java process can have.
+		 */
 		int maxHeapAlloc;
+		/**
+		 * Holds the minimum value for heap memory the child java process can have.
+		 */
 		int minHeapAlloc;
+		/**
+		 * Holds the number of garbage collection threads the child java process will have.
+		 */
 		int gcThreadCount;
+		/**
+		 * Holds the path that backups will be saved to.  (Relative to the path held in serverPath)
+		 */
 		std::string backupPath;
+		/**
+		 * Holds the names of the worlds that will be backed up.
+		 */
 		std::vector<std::string> worldsToBackup;
+		/**
+		 * Holds arguments to pass to the child java process.
+		 */
 		std::vector<std::string> javaArgs;
+		/**
+		 * Holds command line options for the server.
+		 */
 		std::vector<std::string> serverOptions;
 };
 

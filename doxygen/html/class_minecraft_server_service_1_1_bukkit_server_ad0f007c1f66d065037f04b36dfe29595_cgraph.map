@@ -1,5 +1,0 @@
-<map id="MinecraftServerService::BukkitServer::reloadServer" name="MinecraftServerService::BukkitServer::reloadServer">
-<area shape="rect" id="node2" href="$class_minecraft_server_service_1_1_bukkit_server.html#a844cd7da677288fc68ed835020f3fe2a" title="MinecraftServerService\l::BukkitServer::listOnlinePlayers" alt="" coords="240,5,451,47"/>
-<area shape="rect" id="node3" href="$class_minecraft_server_service_1_1_bukkit_server.html#a177fd65626604d0cdf2b105454bd1d18" title="MinecraftServerService\l::BukkitServer::sendCommand" alt="" coords="245,71,446,112"/>
-<area shape="rect" id="node4" href="$class_minecraft_server_service_1_1_bukkit_server.html#ac0e659931423f6e6330b650636f1061d" title="MinecraftServerService\l::BukkitServer::logger" alt="" coords="266,136,425,177"/>
-</map>

@@ -25,7 +25,8 @@
 
 #include <iostream>
 
-void help(char* argv0)
-{
-	std::cout << "Usage:  " << argv0 << "[--gui|--help] {list|start <SERVER>|stop <SERVER>|restart <SERVER>|sendcommand <SERVER> <COMMAND>|status <SERVER>|update <SERVER>|backup <SERVER>|listplayers <SERVER> [PLAYER]|stopall|restartall|updateall|backupall|stopdaemon}" << std::endl;
+void help(char* argv0) {
+	std::cout << "Usage:  " << argv0
+			<< "[--gui|--help] {list|start <SERVER>|stop <SERVER>|restart <SERVER>|sendcommand <SERVER> <COMMAND>|status <SERVER>|update <SERVER>|backup <SERVER>|listplayers <SERVER> [PLAYER]|stopall|restartall|updateall|backupall|stopdaemon}"
+			<< std::endl;
 }

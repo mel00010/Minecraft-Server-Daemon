@@ -1,0 +1,10 @@
+/doxygen/
+/.autotools
+/.cproject
+/.project
+/config.log
+/config.status
+/perf.data
+/Makefile
+/.settings/
+/config.h

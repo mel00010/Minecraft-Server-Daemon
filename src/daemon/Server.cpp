@@ -29,7 +29,15 @@
 #include <cstring>
 
 namespace MinecraftServerDaemon {
-
+/**
+ * Function launched as a thread to listen for output on the server process.
+ * Uses libevent to call Server::serverOutputEvent when there is data on the server process's output pipe.
+ * @param serverPID
+ * @param childProcessStdout
+ * @param base
+ * @param log
+ * @param listeners
+ */
 void Server::outputListenerThread(__attribute__((unused)) int serverPID, int childProcessStdout, struct event_base* base, log4cpp::Category* log,
 		std::vector<Listener*>* listeners) {
 	log->debug("Server::outputListenerThread");
@@ -39,6 +47,12 @@ void Server::outputListenerThread(__attribute__((unused)) int serverPID, int chi
 	event_add(outputListener, NULL);
 	event_base_dispatch(base);
 }
+/**
+ * Gets data from child process's output pipe, splits it into lines, and distributes it to the functions waiting for server output.
+ * @param fd
+ * @param event
+ * @param arg
+ */
 void Server::serverOutputEvent(evutil_socket_t fd, __attribute__((unused)) short event, void *arg) {
 	//~ ((ServerOutputEventData*)arg)->log->info("Server::fifo_read");
 	char buf[262144];
@@ -110,6 +124,11 @@ void Server::serverOutputEvent(evutil_socket_t fd, __attribute__((unused)) short
 	}
 	return;
 }
+/**
+ * Takes a username and gets its user id and group id from it.
+ * It stores this information in the member variables childProcessUID and childProcessGID.
+ * @param user
+ */
 void Server::getUIDAndGIDFromUsername(const char* user) {
 	struct passwd *pwd = new passwd[sizeof(struct passwd)]();
 	size_t buffer_len = sysconf(_SC_GETPW_R_SIZE_MAX) * sizeof(char);
@@ -122,6 +141,19 @@ void Server::getUIDAndGIDFromUsername(const char* user) {
 	childProcessUID = pwd->pw_uid;
 	childProcessGID = pwd->pw_gid;
 }
+/**
+ * Launches the server process and redirects its stdin, stdout, and stderr into pipes.
+ * It stores the file descriptors for these pipes in childProcessStdin[PIPE_WRITE] and  childProcessStdout[PIPE_READ].
+ * (Stdout and stderr share a pipe.)
+ * @param serverPath
+ * @param serverJarName
+ * @param serverAccount
+ * @param maxHeapAlloc
+ * @param minHeapAlloc
+ * @param gcThreadCount
+ * @param javaArgs
+ * @param serverOptions
+ */
 void Server::launchServerProcess(std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc, int minHeapAlloc,
 		int gcThreadCount, std::vector<std::string> javaArgs, std::vector<std::string> serverOptions) {
 	int result;
@@ -170,47 +202,46 @@ void Server::launchServerProcess(std::string serverPath, std::string serverJarNa
 
 		// redirect stdin
 		if (dup2(childProcessStdin[PIPE_READ], STDIN_FILENO) == -1) {
-			log->fatal("redirecting stdin");
+			log->fatal("An error occurred while redirecting stdin.");
 			exit(-1);
 		}
 
 		// redirect stdout
 		if (dup2(childProcessStdout[PIPE_WRITE], STDOUT_FILENO) == -1) {
-			log->fatal("redirecting stdout");
+			log->fatal("An error occurred while redirecting stdout.");
 			exit(-1);
 		}
 
 		// redirect stderr
 		if (dup2(childProcessStdout[PIPE_WRITE], STDERR_FILENO) == -1) {
-			log->fatal("redirecting stderr");
+			log->fatal("An error occurred while redirecting stderr.");
 			exit(-1);
 		}
 
-		//~ // all these are for use by parent only
+		// all these are for use by parent only
 		close(childProcessStdin[PIPE_READ]);
 		close(childProcessStdin[PIPE_WRITE]);
 		close(childProcessStdout[PIPE_READ]);
 		close(childProcessStdout[PIPE_WRITE]);
-		//~ setgid(childProcessGID);
+//		setgid(childProcessGID);
 		setuid(childProcessUID);
 		// run child process image
-		// replace this with any exec* function find easier to use ("man exec")
 		result = execv("/usr/bin/java", serverCommand);
 
-		// if we get here at all, an error occurred, but we are in the child
-		// process, so just exit
+		// If we get here at all, an error occurred, but we are in the child
+		// process, so just exit.
 		log->fatal("Server process crashed with error ");
 		log->fatal(std::to_string(result));
 		log->fatal(std::to_string(errno));
 		throw result;
 	} else if (serverPID > 0) {
-		// parent continues here
+		// Parent continues here
 
-		// close unused file descriptors, these are for child only
+		// Close unused file descriptors, these are for child only.
 		close(childProcessStdin[PIPE_READ]);
 		close(childProcessStdout[PIPE_WRITE]);
 	} else {
-		// failed to create child
+		// Failed to create child
 		close(childProcessStdin[PIPE_READ]);
 		close(childProcessStdin[PIPE_WRITE]);
 		close(childProcessStdout[PIPE_READ]);

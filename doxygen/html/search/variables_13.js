@@ -1,4 +1,0 @@
-var searchData=
-[
-  ['worldstobackup',['worldsToBackup',['../class_minecraft_server_service_1_1_bukkit_server.html#ad4b403d728a418c62cbe1b2167a5c26c',1,'MinecraftServerService::BukkitServer::worldsToBackup()'],['../class_minecraft_server_service_1_1_bungee_cord_server.html#a9cdff082e45d4ef5ffc6c4fd7143e8b7',1,'MinecraftServerService::BungeeCordServer::worldsToBackup()'],['../class_minecraft_server_service_1_1_generic_server.html#a4add7010fca034d10e98ee0adb1c36cc',1,'MinecraftServerService::GenericServer::worldsToBackup()'],['../class_minecraft_server_service_1_1_spigot_server.html#a4596e7ae4d2e1a7d2325fb13434f122a',1,'MinecraftServerService::SpigotServer::worldsToBackup()'],['../class_minecraft_server_service_1_1_vanilla_server.html#aec51859d7b2d8699ea1bba8811092414',1,'MinecraftServerService::VanillaServer::worldsToBackup()']]]
-];

@@ -31,10 +31,8 @@ namespace CLI {
 void runCLI();
 } /* namespace CLI */
 
-int main(int argc, char *argv[])
-{
-	if (argc > 1)
-	{
+int main(int argc, char *argv[]) {
+	if (argc > 1) {
 		std::string option(argv[1]);
 		if (option == "--help") {
 			help(argv[0]);
@@ -42,8 +40,7 @@ int main(int argc, char *argv[])
 			CLI::runCLI();
 			return 0;
 		} else if (option == "startdaemon") {
-			if (system("minecraftd")==0)
-			{
+			if (system("minecraftd") == 0) {
 				std::cout << "Daemon started" << std::endl;
 				return 0;
 			} else {

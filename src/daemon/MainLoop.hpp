@@ -31,10 +31,49 @@
 
 #include "Server.hpp"
 
+/**
+ * Struct to contain the vector of server objects and a logging object.
+ * This is passed to libevent so the callback function (recieveCommand) can perform its job.
+ */
+struct cb_data {
+		std::vector<MinecraftServerDaemon::Server*>* servers;
+		log4cpp::Category& root;
+};
+
+/**
+ * Catches the SIGINT signal and kills all of the child processes, then sends the SIGINT signal again to kill the program.
+ * @param sig
+ */
 void sigint_handler(int sig);
+/**
+ * Initializes the main control loop with libevent.
+ * It creates an event that triggers whenever the control socket is ready for reading.  This event calls recieveCommend to do the processing.
+ * @param servers
+ * @param root
+ * @param controlSocket
+ * @param base
+ */
 void mainLoop(std::vector<MinecraftServerDaemon::Server*>* servers, log4cpp::Category& root, evutil_socket_t controlSocket, struct event_base*base);
+/**
+ * Writes the specified message to the control socket.
+ * @param message
+ * @param controlSocket
+ * @param root
+ */
 void writeToSocket(std::string message, int controlSocket, log4cpp::Category& root);
+/**
+ * Reads from the control socket.
+ * @param controlSocket
+ * @param root
+ * @return
+ */
 std::string readFromSocket(int controlSocket, log4cpp::Category& root);
+/**
+ * This function handles the processing of commands recieved from the control socket.  Called by libevent when the control socket is ready for reading.
+ * @param _controlSocket
+ * @param what
+ * @param arg
+ */
 void recieveCommand(int controlSocket, short what, void *arg);
 
 #endif /* DAEMON_MAINLOOP_HPP_ */

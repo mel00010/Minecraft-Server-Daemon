@@ -1,4 +1,0 @@
-<map id="MinecraftServerService::mainLoop" name="MinecraftServerService::mainLoop">
-<area shape="rect" id="node2" href="$namespace_minecraft_server_service.html#a9e930ea5104432030a2a4af3f337ca2a" title="MinecraftServerService\l::recieveCommand" alt="" coords="212,5,371,47"/>
-<area shape="rect" id="node3" href="$namespace_minecraft_server_service.html#ae8323881b42d77cf37de0c5eabbb56bc" title="MinecraftServerService\l::writeToSocket" alt="" coords="419,5,577,47"/>
-</map>

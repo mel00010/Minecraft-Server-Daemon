@@ -28,7 +28,20 @@
 #include <thread>
 
 namespace MinecraftServerDaemon {
-
+/**
+ * Initializes the class members and sets up logging.
+ * @param serverName
+ * @param serverPath
+ * @param serverJarName
+ * @param serverAccount
+ * @param maxHeapAlloc
+ * @param minHeapAlloc
+ * @param gcThreadCount
+ * @param backupPath
+ * @param worldsToBackup
+ * @param javaArgs
+ * @param serverOptions
+ */
 SpigotServer::SpigotServer(std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc,
 		int minHeapAlloc, int gcThreadCount, std::string backupPath, std::vector<std::string> worldsToBackup, std::vector<std::string> javaArgs,
 		std::vector<std::string> serverOptions) :
@@ -42,9 +55,16 @@ SpigotServer::SpigotServer(std::string serverName, std::string serverPath, std::
 SpigotServer::~SpigotServer() {
 	log->debug("SpigotServer::~SpigotServer");
 }
-void SpigotServer::updateServer(__attribute__((unused))    std::string version) {
+/**
+ * Currently unimplemented.
+ * @param version
+ */
+void SpigotServer::updateServer(__attribute__((unused))     std::string version) {
 	log->debug("SpigotServer::updateServer");
 }
+/**
+ * Backs up the server.
+ */
 void SpigotServer::backupServer() {
 	log->debug("SpigotServer::backupServer");
 	log->info("Starting backup");
@@ -75,6 +95,10 @@ void SpigotServer::backupServer() {
 	*this << "say SERVER BACKUP ENDED. Server going read-write..." << std::endl;
 	log->info("Backup finished");
 }
+/**
+ * Backs up the server to a specified path.
+ * @param _backupPath
+ */
 void SpigotServer::backupServer(std::string _backupPath) {
 	log->debug("SpigotServer::backupServer");
 	log->info("Starting backup");
@@ -106,9 +130,15 @@ void SpigotServer::backupServer(std::string _backupPath) {
 	*this << "say SERVER BACKUP ENDED. Server going read-write..." << std::endl;
 	log->info("Backup finished");
 }
+/**
+ * Reloads the server.
+ */
 void SpigotServer::reloadServer() {
 	*this << "reload" << std::endl;
 }
+/**
+ * Starts the server.
+ */
 void SpigotServer::startServer() {
 	log->debug("SpigotServer::startServer");
 	if (!isRunning()) {
@@ -119,6 +149,9 @@ void SpigotServer::startServer() {
 		outputListenerThread.detach();
 	}
 }
+/**
+ * Stops the server.
+ */
 void SpigotServer::stopServer() {
 	log->debug("SpigotServer::stopServer");
 	if (isRunning()) {
@@ -139,9 +172,15 @@ void SpigotServer::stopServer() {
 		log->info("Server already stopped");
 	}
 }
+/**
+ * Currently unimplemented.
+ */
 void SpigotServer::serverStatus() {
 	log->debug("SpigotServer::serverStatus");
 }
+/**
+ * Restarts the server.
+ */
 void SpigotServer::restartServer() {
 	log->debug("SpigotServer::restartServer");
 	//~ if (isRunning() && !serverProcess->rdbuf()->exited())
@@ -150,6 +189,10 @@ void SpigotServer::restartServer() {
 		startServer();
 	}
 }
+/**
+ * Sends the specified command to the server.
+ * @param command
+ */
 void SpigotServer::sendCommand(std::string command) {
 	log->debug("SpigotServer::sendCommand");
 	//~ if (isRunning() && !serverProcess->rdbuf()->exited())
@@ -157,7 +200,10 @@ void SpigotServer::sendCommand(std::string command) {
 		*this << command << std::endl;
 	}
 }
-
+/**
+ * Lists the players on the server.
+ * @return
+ */
 std::string SpigotServer::listOnlinePlayers() {
 	log->debug("SpigotServer::listOnlinePlayers");
 	std::string* callbackOutput = new std::string;
@@ -182,7 +228,12 @@ std::string SpigotServer::listOnlinePlayers() {
 		return returnValue;
 	}
 }
-bool SpigotServer::listOnlinePlayers(__attribute__((unused))    std::string playerName) {
+/**
+ * Tests if the specified player is on the server.  (Currently non functional)
+ * @param playerName
+ * @return
+ */
+bool SpigotServer::listOnlinePlayers(__attribute__((unused))     std::string playerName) {
 	log->debug("SpigotServer::listOnlinePlayers");
 	std::string* callbackOutput = new std::string;
 	*callbackOutput = '\0';

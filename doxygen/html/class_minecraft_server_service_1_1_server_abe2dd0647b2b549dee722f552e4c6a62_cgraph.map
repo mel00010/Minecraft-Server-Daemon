@@ -1,6 +1,0 @@
-<map id="MinecraftServerService::Server::restartServer" name="MinecraftServerService::Server::restartServer">
-<area shape="rect" id="node2" href="$class_minecraft_server_service_1_1_server_stream.html#acfaf50ff9b711062de3bb8a650ba11dd" title="MinecraftServerService\l::ServerStream::rdbuf" alt="" coords="429,27,587,69"/>
-<area shape="rect" id="node3" href="$class_minecraft_server_service_1_1_server_process_buf.html#aea2e874a9ba6aa6558201008d9b909f0" title="MinecraftServerService\l::ServerProcessBuf::exited" alt="" coords="419,93,597,134"/>
-<area shape="rect" id="node4" href="$class_minecraft_server_service_1_1_server.html#a9061f08bdc394835afe2b42a495a3ab0" title="MinecraftServerService\l::Server::stopServer" alt="" coords="212,27,371,69"/>
-<area shape="rect" id="node5" href="$class_minecraft_server_service_1_1_server.html#a602c9585f3f9f1352996a04eab14f497" title="MinecraftServerService\l::Server::startServer" alt="" coords="212,93,371,134"/>
-</map>

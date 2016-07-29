@@ -28,15 +28,14 @@
 #include <iostream>
 #include <string>
 
-void parseOptions(int argc, char *argv[])
-{
+void parseOptions(int argc, char *argv[]) {
 	int Socket = openSocket();
 	std::string option(argv[0]);
-	if (option == "list"){
+	if (option == "list") {
 		writeToSocket("listServers", Socket);
 		std::cout << readFromSocket(Socket) << std::endl;
 	} else if (option == "start") {
-		if (argc > 2){
+		if (argc > 2) {
 			writeToSocket("startServer", Socket);
 			writeToSocket(argv[2], Socket);
 			//~ sleep(1);
@@ -44,21 +43,21 @@ void parseOptions(int argc, char *argv[])
 			std::cout << readFromSocket(Socket) << std::endl;
 		}
 	} else if (option == "stop") {
-		if (argc > 2){
+		if (argc > 2) {
 			writeToSocket("stopServer", Socket);
 			writeToSocket(argv[2], Socket);
 			//~ sleep(1);
 			std::cout << readFromSocket(Socket) << std::endl;
 		}
 	} else if (option == "restart") {
-		if (argc > 2){
+		if (argc > 2) {
 			writeToSocket("restartServer", Socket);
 			writeToSocket(argv[2], Socket);
 			//~ sleep(1);
 			std::cout << readFromSocket(Socket) << std::endl;
 		}
 	} else if (option == "sendcommand") {
-		if (argc > 3){
+		if (argc > 3) {
 			writeToSocket("sendCommand", Socket);
 			writeToSocket(argv[2], Socket);
 			writeToSocket(argv[3], Socket);
@@ -66,32 +65,32 @@ void parseOptions(int argc, char *argv[])
 			std::cout << readFromSocket(Socket) << std::endl;
 		}
 	} else if (option == "status") {
-		if (argc > 2){
+		if (argc > 2) {
 			writeToSocket("serverStatus", Socket);
 			writeToSocket(argv[2], Socket);
 			//~ sleep(1);
 			std::cout << readFromSocket(Socket) << std::endl;
 		}
 	} else if (option == "update") {
-		if (argc > 2){
+		if (argc > 2) {
 			writeToSocket("updateServer", Socket);
 			writeToSocket(argv[2], Socket);
 			//~ sleep(1);
 			std::cout << readFromSocket(Socket) << std::endl;
 		}
 	} else if (option == "backup") {
-		if (argc > 2){
+		if (argc > 2) {
 			writeToSocket("backupServer", Socket);
 			writeToSocket(argv[2], Socket);
 			//~ sleep(1);
 			std::cout << readFromSocket(Socket) << std::endl;
 		}
 	} else if (option == "listplayers") {
-		if (argc > 3){
+		if (argc > 3) {
 			writeToSocket("listOnlinePlayersFiltered", Socket);
 			writeToSocket(argv[2], Socket);
 			writeToSocket(argv[3], Socket);
-		} else if (argc > 2){
+		} else if (argc > 2) {
 			writeToSocket("listOnlinePlayers", Socket);
 			writeToSocket(argv[2], Socket);
 			//~ sleep(1);

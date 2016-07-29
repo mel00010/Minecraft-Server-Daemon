@@ -27,7 +27,11 @@
 #include <cstdlib>
 #include <fstream>
 #include <new>
-
+/**
+ * Parses the daemon config file and returns a Json::Value object.
+ * @param configFile
+ * @return
+ */
 Json::Value ConfigFileParser::parseConfigFile(std::string configFile) {
 	Json::Value root;
 	Json::Reader reader;
@@ -38,7 +42,11 @@ Json::Value ConfigFileParser::parseConfigFile(std::string configFile) {
 	}
 	return root;
 }
-
+/**
+ * Gets the contents of the daemon config file.
+ * @param filename
+ * @return
+ */
 std::string ConfigFileParser::getFileContents(const char *filename) {
 	std::ifstream in(filename, std::ios::in | std::ios::binary);
 	if (in) {

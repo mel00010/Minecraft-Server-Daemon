@@ -28,6 +28,20 @@
 #include <thread>
 
 namespace MinecraftServerDaemon {
+/**
+ * Constructor.
+ * @param serverName
+ * @param serverPath
+ * @param serverJarName
+ * @param serverAccount
+ * @param maxHeapAlloc
+ * @param minHeapAlloc
+ * @param gcThreadCount
+ * @param backupPath
+ * @param worldsToBackup
+ * @param javaArgs
+ * @param serverOptions
+ */
 GenericServer::GenericServer(std::string serverName, std::string serverPath, std::string serverJarName, std::string serverAccount, int maxHeapAlloc,
 		int minHeapAlloc, int gcThreadCount, std::string backupPath, std::vector<std::string> worldsToBackup, std::vector<std::string> javaArgs,
 		std::vector<std::string> serverOptions) :
@@ -38,12 +52,22 @@ GenericServer::GenericServer(std::string serverName, std::string serverPath, std
 	log->info(serverJarName);
 	log->debug("GenericServer::GenericServer");
 }
+/**
+ * Destructor.
+ */
 GenericServer::~GenericServer() {
 	log->debug("GenericServer::~GenericServer");
 }
-void GenericServer::updateServer(__attribute__((unused))  std::string version) {
+/**
+ * Currently unimplemented.
+ * @param version
+ */
+void GenericServer::updateServer(__attribute__((unused))   std::string version) {
 	log->debug("GenericServer::updateServer");
 }
+/**
+ * Backs up the server.
+ */
 void GenericServer::backupServer() {
 	log->debug("GenericServer::backupServer");
 	log->info("Starting backup");
@@ -74,6 +98,10 @@ void GenericServer::backupServer() {
 	*this << "say SERVER BACKUP ENDED. Server going read-write..." << std::endl;
 	log->info("Backup finished");
 }
+/**
+ * Backs up the server to a specified path.
+ * @param _backupPath
+ */
 void GenericServer::backupServer(std::string _backupPath) {
 	log->debug("GenericServer::backupServer");
 	log->info("Starting backup");
@@ -105,6 +133,9 @@ void GenericServer::backupServer(std::string _backupPath) {
 	*this << "say SERVER BACKUP ENDED. Server going read-write..." << std::endl;
 	log->info("Backup finished");
 }
+/**
+ * Starts the server.
+ */
 void GenericServer::startServer() {
 	log->debug("GenericServer::startServer");
 	if (!isRunning()) {
@@ -115,6 +146,9 @@ void GenericServer::startServer() {
 		outputListenerThread.detach();
 	}
 }
+/**
+ * Stops the server.
+ */
 void GenericServer::stopServer() {
 	log->debug("GenericServer::stopServer");
 	if (isRunning()) {
@@ -135,9 +169,15 @@ void GenericServer::stopServer() {
 		log->info("Server already stopped");
 	}
 }
+/**
+ * Currently unimplemented.
+ */
 void GenericServer::serverStatus() {
 	log->debug("GenericServer::serverStatus");
 }
+/**
+ * Restarts the server.
+ */
 void GenericServer::restartServer() {
 	log->debug("GenericServer::restartServer");
 	//~ if (isRunning() && !serverProcess->rdbuf()->exited())
@@ -146,6 +186,10 @@ void GenericServer::restartServer() {
 		startServer();
 	}
 }
+/**
+ * Sends the specified command to the server.
+ * @param command
+ */
 void GenericServer::sendCommand(std::string command) {
 	log->debug("GenericServer::sendCommand");
 	//~ if (isRunning() && !serverProcess->rdbuf()->exited())
@@ -153,4 +197,5 @@ void GenericServer::sendCommand(std::string command) {
 		*this << command << std::endl;
 	}
 }
-}
+
+} /* namespace MinecraftServerDaemon */

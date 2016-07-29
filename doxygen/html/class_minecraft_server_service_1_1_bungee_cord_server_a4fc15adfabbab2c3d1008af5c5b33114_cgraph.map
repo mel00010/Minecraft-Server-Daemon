@@ -1,5 +1,0 @@
-<map id="MinecraftServerService::BungeeCordServer::reloadServer" name="MinecraftServerService::BungeeCordServer::reloadServer">
-<area shape="rect" id="node2" href="$class_minecraft_server_service_1_1_bungee_cord_server.html#ab6b5e763d5197033293075062f441b82" title="MinecraftServerService\l::BungeeCordServer::listOnline\lPlayers" alt="" coords="291,5,494,61"/>
-<area shape="rect" id="node3" href="$class_minecraft_server_service_1_1_bungee_cord_server.html#a4c398b65df83fe47cdaf8c4e5de66dff" title="MinecraftServerService\l::BungeeCordServer::sendCommand" alt="" coords="275,85,511,126"/>
-<area shape="rect" id="node4" href="$class_minecraft_server_service_1_1_bungee_cord_server.html#abd82aabf8161c73d05ec9fc95d50a4a3" title="MinecraftServerService\l::BungeeCordServer::logger" alt="" coords="301,150,484,191"/>
-</map>

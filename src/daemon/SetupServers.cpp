@@ -32,7 +32,12 @@
 #include "SetupServers.hpp"
 #include <cstdlib>
 #include <string>
-
+/**
+ * Sets up servers using the data from the daemon config file.
+ * @param _config
+ * @param log
+ * @return
+ */
 std::vector<MinecraftServerDaemon::Server*>* setupServers(Json::Value* _config, log4cpp::Category& log) {
 	Json::Value config = *_config;
 	std::vector<MinecraftServerDaemon::Server*>* servers = new std::vector<MinecraftServerDaemon::Server*>;

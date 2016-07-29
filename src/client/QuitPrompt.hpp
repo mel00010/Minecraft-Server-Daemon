@@ -28,6 +28,4 @@ namespace CLI {
 void quitPrompt();
 }
 
-
-
 #endif /* CLIENT_QUITPROMPT_HPP_ */

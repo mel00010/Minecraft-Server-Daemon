@@ -1,9 +1,0 @@
-<map id="MinecraftServerService::GenericServer::restartServer" name="MinecraftServerService::GenericServer::restartServer">
-<area shape="rect" id="node2" href="$class_minecraft_server_service_1_1_server.html#a1954e7c7756cd956e7282887ffca73e4" title="MinecraftServerService\l::Server::isRunning" alt="" coords="503,25,662,66"/>
-<area shape="rect" id="node3" href="$class_minecraft_server_service_1_1_generic_server.html#a81adc767332fdbffdb1ca2ca5c4033ec" title="MinecraftServerService\l::GenericServer::stopServer" alt="" coords="250,25,434,66"/>
-<area shape="rect" id="node4" href="$class_minecraft_server_service_1_1_generic_server.html#aa3e2da3f6458e579697154360f6e05e5" title="MinecraftServerService\l::GenericServer::startServer" alt="" coords="249,90,435,132"/>
-<area shape="rect" id="node5" href="$class_minecraft_server_service_1_1_server.html#a16a19b4cfd94f23c20442cea9b46f678" title="MinecraftServerService\l::Server::launchServerProcess" alt="" coords="483,90,683,132"/>
-<area shape="rect" id="node7" href="$class_minecraft_server_service_1_1_server.html#a3040817c744456263f8ba36bdb72bf20" title="MinecraftServerService\l::Server::outputListenerThread" alt="" coords="759,149,957,190"/>
-<area shape="rect" id="node6" href="$class_minecraft_server_service_1_1_server.html#a085f201bd563ce47e2b41778ef72d20d" title="MinecraftServerService\l::Server::getUIDAndGIDFromUsername" alt="" coords="731,32,985,73"/>
-<area shape="rect" id="node8" href="$class_minecraft_server_service_1_1_server.html#a4ecf103c62bd8f1e54b2ff436fa1645a" title="MinecraftServerService\l::Server::serverOutputEvent" alt="" coords="1033,120,1219,161"/>
-</map>

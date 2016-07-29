@@ -21,15 +21,20 @@
  *
  *******************************************************************************/
 
-#ifndef DAEMON_SETUPSERVERS_HPP
-#define DAEMON_SETUPSERVERS_HPP
+#ifndef DAEMON_SETUPSERVERS_HPP_
+#define DAEMON_SETUPSERVERS_HPP_
 
 #include <json/value.h>
 #include <log4cpp/Category.hh>
 #include <vector>
 
 #include "Server.hpp"
-
+/**
+ * Sets up servers using the data from the daemon config file.
+ * @param _config
+ * @param log
+ * @return
+ */
 std::vector<MinecraftServerDaemon::Server*>* setupServers(Json::Value* _config, log4cpp::Category& log);
 
 #endif /* DAEMON_SETUPSERVERS_HPP_ */

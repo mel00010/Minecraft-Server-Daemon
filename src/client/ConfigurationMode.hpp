@@ -30,7 +30,4 @@ void createConfigurationModeWindows();
 void writeConfigurationModeText();
 }
 
-
-
-
 #endif /* CLIENT_CONFIGURATIONMODE_HPP_ */
