@@ -30,7 +30,7 @@
 
 void parseOptions(int argc, char *argv[]) {
 	int Socket = openSocket();
-	std::string option(argv[0]);
+	std::string option(argv[1]);
 	if (option == "list") {
 		writeToSocket("listServers", Socket);
 		std::cout << readFromSocket(Socket) << std::endl;

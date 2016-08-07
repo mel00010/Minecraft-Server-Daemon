@@ -21,13 +21,15 @@
  *
  *******************************************************************************/
 
-#include <MasterLoop.hpp>
+#include <CLI.hpp>
 #include <ConfigurationMode.hpp>
 #include <MainMode.hpp>
 #include <ManagementMode.hpp>
+#include <MasterLoop.hpp>
 #include <PluginsMode.hpp>
 #include <signal.h>
 #include <stdlib.h>
+#include <WindowWrapper.hpp>
 #include <ctime>
 #include <iostream>
 

@@ -21,15 +21,13 @@
  *
  *******************************************************************************/
 
+#include <Help.hpp>
+#include <MasterLoop.hpp>
+#include <ParseOptions.hpp>
 #include <cstdlib>
 #include <iostream>
 #include <string>
-#include <Help.hpp>
-#include <ParseOptions.hpp>
 
-namespace CLI {
-void runCLI();
-} /* namespace CLI */
 
 int main(int argc, char *argv[]) {
 	if (argc > 1) {
