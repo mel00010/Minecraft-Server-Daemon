@@ -1,5 +1,5 @@
 /minecraftd
 /Makefile
-/*.o
-/.deps/
-/.settings/
+*.o
+.deps/
+.settings/

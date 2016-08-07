@@ -1,4 +1,5 @@
 /minecraft
 /Makefile
-/*.o
-/.deps/
+*.o
+.deps/
+.settings/
