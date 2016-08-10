@@ -55,7 +55,7 @@ void mainLoop(std::vector<MinecraftServerDaemon::Server*>* servers, log4cpp::Cat
 	root.info("Starting main loop");
 	struct event *event;
 	cb_data* data = new cb_data { servers, root };
-	event = event_new(base, controlSocket, EV_READ | EV_PERSIST | EV_ET, recieveCommand, data);
+	event = event_new(base, controlSocket, EV_READ | EV_PERSIST | EV_ET, receiveCommand, data);
 	event_add(event, NULL);
 	event_base_dispatch(base);
 }
@@ -65,7 +65,7 @@ void mainLoop(std::vector<MinecraftServerDaemon::Server*>* servers, log4cpp::Cat
  * @param what
  * @param arg
  */
-void recieveCommand(int _controlSocket, __attribute__((unused)) short what, void *arg) {
+void receiveCommand(int _controlSocket, __attribute__((unused)) short what, void *arg) {
 	struct sockaddr_un peer_addr;
 	socklen_t peer_addr_size;
 	peer_addr_size = sizeof(struct sockaddr_un);

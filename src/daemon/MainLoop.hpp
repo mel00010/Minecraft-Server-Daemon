@@ -59,6 +59,6 @@ void mainLoop(std::vector<MinecraftServerDaemon::Server*>* servers, log4cpp::Cat
  * @param what
  * @param arg
  */
-void recieveCommand(int controlSocket, short what, void *arg);
+void receiveCommand(int controlSocket, short what, void *arg);
 
 #endif /* DAEMON_MAINLOOP_HPP_ */
