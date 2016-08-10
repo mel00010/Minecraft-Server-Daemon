@@ -26,7 +26,6 @@
 
 #include <event2/util.h>
 #include <log4cpp/Category.hh>
-#include <string>
 #include <vector>
 
 #include "Server.hpp"
@@ -54,20 +53,6 @@ void sigint_handler(int sig);
  * @param base
  */
 void mainLoop(std::vector<MinecraftServerDaemon::Server*>* servers, log4cpp::Category& root, evutil_socket_t controlSocket, struct event_base*base);
-/**
- * Writes the specified message to the control socket.
- * @param message
- * @param controlSocket
- * @param root
- */
-void writeToSocket(std::string message, int controlSocket, log4cpp::Category& root);
-/**
- * Reads from the control socket.
- * @param controlSocket
- * @param root
- * @return
- */
-std::string readFromSocket(int controlSocket, log4cpp::Category& root);
 /**
  * This function handles the processing of commands recieved from the control socket.  Called by libevent when the control socket is ready for reading.
  * @param _controlSocket

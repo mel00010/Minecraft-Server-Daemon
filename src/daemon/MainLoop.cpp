@@ -22,17 +22,17 @@
  *******************************************************************************/
 
 #include <event2/event.h>
-#include <log4cpp/Category.hh>
+#include <IPC.hpp>
+#include <MainLoop.hpp>
 #include <signal.h>
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <sys/wait.h>
 #include <unistd.h>
-#include "MainLoop.hpp"
 #include <cstdlib>
-#include <iomanip>
 #include <iterator>
-#include <sstream>
+#include <string>
+
 /**
  * Catches the SIGINT signal and kills all of the child processes, then sends the SIGINT signal again to kill the program.
  * @param sig
@@ -60,42 +60,6 @@ void mainLoop(std::vector<MinecraftServerDaemon::Server*>* servers, log4cpp::Cat
 	event_base_dispatch(base);
 }
 /**
- * Writes the specified message to the control socket.
- * @param message
- * @param controlSocket
- * @param root
- */
-void writeToSocket(std::string message, int controlSocket, __attribute__((unused))       log4cpp::Category& root) {
-	std::ostringstream ss;
-	ss << std::setw(4) << std::setfill('0') << message.size();
-	std::string buf = ss.str() + message;
-	send(controlSocket, buf.c_str(), buf.size(), 0);
-}
-/**
- * Reads from the control socket.
- * @param controlSocket
- * @param root
- * @return
- */
-std::string readFromSocket(int controlSocket, log4cpp::Category& root) {
-	int rc;
-	char buff[4];
-	rc = recv(controlSocket, buff, 4, 0);
-	if (rc == -1) {
-		root.error("Read from control socket failed");
-		return std::string("error");
-	} else if (rc == 0) {
-		root.info("Client disconnected from control socket");
-		return std::string("error");
-	} else {
-		int size = atoi(buff);
-		char line[size];
-		rc = recv(controlSocket, line, size, 0);
-		line[rc] = '\0';
-		return std::string(line);
-	}
-}
-/**
  * This function handles the processing of commands recieved from the control socket.  Called by libevent when the control socket is ready for reading.
  * @param _controlSocket
  * @param what
@@ -106,7 +70,6 @@ void recieveCommand(int _controlSocket, __attribute__((unused)) short what, void
 	socklen_t peer_addr_size;
 	peer_addr_size = sizeof(struct sockaddr_un);
 	int controlSocket = accept(_controlSocket, (struct sockaddr *) &peer_addr, &peer_addr_size);
-	//~ struct cb_data *data = (cb_data *)arg;
 	std::vector<MinecraftServerDaemon::Server*>* servers = ((cb_data *) arg)->servers;
 	log4cpp::Category& root = ((cb_data *) arg)->root;
 	std::string command(readFromSocket(controlSocket, root));

@@ -22,8 +22,8 @@
  *******************************************************************************/
 
 #include <ConfigFileParser.hpp>
-#include <CreateSocket.hpp>
 #include <event2/event.h>
+#include <IPC.hpp>
 #include <json/json.h>
 #include <log4cpp/Category.hh>
 #include <log4cpp/PropertyConfigurator.hh>
@@ -34,7 +34,9 @@
 #include <SetupServers.hpp>
 #include <unistd.h>
 #include <cstdlib>
+#include <iostream>
 #include <vector>
+
 /**
  * Main namespace for all daemon related functions, classes, structs, enums, and variables.
  */

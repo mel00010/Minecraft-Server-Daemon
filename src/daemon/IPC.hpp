@@ -1,7 +1,7 @@
 /*******************************************************************************
  *
- * Minecraft Server Daemon
- * CreateSocket.cpp
+ * MinecraftServerDaemon
+ * IPC.hpp
  * Copyright (C) 2016  Mel McCalla <melmccalla@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -21,39 +21,31 @@
  *
  *******************************************************************************/
 
-#include <CreateSocket.hpp>
-#include <fcntl.h>
-#include <sys/socket.h>
-#include <sys/un.h>
-#include <unistd.h>
-#include <cstdlib>
-#include <cstring>
+#ifndef DAEMON_IPC_HPP_
+#define DAEMON_IPC_HPP_
+
+#include <log4cpp/Category.hh>
+#include <string>
+
 /**
  * Creates the control socket used for IPC with the client.
  * @param root
  * @return
  */
-int createSocket(log4cpp::Category& root) {
-	int Socket;
-	struct sockaddr_un local;
-	if ((Socket = socket(AF_UNIX, SOCK_STREAM, 0)) == -1) {
-		root.fatal("Failure creating socket");
-		exit(1);
-	}
-	local.sun_family = AF_UNIX;
-	strcpy(local.sun_path, "/etc/minecraft/control.socket");
-	unlink(local.sun_path);
-	int len;
-	len = strlen(local.sun_path) + sizeof(local.sun_family);
-	if (bind(Socket, (struct sockaddr *) &local, len) == -1) {
-		root.fatal("Failure binding socket to path");
-		exit(1);
-	}
+int createSocket(log4cpp::Category& root);
+/**
+ * Writes the specified message to the control socket.
+ * @param message
+ * @param controlSocket
+ * @param root
+ */
+void writeToSocket(std::string message, int controlSocket, log4cpp::Category& root);
+/**
+ * Reads from the control socket.
+ * @param controlSocket
+ * @param root
+ * @return
+ */
+std::string readFromSocket(int controlSocket, log4cpp::Category& root);
 
-	if (listen(Socket, 5) == -1) {
-		root.fatal("Failure listening on socket");
-		exit(1);
-	}
-	fcntl(Socket, F_SETFL, O_NONBLOCK);
-	return Socket;
-}
+#endif /* DAEMON_IPC_HPP_ */
