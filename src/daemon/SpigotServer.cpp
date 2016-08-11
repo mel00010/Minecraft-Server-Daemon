@@ -21,9 +21,12 @@
  *
  *******************************************************************************/
 
-#include <log4cpp/Category.hh>
+#include <config.h>
+#include <log4cpp/FileAppender.hh>
+#include <log4cpp/PatternLayout.hh>
 #include <SpigotServer.hpp>
 #include <unistd.h>
+#include <cstdlib>
 #include <ctime>
 #include <thread>
 
@@ -48,7 +51,14 @@ SpigotServer::SpigotServer(std::string serverName, std::string serverPath, std::
 		serverName { serverName }, serverPath { serverPath }, serverJarName { serverJarName }, serverAccount { serverAccount }, maxHeapAlloc { maxHeapAlloc }, minHeapAlloc {
 				minHeapAlloc }, gcThreadCount { gcThreadCount }, backupPath { backupPath }, worldsToBackup { worldsToBackup }, javaArgs { javaArgs }, serverOptions {
 				serverOptions }, serverPropertiesParser((char*) "server.properties") {
-	log = &log4cpp::Category::getInstance(serverName);
+	log4cpp::PatternLayout* layout = new log4cpp::PatternLayout();
+	layout->setConversionPattern("%d %c [%p] %m%n ");
+
+	log4cpp::Appender *serverFileAppender = new log4cpp::FileAppender(serverName, std::string(__LOG_DIR__) + "/servers/" + serverName + ".log");
+	serverFileAppender->setLayout(layout);
+
+	log = &log4cpp::Category::getInstance(std::string(serverName));
+	log->addAppender(serverFileAppender);
 	log->info(serverJarName);
 	log->debug("SpigotServer::SpigotServer");
 }

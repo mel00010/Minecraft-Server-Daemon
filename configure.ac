@@ -9,7 +9,6 @@ AC_CONFIG_FILES(
  		src/client/Makefile
  		docs/Doxyfile
  		docs/Makefile
- 		config/log4cpp.properties
  		config/config.json
  		config/Makefile
 	]
@@ -120,13 +119,14 @@ else
 	AC_MSG_NOTICE(LOG_DIR = $LOG_DIR)
 fi
 
+AC_DEFINE_UNQUOTED([__LOG_DIR__], ["$LOG_DIR"], [Log directory path])
+
 AC_ARG_VAR([CONFIG_DIR_NAME], [Name of configuration directory in sysconfdir.])
 if test -z "$CONFIG_DIR_NAME";
 	then CONFIG_DIR_NAME="minecraft" ; AC_MSG_NOTICE(CONFIG_DIR_NAME = $CONFIG_DIR_NAME)
 else
 	AC_MSG_NOTICE(CONFIG_DIR_NAME = $CONFIG_DIR_NAME)
 fi
-
 
 AC_ARG_VAR([CONFIG_FILE_NAME], [Absolute path of the daemon configuration file.])
 if test -z "$CONFIG_FILE_NAME";
@@ -135,13 +135,6 @@ else
 	AC_MSG_NOTICE(CONFIG_FILE_NAME = $CONFIG_FILE_NAME)
 fi
 AC_DEFINE_UNQUOTED([__CONFIG_FILE_NAME__], ["$CONFIG_FILE_NAME"], [Config file path])
-AC_ARG_VAR([LOG4CPP_PROPERTY_FILE], [Absolute path of the log4cpp properties file.])
-if test -z "$LOG4CPP_PROPERTY_FILE";
-	then LOG4CPP_PROPERTY_FILE="/usr/local/etc/$CONFIG_DIR_NAME/log4cpp.properties" ; AC_MSG_NOTICE(LOG4CPP_PROPERTY_FILE = $LOG4CPP_PROPERTY_FILE)
-else
-	AC_MSG_NOTICE(LOG4CPP_PROPERTY_FILE = $LOG4CPP_PROPERTY_FILE)
-fi
-AC_DEFINE_UNQUOTED([__LOG4CPP_PROPERTY_FILE__], ["$LOG4CPP_PROPERTY_FILE"], [Log4cpp properties file path])
 
 AC_ARG_VAR([DEFAULT_SERVER_DIR], [Default directory where servers are assumed to be located if an absolute path is not given in the config file.])
 if test -z "$DEFAULT_SERVER_DIR";

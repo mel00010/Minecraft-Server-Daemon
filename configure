@@ -591,7 +591,6 @@ LIBOBJS
 DEBUG_FALSE
 DEBUG_TRUE
 DEFAULT_SERVER_DIR
-LOG4CPP_PROPERTY_FILE
 CONFIG_FILE_NAME
 CONFIG_DIR_NAME
 LOG_DIR
@@ -736,7 +735,6 @@ ncurses_LIBS
 LOG_DIR
 CONFIG_DIR_NAME
 CONFIG_FILE_NAME
-LOG4CPP_PROPERTY_FILE
 DEFAULT_SERVER_DIR'
 
 
@@ -1408,8 +1406,6 @@ Some influential environment variables:
               Name of configuration directory in sysconfdir.
   CONFIG_FILE_NAME
               Absolute path of the daemon configuration file.
-  LOG4CPP_PROPERTY_FILE
-              Absolute path of the log4cpp properties file.
   DEFAULT_SERVER_DIR
               Default directory where servers are assumed to be located if an
               absolute path is not given in the config file.
@@ -3191,7 +3187,7 @@ fi
 
 ac_config_headers="$ac_config_headers config.h"
 
-ac_config_files="$ac_config_files Makefile src/daemon/Makefile src/client/Makefile docs/Doxyfile docs/Makefile config/log4cpp.properties config/config.json config/Makefile"
+ac_config_files="$ac_config_files Makefile src/daemon/Makefile src/client/Makefile docs/Doxyfile docs/Makefile config/config.json config/Makefile"
 
 ac_ext=cpp
 ac_cpp='$CXXCPP $CPPFLAGS'
@@ -3805,6 +3801,12 @@ $as_echo "$as_me: LOG_DIR = $LOG_DIR" >&6;}
 fi
 
 
+cat >>confdefs.h <<_ACEOF
+#define __LOG_DIR__ "$LOG_DIR"
+_ACEOF
+
+
+
 if test -z "$CONFIG_DIR_NAME";
 	then CONFIG_DIR_NAME="minecraft" ; { $as_echo "$as_me:${as_lineno-$LINENO}: CONFIG_DIR_NAME = $CONFIG_DIR_NAME" >&5
 $as_echo "$as_me: CONFIG_DIR_NAME = $CONFIG_DIR_NAME" >&6;}
@@ -3812,7 +3814,6 @@ else
 	{ $as_echo "$as_me:${as_lineno-$LINENO}: CONFIG_DIR_NAME = $CONFIG_DIR_NAME" >&5
 $as_echo "$as_me: CONFIG_DIR_NAME = $CONFIG_DIR_NAME" >&6;}
 fi
-
 
 
 if test -z "$CONFIG_FILE_NAME";
@@ -3825,19 +3826,6 @@ fi
 
 cat >>confdefs.h <<_ACEOF
 #define __CONFIG_FILE_NAME__ "$CONFIG_FILE_NAME"
-_ACEOF
-
-
-if test -z "$LOG4CPP_PROPERTY_FILE";
-	then LOG4CPP_PROPERTY_FILE="/usr/local/etc/$CONFIG_DIR_NAME/log4cpp.properties" ; { $as_echo "$as_me:${as_lineno-$LINENO}: LOG4CPP_PROPERTY_FILE = $LOG4CPP_PROPERTY_FILE" >&5
-$as_echo "$as_me: LOG4CPP_PROPERTY_FILE = $LOG4CPP_PROPERTY_FILE" >&6;}
-else
-	{ $as_echo "$as_me:${as_lineno-$LINENO}: LOG4CPP_PROPERTY_FILE = $LOG4CPP_PROPERTY_FILE" >&5
-$as_echo "$as_me: LOG4CPP_PROPERTY_FILE = $LOG4CPP_PROPERTY_FILE" >&6;}
-fi
-
-cat >>confdefs.h <<_ACEOF
-#define __LOG4CPP_PROPERTY_FILE__ "$LOG4CPP_PROPERTY_FILE"
 _ACEOF
 
 
@@ -4640,7 +4628,6 @@ do
     "src/client/Makefile") CONFIG_FILES="$CONFIG_FILES src/client/Makefile" ;;
     "docs/Doxyfile") CONFIG_FILES="$CONFIG_FILES docs/Doxyfile" ;;
     "docs/Makefile") CONFIG_FILES="$CONFIG_FILES docs/Makefile" ;;
-    "config/log4cpp.properties") CONFIG_FILES="$CONFIG_FILES config/log4cpp.properties" ;;
     "config/config.json") CONFIG_FILES="$CONFIG_FILES config/config.json" ;;
     "config/Makefile") CONFIG_FILES="$CONFIG_FILES config/Makefile" ;;
 

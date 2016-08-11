@@ -30,5 +30,5 @@
 /* Debugging ;; false */
 #undef __DEBUGGING__
 
-/* Log4cpp properties file path */
-#undef __LOG4CPP_PROPERTY_FILE__
+/* Log directory path */
+#undef __LOG_DIR__

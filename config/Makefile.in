@@ -93,7 +93,7 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 DIST_COMMON = $(srcdir)/Makefile.am $(am__DIST_COMMON)
 mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/config.h
-CONFIG_CLEAN_FILES = log4cpp.properties config.json
+CONFIG_CLEAN_FILES = config.json
 CONFIG_CLEAN_VPATH_FILES =
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -115,8 +115,7 @@ am__can_run_installinfo = \
     *) (install-info --version) >/dev/null 2>&1;; \
   esac
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
-am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.json.in \
-	$(srcdir)/log4cpp.properties.in
+am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.json.in
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
 AMTAR = @AMTAR@
@@ -148,7 +147,6 @@ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 LDFLAGS = @LDFLAGS@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
-LOG4CPP_PROPERTY_FILE = @LOG4CPP_PROPERTY_FILE@
 LOG_DIR = @LOG_DIR@
 LTLIBOBJS = @LTLIBOBJS@
 MAKEINFO = @MAKEINFO@
@@ -218,7 +216,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-CLEANFILES = log4cpp.properties.stamp config.json.stamp
+CLEANFILES = config.json.stamp
 all: all-am
 
 .SUFFIXES:
@@ -251,8 +249,6 @@ $(top_srcdir)/configure:  $(am__configure_deps)
 $(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
-log4cpp.properties: $(top_builddir)/config.status $(srcdir)/log4cpp.properties.in
-	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
 config.json: $(top_builddir)/config.status $(srcdir)/config.json.in
 	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
 tags TAGS:
@@ -408,14 +404,11 @@ uninstall-am:
 
 .PRECIOUS: Makefile
 
-log4cpp.properties.stamp:
-	echo "Generating log4cpp.properties"
-	echo Timestamp > log4cpp.properties.stamp
 config.json.stamp:
 	echo "Generating config.json"
 	echo Timestamp > config.json.stamp
 
-all-local: log4cpp.properties.stamp config.json.stamp
+all-local: config.json.stamp
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

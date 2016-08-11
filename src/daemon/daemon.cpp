@@ -27,7 +27,12 @@
 #include <IPC.hpp>
 #include <json/json.h>
 #include <log4cpp/Category.hh>
-#include <log4cpp/PropertyConfigurator.hh>
+#include <log4cpp/Appender.hh>
+#include <log4cpp/FileAppender.hh>
+#include <log4cpp/OstreamAppender.hh>
+#include <log4cpp/Layout.hh>
+#include <log4cpp/PatternLayout.hh>
+#include <log4cpp/Priority.hh>
 #include <MainLoop.hpp>
 #include <signal.h>
 #include <sys/stat.h>
@@ -79,23 +84,33 @@ int main(void) {
 	//Logging
 	ConfigFileParser parser;
 	Json::Value config = parser.parseConfigFile(__CONFIG_FILE_NAME__);
-	log4cpp::PropertyConfigurator::configure (__LOG4CPP_PROPERTY_FILE__);
 
+	log4cpp::PatternLayout* layout = new log4cpp::PatternLayout();
+	layout->setConversionPattern("%d %c [%p] %m%n ");
+	log4cpp::Appender *consoleAppender = new log4cpp::OstreamAppender("console", &std::cout);
+	consoleAppender->setLayout(layout);
+	log4cpp::Appender *daemonFileAppender = new log4cpp::FileAppender("daemon", std::string(__LOG_DIR__) + "/daemon.log");
+	daemonFileAppender->setLayout(layout);
 	log4cpp::Category& rootLog = log4cpp::Category::getRoot();
+	rootLog.setPriority(log4cpp::Priority::DEBUG);
+	rootLog.addAppender(consoleAppender);
+
+	log4cpp::Category& daemonLog = log4cpp::Category::getInstance(std::string("daemon"));
+	daemonLog.addAppender(daemonFileAppender);
 
 	/* Create a new SID for the child process */
 #ifndef __DEBUGGING__
 	sid = setsid();
 	if (sid < 0) {
 		/* Log the failure */
-		rootLog.fatal("Failure creating new sessionID for daemon");
+		daemonLog.fatal("Failure creating new sessionID for daemon");
 		exit(EXIT_FAILURE);
 	}
 #endif /* __DEBUGGING__ */
 	/* Change the current working directory */
 	if ((chdir("/")) < 0) {
 		/* Log the failure */
-		rootLog.fatal("Failure changing working directory");
+		daemonLog.fatal("Failure changing working directory");
 		exit(EXIT_FAILURE);
 	}
 #ifndef __DEBUGGING__
@@ -104,15 +119,14 @@ int main(void) {
 	close(STDOUT_FILENO);
 	close(STDERR_FILENO);
 #endif /* __DEBUGGING__ */
-	/* Daemon-specific initialization goes here */
-	//Create pipe to recieve commands from control program
+	// Create socket to recieve commands from control program
 	// Read from config file and set up servers
 	struct event_base* base = event_base_new();
-	int controlSocket = createSocket(rootLog);
+	int controlSocket = createSocket(daemonLog);
 	std::vector<MinecraftServerDaemon::Server*>* servers;
-	servers = setupServers(&config, rootLog);
+	servers = setupServers(&config, daemonLog);
 	/* The Big Loop */
-	mainLoop(servers, rootLog, controlSocket, base);
+	mainLoop(servers, daemonLog, controlSocket, base);
 
 	exit(EXIT_SUCCESS);
 }
