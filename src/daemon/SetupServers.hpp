@@ -24,7 +24,7 @@
 #ifndef DAEMON_SETUPSERVERS_HPP_
 #define DAEMON_SETUPSERVERS_HPP_
 
-#include <json/value.h>
+#include <jsoncpp/json/value.h>
 #include <log4cpp/Category.hh>
 #include <vector>
 
