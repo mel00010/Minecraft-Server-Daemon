@@ -24,9 +24,9 @@
 #ifndef DAEMON_CONFIGFILEPARSER_HPP_
 #define DAEMON_CONFIGFILEPARSER_HPP_
 
+#include <json/forwards.h>
 #include <string>
 
-#include "json/json.h"
 /**
  * Class responsible for reading and parsing the daemon config file.
  */

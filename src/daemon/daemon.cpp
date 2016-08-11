@@ -21,16 +21,13 @@
  *
  *******************************************************************************/
 
-#include <config.h>
 #include <ConfigFileParser.hpp>
 #include <event2/event.h>
 #include <IPC.hpp>
-#include <json/json.h>
+#include <json/forwards.h>
 #include <log4cpp/Category.hh>
-#include <log4cpp/Appender.hh>
 #include <log4cpp/FileAppender.hh>
 #include <log4cpp/OstreamAppender.hh>
-#include <log4cpp/Layout.hh>
 #include <log4cpp/PatternLayout.hh>
 #include <log4cpp/Priority.hh>
 #include <MainLoop.hpp>
@@ -41,7 +38,9 @@
 #include <unistd.h>
 #include <cstdlib>
 #include <iostream>
+#include <string>
 #include <vector>
+#include <config.h>
 
 /**
  * Main namespace for all daemon related functions, classes, structs, enums, and variables.

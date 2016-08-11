@@ -22,10 +22,11 @@
  *******************************************************************************/
 
 #include <ConfigFileParser.hpp>
-#include <json/json.h>
 #include <cstdlib>
 #include <fstream>
 #include <new>
+#include <json/writer.h>
+#include <json/reader.h>
 
 /**
  * Parses the daemon config file and returns a Json::Value object.
