@@ -22,7 +22,9 @@
  *******************************************************************************/
 
 #include <BungeeCordServer.hpp>
-#include <log4cpp/Category.hh>
+#include <config.h>
+#include <log4cpp/FileAppender.hh>
+#include <log4cpp/PatternLayout.hh>
 #include <unistd.h>
 #include <cstdlib>
 #include <ctime>
@@ -46,7 +48,14 @@ BungeeCordServer::BungeeCordServer(std::string serverName, std::string serverPat
 		int minHeapAlloc, int gcThreadCount, std::string backupPath, std::vector<std::string> javaArgs, std::vector<std::string> serverOptions) :
 		serverName { serverName }, serverPath { serverPath }, serverJarName { serverJarName }, serverAccount { serverAccount }, maxHeapAlloc { maxHeapAlloc }, minHeapAlloc {
 				minHeapAlloc }, gcThreadCount { gcThreadCount }, backupPath { backupPath }, javaArgs { javaArgs }, serverOptions { serverOptions } {
-	log = &log4cpp::Category::getInstance(serverName);
+	log4cpp::PatternLayout* layout = new log4cpp::PatternLayout();
+	layout->setConversionPattern("%d %c [%p] %m%n ");
+
+	log4cpp::Appender *serverFileAppender = new log4cpp::FileAppender(serverName, std::string(__LOG_DIR__) + "/servers/" + serverName + ".log");
+	serverFileAppender->setLayout(layout);
+
+	log = &log4cpp::Category::getInstance(std::string(serverName));
+	log->addAppender(serverFileAppender);
 	log->info(serverJarName);
 	log->debug("BungeeCordServer::BungeeCordServer");
 }

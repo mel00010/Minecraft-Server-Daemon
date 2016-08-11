@@ -21,6 +21,7 @@
  *
  *******************************************************************************/
 
+#include <config.h>
 #include <BukkitServer.hpp>
 #include <BungeeCordServer.hpp>
 #include <ForgeServer.hpp>
@@ -41,10 +42,22 @@
 std::vector<MinecraftServerDaemon::Server*>* setupServers(Json::Value* _config, log4cpp::Category& log) {
 	Json::Value config = *_config;
 	std::vector<MinecraftServerDaemon::Server*>* servers = new std::vector<MinecraftServerDaemon::Server*>;
+	std::string defaultServerDirectory = config["options"]["defaultServerDirectory"].asString();
+	log.notice(defaultServerDirectory);
 	for (Json::Value::iterator itr = config["servers"].begin(); itr != config["servers"].end(); itr++) {
 		Json::Value server = (*itr);
 		std::string serverName = server["serverName"].asString();
-		std::string serverPath = server["serverPath"].asString();
+		std::string serverPathBuf = server["serverPath"].asString();
+		std::string serverPath;
+		log.notice(std::to_string(serverPathBuf.at(0)));
+		log.notice(std::to_string('/'));
+		if (serverPathBuf.at(0) == '/') {
+			serverPath = serverPathBuf;
+			log.notice(serverPath);
+		} else {
+			serverPath = defaultServerDirectory + "/" + serverPathBuf;
+			log.notice(serverPath);
+		}
 		std::string serverJarName = server["serverJarName"].asString();
 		std::string serverAccount = server["serverAccount"].asString();
 		int maxHeapAlloc = server["maxHeapAlloc"].asInt();

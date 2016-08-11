@@ -50,21 +50,12 @@ else
 	chmod -R 755 $LOG_DIR/servers
 	chown -R minecraft:minecraft $LOG_DIR/servers
 fi
-if [ -e "$LOG4CPP_PROPERTY_FILE" ]
-then 
-	echo "File $LOG4CPP_PROPERTY_FILE exists.  Not creating $LOG4CPP_PROPERTY_FILE."
-else
-	echo "Creating file $LOG4CPP_PROPERTY_FILE"
-	cp log4cpp.properties $LOG4CPP_PROPERTY_FILE
-	chmod 755 $LOG4CPP_PROPERTY_FILE
-	chown minecraft:minecraft $LOG4CPP_PROPERTY_FILE
-fi
 if [ -e "$CONFIG_FILE_NAME" ]
 then 
 	echo "File $CONFIG_FILE_NAME exists.  Not creating $CONFIG_FILE_NAME."
 else
 	echo "Creating file $CONFIG_FILE_NAME"
-	cp config.json $CONFIG_FILE_NAME
+	cp config/config.json $CONFIG_FILE_NAME
 	chmod 755 $CONFIG_FILE_NAME
 	chown minecraft:minecraft $CONFIG_FILE_NAME
 fi
