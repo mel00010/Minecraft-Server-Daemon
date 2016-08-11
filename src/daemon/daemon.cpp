@@ -24,7 +24,7 @@
 #include <ConfigFileParser.hpp>
 #include <event2/event.h>
 #include <IPC.hpp>
-#include <json/forwards.h>
+#include <jsoncpp/json/forwards.h>
 #include <log4cpp/Category.hh>
 #include <log4cpp/FileAppender.hh>
 #include <log4cpp/OstreamAppender.hh>
