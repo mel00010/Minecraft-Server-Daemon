@@ -23,10 +23,9 @@
 
 #include <BukkitServer.hpp>
 #include <BungeeCordServer.hpp>
-#include <config.h>
 #include <ForgeServer.hpp>
 #include <GenericServer.hpp>
-#include <json/json.h>
+#include <json/forwards.h>
 #include <SpigotServer.hpp>
 #include <VanillaServer.hpp>
 #include "SetupServers.hpp"
