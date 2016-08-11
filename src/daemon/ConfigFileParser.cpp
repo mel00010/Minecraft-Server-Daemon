@@ -25,8 +25,8 @@
 #include <cstdlib>
 #include <fstream>
 #include <new>
-#include <json/writer.h>
-#include <json/reader.h>
+#include <jsoncpp/json/writer.h>
+#include <jsoncpp/json/reader.h>
 
 /**
  * Parses the daemon config file and returns a Json::Value object.

@@ -25,7 +25,7 @@
 #include <BungeeCordServer.hpp>
 #include <ForgeServer.hpp>
 #include <GenericServer.hpp>
-#include <json/forwards.h>
+#include <jsoncpp/json/forwards.h>
 #include <SpigotServer.hpp>
 #include <VanillaServer.hpp>
 #include "SetupServers.hpp"
@@ -65,12 +65,12 @@ std::vector<MinecraftServerDaemon::Server*>* setupServers(Json::Value* _config, 
 		std::vector<std::string> javaArgs;
 		for (Json::Value::iterator itr = server["javaArgs"].begin(); itr != server["javaArgs"].end(); itr++) {
 			Json::Value arg = (*itr);
-			javaArgs.push_back(arg.asString());
+			javaArgs.push_back((const std::string) arg.asString());
 		}
 		std::vector<std::string> serverOptions;
 		for (Json::Value::iterator itr = server["serverOptions"].begin(); itr != server["serverOptions"].end(); itr++) {
 			Json::Value option = (*itr);
-			serverOptions.push_back(option.asString());
+			serverOptions.push_back((const std::string) option.asString());
 		}
 		std::string serverType = server["serverType"].asString();
 		if (serverType == "vanilla") {
@@ -78,7 +78,7 @@ std::vector<MinecraftServerDaemon::Server*>* setupServers(Json::Value* _config, 
 			std::vector<std::string> worldsToBackup;
 			for (Json::Value::iterator itr = server["worldsToBackup"].begin(); itr != server["worldsToBackup"].end(); itr++) {
 				Json::Value world = (*itr);
-				worldsToBackup.push_back(world.asString());
+				worldsToBackup.push_back((const std::string) world.asString());
 			}
 			servers->push_back(
 					new MinecraftServerDaemon::VanillaServer(serverName, serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount,
@@ -89,7 +89,7 @@ std::vector<MinecraftServerDaemon::Server*>* setupServers(Json::Value* _config, 
 			std::vector<std::string> worldsToBackup;
 			for (Json::Value::iterator itr = server["worldsToBackup"].begin(); itr != server["worldsToBackup"].end(); itr++) {
 				Json::Value world = (*itr);
-				worldsToBackup.push_back(world.asString());
+				worldsToBackup.push_back((const std::string) world.asString());
 			}
 			servers->push_back(
 					new MinecraftServerDaemon::SpigotServer(serverName, serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount,
@@ -100,7 +100,7 @@ std::vector<MinecraftServerDaemon::Server*>* setupServers(Json::Value* _config, 
 			std::vector<std::string> worldsToBackup;
 			for (Json::Value::iterator itr = server["worldsToBackup"].begin(); itr != server["worldsToBackup"].end(); itr++) {
 				Json::Value world = (*itr);
-				worldsToBackup.push_back(world.asString());
+				worldsToBackup.push_back((const std::string) world.asString());
 			}
 			servers->push_back(
 					new MinecraftServerDaemon::BukkitServer(serverName, serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount,
@@ -117,7 +117,7 @@ std::vector<MinecraftServerDaemon::Server*>* setupServers(Json::Value* _config, 
 			std::vector<std::string> worldsToBackup;
 			for (Json::Value::iterator itr = server["worldsToBackup"].begin(); itr != server["worldsToBackup"].end(); itr++) {
 				Json::Value world = (*itr);
-				worldsToBackup.push_back(world.asString());
+				worldsToBackup.push_back((const std::string) world.asString());
 			}
 			servers->push_back(
 					new MinecraftServerDaemon::ForgeServer(serverName, serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount,
@@ -128,7 +128,7 @@ std::vector<MinecraftServerDaemon::Server*>* setupServers(Json::Value* _config, 
 			std::vector<std::string> worldsToBackup;
 			for (Json::Value::iterator itr = server["worldsToBackup"].begin(); itr != server["worldsToBackup"].end(); itr++) {
 				Json::Value world = (*itr);
-				worldsToBackup.push_back(world.asString());
+				worldsToBackup.push_back((const std::string) world.asString());
 			}
 			servers->push_back(
 					new MinecraftServerDaemon::GenericServer(serverName, serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount,
