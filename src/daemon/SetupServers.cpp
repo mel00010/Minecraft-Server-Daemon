@@ -21,18 +21,18 @@
  *
  *******************************************************************************/
 
-#include <config.h>
 #include <BukkitServer.hpp>
 #include <BungeeCordServer.hpp>
+#include <config.h>
 #include <ForgeServer.hpp>
 #include <GenericServer.hpp>
-#include <json/value.h>
-#include <log4cpp/Category.hh>
+#include <json/json.h>
 #include <SpigotServer.hpp>
 #include <VanillaServer.hpp>
 #include "SetupServers.hpp"
 #include <cstdlib>
 #include <string>
+
 /**
  * Sets up servers using the data from the daemon config file.
  * @param _config
