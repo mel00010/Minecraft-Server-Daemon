@@ -1112,7 +1112,7 @@ IGNORE_PREFIX          =
 # If the GENERATE_HTML tag is set to YES, doxygen will generate HTML output
 # The default value is: YES.
 
-GENERATE_HTML          = $(DOXYGEN_CREATE_HTML)
+GENERATE_HTML          = @doxygen_create_html@
 
 # The HTML_OUTPUT tag is used to specify where the HTML docs will be put. If a
 # relative path is entered the value of OUTPUT_DIRECTORY will be put in front of
@@ -1656,7 +1656,7 @@ EXTRA_SEARCH_MAPPINGS  =
 # If the GENERATE_LATEX tag is set to YES, doxygen will generate LaTeX output.
 # The default value is: YES.
 
-GENERATE_LATEX         = $(DOXYGEN_CREATE_LATEX)
+GENERATE_LATEX         = @doxygen_create_latex@
 
 # The LATEX_OUTPUT tag is used to specify where the LaTeX docs will be put. If a
 # relative path is entered the value of OUTPUT_DIRECTORY will be put in front of
@@ -1827,7 +1827,7 @@ LATEX_TIMESTAMP        = NO
 # readers/editors.
 # The default value is: NO.
 
-GENERATE_RTF           = $(DOXYGEN_CREATE_RTF)
+GENERATE_RTF           = @doxygen_create_rtf@
 
 # The RTF_OUTPUT tag is used to specify where the RTF docs will be put. If a
 # relative path is entered the value of OUTPUT_DIRECTORY will be put in front of
@@ -1892,7 +1892,7 @@ RTF_SOURCE_CODE        = NO
 # classes and files.
 # The default value is: NO.
 
-GENERATE_MAN           = $(DOXYGEN_CREATE_MAN)
+GENERATE_MAN           = @doxygen_create_man@
 
 # The MAN_OUTPUT tag is used to specify where the man pages will be put. If a
 # relative path is entered the value of OUTPUT_DIRECTORY will be put in front of
@@ -1936,7 +1936,7 @@ MAN_LINKS              = NO
 # captures the structure of the code including all documentation.
 # The default value is: NO.
 
-GENERATE_XML           = $(DOXYGEN_CREATE_XML)
+GENERATE_XML           = @doxygen_create_xml@
 
 # The XML_OUTPUT tag is used to specify where the XML pages will be put. If a
 # relative path is entered the value of OUTPUT_DIRECTORY will be put in front of
@@ -1963,7 +1963,7 @@ XML_PROGRAMLISTING     = YES
 # that can be used to generate PDF.
 # The default value is: NO.
 
-GENERATE_DOCBOOK       = $(DOXYGEN_CREATE_DOCBOOK)
+GENERATE_DOCBOOK       = @doxygen_create_docbook@
 
 # The DOCBOOK_OUTPUT tag is used to specify where the Docbook pages will be put.
 # If a relative path is entered the value of OUTPUT_DIRECTORY will be put in

@@ -1,9 +1,4 @@
 if HAVE_DOXYGEN
-if DOXYGEN_CREATE_MAN
-dist_man_MANS = man/man3/man_page_1.3 man/man3/man_page_2.3
-man/man3/man_page_1.3: doxyfile.stamp
-man/man3/man_page_2.3: doxyfile.stamp
-endif
 
 doxyfile.stamp:
 	$(DOXYGEN) Doxyfile

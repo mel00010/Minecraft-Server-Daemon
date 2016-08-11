@@ -9,16 +9,27 @@ AC_CONFIG_FILES(
  		src/client/Makefile
  		docs/Doxyfile
  		docs/Makefile
+ 		config/log4cpp.properties
+ 		config/config.json
+ 		config/Makefile
 	]
 )
 AC_LANG_PUSH([C++])
 
+# Check for dependencies
+PKG_CHECK_MODULES([libevent],[libevent])
+PKG_CHECK_MODULES([log4cpp],[log4cpp])
+PKG_CHECK_MODULES([ncurses],[ncurses])
+
+# Test for doxyen's existence.  If true, define the HAVE_DOXYGEN variable. 
 AC_CHECK_PROGS([DOXYGEN], [doxygen])
 if test -z "$DOXYGEN";
-   then AC_MSG_WARN([Doxygen not bfound - continuing without Doxygen support])
+   then AC_MSG_WARN([Doxygen not found - continuing without Doxygen support])
 fi
 AM_CONDITIONAL([HAVE_DOXYGEN], 
-[test -n "$DOXYGEN"])#AM_COND_IF([HAVE_DOXYGEN], [AC_CONFIG_FILES([docs/Doxyfile])])
+[test -n "$DOXYGEN"])
+
+
 # Add command line options for configuring doxygen output.
 AC_ARG_ENABLE([doxygen_create_html],
 	[  --enable-doxygen_create_html       Enable creation of HTML documentation by doxygen],
@@ -101,20 +112,53 @@ AC_ARG_ENABLE([doxygen_create_docbook],
 AM_CONDITIONAL([DOXYGEN_CREATE_DOCBOOK], [test x$doxygen_create_docbook = xtrue])
 
 
-# Check for dependencies
-PKG_CHECK_MODULES([libevent],[libevent])
-PKG_CHECK_MODULES([log4cpp],[log4cpp])
-PKG_CHECK_MODULES([ncurses],[ncurses])
+#Add output variables allowing for configuration of hard coded program options
+AC_ARG_VAR([LOG_DIR], [Directory logs will be put in.])
+if test -z "$LOG_DIR";
+	then LOG_DIR="/var/log/minecraft" ; AC_MSG_NOTICE(LOG_DIR = $LOG_DIR)
+else
+	AC_MSG_NOTICE(LOG_DIR = $LOG_DIR)
+fi
+
+AC_ARG_VAR([CONFIG_DIR_NAME], [Name of configuration directory in sysconfdir.])
+if test -z "$CONFIG_DIR_NAME";
+	then CONFIG_DIR_NAME="minecraft" ; AC_MSG_NOTICE(CONFIG_DIR_NAME = $CONFIG_DIR_NAME)
+else
+	AC_MSG_NOTICE(CONFIG_DIR_NAME = $CONFIG_DIR_NAME)
+fi
+
+
+AC_ARG_VAR([CONFIG_FILE_NAME], [Absolute path of the daemon configuration file.])
+if test -z "$CONFIG_FILE_NAME";
+	then CONFIG_FILE_NAME="/usr/local/etc/$CONFIG_DIR_NAME/config.json" ; AC_MSG_NOTICE(CONFIG_FILE_NAME = $CONFIG_FILE_NAME)
+else
+	AC_MSG_NOTICE(CONFIG_FILE_NAME = $CONFIG_FILE_NAME)
+fi
+AC_DEFINE_UNQUOTED([__CONFIG_FILE_NAME__], ["$CONFIG_FILE_NAME"], [Config file path])
+AC_ARG_VAR([LOG4CPP_PROPERTY_FILE], [Absolute path of the log4cpp properties file.])
+if test -z "$LOG4CPP_PROPERTY_FILE";
+	then LOG4CPP_PROPERTY_FILE="/usr/local/etc/$CONFIG_DIR_NAME/log4cpp.properties" ; AC_MSG_NOTICE(LOG4CPP_PROPERTY_FILE = $LOG4CPP_PROPERTY_FILE)
+else
+	AC_MSG_NOTICE(LOG4CPP_PROPERTY_FILE = $LOG4CPP_PROPERTY_FILE)
+fi
+AC_DEFINE_UNQUOTED([__LOG4CPP_PROPERTY_FILE__], ["$LOG4CPP_PROPERTY_FILE"], [Log4cpp properties file path])
+
+AC_ARG_VAR([DEFAULT_SERVER_DIR], [Default directory where servers are assumed to be located if an absolute path is not given in the config file.])
+if test -z "$DEFAULT_SERVER_DIR";
+	then DEFAULT_SERVER_DIR="/usr/local/var/$CONFIG_DIR_NAME/servers/" ; AC_MSG_NOTICE(DEFAULT_SERVER_DIR = $DEFAULT_SERVER_DIR)
+else
+	AC_MSG_NOTICE(DEFAULT_SERVER_DIR = $DEFAULT_SERVER_DIR)
+fi
 
 # Create --enable-debug option, allowing debugging to be switched on and off 
 AC_ARG_ENABLE([debug],
 	[  --enable-debug    Turn on debugging],
 	[case "${enableval}" in
-		yes)   debug=true  ;;
-		no)    debug=false ;;
-		true)  debug=true  ;;
-		false) debug=false ;;
-		*) AC_MSG_ERROR([bad value ${enableval} for --enable-debug]) ;;
+		yes)   debug=true; AC_DEFINE([__DEBUGGING__], [], [Debugging]  ;;
+		no)    debug=false;                           	               ;;
+		true)  debug=true; AC_DEFINE([__DEBUGGING__], [], [Debugging]  ;;
+		false) debug=false;                                            ;;
+		*) AC_MSG_ERROR([bad value ${enableval} for --enable-debug])   ;;
 	esac],
 	[debug=false]
 )

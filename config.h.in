@@ -23,3 +23,12 @@
 
 /* Version number of package */
 #undef VERSION
+
+/* Config file path */
+#undef __CONFIG_FILE_NAME__
+
+/* Debugging ;; false */
+#undef __DEBUGGING__
+
+/* Log4cpp properties file path */
+#undef __LOG4CPP_PROPERTY_FILE__

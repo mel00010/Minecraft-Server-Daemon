@@ -1,0 +1,34 @@
+{
+	"servers":
+	[
+		{
+			"serverName":"server",
+			"serverPath":"minecraft",
+			"serverJarName":"minecraft_server.jar",
+			"serverType":"vanilla",
+			"serverAccount":"minecraft",
+			"maxHeapAlloc":2048,
+			"minHeapAlloc":1024,
+			"gcThreadCount":1,
+			"backupPath":"Backups",
+			"worldsToBackup":
+			[
+				"world"
+			],
+			"javaArgs":
+			[
+				"XX:+UseConcMarkSweepGC",
+				"XX:+CMSIncrementalPacing",
+				"XX:+AggressiveOpts"
+			],
+			"serverOptions":
+			[
+				"nogui"
+			]
+		}
+	]
+	"options":
+	{
+		"defaultServerDirectory":"@DEFAULT_SERVER_DIR@"
+	}
+}

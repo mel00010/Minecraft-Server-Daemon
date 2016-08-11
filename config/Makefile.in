@@ -85,7 +85,7 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-subdir = docs
+subdir = config
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
@@ -93,7 +93,7 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 DIST_COMMON = $(srcdir)/Makefile.am $(am__DIST_COMMON)
 mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/config.h
-CONFIG_CLEAN_FILES = Doxyfile
+CONFIG_CLEAN_FILES = log4cpp.properties config.json
 CONFIG_CLEAN_VPATH_FILES =
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -115,7 +115,8 @@ am__can_run_installinfo = \
     *) (install-info --version) >/dev/null 2>&1;; \
   esac
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
-am__DIST_COMMON = $(srcdir)/Doxyfile.in $(srcdir)/Makefile.in
+am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.json.in \
+	$(srcdir)/log4cpp.properties.in
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
 AMTAR = @AMTAR@
@@ -217,7 +218,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-@HAVE_DOXYGEN_TRUE@CLEANFILES = doxyfile.stamp
+CLEANFILES = log4cpp.properties.stamp config.json.stamp
 all: all-am
 
 .SUFFIXES:
@@ -230,9 +231,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign docs/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign config/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign docs/Makefile
+	  $(AUTOMAKE) --foreign config/Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \
@@ -250,7 +251,9 @@ $(top_srcdir)/configure:  $(am__configure_deps)
 $(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
-Doxyfile: $(top_builddir)/config.status $(srcdir)/Doxyfile.in
+log4cpp.properties: $(top_builddir)/config.status $(srcdir)/log4cpp.properties.in
+	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
+config.json: $(top_builddir)/config.status $(srcdir)/config.json.in
 	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
 tags TAGS:
 
@@ -291,7 +294,6 @@ distdir: $(DISTFILES)
 	done
 check-am: all-am
 check: check-am
-@HAVE_DOXYGEN_FALSE@all-local:
 all-am: Makefile all-local
 installdirs:
 install: install-am
@@ -325,10 +327,9 @@ distclean-generic:
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
-@HAVE_DOXYGEN_FALSE@clean-local:
 clean: clean-am
 
-clean-am: clean-generic clean-local mostlyclean-am
+clean-am: clean-generic mostlyclean-am
 
 distclean: distclean-am
 	-rm -f Makefile
@@ -395,32 +396,26 @@ uninstall-am:
 .MAKE: install-am install-strip
 
 .PHONY: all all-am all-local check check-am clean clean-generic \
-	clean-local cscopelist-am ctags-am distclean distclean-generic \
-	distdir dvi dvi-am html html-am info info-am install \
-	install-am install-data install-data-am install-dvi \
-	install-dvi-am install-exec install-exec-am install-html \
-	install-html-am install-info install-info-am install-man \
-	install-pdf install-pdf-am install-ps install-ps-am \
-	install-strip installcheck installcheck-am installdirs \
-	maintainer-clean maintainer-clean-generic mostlyclean \
-	mostlyclean-generic pdf pdf-am ps ps-am tags-am uninstall \
-	uninstall-am
+	cscopelist-am ctags-am distclean distclean-generic distdir dvi \
+	dvi-am html html-am info info-am install install-am \
+	install-data install-data-am install-dvi install-dvi-am \
+	install-exec install-exec-am install-html install-html-am \
+	install-info install-info-am install-man install-pdf \
+	install-pdf-am install-ps install-ps-am install-strip \
+	installcheck installcheck-am installdirs maintainer-clean \
+	maintainer-clean-generic mostlyclean mostlyclean-generic pdf \
+	pdf-am ps ps-am tags-am uninstall uninstall-am
 
 .PRECIOUS: Makefile
 
+log4cpp.properties.stamp:
+	echo "Generating log4cpp.properties"
+	echo Timestamp > log4cpp.properties.stamp
+config.json.stamp:
+	echo "Generating config.json"
+	echo Timestamp > config.json.stamp
 
-@HAVE_DOXYGEN_TRUE@doxyfile.stamp:
-@HAVE_DOXYGEN_TRUE@	$(DOXYGEN) Doxyfile
-@HAVE_DOXYGEN_TRUE@	echo Timestamp > doxyfile.stamp
-
-@HAVE_DOXYGEN_TRUE@all-local: doxyfile.stamp
-@HAVE_DOXYGEN_TRUE@clean-local:
-@DOXYGEN_CREATE_HTML_TRUE@@HAVE_DOXYGEN_TRUE@	rm -rf $(top_srcdir)/docs/html
-@DOXYGEN_CREATE_LATEX_TRUE@@HAVE_DOXYGEN_TRUE@	rm -rf $(top_srcdir)/docs/latex
-@DOXYGEN_CREATE_MAN_TRUE@@HAVE_DOXYGEN_TRUE@	rm -rf $(top_srcdir)/docs/man
-@DOXYGEN_CREATE_RTF_TRUE@@HAVE_DOXYGEN_TRUE@	rm -rf $(top_srcdir)/docs/rtf
-@DOXYGEN_CREATE_XML_TRUE@@HAVE_DOXYGEN_TRUE@	rm -rf $(top_srcdir)/docs/xml
-@DOXYGEN_CREATE_DOCBOOK_TRUE@@HAVE_DOXYGEN_TRUE@	rm -rf $(top_srcdir)/docs/docbook
+all-local: log4cpp.properties.stamp config.json.stamp
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

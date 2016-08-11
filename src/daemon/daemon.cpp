@@ -21,6 +21,7 @@
  *
  *******************************************************************************/
 
+#include <config.h>
 #include <ConfigFileParser.hpp>
 #include <event2/event.h>
 #include <IPC.hpp>
@@ -47,7 +48,7 @@ namespace MinecraftServerDaemon {
  * @return
  */
 int main(void) {
-#if DEBUGGING == 0
+#ifndef __DEBUGGING__
 	/* Our process ID and Session ID */
 	pid_t pid, sid;
 
@@ -70,39 +71,39 @@ int main(void) {
 	}
 	/* If we got a good PID, then
 	 we can exit the parent process. */
-#endif	/* DEBUGGING == 0 */
+#endif	/* __DEBUGGING__ */
 	signal(SIGINT, sigint_handler);
 	/* Change the file mode mask */
 	umask(0);
 	/* Open any logs here */
 	//Logging
 	ConfigFileParser parser;
-	Json::Value config = parser.parseConfigFile("/etc/minecraft/config.json");
-	log4cpp::PropertyConfigurator::configure("/etc/minecraft/log4cpp.properties");
+	Json::Value config = parser.parseConfigFile(__CONFIG_FILE_NAME__);
+	log4cpp::PropertyConfigurator::configure (__LOG4CPP_PROPERTY_FILE__);
 
 	log4cpp::Category& rootLog = log4cpp::Category::getRoot();
 
 	/* Create a new SID for the child process */
-#if DEBUGGING == 0
+#ifndef __DEBUGGING__
 	sid = setsid();
 	if (sid < 0) {
 		/* Log the failure */
 		rootLog.fatal("Failure creating new sessionID for daemon");
 		exit(EXIT_FAILURE);
 	}
-#endif /* DEBUGGING == 0 */
+#endif /* __DEBUGGING__ */
 	/* Change the current working directory */
 	if ((chdir("/")) < 0) {
 		/* Log the failure */
 		rootLog.fatal("Failure changing working directory");
 		exit(EXIT_FAILURE);
 	}
-#if DEBUGGING == 0
+#ifndef __DEBUGGING__
 	/* Close out the standard file descriptors */
 	close(STDIN_FILENO);
 	close(STDOUT_FILENO);
 	close(STDERR_FILENO);
-#endif /* DEBUGGING == 0 */
+#endif /* __DEBUGGING__ */
 	/* Daemon-specific initialization goes here */
 	//Create pipe to recieve commands from control program
 	// Read from config file and set up servers

@@ -1,7 +1,7 @@
-SUBDIRS = docs src/daemon src/client
+SUBDIRS = docs config src/daemon src/client
 dist_doc_DATA = README.md
 #CXXFLAGS= -Wall -g -std=gnu++11 -I /usr/local/include
 LDFLAGS = -L/usr/lib -L/usr/local/lib
 #LIBS = libjsoncpp.a -lboost_regex -lboost_system -lboost_filesystem -lpthread
 install-exec-hook:
-	./post-install.sh
+	CONFIG_DIR_NAME=$(CONFIG_DIR_NAME) LOG4CPP_PROPERTY_FILE=$(LOG4CPP_PROPERTY_FILE) CONFIG_FILE_NAME=$(CONFIG_FILE_NAME) LOG_DIR=$(LOG_DIR) ./post-install.sh
