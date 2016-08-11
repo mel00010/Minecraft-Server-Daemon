@@ -1,5 +1,5 @@
 #
-#  log4cpp.properties
+#  @LOG4CPP_PROPERTY_FILE@
 #  
 #  Copyright 2016 Mel McCalla <melmccalla@gmail.com>
 #  
@@ -27,6 +27,6 @@ log4cpp.appender.rootAppender.layout=PatternLayout
 log4cpp.appender.rootAppender.layout.ConversionPattern=%d %c [%p] %m%n 
 
 log4cpp.appender.A1=FileAppender
-log4cpp.appender.A1.fileName=/var/log/minecraft/daemon.log
+log4cpp.appender.A1.fileName=@LOG_DIR@/daemon.log
 log4cpp.appender.A1.layout=PatternLayout
 log4cpp.appender.A1.layout.ConversionPattern=%d %c [%p] %m%n 
