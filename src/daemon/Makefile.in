@@ -101,10 +101,8 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(includedir)"
 PROGRAMS = $(bin_PROGRAMS)
-am__dirstamp = $(am__leading_dot)dirstamp
 am_minecraftd_OBJECTS = minecraftd-daemon.$(OBJEXT) \
 	minecraftd-ConfigFileParser.$(OBJEXT) \
-	json/minecraftd-jsoncpp.$(OBJEXT) \
 	minecraftd-MainLoop.$(OBJEXT) minecraftd-IPC.$(OBJEXT) \
 	minecraftd-Server.$(OBJEXT) minecraftd-SetupServers.$(OBJEXT) \
 	minecraftd-BukkitServer.$(OBJEXT) \
@@ -305,10 +303,10 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-minecraftd_SOURCES = daemon.cpp ConfigFileParser.cpp json/jsoncpp.cpp MainLoop.cpp IPC.cpp Server.cpp SetupServers.cpp BukkitServer.cpp BungeeCordServer.cpp ForgeServer.cpp GenericServer.cpp SpigotServer.cpp VanillaServer.cpp 
+minecraftd_SOURCES = daemon.cpp ConfigFileParser.cpp MainLoop.cpp IPC.cpp Server.cpp SetupServers.cpp BukkitServer.cpp BungeeCordServer.cpp ForgeServer.cpp GenericServer.cpp SpigotServer.cpp VanillaServer.cpp 
 minecraftd_CXXFLAGS = -Wall -Wextra -g -std=gnu++11 -I /usr/local/include
 include_HEADERS = ConfigFileParser.hpp MainLoop.hpp Server.hpp IPC.hpp SetupServers.hpp ServerPropertyFileParser.hpp BukkitServer.hpp BungeeCordServer.hpp ForgeServer.hpp GenericServer.hpp SpigotServer.hpp VanillaServer.hpp
-minecraftd_LDFLAGS = -pthread -levent -Lusr/log4cpp/lib -llog4cpp -lcurl
+minecraftd_LDFLAGS = -pthread -levent -Lusr/log4cpp/lib -llog4cpp -lcurl -ljsoncpp
 all: all-am
 
 .SUFFIXES:
@@ -384,14 +382,6 @@ uninstall-binPROGRAMS:
 
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
-json/$(am__dirstamp):
-	@$(MKDIR_P) json
-	@: > json/$(am__dirstamp)
-json/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) json/$(DEPDIR)
-	@: > json/$(DEPDIR)/$(am__dirstamp)
-json/minecraftd-jsoncpp.$(OBJEXT): json/$(am__dirstamp) \
-	json/$(DEPDIR)/$(am__dirstamp)
 
 minecraftd$(EXEEXT): $(minecraftd_OBJECTS) $(minecraftd_DEPENDENCIES) $(EXTRA_minecraftd_DEPENDENCIES) 
 	@rm -f minecraftd$(EXEEXT)
@@ -399,7 +389,6 @@ minecraftd$(EXEEXT): $(minecraftd_OBJECTS) $(minecraftd_DEPENDENCIES) $(EXTRA_mi
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
-	-rm -f json/*.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
@@ -416,7 +405,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-SpigotServer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-VanillaServer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-daemon.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@json/$(DEPDIR)/minecraftd-jsoncpp.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -461,20 +449,6 @@ minecraftd-ConfigFileParser.obj: ConfigFileParser.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='ConfigFileParser.cpp' object='minecraftd-ConfigFileParser.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-ConfigFileParser.obj `if test -f 'ConfigFileParser.cpp'; then $(CYGPATH_W) 'ConfigFileParser.cpp'; else $(CYGPATH_W) '$(srcdir)/ConfigFileParser.cpp'; fi`
-
-json/minecraftd-jsoncpp.o: json/jsoncpp.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT json/minecraftd-jsoncpp.o -MD -MP -MF json/$(DEPDIR)/minecraftd-jsoncpp.Tpo -c -o json/minecraftd-jsoncpp.o `test -f 'json/jsoncpp.cpp' || echo '$(srcdir)/'`json/jsoncpp.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) json/$(DEPDIR)/minecraftd-jsoncpp.Tpo json/$(DEPDIR)/minecraftd-jsoncpp.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='json/jsoncpp.cpp' object='json/minecraftd-jsoncpp.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o json/minecraftd-jsoncpp.o `test -f 'json/jsoncpp.cpp' || echo '$(srcdir)/'`json/jsoncpp.cpp
-
-json/minecraftd-jsoncpp.obj: json/jsoncpp.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT json/minecraftd-jsoncpp.obj -MD -MP -MF json/$(DEPDIR)/minecraftd-jsoncpp.Tpo -c -o json/minecraftd-jsoncpp.obj `if test -f 'json/jsoncpp.cpp'; then $(CYGPATH_W) 'json/jsoncpp.cpp'; else $(CYGPATH_W) '$(srcdir)/json/jsoncpp.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) json/$(DEPDIR)/minecraftd-jsoncpp.Tpo json/$(DEPDIR)/minecraftd-jsoncpp.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='json/jsoncpp.cpp' object='json/minecraftd-jsoncpp.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o json/minecraftd-jsoncpp.obj `if test -f 'json/jsoncpp.cpp'; then $(CYGPATH_W) 'json/jsoncpp.cpp'; else $(CYGPATH_W) '$(srcdir)/json/jsoncpp.cpp'; fi`
 
 minecraftd-MainLoop.o: MainLoop.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-MainLoop.o -MD -MP -MF $(DEPDIR)/minecraftd-MainLoop.Tpo -c -o minecraftd-MainLoop.o `test -f 'MainLoop.cpp' || echo '$(srcdir)/'`MainLoop.cpp
@@ -752,8 +726,6 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
-	-rm -f json/$(DEPDIR)/$(am__dirstamp)
-	-rm -f json/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -763,7 +735,7 @@ clean: clean-am
 clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf ./$(DEPDIR) json/$(DEPDIR)
+	-rm -rf ./$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -809,7 +781,7 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf ./$(DEPDIR) json/$(DEPDIR)
+	-rm -rf ./$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
