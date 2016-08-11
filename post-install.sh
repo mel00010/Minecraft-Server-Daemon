@@ -21,52 +21,52 @@
 #  
 #  
 #  
-groupadd minecraft
-useradd -gminecraft -m minecraft
-if [ -d "/etc/minecraft" ]
+groupadd minecraft || echo "Group minecraft already exists"
+useradd -gminecraft -m minecraft || echo "User minecraft already exists"
+if [ -d "$sysconfdir/$CONFIG_DIR_NAME" ]
 then 
-	echo "Directory /etc/minecraft exists.  Not creating /etc/minecraft."
+	echo "Directory /usr/local/etc/$CONFIG_DIR_NAME exists.  Not creating /usr/local/etc/$CONFIG_DIR_NAME."
 else
-	echo "Creating directory /etc/minecraft"
-	mkdir /etc/minecraft
-	chmod -R 755 /etc/minecraft
-	chown -R minecraft:minecraft /etc/minecraft
+	echo "Creating directory /usr/local/etc/$CONFIG_DIR_NAME"
+	mkdir /usr/local/etc/$CONFIG_DIR_NAME
+	chmod -R 755 /usr/local/etc/$CONFIG_DIR_NAME
+	chown -R minecraft:minecraft /usr/local/etc/$CONFIG_DIR_NAME
 fi
-if [ -d "/var/log/minecraft" ]
+if [ -d "$LOG_DIR" ]
 then
-	echo "Directory /var/log/minecraft exists.  Not creating /var/log/minecraft."
+	echo "Directory $LOG_DIR exists.  Not creating $LOG_DIR."
 else
-	echo "Creating directory /var/log/minecraft"
-	mkdir /var/log/minecraft
-	chmod -R 755 /var/log/minecraft
-	chown -R minecraft:minecraft /var/log/minecraft
+	echo "Creating directory $LOG_DIR"
+	mkdir $LOG_DIR
+	chmod -R 755 $LOG_DIR
+	chown -R minecraft:minecraft $LOG_DIR
 fi
 if [ -d "/var/log/minecraft/servers" ]
 then 
-	echo "Directory /var/log/minecraft/servers exists.  Not creating /var/log/minecraft/servers."
+	echo "Directory $LOG_DIR/servers exists.  Not creating $LOG_DIR/servers."
 else
-	echo "Creating directory /var/log/minecraft/servers"
-	mkdir /var/log/minecraft/servers
-	chmod -R 755 /var/log/minecraft/servers
-	chown -R minecraft:minecraft /var/log/minecraft/servers
+	echo "Creating directory $LOG_DIR/servers"
+	mkdir $LOG_DIR/servers
+	chmod -R 755 $LOG_DIR/servers
+	chown -R minecraft:minecraft $LOG_DIR/servers
 fi
-if [ -e "/etc/minecraft/log4cpp.properties" ]
+if [ -e "$LOG4CPP_PROPERTY_FILE" ]
 then 
-	echo "File /etc/minecraft/log4cpp.properties exists.  Not creating /etc/minecraft/log4cpp.properties."
+	echo "File $LOG4CPP_PROPERTY_FILE exists.  Not creating $LOG4CPP_PROPERTY_FILE."
 else
-	echo "Creating file /etc/minecraft/log4cpp.properties"
-	cp log4cpp.properties /etc/minecraft/log4cpp.properties
-	chmod 755 /etc/minecraft/log4cpp.properties
-	chown minecraft:minecraft /etc/minecraft/log4cpp.properties
+	echo "Creating file $LOG4CPP_PROPERTY_FILE"
+	cp log4cpp.properties $LOG4CPP_PROPERTY_FILE
+	chmod 755 $LOG4CPP_PROPERTY_FILE
+	chown minecraft:minecraft $LOG4CPP_PROPERTY_FILE
 fi
-if [ -e "/etc/minecraft/config.json" ]
+if [ -e "$CONFIG_FILE_NAME" ]
 then 
-	echo "File /etc/minecraft/config.json exists.  Not creating /etc/minecraft/config.json."
+	echo "File $CONFIG_FILE_NAME exists.  Not creating $CONFIG_FILE_NAME."
 else
-	echo "Creating file /etc/minecraft/config.json"
-	cp config.json /etc/minecraft/config.json
-	chmod 755 /etc/minecraft/config.json
-	chown minecraft:minecraft /etc/minecraft/config.json
+	echo "Creating file $CONFIG_FILE_NAME"
+	cp config.json $CONFIG_FILE_NAME
+	chmod 755 $CONFIG_FILE_NAME
+	chown minecraft:minecraft $CONFIG_FILE_NAME
 fi
 if [ -d "/etc/bash_completion.d" ]
 then
@@ -77,5 +77,4 @@ then
 else 
 	echo "Directory /etc/bash_completion.d not found.  Not installing bash autocompletion."
 fi
-exit 0;
-
+exit 0
