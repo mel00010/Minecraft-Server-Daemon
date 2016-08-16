@@ -78,24 +78,12 @@ void BungeeCordServer::updateServer(__attribute__((unused))     std::string vers
 void BungeeCordServer::backupServer() {
 	log->debug("BungeeCordServer::backupServer");
 	log->info("Starting backup");
-	*this << "say SERVER BACKUP STARTING. Server going readonly..." << std::endl;
-	*this << "save-off" << std::endl;
-	*this << "save-all" << std::endl;
 	time_t now = time(0);
 	struct tm tstruct;
 	char buf[80];
 	tstruct = *localtime(&now);
 	std::strftime(buf, sizeof(buf), "%Y-%m-%d_%Hh%M", &tstruct);
 	std::string time(buf);
-	for (std::string world : worldsToBackup) {
-		log->info("Backing up " + world);
-		std::string tarCommand = "tar -C \"" + serverPath + "\" -cf " + serverPath + "/" + backupPath + "/" + world + "_" + time + ".tar\" " + world;
-		std::string gzipCommand = "gzip -f \"" + serverPath + "/" + backupPath + "/" + world + "_" + time + ".tar\"";
-		log->info(tarCommand);
-		system(tarCommand.c_str());
-		log->info(gzipCommand);
-		system(gzipCommand.c_str());
-	}
 	log->info("Backing up " + serverJarName);
 	std::string copyJarCommand = "cp \"" + serverPath + "/" + serverJarName + "\" \"" + backupPath + "/" + serverJarName.substr(0, serverJarName.size() - 4)
 			+ "_" + time + ".jar\"";
@@ -112,9 +100,6 @@ void BungeeCordServer::backupServer() {
 void BungeeCordServer::backupServer(std::string _backupPath) {
 	log->debug("BungeeCordServer::backupServer");
 	log->info("Starting backup");
-	*this << "say SERVER BACKUP STARTING. Server going readonly..." << std::endl;
-	*this << "save-off" << std::endl;
-	*this << "save-all" << std::endl;
 	time_t now = time(0);
 
 	struct tm tstruct;
@@ -135,7 +120,7 @@ void BungeeCordServer::backupServer(std::string _backupPath) {
  * Reloads the server.
  */
 void BungeeCordServer::reloadServer() {
-	*this << "reload" << std::endl;
+	*this << "greload" << std::endl;
 }
 /**
  * Starts the server.
