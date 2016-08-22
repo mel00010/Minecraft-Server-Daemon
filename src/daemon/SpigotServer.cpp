@@ -155,7 +155,8 @@ void SpigotServer::startServer() {
 		chdir(serverPath.c_str());
 		launchServerProcess(serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, javaArgs, serverOptions);
 		log->debug("Launched server process");
-		std::thread outputListenerThread(&Server::outputListenerThread, serverPID, childProcessStdout[PIPE_READ], base, log, listeners);
+		std::thread outputListenerThread(&Server::outputListenerThread, serverPID, serverName, this, childProcessStdout[PIPE_READ], base, log, listeners,
+				players);
 		outputListenerThread.detach();
 	}
 }

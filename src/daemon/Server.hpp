@@ -36,6 +36,7 @@
 #include <string>
 #include <vector>
 
+#include "Player.hpp"
 #include "ServerPropertyFileParser.hpp"
 
 namespace MinecraftServerDaemon {
@@ -72,9 +73,12 @@ class Server {
 		 * This struct contains the data passed to Server::serverOutputEvent by libevent.
 		 */
 		struct ServerOutputEventData {
+				std::string serverName;
+				Server* server;
 				struct event_base* base;
 				log4cpp::Category* log;
 				std::vector<Listener*>* listeners;
+				std::vector<Player*>* players;
 		};
 		/**
 		 * Typedef defining the ServerManipulator type for use by the stream operators.
@@ -194,6 +198,10 @@ class Server {
 		 * Vector of listener objects used by Server::serverOutputEvent to distribute data.
 		 */
 		std::vector<Listener*>* listeners = new std::vector<Listener*>;
+		/**
+		 *
+		 */
+		std::vector<Player*>* players = new std::vector<Player*>;
 	public:
 		/**
 		 * Tests if the server process is running.
@@ -212,6 +220,13 @@ class Server {
 			} else {
 				return 0;
 			}
+		}
+		/**
+		 * Returns the vector of player objects.
+		 * @return
+		 */
+		std::vector<Player*>* getPlayerVector() {
+			return players;
 		}
 		template<typename T>
 		/**
@@ -257,13 +272,16 @@ class Server {
 		 * Function launched as a thread to listen for output on the server process.
 		 * Uses libevent to call Server::serverOutputEvent when there is data on the server process's output pipe.
 		 * @param serverPID
+		 * @param serverName
 		 * @param childProcessStdout
 		 * @param base
 		 * @param log
 		 * @param listeners
+		 * @param players
 		 */
-		static void outputListenerThread(int serverPID, int childProcessStdout, struct event_base* base, log4cpp::Category* log,
-				std::vector<Listener*>* listeners);
+		static void outputListenerThread(int serverPID, std::string serverName, Server* server, int childProcessStdout, struct event_base* base,
+				log4cpp::Category* log,
+				std::vector<Listener*>* listeners, std::vector<Player*>* players);
 		/**
 		 * Gets data from child process's output pipe, splits it into lines, and distributes it to the functions waiting for server output.
 		 * @param fd

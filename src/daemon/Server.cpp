@@ -33,16 +33,20 @@ namespace MinecraftServerDaemon {
  * Function launched as a thread to listen for output on the server process.
  * Uses libevent to call Server::serverOutputEvent when there is data on the server process's output pipe.
  * @param serverPID
+ * @param serverName
  * @param childProcessStdout
  * @param base
  * @param log
  * @param listeners
+ * @param players
  */
-void Server::outputListenerThread(__attribute__((unused)) int serverPID, int childProcessStdout, struct event_base* base, log4cpp::Category* log,
-		std::vector<Listener*>* listeners) {
+void Server::outputListenerThread(__attribute__((unused)) int serverPID, std::string serverName, Server* server, int childProcessStdout,
+		struct event_base* base,
+		log4cpp::Category* log,
+		std::vector<Listener*>* listeners, std::vector<Player*>* players) {
 	log->debug("Server::outputListenerThread");
 	struct event *outputListener;
-	ServerOutputEventData* data = new ServerOutputEventData { base, log, listeners };
+	ServerOutputEventData* data = new ServerOutputEventData { serverName, server, base, log, listeners, players };
 	outputListener = event_new(base, (evutil_socket_t) childProcessStdout, EV_READ | EV_PERSIST, Server::serverOutputEvent, (void*) data);
 	event_add(outputListener, NULL);
 	event_base_dispatch(base);
@@ -54,7 +58,6 @@ void Server::outputListenerThread(__attribute__((unused)) int serverPID, int chi
  * @param arg
  */
 void Server::serverOutputEvent(evutil_socket_t fd, __attribute__((unused)) short event, void *arg) {
-	//~ ((ServerOutputEventData*)arg)->log->info("Server::fifo_read");
 	char buf[262144];
 	int len;
 	len = read(fd, buf, sizeof(buf) - 1);
@@ -74,7 +77,31 @@ void Server::serverOutputEvent(evutil_socket_t fd, __attribute__((unused)) short
 	char* chars_array = strtok(buf, "\n");
 	// Loop until there are no more lines left in buf.
 	while (chars_array != NULL) {
+		// Check if the length of chars_array is greater than 0.
 		if (strlen(chars_array) > 0) {
+			{
+				std::string playerListFilterBuffer(chars_array);
+				std::string cutPlayerListFilterBuffer = playerListFilterBuffer.substr(17, std::string::npos);
+				std::string logInFilterString(" logged in with entity id");
+				std::string logOutFilterString(" lost connection");
+				size_t logInTest = cutPlayerListFilterBuffer.find(logInFilterString);
+				size_t logOutTest = cutPlayerListFilterBuffer.find(logOutFilterString);
+				if (logInTest != std::string::npos) {
+					std::string playerName = cutPlayerListFilterBuffer.substr(0, cutPlayerListFilterBuffer.find('['));
+					std::string ipAddress = cutPlayerListFilterBuffer.substr(cutPlayerListFilterBuffer.find('/') + 1,
+							cutPlayerListFilterBuffer.find(':') - cutPlayerListFilterBuffer.find('/') - 1);
+					((ServerOutputEventData*) arg)->players->push_back(
+							new Player(playerName, ipAddress, ((ServerOutputEventData*) arg)->serverName, ((ServerOutputEventData*) arg)->server));
+				} else if (logOutTest != std::string::npos) {
+					std::string playerName = cutPlayerListFilterBuffer.substr(0, cutPlayerListFilterBuffer.find(" lost connection"));
+					for (std::vector<Player*>::iterator i = ((ServerOutputEventData*) arg)->players->begin();
+							i != ((ServerOutputEventData*) arg)->players->end(); i++) {
+						if (playerName == (*i)->playerName) {
+							((ServerOutputEventData*) arg)->players->erase(i);
+						}
+					}
+				}
+			}
 			// If there are no % characters in chars_array, run the next section.
 			if (strchr(chars_array, '%') == NULL) {
 				((ServerOutputEventData*) arg)->log->info(chars_array);

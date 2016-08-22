@@ -102,8 +102,8 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(includedir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_minecraftd_OBJECTS = minecraftd-daemon.$(OBJEXT) \
-	minecraftd-ConfigFileParser.$(OBJEXT) \
-	minecraftd-MainLoop.$(OBJEXT) minecraftd-IPC.$(OBJEXT) \
+	minecraftd-ConfigFileParser.$(OBJEXT) minecraftd-IPC.$(OBJEXT) \
+	minecraftd-MainLoop.$(OBJEXT) minecraftd-Player.$(OBJEXT) \
 	minecraftd-Server.$(OBJEXT) minecraftd-SetupServers.$(OBJEXT) \
 	minecraftd-BukkitServer.$(OBJEXT) \
 	minecraftd-BungeeCordServer.$(OBJEXT) \
@@ -303,9 +303,9 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-minecraftd_SOURCES = daemon.cpp ConfigFileParser.cpp MainLoop.cpp IPC.cpp Server.cpp SetupServers.cpp BukkitServer.cpp BungeeCordServer.cpp ForgeServer.cpp GenericServer.cpp SpigotServer.cpp VanillaServer.cpp 
+minecraftd_SOURCES = daemon.cpp ConfigFileParser.cpp IPC.cpp MainLoop.cpp Player.cpp Server.cpp SetupServers.cpp BukkitServer.cpp BungeeCordServer.cpp ForgeServer.cpp GenericServer.cpp SpigotServer.cpp VanillaServer.cpp 
 minecraftd_CXXFLAGS = -Wall -Wextra -g -std=gnu++11 -I /usr/local/include
-include_HEADERS = ConfigFileParser.hpp MainLoop.hpp Server.hpp IPC.hpp SetupServers.hpp ServerPropertyFileParser.hpp BukkitServer.hpp BungeeCordServer.hpp ForgeServer.hpp GenericServer.hpp SpigotServer.hpp VanillaServer.hpp
+include_HEADERS = ConfigFileParser.hpp MainLoop.hpp Player.hpp Server.hpp IPC.hpp SetupServers.hpp ServerPropertyFileParser.hpp BukkitServer.hpp BungeeCordServer.hpp ForgeServer.hpp GenericServer.hpp SpigotServer.hpp VanillaServer.hpp
 minecraftd_LDFLAGS = -pthread -levent -Lusr/log4cpp/lib -llog4cpp -lcurl -ljsoncpp
 all: all-am
 
@@ -400,6 +400,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-GenericServer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-IPC.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-MainLoop.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-Player.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-Server.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-SetupServers.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-SpigotServer.Po@am__quote@
@@ -450,6 +451,20 @@ minecraftd-ConfigFileParser.obj: ConfigFileParser.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-ConfigFileParser.obj `if test -f 'ConfigFileParser.cpp'; then $(CYGPATH_W) 'ConfigFileParser.cpp'; else $(CYGPATH_W) '$(srcdir)/ConfigFileParser.cpp'; fi`
 
+minecraftd-IPC.o: IPC.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-IPC.o -MD -MP -MF $(DEPDIR)/minecraftd-IPC.Tpo -c -o minecraftd-IPC.o `test -f 'IPC.cpp' || echo '$(srcdir)/'`IPC.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-IPC.Tpo $(DEPDIR)/minecraftd-IPC.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='IPC.cpp' object='minecraftd-IPC.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-IPC.o `test -f 'IPC.cpp' || echo '$(srcdir)/'`IPC.cpp
+
+minecraftd-IPC.obj: IPC.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-IPC.obj -MD -MP -MF $(DEPDIR)/minecraftd-IPC.Tpo -c -o minecraftd-IPC.obj `if test -f 'IPC.cpp'; then $(CYGPATH_W) 'IPC.cpp'; else $(CYGPATH_W) '$(srcdir)/IPC.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-IPC.Tpo $(DEPDIR)/minecraftd-IPC.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='IPC.cpp' object='minecraftd-IPC.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-IPC.obj `if test -f 'IPC.cpp'; then $(CYGPATH_W) 'IPC.cpp'; else $(CYGPATH_W) '$(srcdir)/IPC.cpp'; fi`
+
 minecraftd-MainLoop.o: MainLoop.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-MainLoop.o -MD -MP -MF $(DEPDIR)/minecraftd-MainLoop.Tpo -c -o minecraftd-MainLoop.o `test -f 'MainLoop.cpp' || echo '$(srcdir)/'`MainLoop.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-MainLoop.Tpo $(DEPDIR)/minecraftd-MainLoop.Po
@@ -464,19 +479,19 @@ minecraftd-MainLoop.obj: MainLoop.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-MainLoop.obj `if test -f 'MainLoop.cpp'; then $(CYGPATH_W) 'MainLoop.cpp'; else $(CYGPATH_W) '$(srcdir)/MainLoop.cpp'; fi`
 
-minecraftd-IPC.o: IPC.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-IPC.o -MD -MP -MF $(DEPDIR)/minecraftd-IPC.Tpo -c -o minecraftd-IPC.o `test -f 'IPC.cpp' || echo '$(srcdir)/'`IPC.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-IPC.Tpo $(DEPDIR)/minecraftd-IPC.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='IPC.cpp' object='minecraftd-IPC.o' libtool=no @AMDEPBACKSLASH@
+minecraftd-Player.o: Player.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-Player.o -MD -MP -MF $(DEPDIR)/minecraftd-Player.Tpo -c -o minecraftd-Player.o `test -f 'Player.cpp' || echo '$(srcdir)/'`Player.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-Player.Tpo $(DEPDIR)/minecraftd-Player.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='Player.cpp' object='minecraftd-Player.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-IPC.o `test -f 'IPC.cpp' || echo '$(srcdir)/'`IPC.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-Player.o `test -f 'Player.cpp' || echo '$(srcdir)/'`Player.cpp
 
-minecraftd-IPC.obj: IPC.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-IPC.obj -MD -MP -MF $(DEPDIR)/minecraftd-IPC.Tpo -c -o minecraftd-IPC.obj `if test -f 'IPC.cpp'; then $(CYGPATH_W) 'IPC.cpp'; else $(CYGPATH_W) '$(srcdir)/IPC.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-IPC.Tpo $(DEPDIR)/minecraftd-IPC.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='IPC.cpp' object='minecraftd-IPC.obj' libtool=no @AMDEPBACKSLASH@
+minecraftd-Player.obj: Player.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-Player.obj -MD -MP -MF $(DEPDIR)/minecraftd-Player.Tpo -c -o minecraftd-Player.obj `if test -f 'Player.cpp'; then $(CYGPATH_W) 'Player.cpp'; else $(CYGPATH_W) '$(srcdir)/Player.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-Player.Tpo $(DEPDIR)/minecraftd-Player.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='Player.cpp' object='minecraftd-Player.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-IPC.obj `if test -f 'IPC.cpp'; then $(CYGPATH_W) 'IPC.cpp'; else $(CYGPATH_W) '$(srcdir)/IPC.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-Player.obj `if test -f 'Player.cpp'; then $(CYGPATH_W) 'Player.cpp'; else $(CYGPATH_W) '$(srcdir)/Player.cpp'; fi`
 
 minecraftd-Server.o: Server.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-Server.o -MD -MP -MF $(DEPDIR)/minecraftd-Server.Tpo -c -o minecraftd-Server.o `test -f 'Server.cpp' || echo '$(srcdir)/'`Server.cpp
