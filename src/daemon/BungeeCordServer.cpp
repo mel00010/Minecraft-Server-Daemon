@@ -211,7 +211,7 @@ std::string BungeeCordServer::listOnlinePlayers() {
  * @param playerName
  * @return
  */
-bool BungeeCordServer::listOnlinePlayers(__attribute__((unused))     std::string playerName) {
+bool BungeeCordServer::listOnlinePlayers(__attribute__((unused))  std::string playerName) {
 	log->debug("BungeeCordServer::listOnlinePlayers");
 	std::string* callbackOutput = new std::string;
 	*callbackOutput = '\0';

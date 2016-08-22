@@ -68,51 +68,72 @@ void Server::serverOutputEvent(evutil_socket_t fd, __attribute__((unused)) short
 			return;
 		}
 	}
+	// Write null to the last element in buf
 	buf[len] = '\0';
-	//~ ((ServerOutputEventData*)arg)->log->info("Wrote null to end of buf");
+	// Split buf into lines and store the first one into chars_array.
 	char* chars_array = strtok(buf, "\n");
+	// Loop until there are no more lines left in buf.
 	while (chars_array != NULL) {
 		if (strlen(chars_array) > 0) {
+			// If there are no % characters in chars_array, run the next section.
 			if (strchr(chars_array, '%') == NULL) {
 				((ServerOutputEventData*) arg)->log->info(chars_array);
+				// Loop through listeners
 				for (std::vector<Listener*>::iterator i = ((ServerOutputEventData*) arg)->listeners->begin();
 						i != ((ServerOutputEventData*) arg)->listeners->end(); i++) {
+					// If the current line number is the same number as the number of lines the listener requested, send out the data.
 					if ((*i)->currentLine == (*i)->lines) {
 						*((*i)->callbackOutput) = (*i)->output;
+						// If the listener is not marked as persistent, delete the listener from the vector.
 						if (!(*i)->persistent) {
 							((ServerOutputEventData*) arg)->listeners->erase(i);
+							// If not, set all of its output variables back to zero.
 						} else {
 							(*i)->currentLine = 0;
 							(*i)->output = '\0';
 							(*i)->callbackOutput = '\0';
 						}
+						// If the current line number does not match the number of lines requested, store it and increment the line counter.
 					} else {
 						(*i)->output = (*i)->output + std::string(chars_array);
 						(*i)->currentLine++;
 					}
 				}
+				// If there are % characters in chars_array, run the next section.
 			} else {
+				// Make chars_array a std::string because it is easier to work with.
 				std::string buffer(chars_array);
 				size_t position;
+				// Create a copy of the initial string that will eventually contain the escaped string.
 				std::string escapeBuffer(buffer);
+				// Find the last % character in the initial string.
 				position = buffer.rfind("%");
+				// Loop until there are no more % characters in the initial string and all of the % characters have been escaped in the escape string.
 				while (position != std::string::npos) {
+					// Escape the % character in the escape string.
 					escapeBuffer.replace(position, 1, "\%");
+					// Delete the % character in the initial string.
 					buffer.erase(position);
+					// Find the last one in the initial string now that the last one has been deleted.
 					position = buffer.rfind("%");
 				}
 				((ServerOutputEventData*) arg)->log->info(escapeBuffer);
+				// Loop through listeners
 				for (std::vector<Listener*>::iterator i = ((ServerOutputEventData*) arg)->listeners->begin();
 						i != ((ServerOutputEventData*) arg)->listeners->end(); i++) {
+					// If the current line number is the same number as the number of lines the listener requested, send out the data.
 					if ((*i)->currentLine == (*i)->lines) {
 						*((*i)->callbackOutput) = (*i)->output;
+						// If the listener is not marked as persistent, delete the listener from the vector.
 						if (!(*i)->persistent) {
 							((ServerOutputEventData*) arg)->listeners->erase(i);
+							// If not, set all of its output variables back to zero.
 						} else {
 							(*i)->currentLine = 0;
 							(*i)->output = '\0';
 							(*i)->callbackOutput = '\0';
 						}
+						// If the current line number does not match the number of lines requested, store it and increment the line counter.
 					} else {
 						(*i)->output = (*i)->output + std::string(chars_array);
 						(*i)->currentLine++;
@@ -120,6 +141,7 @@ void Server::serverOutputEvent(evutil_socket_t fd, __attribute__((unused)) short
 				}
 			}
 		}
+		// Get the next line
 		chars_array = strtok(NULL, "\n");
 	}
 	return;
