@@ -37,6 +37,8 @@
 struct cb_data {
 		std::vector<MinecraftServerDaemon::Server*>* servers;
 		log4cpp::Category& root;
+		struct event_base* base;
+		struct event* event;
 };
 
 /**
@@ -59,6 +61,7 @@ void mainLoop(std::vector<MinecraftServerDaemon::Server*>* servers, log4cpp::Cat
  * @param what
  * @param arg
  */
-void receiveCommand(int controlSocket, short what, void *arg);
+void acceptConnection(int controlSocket, short what, void *arg);
+void readAndProcessMessage(int controlSocket, short what, void *arg);
 
 #endif /* DAEMON_MAINLOOP_HPP_ */

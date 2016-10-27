@@ -58,7 +58,7 @@ void Server::outputListenerThread(__attribute__((unused)) int serverPID, std::st
  * @param arg
  */
 void Server::serverOutputEvent(evutil_socket_t fd, __attribute__((unused)) short event, void *arg) {
-	char buf[262144];
+	char buf[8192];
 	int len;
 	len = read(fd, buf, sizeof(buf) - 1);
 	//~ ((ServerOutputEventData*)arg)->log->info("Read childProcessStdout into buf");
@@ -79,28 +79,37 @@ void Server::serverOutputEvent(evutil_socket_t fd, __attribute__((unused)) short
 	while (chars_array != NULL) {
 		// Check if the length of chars_array is greater than 0.
 		if (strlen(chars_array) > 0) {
-			{
-				std::string playerListFilterBuffer(chars_array);
-				std::string cutPlayerListFilterBuffer = playerListFilterBuffer.substr(17, std::string::npos);
-				std::string logInFilterString(" logged in with entity id");
-				std::string logOutFilterString(" lost connection");
-				size_t logInTest = cutPlayerListFilterBuffer.find(logInFilterString);
-				size_t logOutTest = cutPlayerListFilterBuffer.find(logOutFilterString);
-				if (logInTest != std::string::npos) {
-					std::string playerName = cutPlayerListFilterBuffer.substr(0, cutPlayerListFilterBuffer.find('['));
-					std::string ipAddress = cutPlayerListFilterBuffer.substr(cutPlayerListFilterBuffer.find('/') + 1,
-							cutPlayerListFilterBuffer.find(':') - cutPlayerListFilterBuffer.find('/') - 1);
-					((ServerOutputEventData*) arg)->players->push_back(
-							new Player(playerName, ipAddress, ((ServerOutputEventData*) arg)->serverName, ((ServerOutputEventData*) arg)->server));
-				} else if (logOutTest != std::string::npos) {
-					std::string playerName = cutPlayerListFilterBuffer.substr(0, cutPlayerListFilterBuffer.find(" lost connection"));
-					for (std::vector<Player*>::iterator i = ((ServerOutputEventData*) arg)->players->begin();
-							i != ((ServerOutputEventData*) arg)->players->end(); i++) {
-						if (playerName == (*i)->playerName) {
-							((ServerOutputEventData*) arg)->players->erase(i);
-						}
+			std::string playerListFilterBuffer(chars_array);
+			std::string cutPlayerListFilterBuffer = playerListFilterBuffer.substr(33, std::string::npos);
+			std::string logInFilterString(" logged in with entity id");
+			std::string logOutFilterString(" lost connection");
+			size_t logInTest = cutPlayerListFilterBuffer.find(logInFilterString);
+			size_t logOutTest = cutPlayerListFilterBuffer.find(logOutFilterString);
+			if (logInTest != std::string::npos) {
+				std::string playerName = cutPlayerListFilterBuffer.substr(0, cutPlayerListFilterBuffer.find('['));
+				std::string ipAddress = cutPlayerListFilterBuffer.substr(cutPlayerListFilterBuffer.find('/') + 1,
+						cutPlayerListFilterBuffer.find(':') - cutPlayerListFilterBuffer.find('/') - 1);
+				((ServerOutputEventData*) arg)->log->info(playerName + " logged in.");
+				((ServerOutputEventData*) arg)->log->info(ipAddress);
+				Player* player = new Player(playerName, ipAddress, ((ServerOutputEventData*) arg)->serverName, ((ServerOutputEventData*) arg)->server);
+				std::vector<Player*>* _player = ((ServerOutputEventData*) arg)->players;
+				_player->push_back(player);
+			} else if (logOutTest != std::string::npos) {
+//					std::string playerName = cutPlayerListFilterBuffer.substr(0, cutPlayerListFilterBuffer.find(" lost connection"));
+				for (std::vector<Player*>::iterator l = ((ServerOutputEventData*) arg)->players->begin(); l != ((ServerOutputEventData*) arg)->players->end();
+						) {
+					if (cutPlayerListFilterBuffer.substr(0, cutPlayerListFilterBuffer.find(" lost connection")) == (*l)->playerName) {
+						((ServerOutputEventData*) arg)->log->info((*l)->playerName + " logged out.");
+						((ServerOutputEventData*) arg)->players->erase(l);
+					} else {
+						l++;
 					}
 				}
+			}
+			((ServerOutputEventData*) arg)->log->debug("Players:");
+			for (std::vector<Player*>::iterator l = ((ServerOutputEventData*) arg)->players->begin(); l != ((ServerOutputEventData*) arg)->players->end();
+					l++) {
+				((ServerOutputEventData*) arg)->log->debug((*l)->playerName);
 			}
 			// If there are no % characters in chars_array, run the next section.
 			if (strchr(chars_array, '%') == NULL) {
@@ -115,16 +124,16 @@ void Server::serverOutputEvent(evutil_socket_t fd, __attribute__((unused)) short
 						if (!(*i)->persistent) {
 							((ServerOutputEventData*) arg)->listeners->erase(i);
 							// If not, set all of its output variables back to zero.
-						} else {
+					} else {
 							(*i)->currentLine = 0;
 							(*i)->output = '\0';
 							(*i)->callbackOutput = '\0';
-						}
+					}
 						// If the current line number does not match the number of lines requested, store it and increment the line counter.
 					} else {
 						(*i)->output = (*i)->output + std::string(chars_array);
 						(*i)->currentLine++;
-					}
+				}
 				}
 				// If there are % characters in chars_array, run the next section.
 			} else {
@@ -142,7 +151,7 @@ void Server::serverOutputEvent(evutil_socket_t fd, __attribute__((unused)) short
 					// Delete the % character in the initial string.
 					buffer.erase(position);
 					// Find the last one in the initial string now that the last one has been deleted.
-					position = buffer.rfind("%");
+				position = buffer.rfind("%");
 				}
 				((ServerOutputEventData*) arg)->log->info(escapeBuffer);
 				// Loop through listeners
@@ -155,11 +164,11 @@ void Server::serverOutputEvent(evutil_socket_t fd, __attribute__((unused)) short
 						if (!(*i)->persistent) {
 							((ServerOutputEventData*) arg)->listeners->erase(i);
 							// If not, set all of its output variables back to zero.
-						} else {
+					} else {
 							(*i)->currentLine = 0;
 							(*i)->output = '\0';
 							(*i)->callbackOutput = '\0';
-						}
+					}
 						// If the current line number does not match the number of lines requested, store it and increment the line counter.
 					} else {
 						(*i)->output = (*i)->output + std::string(chars_array);
@@ -189,6 +198,7 @@ void Server::getUIDAndGIDFromUsername(const char* user) {
 	}
 	childProcessUID = pwd->pw_uid;
 	childProcessGID = pwd->pw_gid;
+	delete pwd;
 }
 /**
  * Launches the server process and redirects its stdin, stdout, and stderr into pipes.

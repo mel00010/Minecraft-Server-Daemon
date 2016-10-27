@@ -22,6 +22,8 @@
  *******************************************************************************/
 
 #include <Help.hpp>
+#include <Message.hpp>
+#include <OutputMessage.hpp>
 #include <ParseOptions.hpp>
 #include <Socket.hpp>
 #include <cstdlib>
@@ -31,95 +33,111 @@
 void parseOptions(int argc, char *argv[]) {
 	int Socket = openSocket();
 	std::string option(argv[1]);
+	OutputMessage output;
 	if (option == "list") {
-		writeToSocket("listServers", Socket);
-		std::cout << readFromSocket(Socket) << std::endl;
+		output.command = "listServers";
 	} else if (option == "start") {
 		if (argc > 2) {
-			writeToSocket("startServer", Socket);
-			writeToSocket(argv[2], Socket);
-			//~ sleep(1);
-
-			std::cout << readFromSocket(Socket) << std::endl;
+			output.command = "startServer";
+			output.server = argv[2];
 		}
 	} else if (option == "stop") {
 		if (argc > 2) {
-			writeToSocket("stopServer", Socket);
-			writeToSocket(argv[2], Socket);
-			//~ sleep(1);
-			std::cout << readFromSocket(Socket) << std::endl;
+			output.command = "stopServer";
+			output.server = argv[2];
 		}
 	} else if (option == "restart") {
 		if (argc > 2) {
-			writeToSocket("restartServer", Socket);
-			writeToSocket(argv[2], Socket);
-			//~ sleep(1);
-			std::cout << readFromSocket(Socket) << std::endl;
+			output.command = "restartServer";
+			output.server = argv[2];
 		}
 	} else if (option == "sendcommand") {
 		if (argc > 3) {
-			writeToSocket("sendCommand", Socket);
-			writeToSocket(argv[2], Socket);
-			writeToSocket(argv[3], Socket);
-			//~ sleep(1);
-			std::cout << readFromSocket(Socket) << std::endl;
+			output.command = "sendCommand";
+			output.server = argv[2];
+			output.serverCommand = argv[3];
 		}
 	} else if (option == "status") {
 		if (argc > 2) {
-			writeToSocket("serverStatus", Socket);
-			writeToSocket(argv[2], Socket);
-			//~ sleep(1);
-			std::cout << readFromSocket(Socket) << std::endl;
+			output.command = "serverStatus";
+			output.server = argv[2];
 		}
 	} else if (option == "update") {
 		if (argc > 2) {
-			writeToSocket("updateServer", Socket);
-			writeToSocket(argv[2], Socket);
-			//~ sleep(1);
-			std::cout << readFromSocket(Socket) << std::endl;
+			output.command = "updateServer";
+			output.server = argv[2];
 		}
 	} else if (option == "backup") {
 		if (argc > 2) {
-			writeToSocket("backupServer", Socket);
-			writeToSocket(argv[2], Socket);
-			//~ sleep(1);
-			std::cout << readFromSocket(Socket) << std::endl;
+			output.command = "backupServer";
+			output.server = argv[2];
 		}
 	} else if (option == "listplayers") {
 		if (argc > 3) {
-			writeToSocket("listOnlinePlayersFiltered", Socket);
-			writeToSocket(argv[2], Socket);
-			writeToSocket(argv[3], Socket);
+			output.command = "listOnlinePlayersFiltered";
+			output.server = argv[2];
+			output.player = argv[3];
 		} else if (argc > 2) {
-			writeToSocket("listOnlinePlayers", Socket);
-			writeToSocket(argv[2], Socket);
-			//~ sleep(1);
-			std::cout << readFromSocket(Socket) << std::endl;
+			output.command = "listOnlinePlayers";
+			output.server = argv[2];
 		}
 	} else if (option == "stopall") {
-		writeToSocket("stopAll", Socket);
-		//~ sleep(1);
-		std::cout << readFromSocket(Socket) << std::endl;
+		output.command = "stopAll";
 	} else if (option == "restartall") {
-		writeToSocket("restartAll", Socket);
-		//~ sleep(1);
-		std::cout << readFromSocket(Socket) << std::endl;
+		output.command = "restartAll";
 	} else if (option == "updateall") {
-		writeToSocket("updateAll", Socket);
-		//~ sleep(1);
-		std::cout << readFromSocket(Socket) << std::endl;
+		output.command = "updateAll";
 	} else if (option == "backupall") {
-		writeToSocket("backupAll", Socket);
-		//~ sleep(1);
-		std::cout << readFromSocket(Socket) << std::endl;
+		output.command = "backupAll";
 	} else if (option == "stopdaemon") {
-		writeToSocket("stopDaemon", Socket);
-		//~ sleep(1);
-		std::cout << readFromSocket(Socket) << std::endl;
+		output.command = "stopDaemon";
+	} else if (option == "op") {
+		if (argc > 3) {
+			output.command = "opPlayer";
+			output.server = argv[2];
+			output.player = argv[3];
+		}
+	} else if (option == "deop") {
+		if (argc > 3) {
+			output.command = "deopPlayer";
+			output.server = argv[2];
+			output.player = argv[3];
+		}
+	} else if (option == "ban") {
+		if (argc > 4) {
+			output.command = "banPlayerReason";
+			output.server = argv[2];
+			output.player = argv[3];
+			output.reason = argv[4];
+		} else if (argc > 3) {
+			output.command = "banPlayer";
+			output.server = argv[2];
+			output.player = argv[3];
+		}
+	} else if (option == "pardon") {
+		if (argc > 3) {
+			output.command = "pardonPlayer";
+			output.server = argv[2];
+			output.player = argv[3];
+		}
+	} else if (option == "kick") {
+		if (argc > 4) {
+			output.command = "kickPlayerReason";
+			output.server = argv[2];
+			output.player = argv[3];
+			output.reason = argv[4];
+		} else if (argc > 3) {
+			output.command = "kickPlayer";
+			output.server = argv[2];
+			output.player = argv[3];
+		}
 	} else {
 		std::cout << "Error:  argument " << option << " not found" << std::endl;
 		help(argv[0]);
 		exit(1);
 	}
+	writeToSocket(output, Socket);
+	Message message = readFromSocket(Socket);
+	std::cout << message.messageData << std::endl;
 	closeSocket(Socket);
 }

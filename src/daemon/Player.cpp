@@ -27,48 +27,53 @@
 
 namespace MinecraftServerDaemon {
 
-Player::Player(std::string playerName, std::string ipAddress, std::string serverName, Server* server) :
-		playerName(playerName), ipAddress(ipAddress), serverName(serverName), server(server) {
+Player::Player(std::string _playerName, std::string _ipAddress, std::string _serverName, Server* _server) {
+	playerName = _playerName;
+	ipAddress = _ipAddress;
+	serverName = _serverName;
+	server = _server;
 }
 Player::~Player() {
+	server = nullptr;
 }
 /**
  * Bans a player.
  */
 void Player::ban() {
-	((Server&) *server) << "ban " << playerName << std::endl;
+	(*server) << "ban " << playerName << std::endl;
 }
 /**
  * Bans a player with a reason.
  * @param reason
  */
 void Player::ban(std::string reason) {
-	((Server&) *server) << "ban " << playerName << " " << reason << std::endl;
+	(*server) << "ban " << playerName << " " << reason << std::endl;
 }
 /**
  * Pardons a player.
  * @param playerName
  */
 void Player::pardon(std::string playerName) {
-	((Server&) *server) << "pardon " << playerName << std::endl;
+	(*server) << "pardon " << playerName << std::endl;
 }
 /**
  * Kicks a player.
  */
 void Player::kick() {
-	((Server&) *server) << "kick " << playerName << std::endl;
-} /**
+	(*server) << "kick " << playerName << std::endl;
+}
+/**
  * Kicks a player with a reason.
  * @param reason
  */
 void Player::kick(std::string reason) {
-	((Server&) *server) << "kick " << playerName << " " << reason << std::endl;
+	(*server) << "kick " << playerName << " " << reason << std::endl;
 }
 /**
  * Ops a player.
  */
 void Player::op() {
-	((Server&) *server) << "op " << playerName << std::endl;
+	(*server) << "op " << playerName << std::endl;
 }
 /**
  * Deops a player.

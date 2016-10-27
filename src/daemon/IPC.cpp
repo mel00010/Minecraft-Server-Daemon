@@ -21,8 +21,11 @@
  *
  *******************************************************************************/
 
-
 #include <fcntl.h>
+#include <jsoncpp/json/reader.h>
+#include <jsoncpp/json/value.h>
+#include <jsoncpp/json/writer.h>
+#include <OutputMessage.hpp>
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <unistd.h>
@@ -31,7 +34,7 @@
 #include <cstring>
 #include <iomanip>
 #include <sstream>
-
+#include <string>
 
 /**
  * Creates the control socket used for IPC with the client.
@@ -68,10 +71,15 @@ int createSocket(log4cpp::Category& root) {
  * @param controlSocket
  * @param root
  */
-void writeToSocket(std::string message, int controlSocket, __attribute__((unused))       log4cpp::Category& root) {
+void writeToSocket(MinecraftServerDaemon::OutputMessage message, int controlSocket, __attribute__((unused))  log4cpp::Category& root) {
+	Json::Value encodedMessage;
+	Json::FastWriter writer;
+	encodedMessage["mode"] = message.mode;
+	encodedMessage["messageData"] = message.messageData;
+	std::string messageString(writer.write(encodedMessage));
 	std::ostringstream ss;
-	ss << std::setw(4) << std::setfill('0') << message.size();
-	std::string buf = ss.str() + message;
+	ss << std::setw(8) << std::setfill('0') << messageString.size();
+	std::string buf = ss.str() + messageString;
 	send(controlSocket, buf.c_str(), buf.size(), 0);
 }
 /**
@@ -80,21 +88,37 @@ void writeToSocket(std::string message, int controlSocket, __attribute__((unused
  * @param root
  * @return
  */
-std::string readFromSocket(int controlSocket, log4cpp::Category& root) {
+MinecraftServerDaemon::Message readFromSocket(int controlSocket, log4cpp::Category& root) {
 	int rc;
-	char buff[4];
-	rc = recv(controlSocket, buff, 4, 0);
+	char buff[8];
+	rc = recv(controlSocket, buff, 8, 0);
+	MinecraftServerDaemon::Message messageObject;
 	if (rc == -1) {
 		root.error("Read from control socket failed");
-		return std::string("error");
+		messageObject.error = true;
 	} else if (rc == 0) {
 		root.info("Client disconnected from control socket");
-		return std::string("error");
+		//close(controlSocket);
+		messageObject.error = true;
 	} else {
 		int size = atoi(buff);
 		char line[size];
 		rc = recv(controlSocket, line, size, 0);
 		line[rc] = '\0';
-		return std::string(line);
+		root.debug(line);
+		Json::Value decodedMessage;
+		Json::Reader reader;
+		try {
+			reader.parse(line, decodedMessage);
+		} catch (...) {
+		}
+		messageObject.error = false;
+		messageObject.command = decodedMessage["command"].asString();
+		messageObject.server = decodedMessage["server"].asString();
+		messageObject.player = decodedMessage["player"].asString();
+		messageObject.serverCommand = decodedMessage["serverCommand"].asString();
+		messageObject.version = decodedMessage["version"].asString();
+		messageObject.reason = decodedMessage["reason"].asString();
 	}
+	return messageObject;
 }

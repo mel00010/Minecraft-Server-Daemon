@@ -24,11 +24,14 @@
 #include <event2/event.h>
 #include <IPC.hpp>
 #include <MainLoop.hpp>
+#include <Message.hpp>
+#include <OutputMessage.hpp>
 #include <Player.hpp>
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <sys/wait.h>
 #include <unistd.h>
+#include <csignal>
 #include <cstdlib>
 #include <iterator>
 #include <string>
@@ -54,185 +57,156 @@ void sigint_handler(__attribute__((unused)) int sig) {
 void mainLoop(std::vector<MinecraftServerDaemon::Server*>* servers, log4cpp::Category& root, int controlSocket, struct event_base* base) {
 	root.info("Starting main loop");
 	struct event *event;
-	cb_data* data = new cb_data { servers, root };
-	event = event_new(base, controlSocket, EV_READ | EV_PERSIST | EV_ET, receiveCommand, data);
+	cb_data* data = new cb_data { servers, root, base, nullptr };
+	event = event_new(base, controlSocket, EV_READ | EV_PERSIST | EV_ET, acceptConnection, data);
+	data->event = event;
 	event_add(event, NULL);
 	event_base_dispatch(base);
 }
-/**
- * This function handles the processing of commands recieved from the control socket.  Called by libevent when the control socket is ready for reading.
- * @param _controlSocket
- * @param what
- * @param arg
- */
-void receiveCommand(int _controlSocket, __attribute__((unused)) short what, void *arg) {
-	struct sockaddr_un peer_addr;
-	socklen_t peer_addr_size;
-	peer_addr_size = sizeof(struct sockaddr_un);
-	int controlSocket = accept(_controlSocket, (struct sockaddr *) &peer_addr, &peer_addr_size);
+void readAndProcessMessage(int controlSocket, __attribute__((unused)) short what, void *arg) {
 	std::vector<MinecraftServerDaemon::Server*>* servers = ((cb_data *) arg)->servers;
 	log4cpp::Category& root = ((cb_data *) arg)->root;
-	std::string command(readFromSocket(controlSocket, root));
-	if (command == "error") {
+	MinecraftServerDaemon::Message message = readFromSocket(controlSocket, root);
+	MinecraftServerDaemon::OutputMessage output;
+	root.debug("In readAndProcessMessage");
+	if (message.error) {
+		event_free(((cb_data *) arg)->event);
 		return;
-	} else if (command == "startServer") {
+	} else if (message.command == "startServer") {
 		root.debug("Command received:  startServer");
-		std::string serverRequested(readFromSocket(controlSocket, root));
-		root.debug("Server name received");
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			root.debug((*i)->getServerName());
-			if ((*i)->getServerName() == serverRequested) {
+			if ((*i)->getServerName() == message.server) {
 				(*i)->startServer();
-				writeToSocket("success", controlSocket, root);
+				output.messageData = "success";
 				break;
 			}
 		}
-	} else if (command == "startAll") {
+	} else if (message.command == "startAll") {
 		root.debug("Command received:  startAll");
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			(*i)->startServer();
 		}
-		writeToSocket("success", controlSocket, root);
-	} else if (command == "stopServer") {
+		output.messageData = "success";
+	} else if (message.command == "stopServer") {
 		root.debug("Command received:  stopServer");
-		std::string serverRequested(readFromSocket(controlSocket, root));
-		root.debug("Server name received");
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			root.debug((*i)->getServerName());
-			if ((*i)->getServerName() == serverRequested) {
+			if ((*i)->getServerName() == message.server) {
 				root.debug("Found server");
 				(*i)->stopServer();
-				writeToSocket("success", controlSocket, root);
+				output.messageData = "success";
 				break;
 			}
 		}
-	} else if (command == "stopAll") {
+	} else if (message.command == "stopAll") {
 		root.debug("Command received:  stopAll");
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			(*i)->stopServer();
 		}
-		writeToSocket("success", controlSocket, root);
-	} else if (command == "restartServer") {
+		output.messageData = "success";
+	} else if (message.command == "restartServer") {
 		root.debug("Command received:  restartServer");
-		std::string serverRequested(readFromSocket(controlSocket, root));
-		root.debug("Server name received");
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			root.debug((*i)->getServerName());
-			if ((*i)->getServerName() == serverRequested) {
+			if ((*i)->getServerName() == message.server) {
 				(*i)->restartServer();
-				writeToSocket("success", controlSocket, root);
+				output.messageData = "success";
 				break;
 			}
 		}
-	} else if (command == "restartAll") {
+	} else if (message.command == "restartAll") {
 		root.debug("Command received:  restartAll");
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			(*i)->restartServer();
 		}
-		writeToSocket("success", controlSocket, root);
-	} else if (command == "serverStatus") {
-		std::string serverRequested(readFromSocket(controlSocket, root));
-		root.debug("Server name received");
+		output.messageData = "success";
+	} else if (message.command == "serverStatus") {
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			root.debug((*i)->getServerName());
-			if ((*i)->getServerName() == serverRequested) {
+			if ((*i)->getServerName() == message.server) {
 				root.warn("Status not implemented yet");
 				break;
 			}
 		}
-	} else if (command == "listServers") {
+	} else if (message.command == "listServers") {
 		root.debug("Command received:  listServers");
 		std::string serverList;
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			root.debug((*i)->getServerName());
-			serverList = serverList + (*i)->getServerName() + "\n";
+			if (i != servers->begin()) {
+				serverList = serverList + "\n" + (*i)->getServerName();
+			} else {
+				serverList = serverList + (*i)->getServerName();
+			}
 		}
-		writeToSocket(serverList, controlSocket, root);
-	} else if (command == "sendCommand") {
-		std::string serverRequested(readFromSocket(controlSocket, root));
-		root.debug(serverRequested);
-		root.debug("Server name received");
+		output.messageData = serverList;
+	} else if (message.command == "sendCommand") {
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			root.debug((*i)->getServerName());
-			if ((*i)->getServerName() == serverRequested) {
+			if ((*i)->getServerName() == message.server) {
 				root.debug("Found server");
-				std::string serverCommand(readFromSocket(controlSocket, root));
-				root.debug("Server command received");
-				root.debug(serverCommand);
-				(*i)->sendCommand(serverCommand);
-				writeToSocket("success", controlSocket, root);
+				(*i)->sendCommand(message.serverCommand);
+				output.messageData = "success";
 				break;
 			}
 		}
-	} else if (command == "listOnlinePlayers") {
+	} else if (message.command == "listOnlinePlayers") {
 		root.debug("Command received:  listOnlinePlayers");
-		std::string serverRequested(readFromSocket(controlSocket, root));
-		root.debug("Server name received");
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			root.debug((*i)->getServerName());
-			if ((*i)->getServerName() == serverRequested) {
+			if ((*i)->getServerName() == message.server) {
 				(*i)->listOnlinePlayers();
 				break;
 			}
 		}
-	} else if (command == "listOnlinePlayersFiltered") {
+	} else if (message.command == "listOnlinePlayersFiltered") {
 		root.debug("Command received:  listOnlinePlayersFiltered");
-		std::string serverRequested(readFromSocket(controlSocket, root));
-		root.debug("Server name received");
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			root.debug((*i)->getServerName());
-			if ((*i)->getServerName() == serverRequested) {
-				std::string playerName(readFromSocket(controlSocket, root));
-				root.debug("playerName received");
-				root.debug(playerName);
-				(*i)->listOnlinePlayers(playerName);
+			if ((*i)->getServerName() == message.server) {
+				(*i)->listOnlinePlayers(message.player);
 				break;
 			}
 		}
-	} else if (command == "updateServer") {
+	} else if (message.command == "updateServer") {
 		root.debug("Command received:  updateServer");
-		std::string serverRequested(readFromSocket(controlSocket, root));
-		root.debug("Server name received");
-		std::string versionRequested(readFromSocket(controlSocket, root));
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			root.debug((*i)->getServerName());
-			if ((*i)->getServerName() == serverRequested) {
+			if ((*i)->getServerName() == message.server) {
 				if ((*i)->getServerType() == MinecraftServerDaemon::Server::ServerType::VANILLA) {
-					(*i)->updateServer(versionRequested);
-					writeToSocket("success", controlSocket, root);
+					(*i)->updateServer(message.version);
+					output.messageData = "success";
 					break;
 				}
 			}
 		}
-	} else if (command == "updateAll") {
+	} else if (message.command == "updateAll") {
 		root.debug("Command received:  updateAll");
-		std::string versionRequested(readFromSocket(controlSocket, root));
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			if ((*i)->getServerType() == MinecraftServerDaemon::Server::ServerType::VANILLA) {
-				(*i)->updateServer(versionRequested);
-				writeToSocket("success", controlSocket, root);
+				(*i)->updateServer(message.version);
+				output.messageData = "success";
 				break;
 			}
 		}
-		writeToSocket("success", controlSocket, root);
-	} else if (command == "backupServer") {
+		output.messageData = "success";
+	} else if (message.command == "backupServer") {
 		root.debug("Command received:  backupServer");
-		std::string serverRequested(readFromSocket(controlSocket, root));
-		root.debug("Server name received");
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
-			if ((*i)->getServerName() == serverRequested) {
+			if ((*i)->getServerName() == message.server) {
 				(*i)->backupServer();
-				writeToSocket("success", controlSocket, root);
+				output.messageData = "success";
 				break;
 			}
 		}
-	} else if (command == "backupAll") {
+	} else if (message.command == "backupAll") {
 		root.debug("Command received:  backupAll");
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			(*i)->backupServer();
 		}
-		writeToSocket("success", controlSocket, root);
-	} else if (command == "stopDaemon") {
+		output.messageData = "success";
+	} else if (message.command == "stopDaemon") {
 		root.debug("Command received:  stopDaemon");
 		std::string serverList;
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
@@ -241,132 +215,129 @@ void receiveCommand(int _controlSocket, __attribute__((unused)) short what, void
 		}
 		root.notice("All servers stopped");
 		root.notice("Stopping");
-		writeToSocket("Stopped", controlSocket, root);
+		output.messageData = "Stopped";
 		exit(0);
-	} else if (command == "opPlayer") {
+	} else if (message.command == "opPlayer") {
 		root.debug("Command received:  opPlayer");
-		std::string serverRequested(readFromSocket(controlSocket, root));
-		root.debug("Server name received");
-		std::string playerRequested(readFromSocket(controlSocket, root));
-		root.debug("Player name received");
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
-			if ((*i)->getServerName() == serverRequested) {
+			if ((*i)->getServerName() == message.server) {
 				for (std::vector<MinecraftServerDaemon::Player*>::iterator j = (*i)->getPlayerVector()->begin(); j != (*i)->getPlayerVector()->end(); j++) {
-					if ((*j)->getPlayerName() == playerRequested) {
+					if ((*j)->getPlayerName() == message.player) {
 						(*j)->op();
-						writeToSocket("success", controlSocket, root);
+						output.messageData = "success";
 						break;
 					}
 				}
 				break;
 			}
 		}
-	} else if (command == "deopPlayer") {
+	} else if (message.command == "deopPlayer") {
 		root.debug("Command received:  deopPlayer");
-		std::string serverRequested(readFromSocket(controlSocket, root));
-		root.debug("Server name received");
-		std::string playerRequested(readFromSocket(controlSocket, root));
-		root.debug("Player name received");
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
-			if ((*i)->getServerName() == serverRequested) {
+			if ((*i)->getServerName() == message.server) {
 				for (std::vector<MinecraftServerDaemon::Player*>::iterator j = (*i)->getPlayerVector()->begin(); j != (*i)->getPlayerVector()->end(); j++) {
-					if ((*j)->getPlayerName() == playerRequested) {
+					if ((*j)->getPlayerName() == message.player) {
 						(*j)->deop();
-						writeToSocket("success", controlSocket, root);
+						output.messageData = "success";
 						break;
 					}
 				}
 				break;
 			}
 		}
-	} else if (command == "kickPlayer") {
+	} else if (message.command == "kickPlayer") {
 		root.debug("Command received:  kickPlayer");
-		std::string serverRequested(readFromSocket(controlSocket, root));
-		root.debug("Server name received");
-		std::string playerRequested(readFromSocket(controlSocket, root));
-		root.debug("Player name received");
+		bool kickedPlayer = false;
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
-			if ((*i)->getServerName() == serverRequested) {
+			if ((*i)->getServerName() == message.server) {
 				for (std::vector<MinecraftServerDaemon::Player*>::iterator j = (*i)->getPlayerVector()->begin(); j != (*i)->getPlayerVector()->end(); j++) {
-					if ((*j)->getPlayerName() == playerRequested) {
+					if ((*j)->getPlayerName() == message.player) {
+						root.debug((*j)->getPlayerName());
 						(*j)->kick();
-						writeToSocket("success", controlSocket, root);
+						kickedPlayer = true;
 						break;
 					}
 				}
+				if (kickedPlayer) {
+					output.messageData = "success";
+				} else {
+					output.messageData = "failure";
+				}
 				break;
 			}
+
 		}
-	} else if (command == "kickPlayerReason") {
+	} else if (message.command == "kickPlayerReason") {
 		root.debug("Command received:  kickPlayerReason");
-		std::string serverRequested(readFromSocket(controlSocket, root));
-		root.debug("Server name received");
-		std::string playerRequested(readFromSocket(controlSocket, root));
-		root.debug("Player name received");
-		std::string reason(readFromSocket(controlSocket, root));
-		root.debug("Reason received");
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
-			if ((*i)->getServerName() == serverRequested) {
+			if ((*i)->getServerName() == message.server) {
 				for (std::vector<MinecraftServerDaemon::Player*>::iterator j = (*i)->getPlayerVector()->begin(); j != (*i)->getPlayerVector()->end(); j++) {
-					if ((*j)->getPlayerName() == playerRequested) {
-						(*j)->kick(reason);
-						writeToSocket("success", controlSocket, root);
+					if ((*j)->getPlayerName() == message.player) {
+						(*j)->kick(message.reason);
+						output.messageData = "success";
 						break;
 					}
 				}
 				break;
 			}
 		}
-	} else if (command == "banPlayer") {
+	} else if (message.command == "banPlayer") {
 		root.debug("Command received:  banPlayer");
-		std::string serverRequested(readFromSocket(controlSocket, root));
-		root.debug("Server name received");
-		std::string playerRequested(readFromSocket(controlSocket, root));
-		root.debug("Player name received");
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
-			if ((*i)->getServerName() == serverRequested) {
+			if ((*i)->getServerName() == message.server) {
 				for (std::vector<MinecraftServerDaemon::Player*>::iterator j = (*i)->getPlayerVector()->begin(); j != (*i)->getPlayerVector()->end(); j++) {
-					if ((*j)->getPlayerName() == playerRequested) {
+					if ((*j)->getPlayerName() == message.player) {
 						(*j)->ban();
-						writeToSocket("success", controlSocket, root);
+						output.messageData = "success";
 						break;
 					}
 				}
 				break;
 			}
 		}
-	} else if (command == "banPlayerReason") {
+	} else if (message.command == "banPlayerReason") {
 		root.debug("Command received:  banPlayerReason");
-		std::string serverRequested(readFromSocket(controlSocket, root));
-		root.debug("Server name received");
-		std::string playerRequested(readFromSocket(controlSocket, root));
-		root.debug("Player name received");
-		std::string reason(readFromSocket(controlSocket, root));
-		root.debug("Reason received");
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
-			if ((*i)->getServerName() == serverRequested) {
+			if ((*i)->getServerName() == message.server) {
 				for (std::vector<MinecraftServerDaemon::Player*>::iterator j = (*i)->getPlayerVector()->begin(); j != (*i)->getPlayerVector()->end(); j++) {
-					if ((*j)->getPlayerName() == playerRequested) {
-						(*j)->ban(reason);
-						writeToSocket("success", controlSocket, root);
+					if ((*j)->getPlayerName() == message.player) {
+						(*j)->ban(message.reason);
+						output.messageData = "success";
 						break;
 					}
 				}
 				break;
 			}
 		}
-	} else if (command == "pardonPlayer") {
+	} else if (message.command == "pardonPlayer") {
 		root.debug("Command received:  pardonPlayer");
-		std::string serverRequested(readFromSocket(controlSocket, root));
-		root.debug("Server name received");
-		std::string playerRequested(readFromSocket(controlSocket, root));
-		root.debug("Player name received");
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
-			if ((*i)->getServerName() == serverRequested) {
-				(*((*i)->getPlayerVector()->begin()))->pardon(playerRequested);
-				writeToSocket("success", controlSocket, root);
+			if ((*i)->getServerName() == message.server) {
+				(*((*i)->getPlayerVector()->begin()))->pardon(message.player);
+				output.messageData = "success";
 				break;
 			}
 		}
 	}
+	output.mode = "output";
+	root.debug("Writing message to socket");
+	writeToSocket(output, controlSocket, root);
+	event_add(((cb_data *) arg)->event, NULL);
+}
+/**
+ * This function handles the processing of commands recieved from the control socket.  Called by libevent when the control socket is ready for reading.
+ * @param _controlSocket
+ * @param what
+ * @param arg
+ */
+void acceptConnection(int _controlSocket, __attribute__((unused)) short what, void *arg) {
+	struct sockaddr_un peer_addr;
+	socklen_t peer_addr_size;
+	peer_addr_size = sizeof(struct sockaddr_un);
+	int controlSocket = accept(_controlSocket, (struct sockaddr *) &peer_addr, &peer_addr_size);
+	struct event *event;
+	cb_data* data = new cb_data { ((cb_data *) arg)->servers, ((cb_data *) arg)->root, ((cb_data *) arg)->base, nullptr };
+	event = event_new(((cb_data *) arg)->base, controlSocket, EV_READ | EV_PERSIST, readAndProcessMessage, data);
+	data->event = event;
+	event_add(event, NULL);
 }

@@ -25,7 +25,9 @@
 #define DAEMON_IPC_HPP_
 
 #include <log4cpp/Category.hh>
-#include <string>
+
+#include "Message.hpp"
+#include "OutputMessage.hpp"
 
 /**
  * Creates the control socket used for IPC with the client.
@@ -39,13 +41,13 @@ int createSocket(log4cpp::Category& root);
  * @param controlSocket
  * @param root
  */
-void writeToSocket(std::string message, int controlSocket, log4cpp::Category& root);
+void writeToSocket(MinecraftServerDaemon::OutputMessage message, int controlSocket, log4cpp::Category& root);
 /**
  * Reads from the control socket.
  * @param controlSocket
  * @param root
  * @return
  */
-std::string readFromSocket(int controlSocket, log4cpp::Category& root);
+MinecraftServerDaemon::Message readFromSocket(int controlSocket, log4cpp::Category& root);
 
 #endif /* DAEMON_IPC_HPP_ */

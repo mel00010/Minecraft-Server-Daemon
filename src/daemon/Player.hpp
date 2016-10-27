@@ -35,7 +35,7 @@ namespace MinecraftServerDaemon {
  */
 class Player {
 	public:
-		Player(std::string playerName, std::string ipAddress, std::string serverName, Server* server);
+		Player(std::string _playerName, std::string _ipAddress, std::string _serverName, Server* _server);
 		virtual ~Player();
 		/**
 		 * Bans a player.

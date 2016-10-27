@@ -21,6 +21,9 @@
  *
  *******************************************************************************/
 
+#include <jsoncpp/json/reader.h>
+#include <jsoncpp/json/writer.h>
+#include <jsoncpp/json/value.h>
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <Socket.hpp>
@@ -30,6 +33,7 @@
 #include <iomanip>
 #include <iostream>
 #include <sstream>
+#include <string>
 
 int openSocket() {
 	int Socket;
@@ -40,7 +44,9 @@ int openSocket() {
 	}
 
 	remote.sun_family = AF_UNIX;
-	strcpy(remote.sun_path, "/etc/minecraft/control.socket");
+//	strcpy(remote.sun_path, "/etc/minecraft/control.socket");
+	strcpy(remote.sun_path, "/home/mel/workspace/web-client/socket.socket");
+
 	int len = strlen(remote.sun_path) + sizeof(remote.sun_family);
 	if (connect(Socket, (struct sockaddr *) &remote, len) == -1) {
 		std::cerr << "Failure connecting to socket" << std::endl;
@@ -51,19 +57,47 @@ int openSocket() {
 void closeSocket(int Socket) {
 	close(Socket);
 }
-void writeToSocket(std::string command, int Socket) {
+void writeToSocket(OutputMessage command, int Socket) {
+	Json::Value encodedMessage;
+	Json::FastWriter writer;
+	encodedMessage["command"] = command.command;
+	encodedMessage["server"] = command.server;
+	encodedMessage["player"] = command.player;
+	encodedMessage["serverCommand"] = command.serverCommand;
+	encodedMessage["version"] = command.version;
+	encodedMessage["reason"] = command.reason;
+	std::string messageString(writer.write(encodedMessage));
 	std::ostringstream ss;
-	ss << std::setw(4) << std::setfill('0') << command.size();
-	std::string buf = ss.str() + command;
+	ss << std::setw(8) << std::setfill('0') << messageString.size();
+	std::string buf = ss.str() + messageString;
 	send(Socket, buf.c_str(), buf.size(), 0);
 }
-std::string readFromSocket(int Socket) {
+Message readFromSocket(int Socket) {
 	int rc;
-	char buff[4];
-	rc = recv(Socket, buff, 4, 0);
-	int size = atoi(buff);
-	char line[size];
-	rc = recv(Socket, line, size, 0);
-	line[rc] = '\0';
-	return std::string(line);
+	char buff[8];
+	rc = recv(Socket, buff, 8, 0);
+	Message messageObject;
+	if (rc == -1) {
+		std::cout << "Read from control socket failed" << std::endl;
+		messageObject.error = true;
+	} else if (rc == 0) {
+		std::cout << "Server disconnected from control socket" << std::endl;
+		close(Socket);
+		messageObject.error = true;
+	} else {
+		int size = atoi(buff);
+		char line[size];
+		rc = recv(Socket, line, size, 0);
+		line[rc] = '\0';
+		Json::Value decodedMessage;
+		Json::Reader reader;
+		try {
+			reader.parse(line, decodedMessage);
+		} catch (...) {
+		}
+		messageObject.error = false;
+		messageObject.mode = decodedMessage["mode"].asString();
+		messageObject.messageData = decodedMessage["messageData"].asString();
+	}
+	return messageObject;
 }

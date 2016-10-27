@@ -1,7 +1,7 @@
 /*******************************************************************************
  *
- * Minecraft Server Daemon
- * Socket.hpp
+ * MinecraftServerDaemon
+ * Message.hpp
  * Copyright (C) 2016  Mel McCalla <melmccalla@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -20,15 +20,18 @@
  *
  *
  *******************************************************************************/
-#ifndef CLIENT_SOCKET_HPP_
-#define CLIENT_SOCKET_HPP_
 
-#include "Message.hpp"
-#include "OutputMessage.hpp"
+#ifndef CLIENT_MESSAGE_HPP_
+#define CLIENT_MESSAGE_HPP_
 
-int openSocket();
-void closeSocket(int Socket);
-void writeToSocket(OutputMessage command, int Socket);
-Message readFromSocket(int Socket);
+#include <string>
 
-#endif /* CLIENT_SOCKET_HPP_ */
+
+class Message {
+	public:
+		bool error;
+		std::string mode;
+		std::string messageData;
+};
+
+#endif /* CLIENT_MESSAGE_HPP_ */
