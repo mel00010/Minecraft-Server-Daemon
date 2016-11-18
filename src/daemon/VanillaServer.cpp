@@ -169,8 +169,10 @@ void VanillaServer::startServer() {
 		launchServerProcess(serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, javaArgs, serverOptions);
 		log->debug("Launched server process");
 		std::thread outputListenerThread(&Server::outputListenerThread, serverPID, serverName, this, childProcessStdout[PIPE_READ], base, log, listeners,
-				players);
+				players, clients);
 		outputListenerThread.detach();
+	} else {
+		log->warn("Server already running.");
 	}
 }
 /**
@@ -233,7 +235,7 @@ std::string VanillaServer::listOnlinePlayers() {
 	Listener* listener = new Listener { callbackOutput, 10, false, 0, output };
 	listeners->push_back(listener);
 	*this << "list" << std::endl;
-	while (*callbackOutput == "\0") {
+	while (*callbackOutput == "") {
 		sleep(0.1);
 	}
 	if (callbackOutput->size() > 0) {
@@ -256,8 +258,7 @@ std::string VanillaServer::listOnlinePlayers() {
  */
 bool VanillaServer::listOnlinePlayers(__attribute__((unused))     std::string playerName) {
 	log->debug("VanillaServer::listOnlinePlayers");
-	std::string* callbackOutput = new std::string;
-	*callbackOutput = '\0';
+	std::string* callbackOutput = new std::string('\0');
 	std::string output = '\0';
 	Listener* listener = new Listener { callbackOutput, 10, false, 0, output };
 	listeners->push_back(listener);

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Minecraft Server Manager</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script type="text/javascript" src="jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="https://autobahn.s3.amazonaws.com/js/autobahn.min.js"></script>	
+	<script type="text/javascript" src="menu.js"></script>
+	<script type="text/javascript" src="connection.js"></script>
+</head>
+<body>
+	<div class="main">
+		<div id ="menu" class="menu">
+			<div id="main">
+				Minecraft Server Manager
+				<br>
+				<br>
+				<form id=options>
+					<input type="checkbox" checked onclick="toggleMessageVisibility()"> Show Success Messages					
+				</form>
+				<br>
+				<form id="mode">
+					<input type="radio" name="MODE" value="backupServer" onclick="mode_select()"> Backup Server <br>
+					<input type="radio" name="MODE" value="backupAll" onclick="mode_select()"> Backup All Servers <br>
+					<input type="radio" name="MODE" value="listServers" onclick="mode_select()"> List Servers <br>
+					<input type="radio" name="MODE" value="listOnlinePlayers" onclick="mode_select()"> List Online Players <br>
+					<input type="radio" name="MODE" value="registerOutputListener" onclick="mode_select()"> Register for server output <br>
+					<input type="radio" name="MODE" value="unRegisterOutputListener" onclick="mode_select()"> Unregister from server output <br>
+					<input type="radio" name="MODE" value="restartServer" onclick="mode_select()"> Restart Server <br>
+					<input type="radio" name="MODE" value="restartAll" onclick="mode_select()"> Restart All Servers <br>
+					<input type="radio" name="MODE" value="sendCommand" onclick="mode_select()"> Send Command to Server <br>
+					<input type="radio" name="MODE" value="startServer" onclick="mode_select()"> Start Server <br>
+					<input type="radio" name="MODE" value="serverStatus" onclick="mode_select()"> Server Status <br>
+					<input type="radio" name="MODE" value="stopServer" onclick="mode_select()"> Stop Server <br>
+					<input type="radio" name="MODE" value="stopAll" onclick="mode_select()"> Stop All Servers <br>
+					<input type="radio" name="MODE" value="stopDaemon" onclick="mode_select()"> Stop Daemon <br>
+					<input type="radio" name="MODE" value="updateServer" onclick="mode_select()"> Update Server <br>
+					<input type="radio" name="MODE" value="updateAll" onclick="mode_select()"> Update All Servers<br>
+					<input type="radio" name="MODE" value="opPlayer" onclick="mode_select()"> Op Player <br>
+					<input type="radio" name="MODE" value="deopPlayer" onclick="mode_select()"> Deop Player <br>
+					<input type="radio" name="MODE" value="banPlayer" onclick="mode_select()"> Ban Player <br>
+					<input type="radio" name="MODE" value="pardonPlayer" onclick="mode_select()"> Pardon Player <br>
+					<input type="radio" name="MODE" value="kickPlayer" onclick="mode_select()"> Kick Player <br>
+					<input type="radio" name="MODE" value="runScript" onclick="mode_select()"> Run Script <br>
+				</form>
+			</div>
+			<div id="backupServer" style="display: none;">
+				<form method="POST">
+					<table style="white-space:nowrap">
+						<tbody>
+							<tr><td>Server</td><td><input type="text" name="SERVER" size="12" id="server"></td></tr>
+						</tbody>
+					</table>
+					<input type="submit" value="Execute">
+				</form>
+			</div>
+			<div id="backupAll" style="display: none;">
+				<form method="POST">
+					<table style="white-space:nowrap">
+						<tbody>
+							<tr><td></td></tr>
+						</tbody>
+					</table>
+					<input type="submit" value="Execute">
+				</form>
+			</div>
+			<div id="listServers" style="display: none;">
+				<form method="POST">
+					<table style="white-space:nowrap">
+						<tbody>
+							<tr><td></td></tr>
+						</tbody>
+					</table>
+					<input type="submit" value="Execute">
+				</form>
+			</div>
+			<div id="listOnlinePlayers" style="display: none;">
+				<form method="POST">
+					<table style="white-space:nowrap">
+						<tbody>
+							<tr><td>Server</td><td><input type="text" name="SERVER" size="12" id="server"></td></tr>
+							<tr><td>Player</td><td><input type="text" name="PLAYER" size="12" id="player"></td></tr>					
+						</tbody>
+					</table>
+					<input type="submit" value="Execute">
+				</form>
+			</div>
+			<div id="registerOutputListener" style="display: none;">
+				<form method="POST">
+					<table style="white-space:nowrap">
+						<tbody>
+							<tr><td>Server</td><td><input type="text" name="SERVER" size="12" id="server"></td></tr>
+						</tbody>
+					</table>
+					<input type="submit" value="Execute">
+				</form>
+			</div>
+			<div id="unRegisterOutputListener" style="display: none;">
+				<form method="POST">
+					<table style="white-space:nowrap">
+						<tbody>
+							<tr><td>Server</td><td><input type="text" name="SERVER" size="12" id="server"></td></tr>
+						</tbody>
+					</table>
+					<input type="submit" value="Execute">
+				</form>
+			</div>
+			<div id="restartServer" style="display: none;">
+				<form method="POST">
+					<table style="white-space:nowrap">
+						<tbody>
+							<tr><td>Server</td><td><input type="text" name="SERVER" size="12" id="server"></td></tr>
+						</tbody>
+					</table>
+					<input type="submit" value="Execute">
+				</form>
+			</div>
+			<div id="restartAll" style="display: none;">
+				<form method="POST">
+					<table style="white-space:nowrap">
+						<tbody>
+							<tr><td></td></tr>
+						</tbody>
+					</table>
+					<input type="submit" value="Execute">
+				</form>
+			</div>
+			<div id="sendCommand" style="display: none;">
+				<form method="POST">
+					<table style="white-space:nowrap">
+						<tbody>
+							<tr><td>Server</td><td><input type="text" name="SERVER" size="12" id="server"></td></tr>
+							<tr><td>Command</td><td><input type="text" name="COMMAND" size="12" id="command"></td></tr>
+						</tbody>
+					</table>
+					<input type="submit" value="Execute">
+				</form>
+			</div>
+			<div id="startServer" style="display: none;">
+				<form method="POST">
+					<table style="white-space:nowrap">
+						<tbody>
+							<tr><td>Server</td><td><input type="text" name="SERVER" size="12" id="server"></td></tr>
+						</tbody>
+					</table>
+					<input type="submit" value="Execute">
+				</form>
+			</div>
+			<div id="serverStatus" style="display: none;">
+				<form method="POST">
+					<table style="white-space:nowrap">
+						<tbody>
+							<tr><td>Server</td><td><input type="text" name="SERVER" size="12" id="server"></td></tr>
+						</tbody>
+					</table>
+					<input type="submit" value="Execute">
+				</form>
+			</div>
+			<div id="stopServer" style="display: none;">
+				<form method="POST">
+					<table style="white-space:nowrap">
+						<tbody>
+							<tr><td>Server</td><td><input type="text" name="SERVER" size="12" id="server"></td></tr>
+						</tbody>
+					</table>
+					<input type="submit" value="Execute">
+				</form>
+			</div>
+			<div id="stopAll" style="display: none;">
+				<form method="POST">
+					<table style="white-space:nowrap">
+						<tbody>
+							<tr><td></td></tr>
+						</tbody>
+					</table>
+					<input type="submit" value="Execute">
+				</form>
+			</div>
+			<div id="stopDaemon" style="display: none;">
+				<form method="POST">
+					<table style="white-space:nowrap">
+						<tbody>
+							<tr><td></td></tr>
+						</tbody>
+					</table>
+					<input type="submit" value="Execute">
+				</form>
+			</div>
+			<div id="updateServer" style="display: none;">
+				<form method="POST">
+					<table style="white-space:nowrap">
+						<tbody>
+							<tr><td>Server</td><td><input type="text" name="SERVER" size="12" id="server"></td></tr>
+							<tr><td>Version</td><td><input type="text" name="VERSION" size="12" id="version"></td></tr>
+						</tbody>
+					</table>
+					<input type="submit" value="Execute">
+				</form>
+			</div>
+			<div id="updateAll" style="display: none;">
+				<form method="POST">
+					<table style="white-space:nowrap">
+						<tbody>
+							<tr><td>Version</td><td><input type="text" name="VERSION" size="12" id="version"></td></tr>
+						</tbody>
+					</table>
+					<input type="submit" value="Execute">
+				</form>
+			</div>
+			<div id="opPlayer" style="display: none;">
+				<form method="POST">
+					<table style="white-space:nowrap">
+						<tbody>
+							<tr><td>Server</td><td><input type="text" name="SERVER" size="12" id="server"></td></tr>
+							<tr><td>Player</td><td><input type="text" name="PLAYER" size="12" id="player"></td></tr>
+						</tbody>
+					</table>
+					<input type="submit" value="Execute">
+				</form>
+			</div>
+			<div id="deopPlayer" style="display: none;">
+				<form method="POST">
+					<table style="white-space:nowrap">
+						<tbody>
+							<tr><td>Server</td><td><input type="text" name="SERVER" size="12" id="server"></td></tr>
+							<tr><td>Player</td><td><input type="text" name="PLAYER" size="12" id="player"></td></tr>
+						</tbody>
+					</table>
+					<input type="submit" value="Execute">
+				</form>
+			</div>
+			<div id="banPlayer" style="display: none;">
+				<form method="POST">
+					<table style="white-space:nowrap">
+						<tbody>
+							<tr><td>Server</td><td><input type="text" name="SERVER" size="12" id="server"></td></tr>
+							<tr><td>Player</td><td><input type="text" name="PLAYER" size="12" id="player"></td></tr>
+							<tr><td>Reason</td><td><input type="text" name="REASON" size="12" id="reason"></td></tr>
+						</tbody>
+					</table>
+					<input type="submit" value="Execute">
+				</form>
+			</div>
+			<div id="pardonPlayer" style="display: none;">
+				<form method="POST">
+					<table style="white-space:nowrap">
+						<tbody>
+							<tr><td>Server</td><td><input type="text" name="SERVER" size="12" id="server"></td></tr>
+							<tr><td>Player</td><td><input type="text" name="PLAYER" size="12" id="player"></td></tr>
+						</tbody>
+					</table>
+					<input type="submit" value="Execute">
+				</form>
+			</div>
+			<div id="kickPlayer" style="display: none;">
+				<form method="POST">
+					<table style="white-space:nowrap">
+						<tbody>
+							<tr><td>Server</td><td><input type="text" name="SERVER" size="12" id="server"></td></tr>
+							<tr><td>Player</td><td><input type="text" name="PLAYER" size="12" id="player"></td></tr>
+							<tr><td>Reason</td><td><input type="text" name="REASON" size="12" id="reason"></td></tr>
+						</tbody>
+					</table>
+					<input type="submit" value="Execute">
+				</form>
+			</div>
+			<div id="runScript" style="display: none;">
+				<form method="POST">
+					<table style="white-space:nowrap">
+						<tbody>
+							<tr><td>Script</td><td><input type="text" name="SCRIPT" size="12" id="script"></td></tr>
+						</tbody>
+					</table>
+					<input type="submit" value="Execute">
+				</form>
+			</div>
+		</div>
+		<div class="output" id="output">
+			
+		</div>
+	</div>
+</body>
+</html>
+

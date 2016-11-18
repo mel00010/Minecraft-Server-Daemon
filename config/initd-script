@@ -1,0 +1,144 @@
+#!/bin/bash
+# 
+# Parses DHCP options from openvpn to update resolv.conf
+# To use set as 'up' and 'down' script in your openvpn *.conf:
+# up /etc/openvpn/update-resolv-conf
+# down /etc/openvpn/update-resolv-conf
+#
+# Used snippets of resolvconf script by Thomas Hood and Chris Hanson.
+# Licensed under the GNU GPL.  See /usr/share/common-licenses/GPL. 
+# 
+# Example envs set from openvpn:
+#
+#     foreign_option_1='dhcp-option DNS 193.43.27.132'
+#     foreign_option_2='dhcp-option DNS 193.43.27.133'
+#     foreign_option_3='dhcp-option DOMAIN be.bnc.ch'
+#
+
+[ -x /sbin/resolvconf ] || exit 0
+[ "$script_type" ] || exit 0
+[ "$dev" ] || exit 0
+
+split_into_parts()
+{
+	part1="$1"
+	part2="$2"
+	part3="$3"
+}
+
+case "$script_type" in
+  up)
+	NMSRVRS=""
+	SRCHS=""
+	for optionvarname in ${!foreign_option_*} ; do
+		option="${!optionvarname}"
+		echo "$option"
+		split_into_parts $option
+		if [ "$part1" = "dhcp-option" ] ; then
+			if [ "$part2" = "DNS" ] ; then
+				NMSRVRS="${NMSRVRS:+$NMSRVRS }$part3"
+			elif [ "$part2" = "DOMAIN" ] ; then
+				SRCHS="${SRCHS:+$SRCHS }$part3"
+			fi
+		fi
+	done
+	R=""
+	[ "$SRCHS" ] && R="search $SRCHS
+"
+	for NS in $NMSRVRS ; do
+        	R="${R}nameserver $NS
+"
+	done
+	echo -n "$R" | /sbin/resolvconf -a "${dev}.openvpn"
+	
+	# ---ENABLING KERNEL OPTIONS
+	sudo sysctl -w net.ipv4.conf.eth0.rp_filter=0
+	sudo sysctl -w net.ipv4.conf.tun0.rp_filter=0
+	sudo sysctl -w net.ipv4.conf.all.rp_filter=0
+	sudo sysctl -w net.ipv4.conf.default.rp_filter=0
+	sudo sysctl -w net.ipv4.conf.lo.rp_filter=0
+	
+	sudo sysctl -w net.ipv4.conf.all.forwarding=1
+	sudo sysctl -w net.ipv4.conf.default.forwarding=1
+	sudo sysctl -w net.ipv4.conf.eth0.forwarding=1
+	sudo sysctl -w net.ipv4.conf.lo.forwarding=1
+	sudo sysctl -w net.ipv4.conf.tun0.forwarding=1
+	
+	sudo sysctl -w net.ipv6.conf.all.forwarding=1
+	sudo sysctl -w net.ipv6.conf.default.forwarding=1
+	sudo sysctl -w net.ipv6.conf.eth0.forwarding=1
+	sudo sysctl -w net.ipv6.conf.lo.forwarding=1
+	sudo sysctl -w net.ipv6.conf.tun0.forwarding=1
+	
+	sudo sysctl -w net.ipv4.tcp_fwmark_accept=1
+	
+	
+	# ---CLEAR ALL FIREWALL RULES
+	sudo iptables -F
+	sudo iptables -t mangle -F
+	sudo iptables -t nat -F
+	
+	# ---FLSUH EXISTING TABLE 101 + cache
+	sudo ip route flush table 101
+	sudo ip route flush cache
+	
+	#--- DEL IF EXISTS AND ADD RULE
+	sudo ip rule del fwmark 2 table 101
+	sudo ip rule add fwmark 2 table 101
+	
+	#--- CREATE TABLE 101
+	
+	sudo ip route add table 101 default via 192.168.2.1 dev eth0  proto static  metric 100
+	sudo ip route add table 101 192.168.2.0/24 dev eth0  proto kernel  scope link  src 192.168.2.20  metric 100
+	
+	#---  PORT FORWARD TO TABLE 101
+	
+	# SETTING MASQUERADE FOR OUTPUT
+	sudo iptables --table nat --append POSTROUTING -o eth0 -j SNAT 192.168.2.20
+	
+	# VPN BYPASS!
+	# SSH THIS ONE IS THE MOST IMPORTANT
+	sudo iptables -t mangle -A PREROUTING -p tcp --dport  22                               -j MARK --set-mark 2
+	
+	# MINECRAFT
+	sudo iptables -t mangle -A OUTPUT     -p tcp --dport  25565                            -j MARK --set-mark 2
+	sudo iptables -t mangle -A OUTPUT     -p udp --dport  25565                            -j MARK --set-mark 2
+	sudo iptables -t mangle -A PREROUTING -p tcp --dport  25565                            -j MARK --set-mark 2
+	sudo iptables -t mangle -A PREROUTING -p udp --dport  25565                            -j MARK --set-mark 2
+	
+	# IRC
+	sudo iptables -t mangle -A PREROUTING -p tcp --dport  6667                             -j MARK --set-mark 2
+	sudo iptables -t mangle -A PREROUTING -p tcp --dport  6668                             -j MARK --set-mark 2
+	sudo iptables -t mangle -A PREROUTING -p tcp --dport  6669                             -j MARK --set-mark 2
+	sudo iptables -t mangle -A PREROUTING -p tcp --dport  7000                             -j MARK --set-mark 2
+	
+	# PLEX
+	sudo iptables -t mangle -A OUTPUT     -p tcp --dport  32400                            -j MARK --set-mark 2
+	sudo iptables -t mangle -A PREROUTING -p tcp --dport  32400                            -j MARK --set-mark 2
+	# HTTP S
+	sudo iptables -t mangle -A PREROUTING -p tcp --dport  80                               -j MARK --set-mark 2
+	sudo iptables -t mangle -A PREROUTING -p tcp --dport  443                              -j MARK --set-mark 2
+	
+	# FTP
+	sudo iptables -t mangle -A PREROUTING -p tcp --dport  21                               -j MARK --set-mark 2
+	# YOU NEED TO SET UP MIN/MAX PORT IN VSFTPD
+	sudo iptables -t mangle -A PREROUTING -p tcp --dport  13000:13100                      -j MARK --set-mark 2
+	sudo iptables -t mangle -A OUTPUT     -p tcp --sport  21                               -j MARK --set-mark 2
+	
+	#DELUGE LOCAL only from LOCAL NETWORK IPs
+	sudo iptables -t mangle -A PREROUTING -p tcp --dport  58846   -s 192.168.2.0/24        -j MARK --set-mark 2
+	sudo /etc/init.d/deluged start
+	sudo /etc/init.d/deluge-web start
+	;;
+  down)
+	/sbin/resolvconf -d "${dev}.openvpn"
+	# KILL ANY PROCESS:
+	PIDS=$(ps -ef| grep deluged | grep -v grep |awk '{print $2}')
+	kill -9 $PIDS
+
+	# TO BE SURE:
+	/etc/init.d/deluged stop
+	;;
+esac
+
+

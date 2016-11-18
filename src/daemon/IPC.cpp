@@ -71,11 +71,16 @@ int createSocket(log4cpp::Category& root) {
  * @param controlSocket
  * @param root
  */
-void writeToSocket(MinecraftServerDaemon::OutputMessage message, int controlSocket, __attribute__((unused))  log4cpp::Category& root) {
+void writeToSocket(MinecraftServerDaemon::OutputMessage message, int controlSocket, log4cpp::Category& root) {
 	Json::Value encodedMessage;
 	Json::FastWriter writer;
 	encodedMessage["mode"] = message.mode;
 	encodedMessage["messageData"] = message.messageData;
+	encodedMessage["server"] = message.server;
+	encodedMessage["serverOutput"] = message.serverOutput;
+	encodedMessage["command"] = message.command;
+	encodedMessage["success"] = message.success;
+	encodedMessage["failureReason"] = message.failureReason;
 	std::string messageString(writer.write(encodedMessage));
 	std::ostringstream ss;
 	ss << std::setw(8) << std::setfill('0') << messageString.size();
@@ -119,6 +124,7 @@ MinecraftServerDaemon::Message readFromSocket(int controlSocket, log4cpp::Catego
 		messageObject.serverCommand = decodedMessage["serverCommand"].asString();
 		messageObject.version = decodedMessage["version"].asString();
 		messageObject.reason = decodedMessage["reason"].asString();
+		messageObject.script = decodedMessage["script"].asString();
 	}
 	return messageObject;
 }

@@ -23,6 +23,9 @@
 
 #include <ConfigFileParser.hpp>
 #include <event2/event.h>
+#include <Python.h>
+#include <ScriptHandler.hpp>
+#include <PythonFunctions.hpp>
 #include <IPC.hpp>
 #include <jsoncpp/json/forwards.h>
 #include <log4cpp/Category.hh>
@@ -124,6 +127,8 @@ int main(void) {
 	int controlSocket = createSocket(daemonLog);
 	std::vector<MinecraftServerDaemon::Server*>* servers;
 	servers = setupServers(&config, daemonLog);
+	PyImport_AppendInittab("minecraftServerManager", &PyInit_minecraftServerManager);
+	Py_Initialize();
 	/* The Big Loop */
 	mainLoop(servers, daemonLog, controlSocket, base);
 

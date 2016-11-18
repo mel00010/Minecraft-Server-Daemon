@@ -110,7 +110,9 @@ am_minecraftd_OBJECTS = minecraftd-daemon.$(OBJEXT) \
 	minecraftd-ForgeServer.$(OBJEXT) \
 	minecraftd-GenericServer.$(OBJEXT) \
 	minecraftd-SpigotServer.$(OBJEXT) \
-	minecraftd-VanillaServer.$(OBJEXT)
+	minecraftd-VanillaServer.$(OBJEXT) \
+	minecraftd-PythonFunctions.$(OBJEXT) \
+	minecraftd-ScriptHandler.$(OBJEXT)
 minecraftd_OBJECTS = $(am_minecraftd_OBJECTS)
 minecraftd_LDADD = $(LDADD)
 minecraftd_LINK = $(CXXLD) $(minecraftd_CXXFLAGS) $(CXXFLAGS) \
@@ -303,10 +305,10 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-minecraftd_SOURCES = daemon.cpp ConfigFileParser.cpp IPC.cpp MainLoop.cpp Player.cpp Server.cpp SetupServers.cpp BukkitServer.cpp BungeeCordServer.cpp ForgeServer.cpp GenericServer.cpp SpigotServer.cpp VanillaServer.cpp 
-minecraftd_CXXFLAGS = -Wall -Wextra -g -std=gnu++11 -I /usr/local/include
-include_HEADERS = ConfigFileParser.hpp MainLoop.hpp Player.hpp Server.hpp IPC.hpp SetupServers.hpp ServerPropertyFileParser.hpp BukkitServer.hpp BungeeCordServer.hpp ForgeServer.hpp GenericServer.hpp SpigotServer.hpp VanillaServer.hpp
-minecraftd_LDFLAGS = -pthread -levent -Lusr/log4cpp/lib -llog4cpp -lcurl -ljsoncpp
+minecraftd_SOURCES = daemon.cpp ConfigFileParser.cpp IPC.cpp MainLoop.cpp Player.cpp Server.cpp SetupServers.cpp BukkitServer.cpp BungeeCordServer.cpp ForgeServer.cpp GenericServer.cpp SpigotServer.cpp VanillaServer.cpp PythonFunctions.cpp ScriptHandler.cpp
+minecraftd_CXXFLAGS = -I/usr/include/python3.5m -I/usr/include/python3.5m  -Wno-unused-result -Wsign-compare -g -fdebug-prefix-map=/build/python3.5-SGM88Z/python3.5-3.5.2=. -fstack-protector-strong -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O3 -Wall -Wextra -std=gnu++11
+include_HEADERS = ConfigFileParser.hpp MainLoop.hpp Player.hpp Server.hpp IPC.hpp SetupServers.hpp ServerPropertyFileParser.hpp BukkitServer.hpp BungeeCordServer.hpp ForgeServer.hpp GenericServer.hpp SpigotServer.hpp VanillaServer.hpp ScriptHandler.hpp  PythonFunctions.hpp GlobalVars.hpp 
+minecraftd_LDFLAGS = -L/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu -L/usr/lib -lpython3.5m -lpthread -ldl  -lutil -lm  -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions -levent -Lusr/log4cpp/lib -llog4cpp -lcurl -ljsoncpp
 all: all-am
 
 .SUFFIXES:
@@ -401,6 +403,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-IPC.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-MainLoop.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-Player.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-PythonFunctions.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-ScriptHandler.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-Server.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-SetupServers.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/minecraftd-SpigotServer.Po@am__quote@
@@ -604,6 +608,34 @@ minecraftd-VanillaServer.obj: VanillaServer.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='VanillaServer.cpp' object='minecraftd-VanillaServer.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-VanillaServer.obj `if test -f 'VanillaServer.cpp'; then $(CYGPATH_W) 'VanillaServer.cpp'; else $(CYGPATH_W) '$(srcdir)/VanillaServer.cpp'; fi`
+
+minecraftd-PythonFunctions.o: PythonFunctions.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-PythonFunctions.o -MD -MP -MF $(DEPDIR)/minecraftd-PythonFunctions.Tpo -c -o minecraftd-PythonFunctions.o `test -f 'PythonFunctions.cpp' || echo '$(srcdir)/'`PythonFunctions.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-PythonFunctions.Tpo $(DEPDIR)/minecraftd-PythonFunctions.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='PythonFunctions.cpp' object='minecraftd-PythonFunctions.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-PythonFunctions.o `test -f 'PythonFunctions.cpp' || echo '$(srcdir)/'`PythonFunctions.cpp
+
+minecraftd-PythonFunctions.obj: PythonFunctions.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-PythonFunctions.obj -MD -MP -MF $(DEPDIR)/minecraftd-PythonFunctions.Tpo -c -o minecraftd-PythonFunctions.obj `if test -f 'PythonFunctions.cpp'; then $(CYGPATH_W) 'PythonFunctions.cpp'; else $(CYGPATH_W) '$(srcdir)/PythonFunctions.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-PythonFunctions.Tpo $(DEPDIR)/minecraftd-PythonFunctions.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='PythonFunctions.cpp' object='minecraftd-PythonFunctions.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-PythonFunctions.obj `if test -f 'PythonFunctions.cpp'; then $(CYGPATH_W) 'PythonFunctions.cpp'; else $(CYGPATH_W) '$(srcdir)/PythonFunctions.cpp'; fi`
+
+minecraftd-ScriptHandler.o: ScriptHandler.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-ScriptHandler.o -MD -MP -MF $(DEPDIR)/minecraftd-ScriptHandler.Tpo -c -o minecraftd-ScriptHandler.o `test -f 'ScriptHandler.cpp' || echo '$(srcdir)/'`ScriptHandler.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-ScriptHandler.Tpo $(DEPDIR)/minecraftd-ScriptHandler.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='ScriptHandler.cpp' object='minecraftd-ScriptHandler.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-ScriptHandler.o `test -f 'ScriptHandler.cpp' || echo '$(srcdir)/'`ScriptHandler.cpp
+
+minecraftd-ScriptHandler.obj: ScriptHandler.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -MT minecraftd-ScriptHandler.obj -MD -MP -MF $(DEPDIR)/minecraftd-ScriptHandler.Tpo -c -o minecraftd-ScriptHandler.obj `if test -f 'ScriptHandler.cpp'; then $(CYGPATH_W) 'ScriptHandler.cpp'; else $(CYGPATH_W) '$(srcdir)/ScriptHandler.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/minecraftd-ScriptHandler.Tpo $(DEPDIR)/minecraftd-ScriptHandler.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='ScriptHandler.cpp' object='minecraftd-ScriptHandler.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(minecraftd_CXXFLAGS) $(CXXFLAGS) -c -o minecraftd-ScriptHandler.obj `if test -f 'ScriptHandler.cpp'; then $(CYGPATH_W) 'ScriptHandler.cpp'; else $(CYGPATH_W) '$(srcdir)/ScriptHandler.cpp'; fi`
 install-includeHEADERS: $(include_HEADERS)
 	@$(NORMAL_INSTALL)
 	@list='$(include_HEADERS)'; test -n "$(includedir)" || list=; \

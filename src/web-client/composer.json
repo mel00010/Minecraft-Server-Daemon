@@ -1,0 +1,20 @@
+{
+	"keywords" : [
+		"minecraft manager"
+	],
+	"autoload" : {
+		"psr-4" : {
+			"Mel00010\\MinecraftServerManager\\" : "src"
+		}
+	},
+	"name" : "mel00010/minecraft-server-manager-web-client",
+	"license" : "GPL-3.0+",
+	"type" : "project",
+	"description" : "Web interface for MinecraftServerDaemon",
+	"require" : {
+		"php" : ">=7.1",
+		"cboden/ratchet" : ">=0.3.4",
+		"react/promise" : ">=2.2",
+		"react/socket-client": "^0.5"
+	}
+}

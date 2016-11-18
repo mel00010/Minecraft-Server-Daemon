@@ -24,12 +24,19 @@
 #ifndef DAEMON_OUTPUTMESSAGE_HPP_
 #define DAEMON_OUTPUTMESSAGE_HPP_
 
+#include <string>
+
 namespace MinecraftServerDaemon {
 
 class OutputMessage {
 	public:
 		std::string mode;
+		std::string server;
+		std::string serverOutput;
 		std::string messageData;
+		std::string command;
+		std::string failureReason;
+		bool success;
 };
 
 } /* namespace MinecraftServerDaemon */

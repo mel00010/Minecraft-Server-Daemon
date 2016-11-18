@@ -1,7 +1,7 @@
 /*******************************************************************************
  *
  * MinecraftServerDaemon
- * Message.hpp
+ * ScriptHandler.hpp
  * Copyright (C) 2016  Mel McCalla <melmccalla@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -21,23 +21,15 @@
  *
  *******************************************************************************/
 
-#ifndef DAEMON_MESSAGE_HPP_
-#define DAEMON_MESSAGE_HPP_
+#ifndef DAEMON_SCRIPTHANDLER_HPP_
+#define DAEMON_SCRIPTHANDLER_HPP_
 
-namespace MinecraftServerDaemon {
+#include <log4cpp/Category.hh>
+#include <string>
+#include <vector>
 
-class Message {
-	public:
-		bool error;
-		std::string command;
-		std::string server;
-		std::string player;
-		std::string serverCommand;
-		std::string version;
-		std::string reason;
-		std::string script;
-};
+#include "Server.hpp"
 
-} /* namespace MinecraftServerDaemon */
+void scriptLauncher(std::string scriptPath, std::vector<MinecraftServerDaemon::Server*>* servers, log4cpp::Category* log);
 
-#endif /* DAEMON_MESSAGE_HPP_ */
+#endif /* DAEMON_SCRIPTHANDLER_HPP_ */

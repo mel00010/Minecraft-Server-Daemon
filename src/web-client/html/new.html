@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Minecraft Server Manager</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script type="text/javascript" src="jquery-2.1.4.js"></script>
+	<!--<script type="text/javascript" src="http://autobahn.s3.amazonaws.com/js/autobahn.min.js"></script>-->	
+	<script type="text/javascript" src="menu.js"></script>
+	<script type="text/javascript" src="connection.js"></script>
+	<style>
+		.main {
+		    display: -webkit-flex;
+		    display: flex;
+		    -webkit-flex-flow: row wrap;
+		    flex-flow: row wrap;
+		    text-align: center;
+		}
+
+		.main > * {
+		    padding: 10px;
+    		flex: 1 100%;
+		}
+		.serverList {
+			background-color: lightgrey;
+			/* background-color: cornflowerblue; */
+			border-style: solid;
+    		border-width: 5px;
+			flex-basis: 100px;
+			margin: 10px;
+			overflow: auto;
+		}
+		.serverOutput {
+			background-color: lightgrey;
+			/* background-color: cornflowerblue; */
+			border-style: solid;
+			flex-grow: 6;
+    		border-width: 5px;
+			/*width: 60%;*/
+			margin: 10px;
+			overflow: auto;
+		}
+		.playerList {
+			background-color: lightgrey;
+			/* background-color: cornflowerblue; */
+			border-style: solid;
+    		border-width: 5px;
+			flex-basis: 100px;
+			margin: 10px;
+			overflow: auto;
+		}
+		@media all and (min-width: 600px) {
+    		.sidebar { flex: 1 auto; }
+		}
+
+		@media all and (min-width: 800px) {
+    		.serverOutput    { flex: 6 0px; }
+    		.serverList { order: 1; }
+    		.serverOutput    { order: 2; }
+    		.playerList { order: 3; }
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="serverOutput" style="position:relative">
+			<b>Server output</b>
+			<div id="output" style="text-align: left;position:absolute;bottom:0">
+			</div>
+			
+		</div>
+		<div class="serverList sidebar">
+			<b>Server List</b>
+			<table style="width: 100%; text-align: left; border: 1px solid black">
+				<tr><td>Server1</td></tr>
+			</table>
+		</div>
+		<div class="playerList sidebar">
+			<b>Player List</b>
+		</div>
+	</div>
+</body>
+</html>
+

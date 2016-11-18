@@ -1,7 +1,7 @@
 /*******************************************************************************
  *
- * MinecraftServerDaemon
- * Message.hpp
+ * Minecraft Server Daemon
+ * ForgeServer.hpp
  * Copyright (C) 2016  Mel McCalla <melmccalla@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -20,24 +20,17 @@
  *
  *
  *******************************************************************************/
-
-#ifndef DAEMON_MESSAGE_HPP_
-#define DAEMON_MESSAGE_HPP_
-
-namespace MinecraftServerDaemon {
-
-class Message {
-	public:
-		bool error;
-		std::string command;
-		std::string server;
-		std::string player;
-		std::string serverCommand;
-		std::string version;
-		std::string reason;
-		std::string script;
-};
-
-} /* namespace MinecraftServerDaemon */
-
-#endif /* DAEMON_MESSAGE_HPP_ */
+#include <ScriptHandler.hpp>
+#include <Python.h>
+#include <string>
+#include <iostream>
+#include <PythonFunctions.hpp>
+log4cpp::Category* logPython;
+std::vector<MinecraftServerDaemon::Server*>* serversPython;
+void scriptLauncher(std::string scriptPath, std::vector<MinecraftServerDaemon::Server*>* servers, log4cpp::Category* log) {
+	logPython = log;
+	serversPython = servers;
+	FILE* scriptFile = fopen(scriptPath.c_str(), "r");
+	PyRun_SimpleFile(scriptFile, scriptPath.c_str());
+	fclose(scriptFile);
+}

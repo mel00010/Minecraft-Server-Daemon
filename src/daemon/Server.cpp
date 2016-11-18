@@ -22,6 +22,8 @@
  *******************************************************************************/
 
 #include <fcntl.h>
+#include <OutputMessage.hpp>
+#include <IPC.hpp>
 #include <pwd.h>
 #include <Server.hpp>
 #include <cerrno>
@@ -41,14 +43,12 @@ namespace MinecraftServerDaemon {
  * @param players
  */
 void Server::outputListenerThread(__attribute__((unused)) int serverPID, std::string serverName, Server* server, int childProcessStdout,
-		struct event_base* base,
-		log4cpp::Category* log,
-		std::vector<Listener*>* listeners, std::vector<Player*>* players) {
+		struct event_base* base, log4cpp::Category* log, std::vector<Listener*>* listeners, std::vector<Player*>* players, std::vector<int>* clients) {
 	log->debug("Server::outputListenerThread");
-	struct event *outputListener;
-	ServerOutputEventData* data = new ServerOutputEventData { serverName, server, base, log, listeners, players };
-	outputListener = event_new(base, (evutil_socket_t) childProcessStdout, EV_READ | EV_PERSIST, Server::serverOutputEvent, (void*) data);
-	event_add(outputListener, NULL);
+	struct event *outputListener = nullptr;
+	ServerOutputEventData* data = new ServerOutputEventData { serverName, server, base, outputListener, log, listeners, clients };
+	data->outputListener = event_new(base, (evutil_socket_t) childProcessStdout, EV_READ | EV_PERSIST, Server::serverOutputEvent, (void*) data);
+	event_add(data->outputListener, NULL);
 	event_base_dispatch(base);
 }
 /**
@@ -58,6 +58,7 @@ void Server::outputListenerThread(__attribute__((unused)) int serverPID, std::st
  * @param arg
  */
 void Server::serverOutputEvent(evutil_socket_t fd, __attribute__((unused)) short event, void *arg) {
+	((ServerOutputEventData*) arg)->log->debug("Server::serverOutputEvent");
 	char buf[8192];
 	int len;
 	len = read(fd, buf, sizeof(buf) - 1);
@@ -67,7 +68,8 @@ void Server::serverOutputEvent(evutil_socket_t fd, __attribute__((unused)) short
 			((ServerOutputEventData*) arg)->log->fatal("Error reading");
 		} else if (len == 0) {
 			((ServerOutputEventData*) arg)->log->fatal("Connection closed");
-			event_base_loopbreak(((ServerOutputEventData*) arg)->base);
+			event_free(((ServerOutputEventData*) arg)->outputListener);
+//			event_base_loopbreak(((ServerOutputEventData*) arg)->base);
 			return;
 		}
 	}
@@ -106,11 +108,21 @@ void Server::serverOutputEvent(evutil_socket_t fd, __attribute__((unused)) short
 					}
 				}
 			}
-			((ServerOutputEventData*) arg)->log->debug("Players:");
-			for (std::vector<Player*>::iterator l = ((ServerOutputEventData*) arg)->players->begin(); l != ((ServerOutputEventData*) arg)->players->end();
-					l++) {
-				((ServerOutputEventData*) arg)->log->debug((*l)->playerName);
+			OutputMessage output;
+			output.mode = "serverOutput";
+			output.server = ((ServerOutputEventData*) arg)->serverName;
+			output.serverOutput = std::string(chars_array);
+			std::vector<int> clients = *((ServerOutputEventData*) arg)->clients;
+			for (std::vector<int>::iterator i = clients.begin(); i != clients.end(); i++) {
+				((ServerOutputEventData*) arg)->log->debug(std::to_string(*i));
+				writeToSocket(output, (*i), *((ServerOutputEventData*) arg)->log);
 			}
+//			((ServerOutputEventData*) arg)->log->debug("Players:");
+//			for (std::vector<Player*>::iterator l = ((ServerOutputEventData*) arg)->players->begin(); l != ((ServerOutputEventData*) arg)->players->end();
+//					l++) {
+//				((ServerOutputEventData*) arg)->log->debug((*l)->playerName);
+//			}
+
 			// If there are no % characters in chars_array, run the next section.
 			if (strchr(chars_array, '%') == NULL) {
 				((ServerOutputEventData*) arg)->log->info(chars_array);
@@ -124,16 +136,16 @@ void Server::serverOutputEvent(evutil_socket_t fd, __attribute__((unused)) short
 						if (!(*i)->persistent) {
 							((ServerOutputEventData*) arg)->listeners->erase(i);
 							// If not, set all of its output variables back to zero.
-					} else {
+						} else {
 							(*i)->currentLine = 0;
 							(*i)->output = '\0';
 							(*i)->callbackOutput = '\0';
-					}
+						}
 						// If the current line number does not match the number of lines requested, store it and increment the line counter.
 					} else {
 						(*i)->output = (*i)->output + std::string(chars_array);
 						(*i)->currentLine++;
-				}
+					}
 				}
 				// If there are % characters in chars_array, run the next section.
 			} else {
@@ -151,7 +163,7 @@ void Server::serverOutputEvent(evutil_socket_t fd, __attribute__((unused)) short
 					// Delete the % character in the initial string.
 					buffer.erase(position);
 					// Find the last one in the initial string now that the last one has been deleted.
-				position = buffer.rfind("%");
+					position = buffer.rfind("%");
 				}
 				((ServerOutputEventData*) arg)->log->info(escapeBuffer);
 				// Loop through listeners
@@ -164,11 +176,11 @@ void Server::serverOutputEvent(evutil_socket_t fd, __attribute__((unused)) short
 						if (!(*i)->persistent) {
 							((ServerOutputEventData*) arg)->listeners->erase(i);
 							// If not, set all of its output variables back to zero.
-					} else {
+						} else {
 							(*i)->currentLine = 0;
 							(*i)->output = '\0';
 							(*i)->callbackOutput = '\0';
-					}
+						}
 						// If the current line number does not match the number of lines requested, store it and increment the line counter.
 					} else {
 						(*i)->output = (*i)->output + std::string(chars_array);

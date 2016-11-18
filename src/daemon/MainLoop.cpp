@@ -35,7 +35,8 @@
 #include <cstdlib>
 #include <iterator>
 #include <string>
-
+#include <ScriptHandler.hpp>
+#include <Python.h>
 /**
  * Catches the SIGINT signal and kills all of the child processes, then sends the SIGINT signal again to kill the program.
  * @param sig
@@ -70,6 +71,9 @@ void readAndProcessMessage(int controlSocket, __attribute__((unused)) short what
 	MinecraftServerDaemon::OutputMessage output;
 	root.debug("In readAndProcessMessage");
 	if (message.error) {
+		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
+			(*i)->unRegisterOutputListener(controlSocket);
+		}
 		event_free(((cb_data *) arg)->event);
 		return;
 	} else if (message.command == "startServer") {
@@ -78,7 +82,7 @@ void readAndProcessMessage(int controlSocket, __attribute__((unused)) short what
 			root.debug((*i)->getServerName());
 			if ((*i)->getServerName() == message.server) {
 				(*i)->startServer();
-				output.messageData = "success";
+				output.success = true;
 				break;
 			}
 		}
@@ -87,7 +91,7 @@ void readAndProcessMessage(int controlSocket, __attribute__((unused)) short what
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			(*i)->startServer();
 		}
-		output.messageData = "success";
+		output.success = true;
 	} else if (message.command == "stopServer") {
 		root.debug("Command received:  stopServer");
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
@@ -95,7 +99,7 @@ void readAndProcessMessage(int controlSocket, __attribute__((unused)) short what
 			if ((*i)->getServerName() == message.server) {
 				root.debug("Found server");
 				(*i)->stopServer();
-				output.messageData = "success";
+				output.success = true;
 				break;
 			}
 		}
@@ -104,14 +108,14 @@ void readAndProcessMessage(int controlSocket, __attribute__((unused)) short what
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			(*i)->stopServer();
 		}
-		output.messageData = "success";
+		output.success = true;
 	} else if (message.command == "restartServer") {
 		root.debug("Command received:  restartServer");
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			root.debug((*i)->getServerName());
 			if ((*i)->getServerName() == message.server) {
 				(*i)->restartServer();
-				output.messageData = "success";
+				output.success = true;
 				break;
 			}
 		}
@@ -120,12 +124,38 @@ void readAndProcessMessage(int controlSocket, __attribute__((unused)) short what
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			(*i)->restartServer();
 		}
-		output.messageData = "success";
+		output.success = true;
 	} else if (message.command == "serverStatus") {
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			root.debug((*i)->getServerName());
 			if ((*i)->getServerName() == message.server) {
 				root.warn("Status not implemented yet");
+				break;
+			}
+		}
+	} else if (message.command == "registerOutputListener") {
+		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
+			root.debug((*i)->getServerName());
+			if ((*i)->getServerName() == message.server) {
+				if ((*i)->registerOutputListener(controlSocket)) {
+					output.success = true;
+				} else {
+					output.success = false;
+					output.failureReason = "";
+				}
+				break;
+			}
+		}
+	} else if (message.command == "unRegisterOutputListener") {
+		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
+			root.debug((*i)->getServerName());
+			if ((*i)->getServerName() == message.server) {
+				if ((*i)->unRegisterOutputListener(controlSocket)) {
+					output.success = true;
+				} else {
+					output.success = false;
+					output.failureReason = "";
+				}
 				break;
 			}
 		}
@@ -147,7 +177,7 @@ void readAndProcessMessage(int controlSocket, __attribute__((unused)) short what
 			if ((*i)->getServerName() == message.server) {
 				root.debug("Found server");
 				(*i)->sendCommand(message.serverCommand);
-				output.messageData = "success";
+				output.success = true;
 				break;
 			}
 		}
@@ -176,7 +206,7 @@ void readAndProcessMessage(int controlSocket, __attribute__((unused)) short what
 			if ((*i)->getServerName() == message.server) {
 				if ((*i)->getServerType() == MinecraftServerDaemon::Server::ServerType::VANILLA) {
 					(*i)->updateServer(message.version);
-					output.messageData = "success";
+					output.success = true;
 					break;
 				}
 			}
@@ -186,17 +216,17 @@ void readAndProcessMessage(int controlSocket, __attribute__((unused)) short what
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			if ((*i)->getServerType() == MinecraftServerDaemon::Server::ServerType::VANILLA) {
 				(*i)->updateServer(message.version);
-				output.messageData = "success";
+				output.success = true;
 				break;
 			}
 		}
-		output.messageData = "success";
+		output.success = true;
 	} else if (message.command == "backupServer") {
 		root.debug("Command received:  backupServer");
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			if ((*i)->getServerName() == message.server) {
 				(*i)->backupServer();
-				output.messageData = "success";
+				output.success = true;
 				break;
 			}
 		}
@@ -205,7 +235,7 @@ void readAndProcessMessage(int controlSocket, __attribute__((unused)) short what
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			(*i)->backupServer();
 		}
-		output.messageData = "success";
+		output.success = true;
 	} else if (message.command == "stopDaemon") {
 		root.debug("Command received:  stopDaemon");
 		std::string serverList;
@@ -213,6 +243,7 @@ void readAndProcessMessage(int controlSocket, __attribute__((unused)) short what
 			root.debug((*i)->getServerName());
 			(*i)->stopServer();
 		}
+		Py_Finalize();
 		root.notice("All servers stopped");
 		root.notice("Stopping");
 		output.messageData = "Stopped";
@@ -224,7 +255,7 @@ void readAndProcessMessage(int controlSocket, __attribute__((unused)) short what
 				for (std::vector<MinecraftServerDaemon::Player*>::iterator j = (*i)->getPlayerVector()->begin(); j != (*i)->getPlayerVector()->end(); j++) {
 					if ((*j)->getPlayerName() == message.player) {
 						(*j)->op();
-						output.messageData = "success";
+						output.success = true;
 						break;
 					}
 				}
@@ -238,7 +269,7 @@ void readAndProcessMessage(int controlSocket, __attribute__((unused)) short what
 				for (std::vector<MinecraftServerDaemon::Player*>::iterator j = (*i)->getPlayerVector()->begin(); j != (*i)->getPlayerVector()->end(); j++) {
 					if ((*j)->getPlayerName() == message.player) {
 						(*j)->deop();
-						output.messageData = "success";
+						output.success = true;
 						break;
 					}
 				}
@@ -259,9 +290,10 @@ void readAndProcessMessage(int controlSocket, __attribute__((unused)) short what
 					}
 				}
 				if (kickedPlayer) {
-					output.messageData = "success";
+					output.success = true;
 				} else {
-					output.messageData = "failure";
+					output.success = false;
+					output.failureReason = "";
 				}
 				break;
 			}
@@ -274,7 +306,7 @@ void readAndProcessMessage(int controlSocket, __attribute__((unused)) short what
 				for (std::vector<MinecraftServerDaemon::Player*>::iterator j = (*i)->getPlayerVector()->begin(); j != (*i)->getPlayerVector()->end(); j++) {
 					if ((*j)->getPlayerName() == message.player) {
 						(*j)->kick(message.reason);
-						output.messageData = "success";
+						output.success = true;
 						break;
 					}
 				}
@@ -288,7 +320,7 @@ void readAndProcessMessage(int controlSocket, __attribute__((unused)) short what
 				for (std::vector<MinecraftServerDaemon::Player*>::iterator j = (*i)->getPlayerVector()->begin(); j != (*i)->getPlayerVector()->end(); j++) {
 					if ((*j)->getPlayerName() == message.player) {
 						(*j)->ban();
-						output.messageData = "success";
+						output.success = true;
 						break;
 					}
 				}
@@ -302,7 +334,7 @@ void readAndProcessMessage(int controlSocket, __attribute__((unused)) short what
 				for (std::vector<MinecraftServerDaemon::Player*>::iterator j = (*i)->getPlayerVector()->begin(); j != (*i)->getPlayerVector()->end(); j++) {
 					if ((*j)->getPlayerName() == message.player) {
 						(*j)->ban(message.reason);
-						output.messageData = "success";
+						output.success = true;
 						break;
 					}
 				}
@@ -314,13 +346,19 @@ void readAndProcessMessage(int controlSocket, __attribute__((unused)) short what
 		for (std::vector<MinecraftServerDaemon::Server*>::iterator i = servers->begin(); i != servers->end(); i++) {
 			if ((*i)->getServerName() == message.server) {
 				(*((*i)->getPlayerVector()->begin()))->pardon(message.player);
-				output.messageData = "success";
+				output.success = true;
 				break;
 			}
 		}
+	} else if (message.command == "runScript") {
+		root.debug("Command received:  runScript");
+		scriptLauncher(message.script, servers, &root);
+		output.success = true;
 	}
 	output.mode = "output";
+	output.command = message.command;
 	root.debug("Writing message to socket");
+
 	writeToSocket(output, controlSocket, root);
 	event_add(((cb_data *) arg)->event, NULL);
 }

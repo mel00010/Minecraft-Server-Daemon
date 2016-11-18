@@ -1,0 +1,47 @@
+html {
+	min-height: 100%;
+	position: relative;
+}
+
+body {
+	height: 100%;
+}
+
+.main {
+	display: -webkit-flex;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	overflow: hidden;
+	z-index: -1;
+}
+
+.menu {
+	background-color: lightgrey;
+	/* background-color: cornflowerblue; */
+	border-style: solid;
+	border-width: 5px;
+	width: 33%;
+	margin: 10px;
+	overflow: auto;
+}
+
+.output {
+	background-color: lightgrey;
+	/* background-color: cornflowerblue; */
+	border-style: solid;
+	border-width: 5px;
+	width: 67%;
+	margin: 10px;
+	overflow: auto;
+}
+.message {
+	margin-bottom: 0;
+	margin-top: 0;
+}

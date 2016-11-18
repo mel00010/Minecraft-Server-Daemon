@@ -1,7 +1,7 @@
 /*******************************************************************************
  *
  * MinecraftServerDaemon
- * Message.hpp
+ * StaticLogVar.hpp
  * Copyright (C) 2016  Mel McCalla <melmccalla@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -21,23 +21,13 @@
  *
  *******************************************************************************/
 
-#ifndef DAEMON_MESSAGE_HPP_
-#define DAEMON_MESSAGE_HPP_
+#ifndef DAEMON_GLOBALVARS_HPP_
+#define DAEMON_GLOBALVARS_HPP_
 
-namespace MinecraftServerDaemon {
+#include <log4cpp/Category.hh>
+#include <Server.hpp>
+#include <vector>
+extern log4cpp::Category* logPython;
+extern std::vector<MinecraftServerDaemon::Server*>* serversPython;
 
-class Message {
-	public:
-		bool error;
-		std::string command;
-		std::string server;
-		std::string player;
-		std::string serverCommand;
-		std::string version;
-		std::string reason;
-		std::string script;
-};
-
-} /* namespace MinecraftServerDaemon */
-
-#endif /* DAEMON_MESSAGE_HPP_ */
+#endif /* DAEMON_GLOBALVARS_HPP_ */

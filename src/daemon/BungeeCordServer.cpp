@@ -132,7 +132,7 @@ void BungeeCordServer::startServer() {
 		launchServerProcess(serverPath, serverJarName, serverAccount, maxHeapAlloc, minHeapAlloc, gcThreadCount, javaArgs, serverOptions);
 		log->debug("Launched server process");
 		std::thread outputListenerThread(&Server::outputListenerThread, serverPID, serverName, this, childProcessStdout[PIPE_READ], base, log, listeners,
-				players);
+				players, clients);
 		outputListenerThread.detach();
 	}
 }

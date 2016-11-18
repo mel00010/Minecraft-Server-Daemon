@@ -76,8 +76,10 @@ class Server {
 				std::string serverName;
 				Server* server;
 				struct event_base* base;
+				struct event *outputListener;
 				log4cpp::Category* log;
 				std::vector<Listener*>* listeners;
+				std::vector<int>* clients;
 				std::vector<Player*>* players;
 		};
 		/**
@@ -202,6 +204,8 @@ class Server {
 		 *
 		 */
 		std::vector<Player*>* players = new std::vector<Player*>;
+		std::vector<int>* clients = new std::vector<int>;
+
 	public:
 		/**
 		 * Tests if the server process is running.
@@ -220,6 +224,33 @@ class Server {
 			} else {
 				return 0;
 			}
+		}
+		int isOutputListenerRegistered(int fd) {
+			for (std::vector<int>::iterator i = clients->begin(); i != clients->end(); i++) {
+				if (fd == (*i)) {
+					return true;
+				}
+			}
+			return false;
+		}
+		bool registerOutputListener(int fd) {
+			if (!isOutputListenerRegistered(fd)) {
+				clients->push_back(fd);
+				return true;
+			} else {
+				return false;
+			}
+		}
+		bool unRegisterOutputListener(int fd) {
+			for (std::vector<int>::iterator i = clients->begin(); i != clients->end();) {
+				if (fd == (*i)) {
+					clients->erase(i);
+					return true;
+				} else {
+					i++;
+				}
+			}
+			return false;
 		}
 		/**
 		 * Returns the vector of player objects.
@@ -243,7 +274,7 @@ class Server {
 		 * @param x
 		 * @return
 		 */
-		inline Server& operator<<(__attribute__((unused))     const std::string& x) {
+		inline Server& operator<<(__attribute__((unused))           const std::string& x) {
 			write(childProcessStdin[PIPE_WRITE], x.c_str(), x.size());
 			return *this;
 		}
@@ -252,7 +283,7 @@ class Server {
 		 * @param in
 		 * @return
 		 */
-		inline std::istream& operator>>(__attribute__((unused))     std::istream &in) {
+		inline std::istream& operator>>(__attribute__((unused))           std::istream &in) {
 			std::string s(std::istreambuf_iterator<char>(in), { });
 			write(childProcessStdin[PIPE_WRITE], s.c_str(), s.size());
 			return in;
@@ -262,7 +293,7 @@ class Server {
 		 * @param manip
 		 * @return
 		 */
-		inline Server& operator<<(__attribute__((unused))     StandardEndLine manip) {
+		inline Server& operator<<(__attribute__((unused))           StandardEndLine manip) {
 			// Call the function, but we cannot return it's value
 			write(childProcessStdin[PIPE_WRITE], "\n", sizeof("\n"));
 			return *this;
@@ -278,10 +309,10 @@ class Server {
 		 * @param log
 		 * @param listeners
 		 * @param players
+		 * @param clients
 		 */
-		static void outputListenerThread(int serverPID, std::string serverName, Server* server, int childProcessStdout, struct event_base* base,
-				log4cpp::Category* log,
-				std::vector<Listener*>* listeners, std::vector<Player*>* players);
+		static void outputListenerThread(__attribute__((unused)) int serverPID, std::string serverName, Server* server, int childProcessStdout,
+				struct event_base* base, log4cpp::Category* log, std::vector<Listener*>* listeners, std::vector<Player*>* players, std::vector<int>* clients);
 		/**
 		 * Gets data from child process's output pipe, splits it into lines, and distributes it to the functions waiting for server output.
 		 * @param fd

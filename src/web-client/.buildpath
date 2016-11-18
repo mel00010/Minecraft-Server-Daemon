@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildpath>
+	<buildpathentry kind="src" path="vendor/react/stream/src"/>
+	<buildpathentry kind="src" path="src"/>
+	<buildpathentry kind="src" path="vendor/react/promise/src"/>
+	<buildpathentry kind="src" path="vendor/guzzle/parser"/>
+	<buildpathentry kind="src" path="vendor/symfony/event-dispatcher"/>
+	<buildpathentry kind="src" path="vendor/symfony/http-foundation"/>
+	<buildpathentry kind="src" path="vendor/guzzle/common"/>
+	<buildpathentry kind="src" path="vendor/symfony/routing"/>
+	<buildpathentry kind="src" path="vendor/react/dns/src"/>
+	<buildpathentry kind="src" path="vendor/react/cache/src"/>
+	<buildpathentry kind="src" path="vendor/symfony/polyfill-mbstring"/>
+	<buildpathentry kind="src" path="vendor/evenement/evenement/src"/>
+	<buildpathentry kind="src" path="vendor/react/socket-client/src"/>
+	<buildpathentry kind="src" path="vendor/react/socket/src"/>
+	<buildpathentry kind="src" path="vendor/cboden/ratchet/src/Ratchet"/>
+	<buildpathentry kind="src" path="vendor/react/event-loop/src"/>
+	<buildpathentry kind="src" path="vendor/guzzle/http"/>
+	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
+	<buildpathentry kind="src" path="vendor/guzzle/stream"/>
+	<buildpathentry kind="src" path="vendor/composer"/>
+</buildpath>
