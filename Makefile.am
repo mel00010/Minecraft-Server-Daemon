@@ -1,4 +1,4 @@
-SUBDIRS = docs config src/daemon src/client
+SUBDIRS = docs config daemon/src client/src
 dist_doc_DATA = README.md
 #CXXFLAGS= -Wall -g -std=gnu++11 -I /usr/local/include
 LDFLAGS = -L/usr/lib -L/usr/local/lib

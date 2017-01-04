@@ -3187,7 +3187,7 @@ fi
 
 ac_config_headers="$ac_config_headers config.h"
 
-ac_config_files="$ac_config_files Makefile src/daemon/Makefile src/client/Makefile docs/Doxyfile docs/Makefile config/config.json config/Makefile"
+ac_config_files="$ac_config_files Makefile daemon/src/Makefile client/src/Makefile docs/Doxyfile docs/Makefile config/config.json config/Makefile"
 
 ac_ext=cpp
 ac_cpp='$CXXCPP $CPPFLAGS'
@@ -4624,8 +4624,8 @@ do
     "depfiles") CONFIG_COMMANDS="$CONFIG_COMMANDS depfiles" ;;
     "config.h") CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
-    "src/daemon/Makefile") CONFIG_FILES="$CONFIG_FILES src/daemon/Makefile" ;;
-    "src/client/Makefile") CONFIG_FILES="$CONFIG_FILES src/client/Makefile" ;;
+    "daemon/src/Makefile") CONFIG_FILES="$CONFIG_FILES daemon/src/Makefile" ;;
+    "client/src/Makefile") CONFIG_FILES="$CONFIG_FILES client/src/Makefile" ;;
     "docs/Doxyfile") CONFIG_FILES="$CONFIG_FILES docs/Doxyfile" ;;
     "docs/Makefile") CONFIG_FILES="$CONFIG_FILES docs/Makefile" ;;
     "config/config.json") CONFIG_FILES="$CONFIG_FILES config/config.json" ;;

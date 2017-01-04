@@ -1,5 +1,0 @@
-bin_PROGRAMS = minecraftd
-minecraftd_SOURCES = daemon.cpp ConfigFileParser.cpp IPC.cpp MainLoop.cpp Player.cpp Server.cpp SetupServers.cpp BukkitServer.cpp BungeeCordServer.cpp ForgeServer.cpp GenericServer.cpp SpigotServer.cpp VanillaServer.cpp PythonFunctions.cpp ScriptHandler.cpp
-minecraftd_CXXFLAGS = -I/usr/include/python3.5m -I/usr/include/python3.5m  -Wno-unused-result -Wsign-compare -g -fdebug-prefix-map=/build/python3.5-SGM88Z/python3.5-3.5.2=. -fstack-protector-strong -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O3 -Wall -Wextra -std=gnu++11
-include_HEADERS = ConfigFileParser.hpp MainLoop.hpp Player.hpp Server.hpp IPC.hpp SetupServers.hpp ServerPropertyFileParser.hpp BukkitServer.hpp BungeeCordServer.hpp ForgeServer.hpp GenericServer.hpp SpigotServer.hpp VanillaServer.hpp ScriptHandler.hpp  PythonFunctions.hpp GlobalVars.hpp 
-minecraftd_LDFLAGS = -L/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu -L/usr/lib -lpython3.5m -lpthread -ldl  -lutil -lm  -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions -levent -Lusr/log4cpp/lib -llog4cpp -lcurl -ljsoncpp

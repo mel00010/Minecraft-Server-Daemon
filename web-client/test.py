@@ -1,0 +1,27 @@
+import minecraftServerManager
+
+# minecraftServerManager.test()
+# for server in minecraftServerManager.listServers():
+#     minecraftServerManager.log(server)
+# minecraftServerManager.stopAll()
+# minecraftServerManager.stopServer("server")
+# minecraftServerManager.startAll()
+# minecraftServerManager.startServer("server")
+# minecraftServerManager.restartAll()
+minecraftServerManager.restartServer("server")
+# minecraftServerManager.serverStatus("server")
+# for x in range(0, 20):
+#    minecraftServerManager.sendCommand("server","say hi")
+# minecraftServerManager.listOnlinePlayers("server")
+# minecraftServerManager.listOnlinePlayersFiltered("server","mel00010")
+# minecraftServerManager.updateAll("1.11")
+# minecraftServerManager.updateServer("server","1.11")
+# minecraftServerManager.backupAll()
+# minecraftServerManager.backupServer("server")
+# minecraftServerManager.opPlayer("server","mel00010")
+# minecraftServerManager.deopPlayer("server","mel00010")
+# minecraftServerManager.kickPlayer("server","mel00010")
+# minecraftServerManager.kickPlayerReason("server","mel00010","Cheating")
+# minecraftServerManager.banPlayer("server","mel00010")
+# minecraftServerManager.banPlayerReason("server","mel00010","Cheating")
+# minecraftServerManager.pardonPlayer("server","mel00010")

@@ -5,8 +5,8 @@ AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES(
 	[
  		Makefile
- 		src/daemon/Makefile
- 		src/client/Makefile
+ 		daemon/src/Makefile
+ 		client/src/Makefile
  		docs/Doxyfile
  		docs/Makefile
  		config/config.json
